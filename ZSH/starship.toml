@@ -1,8 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[custom]
-disabled = true
+# [custom]
+# disabled = true
 
 # Inserts a blank line between shell prompts
 add_newline = false
@@ -12,33 +12,136 @@ add_newline = false
 success_symbol = '[➜](bold green)'
 # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = false
-
-# Use custom format
+# # Use custom format
 # format = '''
 # [┌───────────────────>](bold green)
 # [│](bold green)$directory$rust$package
 # [└─>](bold green) '''
 
-# format = '$all$directory$character'
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
 
 [docker_context]
-format = 'via [🐋 $context](blue bold)'
+symbol = " "
 
-# Wait 10 milliseconds for starship to check files under the current directory.
-# scan_timeout = 20
+[elixir]
+symbol = " "
 
-# # Disable the blank line at the start of the prompt
-# add_newline = false
+[elm]
+symbol = " "
 
-# # # Set 'foo' as custom color palette
-# palette = 'foo'
+[git_branch]
+symbol = " "
 
-# # Define custom colors
-# [palettes.foo]
-# # Overwrite existing color
-# blue = '21'
-# # Define new color
-# mustard = '#af8700'
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "

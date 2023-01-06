@@ -1,7 +1,11 @@
 Shared configurations
 
 Includes:
+  - ZSH rc file
+  - Raycast data & settings
 
- - ZSH rc file
+Requirements:
 
- - Raycast data & settings
+  - Nerd Fonts for icons
+    - Install via curl and set in terminal
+  - Starship
