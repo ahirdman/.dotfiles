@@ -8,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="spaceship"
+# previousley "cloud"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,6 +71,7 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# Used before warp - zsh-autosuggestions jsontools zsh-syntax-highlighting
 plugins=(git )
 
 source $ZSH/oh-my-zsh.sh
@@ -100,10 +102,28 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# NVM Setup on work machine:
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath=($fpath "/Users/hirdman/.zfunctions")
+
+# Stabelo Deploy scripts
+alias scpBeta="scp docker-compose.yml 10.102.197.162:~/docker-compose.yml"
+alias sshBeta="ssh 10.102.197.162"
+alias deployBeta="scpBeta && sshBeta"
+
+alias scpTest="scp docker-compose.yml 10.101.227.195:~/docker-compose.yml"
+alias sshTest="ssh 10.101.227.195"
+alias deployTest="scpTest && sshTest"
+
+alias scpProd="scp docker-compose.yml 10.100.139.46:~/docker-compose.yml"
+alias sshProd="ssh 10.100.139.46"
+alias deployProd="scpProd && sshProd"
 
 # Set Spaceship as ZSH prompt - https://spaceship-prompt.sh/
 autoload -U promptinit; promptinit
