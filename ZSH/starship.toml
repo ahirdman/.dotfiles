@@ -1,35 +1,44 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+[custom]
+disabled = true
+
 # Inserts a blank line between shell prompts
-add_newline = true
+add_newline = false
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+success_symbol = '[➜](bold green)'
+# The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
-disabled = true
+disabled = false
 
 # Use custom format
-format = '''
-[┌───────────────────>](bold green)
-[│](bold green)$directory$rust$package
-[└─>](bold green) '''
+# format = '''
+# [┌───────────────────>](bold green)
+# [│](bold green)$directory$rust$package
+# [└─>](bold green) '''
+
+# format = '$all$directory$character'
+
+[docker_context]
+format = 'via [🐋 $context](blue bold)'
 
 # Wait 10 milliseconds for starship to check files under the current directory.
-scan_timeout = 10
+# scan_timeout = 20
 
-# Disable the blank line at the start of the prompt
-add_newline = false
+# # Disable the blank line at the start of the prompt
+# add_newline = false
 
-# Set 'foo' as custom color palette
-palette = 'foo'
+# # # Set 'foo' as custom color palette
+# palette = 'foo'
 
-# Define custom colors
-[palettes.foo]
-# Overwrite existing color
-blue = '21'
-# Define new color
-mustard = '#af8700'
+# # Define custom colors
+# [palettes.foo]
+# # Overwrite existing color
+# blue = '21'
+# # Define new color
+# mustard = '#af8700'

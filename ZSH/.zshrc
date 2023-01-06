@@ -71,9 +71,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # Used before warp - zsh-autosuggestions jsontools zsh-syntax-highlighting
-plugins=(git )
+# plugins=(git )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -125,7 +125,7 @@ alias sshProd="ssh 10.100.139.46"
 alias deployProd="scpProd && sshProd"
 
 # Starship prompt setup
-export STARSHIP_CONFIG=~$HOME"/dotfiles/ZSH/starship.toml"
+export STARSHIP_CONFIG=~/dotfiles/ZSH/starship.toml
 
 eval "$(starship init zsh)"
 
