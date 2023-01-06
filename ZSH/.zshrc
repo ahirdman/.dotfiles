@@ -8,8 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="cloud"
-# previousley "cloud"
+# ZSH_THEME="cloud"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -125,9 +124,16 @@ alias scpProd="scp docker-compose.yml 10.100.139.46:~/docker-compose.yml"
 alias sshProd="ssh 10.100.139.46"
 alias deployProd="scpProd && sshProd"
 
+# Starship prompt setup
+export STARSHIP_CONFIG=~$HOME"/dotfiles/ZSH/starship.toml"
+
+eval "$(starship init zsh)"
+
 # Set Spaceship as ZSH prompt - https://spaceship-prompt.sh/
-autoload -U promptinit; promptinit
-prompt spaceship
+# autoload -U promptinit; promptinit - deprecated?
+# prompt spaceship -- deprecated?
+# Installe with brew:
+# source $(brew --prefix)/opt/spaceship/spaceship.zsh
 
 # Set Starship as ZSH prompt - https://starship.rs/
 # eval "$(starship init zsh)"
