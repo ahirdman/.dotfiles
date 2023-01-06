@@ -4,13 +4,37 @@
 # [custom]
 # disabled = true
 
+# Without it, starship throws error beacuse it cant read node version
+command_timeout = 1000
+
 # Inserts a blank line between shell prompts
 add_newline = false
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
+# Displays current directory.
+[directory]
+# format = "[$path]($style) "
+style = "blue"
+# truncate_to_repo = false
+# truncation_length = 1 # parent directories to show; default is 3
+# truncation_symbol = "…/"
+
+# Displays status of Git repository when in a directory of a Git repository.
+[git_status]
+format = "[Git:]($style) [$all_status$ahead_behind]($style)"
+ahead = "⇡ $count "
+behind = "⇣ $count "
+deleted = "🗑 $count "
+diverged = " $count "
+stashed = "stashed: $count "
+modified = "פֿ $count "
+staged = '[ $count ](green)'
+renamed = " $count "
+untracked = "untracked ‍$count "
+style = "bold red"
+
+[character]
 success_symbol = '[➜](bold green)'
-# The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = "[✗](bold red)" # used if previous command failed
 
 # # Use custom format
 # format = '''
@@ -33,8 +57,8 @@ symbol = " "
 [dart]
 symbol = " "
 
-[directory]
-read_only = " "
+# [directory]
+# read_only = " "
 
 [docker_context]
 symbol = " "
