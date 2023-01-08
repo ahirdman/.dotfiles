@@ -13,28 +13,48 @@ add_newline = false
 # Displays current directory.
 [directory]
 # format = "[$path]($style) "
-style = "blue"
+style = "bold #ff7b25"
 # truncate_to_repo = false
 # truncation_length = 1 # parent directories to show; default is 3
 # truncation_symbol = "…/"
 
-# Displays status of Git repository when in a directory of a Git repository.
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
 [git_status]
-format = "[Git:]($style) [$all_status$ahead_behind]($style)"
+format = "([\\[ $all_status$ahead_behind\\]]($style) )"
 ahead = "⇡ $count "
 behind = "⇣ $count "
-deleted = "🗑 $count "
+deleted = "✘:$count "
 diverged = " $count "
-stashed = "stashed: $count "
-modified = "פֿ $count "
+stashed = "[ :$count ](yellow)"
+modified = " :$count "
 staged = '[ $count ](green)'
 renamed = " $count "
-untracked = "untracked ‍$count "
+untracked = " :$count "
 style = "bold red"
 
+# Defaults
+# ahead	"⇡"
+# behind	"⇣"
+# conflicted	"="
+# deleted	"✘"
+# disabled	false
+# diverged	"⇕"
+# format	"([\\[$all_status$ahead_behind\\]]($style) )"
+# ignore_submodules	false
+# modified	"!"
+# renamed	"»"
+# staged	"+"
+# stashed	"\\$"
+# style	"red bold"
+# untracked	"?"
+# up_to_date	""
+
 [character]
-success_symbol = '[➜](bold green)'
-error_symbol = "[✗](bold red)" # used if previous command failed
+success_symbol = '[](bold green)'
+error_symbol = "[](bold red)"
 
 # # Use custom format
 # format = '''
@@ -69,8 +89,8 @@ symbol = " "
 [elm]
 symbol = " "
 
-[git_branch]
-symbol = " "
+# [git_branch]
+# symbol = " "
 
 [golang]
 symbol = " "
@@ -110,6 +130,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+style = "bold #3c873a"
 
 [os.symbols]
 Alpine = " "
@@ -151,6 +172,7 @@ Windows = " "
 
 [package]
 symbol = " "
+style = "blue"
 
 [python]
 symbol = " "
@@ -169,3 +191,11 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
+
+# [directory.substitutions]
+# "stabelo" = " 🏢 "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
