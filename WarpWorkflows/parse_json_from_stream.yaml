@@ -1,0 +1,18 @@
+---
+name: Start a development server and prettyfie outputed JSON
+command: '{{stream_command}} | tee >(grep -v "^{") | jq -R "fromjson?"'
+tags:
+  - JSON
+  - jq
+  - tee
+  - grep
+description: Grep into stream from development server and tee to split the lines in two streams. One matches input that does not look like objects and echos in terminal. Second stream will prettyfie output with jq. jq does not account for "\n" so stack traces will not be printed with multi lines
+arguments:
+  - name: stream_command
+    description: The command to initiate the stream
+    default_value: ~
+source_url: ''
+author: Alexander Hirdman
+author_url: 'https://github.com/ahirdman'
+shells: []
+# npm run develop | tee >(grep -v "^{") |  jq -R 'fromjson? | if .message.data.name == "Error" then .message.data.name | tostring else . end'
