@@ -33,3 +33,8 @@ Create a symlink from $Home/~ to `.warp` folder in this repo
 
 Create a symlink from $Home/~ to `.vim` folder in this repo
 Create another link for the rc fie in the `.vim` folder
+
+
+## Notes
+
+In the `plugged` folder under `.vim` folder, there are a number of repositories for the vim plug package manager. Most are still tracked but the ale plug is not.
