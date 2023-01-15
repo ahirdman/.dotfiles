@@ -23,6 +23,7 @@ filetype indent on
 
 " Turn syntax highlighting on.
 syntax on
+set re=0
 
 " Add numbers to each line on the left-hand side.
 set number

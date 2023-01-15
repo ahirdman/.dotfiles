@@ -74,7 +74,8 @@ ZSH_THEME="cloud"
 # Add wisely, as too many plugins slow down shell startup.
 # Used before warp - zsh-autosuggestions jsontools zsh-syntax-highlighting
 # plugins=(git )
-
+export NVM_AUTO_USE=true
+plugins+=(zsh-nvm)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -108,10 +109,10 @@ source $ZSH/oh-my-zsh.sh
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fpath=($fpath "/Users/hirdman/.zfunctions")
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fpath=($fpath "/Users/hirdman/.zfunctions")
 
 # Stabelo Deploy scripts
 alias scpBeta="scp docker-compose.yml 10.102.197.162:~/docker-compose.yml"
