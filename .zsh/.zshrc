@@ -128,7 +128,7 @@ alias sshProd="ssh 10.100.139.46"
 alias deployProd="scpProd && sshProd"
 
 # Starship prompt setup
-export STARSHIP_CONFIG=~/dotfiles/ZSH/starship.toml
+export STARSHIP_CONFIG=~/.dotfiles/.zsh/starship.toml
 
 eval "$(starship init zsh)"
 
