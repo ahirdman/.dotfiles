@@ -27,9 +27,7 @@ set re=0
 
 " Add numbers to each line on the left-hand side.
 set number
-
-colorscheme monokai_pro
-
+    
 " Highlight cursor line underneath the cursor horizontally.
 " set cursorline
 
@@ -39,7 +37,9 @@ colorscheme monokai_pro
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/dotfiles/.vim/plugged')
-
+  
+  Plug 'sainnhe/sonokai'
+  
   Plug 'sheerun/vim-polyglot'
 
   Plug 'dense-analysis/ale'
@@ -47,6 +47,18 @@ call plug#begin('~/dotfiles/.vim/plugged')
   Plug 'preservim/nerdtree'
 
 call plug#end()
+
+" Important!!
+if has('termguicolors')
+    set termguicolors
+endif
+
+" The configuration options should be placed before `colorscheme sonokai`.
+
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+
+colorscheme sonokai
 
 
 " MAPPINGS --------------------------------------------------------------- {{{
@@ -153,3 +165,5 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 
 " }}}
+
+hi Comment term=NONE ctermbg=NONE cterm=NONE ctermfg=NONE gui=NONE  guifg=NONE
