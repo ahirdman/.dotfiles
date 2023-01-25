@@ -34,11 +34,22 @@ set number
 " Highlight cursor line underneath the cursor vertically.
 " set cursorcolumn
 
+" Important!!
+if has('termguicolors')
+    set termguicolors
+endif
+
+" The configuration options should be placed before `colorscheme sonokai`.
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+
+colorscheme sonokai
+
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/dotfiles/.vim/plugged')
   
-  Plug 'sainnhe/sonokai'
+"   Plug 'sainnhe/sonokai'
   
   Plug 'sheerun/vim-polyglot'
 
@@ -47,19 +58,6 @@ call plug#begin('~/dotfiles/.vim/plugged')
   Plug 'preservim/nerdtree'
 
 call plug#end()
-
-" Important!!
-if has('termguicolors')
-    set termguicolors
-endif
-
-" The configuration options should be placed before `colorscheme sonokai`.
-
-let g:sonokai_style = 'andromeda'
-let g:sonokai_better_performance = 1
-
-colorscheme sonokai
-
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
