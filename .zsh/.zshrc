@@ -114,19 +114,6 @@ source $ZSH/oh-my-zsh.sh
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # fpath=($fpath "/Users/hirdman/.zfunctions")
 
-# Stabelo Deploy scripts
-alias scpBeta="scp docker-compose.yml 10.102.197.162:~/docker-compose.yml"
-alias sshBeta="ssh 10.102.197.162"
-alias deployBeta="scpBeta && sshBeta"
-
-alias scpTest="scp docker-compose.yml 10.101.227.195:~/docker-compose.yml"
-alias sshTest="ssh 10.101.227.195"
-alias deployTest="scpTest && sshTest"
-
-alias scpProd="scp docker-compose.yml 10.100.139.46:~/docker-compose.yml"
-alias sshProd="ssh 10.100.139.46"
-alias deployProd="scpProd && sshProd"
-
 # Starship prompt setup
 export STARSHIP_CONFIG=~/.dotfiles/.zsh/starship.toml
 
