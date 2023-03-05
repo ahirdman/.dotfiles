@@ -2,13 +2,13 @@ return {
 
   -- theme tokyonight
   {
-   "folke/tokyonight.nvim",
-   opts = {
-    style = "storm",
-    light_style = "day",
-   },
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "storm",
+      light_style = "day",
+    },
     init = function()
-      vim.cmd[[colorscheme tokyonight]]
+      vim.cmd [[colorscheme tokyonight]]
     end,
     config = function(opts)
       require("tokyonight").setup(opts)
@@ -20,7 +20,7 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
     },
     opts = {
@@ -30,7 +30,7 @@ return {
         diagnostics_indicator = function(_, _, diag)
           local icons = require("lazyvim.config").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warn .. diag.warning or "")
+              .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)
         end,
         offsets = {
@@ -82,7 +82,7 @@ return {
         "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
         "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
         "                                                     ",
-    }
+      }
 
       dashboard.section.buttons.val = {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
@@ -133,5 +133,5 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
   -- ui components --- https://github.com/MunifTanjim/nui.nvim
-  { "MunifTanjim/nui.nvim", lazy = true },
+  { "MunifTanjim/nui.nvim",        lazy = true },
 }
