@@ -1,16 +1,39 @@
 return {
-  -- LSP Configuration & Plugins
-  'neovim/nvim-lspconfig',
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v1.x',
   dependencies = {
-    -- Automatically install LSPs to stdpath for neovim
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    -- LSP Support
+    { 'neovim/nvim-lspconfig' }, -- Required
+    { 'williamboman/mason.nvim' }, -- Optional
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-    -- Useful status updates for LSP
-    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    -- Autocompletion
+    { 'hrsh7th/nvim-cmp' }, -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    { 'hrsh7th/cmp-buffer' }, -- Optional
+    { 'hrsh7th/cmp-path' }, -- Optional
+    { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+    { 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
-    -- Additional lua configuration, makes nvim stuff amazing!
-    'folke/neodev.nvim',
+    -- Snippets
+    { 'L3MON4D3/LuaSnip' }, -- Required
+    { 'rafamadriz/friendly-snippets' }, -- Optional
   },
+  config = function()
+    local lsp = require('lsp-zero').preset {
+      name = 'minimal',
+      set_lsp_keymaps = true,
+      manage_nvim_cmp = true,
+      suggest_lsp_servers = true,
+    }
+
+    -- (Optional) Configure lua language server for neovim
+    lsp.nvim_workspace()
+
+    lsp.setup()
+
+    vim.diagnostic.config {
+      virtual_text = true,
+    }
+  end,
 }

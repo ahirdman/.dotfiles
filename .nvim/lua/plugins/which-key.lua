@@ -1,6 +1,6 @@
 return {
   'folke/which-key.nvim',
-  options = {
+  opts = {
     plugins = {
       marks = true, -- shows a list of your marks on ' and `
       registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -26,9 +26,9 @@ return {
     key_labels = {
       -- override the label used to display some keys. It doesn't effect WK in any other way.
       -- For example:
-      -- ["<space>"] = "SPC",
-      -- ["<cr>"] = "RET",
-      -- ["<tab>"] = "TAB",
+      ['<space>'] = 'SPC',
+      ['<cr>'] = 'RET',
+      ['<tab>'] = 'TAB',
     },
     motions = {
       count = true,
@@ -59,8 +59,8 @@ return {
     hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', '^:', '^ ', '^call ', '^lua ' }, -- hide mapping boilerplate
     show_help = true, -- show a help message in the command line for using WhichKey
     show_keys = true, -- show the currently pressed key and its label as a message in the command line
-    triggers = 'auto', -- automatically setup triggers
-    -- triggers = {"<leader>"} -- or specifiy a list manually
+    -- triggers = 'auto', -- automatically setup triggers
+    triggers = { '<leader>' }, -- or specifiy a list manually
     -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
     triggers_nowait = {
       -- marks
@@ -87,9 +87,7 @@ return {
       filetypes = {},
     },
   },
-  config = function(options)
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require('which-key').setup(options)
+  config = function(opts)
+    require('which-key').setup(opts)
   end,
 }
