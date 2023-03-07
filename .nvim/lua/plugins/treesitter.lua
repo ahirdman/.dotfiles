@@ -4,9 +4,25 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
-  options = {
+  opts = {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'lua', 'tsx', 'typescript', 'help', 'vim' },
+    ensure_installed = {
+      'bash',
+      'help',
+      'html',
+      'javascript',
+      'json',
+      'lua',
+      'luap',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'regex',
+      'tsx',
+      'typescript',
+      'vim',
+      'yaml',
+    },
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
     highlight = { enable = true },
@@ -65,7 +81,7 @@ return {
       },
     },
   },
-  config = function(options)
-    require('nvim-treesitter.configs').setup(options)
+  config = function(opts)
+    require('nvim-treesitter.configs').setup(opts)
   end,
 }

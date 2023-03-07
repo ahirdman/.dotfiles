@@ -9,7 +9,7 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  options = {
+  opts = {
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = 'rounded',
     enable_git_status = true,
@@ -140,7 +140,6 @@ return {
         visible = true, -- when true, they will just be displayed differently than normal items
         hide_dotfiles = false,
         hide_gitignored = false,
-        hide_hidden = true, -- only works on Windows for hidden files/directories
         hide_by_name = {
           --"node_modules"
         },
@@ -213,7 +212,7 @@ return {
       },
     },
   },
-  config = function(options)
-    require('neo-tree').setup(options)
+  config = function(opts)
+    require('neo-tree').setup(opts)
   end,
 }

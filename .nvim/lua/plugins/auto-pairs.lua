@@ -1,7 +1,7 @@
 return {
   'windwp/nvim-autopairs',
-  options = {
-    disable_filetype = { 'TelescopePrompt', 'spectre_panel' },
+  opts = {
+    --disable_filetype = { 'TelescopePrompt', 'spectre_panel' },
     disable_in_macro = false, -- disable when recording or executing a macro
     disable_in_visualblock = false, -- disable when insert after visual block mode
     disable_in_replace_mode = true,
@@ -18,7 +18,4 @@ return {
     map_c_h = false, -- Map the <C-h> key to delete a pair
     map_c_w = false, -- map <c-w> to delete a pair if possible
   },
-  config = function(options)
-    require('nvim-autopairs').setup(options)
-  end,
 }
