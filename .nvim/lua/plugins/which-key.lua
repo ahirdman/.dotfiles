@@ -29,6 +29,7 @@ return {
       ['<space>'] = 'SPC',
       ['<cr>'] = 'RET',
       ['<tab>'] = 'TAB',
+      ['<bs>'] = 'BACK',
     },
     motions = {
       count = true,
