@@ -30,10 +30,55 @@ return {
     -- (Optional) Configure lua language server for neovim
     lsp.nvim_workspace()
 
+    lsp.on_attach(function(_, bufnr)
+      local opts = { buffer = bufnr, remap = false }
+
+      local map = function(mode, input, cmd, options)
+        vim.keymap.set(mode, input, cmd, options)
+      end
+
+      map('n', 'gd', function()
+        vim.lsp.buf.definition()
+      end, opts)
+      map('n', 'K', function()
+        vim.lsp.buf.hover()
+      end, opts)
+      map('n', '<leader>vd', function()
+        vim.diagnostic.open_float()
+      end, opts)
+      map('n', '<leader>vca', function()
+        vim.lsp.buf.code_action()
+      end, opts)
+    end)
+
+    lsp.setup_nvim_cmp {
+      documentation = {
+        max_height = 15,
+        max_width = 60,
+        border = 'rounded',
+        col_offset = 0,
+        side_padding = 1,
+        winhighlight = 'Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None',
+        zindex = 1001,
+      },
+    }
+
     lsp.setup()
 
     vim.diagnostic.config {
       virtual_text = true,
+      signs = true,
+      update_in_insert = false,
+      underline = true,
+      severity_sort = true,
+      float = {
+        focusable = false,
+        style = 'minimal',
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+      },
     }
   end,
 }
