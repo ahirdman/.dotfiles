@@ -17,6 +17,8 @@ return {
       transparent_mode = false,
       palette_overrides = {},
       overrides = {
+        WhichKeyFloat = { bg = '#1D2021', fg = '#282828' },
+        -- WhichKeyBorder = { bg = '#ffffff', fg = '#ffffff' },
         -- TelescopeBorder = { bg = '#ff9900', fg = '#ff9900' },
         -- NeoTreeWinSeparator = { bg = '#ff9900', fg = '#ff9900' },
       },
