@@ -110,6 +110,15 @@ return {
         },
       },
     },
+    pickers = {
+      find_files = {
+        theme = 'dropdown',
+      },
+    },
+    layout_config = {
+      vertical = { width = 2.5 },
+      -- other layout configuration here
+    },
   },
   {
     'telescope.nvim',
