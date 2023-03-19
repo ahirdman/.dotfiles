@@ -51,11 +51,8 @@ map('n', '<C-j>', '<C-w>j', { desc = 'Go to lower window' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Go to upper window' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })
 
-vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
+-- vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true, noremap = true })
-
--- Bufferline
-map('n', '<leader>bp', ':BufferLinePick<CR>', { silent = true, noremap = true })
