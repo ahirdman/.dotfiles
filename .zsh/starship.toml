@@ -1,201 +1,124 @@
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+format = """
+$os\
+[](bg:#504945 fg:#3c3836)\
+$directory\
+[](fg:#504945 bg:#665c54)\
+$git_branch\
+[](fg:#665c54 bg:#bdae93)\
+$git_status\
+[](fg:#bdae93 bg:#fbf1c7)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#fbf1c7 bg:#fbf1c7)\
+[](fg:#fbf1c7)\
+"""
 
-# [custom]
-# disabled = true
-
-# Without it, starship throws error beacuse it cant read node version
-command_timeout = 1000
-
-# Inserts a blank line between shell prompts
-add_newline = false
-
-# Displays current directory.
-[directory]
-# format = "[$path]($style) "
-style = "bold #ff7b25"
-# truncate_to_repo = false
-# truncation_length = 1 # parent directories to show; default is 3
-# truncation_symbol = "…/"
-
-
-[git_state]
-format = '[\($state( $progress_current of $progress_total)\)]($style) '
-
-[git_status]
-format = "([\\[ $all_status$ahead_behind\\]]($style) )"
-ahead = "⇡ $count "
-behind = "⇣ $count "
-deleted = "✘:$count "
-diverged = " $count "
-stashed = "[ :$count ](yellow)"
-modified = " :$count "
-staged = '[ $count ](green)'
-renamed = " $count "
-untracked = " :$count "
-style = "bold red"
-
-# Defaults
-# ahead	"⇡"
-# behind	"⇣"
-# conflicted	"="
-# deleted	"✘"
-# disabled	false
-# diverged	"⇕"
-# format	"([\\[$all_status$ahead_behind\\]]($style) )"
-# ignore_submodules	false
-# modified	"!"
-# renamed	"»"
-# staged	"+"
-# stashed	"\\$"
-# style	"red bold"
-# untracked	"?"
-# up_to_date	""
-
-[character]
-success_symbol = '[](bold green)'
-error_symbol = "[](bold red)"
-
-# # Use custom format
-# format = '''
-# [┌───────────────────>](bold green)
-# [│](bold green)$directory$rust$package
-# [└─>](bold green) '''
-
-[aws]
-symbol = "  "
-
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
-
-# [directory]
-# read_only = " "
-
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-# [git_branch]
-# symbol = " "
-
-[golang]
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = "⌘ "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[memory_usage]
-symbol = " "
-
-[meson]
-symbol = "喝 "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-symbol = " "
-style = "bold #3c873a"
+[os]
+style = "bg:#3c3836"
+disabled = false
+format = "[ $symbol]($style)"
 
 [os.symbols]
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "﯑ "
-Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
-Linux = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = " "
-openSUSE = " "
-OracleLinux = " "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Windows = " "
+Macos = " "
 
-[package]
-symbol = " "
-style = "blue"
+[directory]
+style = "bg:#504945"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-[python]
-symbol = " "
-
-[rlang]
-symbol = "ﳒ "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[spack]
-symbol = "🅢 "
-
-# [directory.substitutions]
-# "stabelo" = " 🏢 "
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
+
+[c]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#665c54"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#bdae93"
+format = '[ $all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#fbf1c7"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"             # Hour:Minute Format
+style = "bg:#33658A"
+format = '[ ♥ $time ]($style)'
