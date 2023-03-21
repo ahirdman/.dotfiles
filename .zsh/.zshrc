@@ -75,7 +75,11 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # Used before warp - zsh-autosuggestions jsontools zsh-syntax-highlighting
 # plugins=(git )
 export NVM_AUTO_USE=true
-plugins+=(zsh-nvm)
+plugins+=(
+zsh-nvm 
+zsh-autosuggestions
+zsh-syntax-highlighting
+)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
