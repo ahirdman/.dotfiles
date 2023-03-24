@@ -74,12 +74,17 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # Add wisely, as too many plugins slow down shell startup.
 # Used before warp - zsh-autosuggestions jsontools zsh-syntax-highlighting
 # plugins=(git )
+#
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 export NVM_AUTO_USE=true
 plugins+=(
 zsh-nvm 
 zsh-autosuggestions
 zsh-syntax-highlighting
+zsh-completions
 )
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

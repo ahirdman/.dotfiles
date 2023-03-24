@@ -20,15 +20,15 @@ return {
     { 'rafamadriz/friendly-snippets' }, -- Optional
   },
   config = function()
-    local lsp = require('lsp-zero').preset {
-      name = 'minimal',
-      set_lsp_keymaps = true,
-      manage_nvim_cmp = true,
-      suggest_lsp_servers = true,
+    local lsp = require 'lsp-zero'
+
+    lsp.preset {
+      name = 'recommended',
     }
 
-    -- (Optional) Configure lua language server for neovim
-    lsp.nvim_workspace()
+    lsp.ensure_installed {
+      'tsserver',
+    }
 
     lsp.on_attach(function(_, bufnr)
       local opts = { buffer = bufnr, remap = false }
@@ -63,7 +63,16 @@ return {
       },
     }
 
+    local cmp = require 'cmp'
+    local cmp_config = lsp.defaults.cmp_config {
+      window = {
+        completion = cmp.config.window.bordered(),
+      },
+    }
+
     lsp.setup()
+
+    cmp.setup(cmp_config)
 
     vim.diagnostic.config {
       virtual_text = true,
