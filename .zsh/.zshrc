@@ -112,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
 # NVM Setup on work machine:
 # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -136,3 +137,4 @@ eval "$(starship init zsh)"
 
 # Set Starship as ZSH prompt - https://starship.rs/
 # eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
