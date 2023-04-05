@@ -1,3 +1,6 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 $os\
 [](bg:#504945 fg:#3c3836)\
@@ -21,7 +24,30 @@ $rust\
 $scala\
 [](fg:#fbf1c7 bg:#fbf1c7)\
 [](fg:#fbf1c7)\
+$fill\
+[](fg:#fe8019 )\
+$battery\
+[](fg:#d65d0e bg:#fe8019)\
+$time\
+$line_break\
+$character
 """
+
+[fill]
+symbol = " "
+
+[line_break]
+disabled = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#d65d0e"
+format = '[ $time ]($style)'
+
+[character]
+success_symbol = '[](#fe8019) '
+error_symbol = '[✗](#fb4934) '
 
 [os]
 style = "bg:#3c3836"
@@ -75,7 +101,7 @@ format = '[ $symbol $branch ]($style)'
 
 [git_status]
 style = "bg:#bdae93"
-format = '[ $all_status$ahead_behind ]($style)'
+format = '[[ $all_status$ahead_behind ](fg:#1d2021 bg:#bdae93)]($style)'
 
 [golang]
 symbol = " "
@@ -100,7 +126,7 @@ format = '[ $symbol ($version) ]($style)'
 [nodejs]
 symbol = ""
 style = "bg:#fbf1c7"
-format = '[ $symbol ($version) ]($style)'
+format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
 
 [nim]
 symbol = " "
@@ -116,9 +142,3 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
-
-[time]
-disabled = false
-time_format = "%R"             # Hour:Minute Format
-style = "bg:#33658A"
-format = '[ ♥ $time ]($style)'
