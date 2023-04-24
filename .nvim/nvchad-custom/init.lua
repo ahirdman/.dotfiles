@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -------------------------------------- options ------------------------------------------
 opt.relativenumber = true
+opt.scrolloff = 8
 
 -------------------------------------- autocmds ------------------------------------------
 local autocmd = vim.api.nvim_create_autocmd
