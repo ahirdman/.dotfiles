@@ -47,6 +47,16 @@ local plugins = {
     end,
   },
 
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false
+  }
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
