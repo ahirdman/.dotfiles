@@ -16,3 +16,6 @@ ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
 # warp
 ln -s ~/.dotfiles/.warp ~/.warp
+
+# tmux
+ln -s ~/.dotfiles/.tmux ~/.config/tmux
