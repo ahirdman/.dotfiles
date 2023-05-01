@@ -19,3 +19,5 @@ ln -s ~/.dotfiles/.warp ~/.warp
 
 # tmux
 ln -s ~/.dotfiles/.tmux ~/.config/tmux
+
+# tmux source ~/.config/tmux/tmux.conf

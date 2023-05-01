@@ -15,6 +15,9 @@
 - Starship
 - Vim-plug
 
+## Required from github:
+- TPM TMUX Package Manager
+
 ## Links:
 
 - Vimrc setuo:
