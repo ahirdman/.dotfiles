@@ -1,23 +1,19 @@
 #!/bin/sh
 
 # Symlinks for all custom configurations
-# lln -s <source_file> <symlink>
+# ln -s <source_file> <symlink>
 
 # .zsh
-ln -s ~/.dotfiles/.zsh/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
 
-# .nvim
-ln -s ~/.dotfiles/.nvim/nvchad ~/.config/nvim
-ln -s ~/.dotfiles/.nvim/nvchad-custom ~/.dotfiles/.nvim/nvchad/lua/custom
+# NvChad - Custom Folder
+ln -s ~/.dotfiles/.config/nvim/lua/custom ~/.config/nvim/lua/custom
 
 # .vim
 ln -s ~/.dotfiles/.vim ~/.vim
 ln -s ~/.dotfiles/.vim/.vimrc ~/.vimrc
 
-# warp
-ln -s ~/.dotfiles/.warp ~/.warp
-
 # tmux
-ln -s ~/.dotfiles/.tmux ~/.config/tmux
+ln -s ~/.dotfiles/.config/tmux ~/.config/tmux
 
 # tmux source ~/.config/tmux/tmux.conf
