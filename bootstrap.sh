@@ -20,7 +20,7 @@ exa
 starship
 tmux
 bat
-fzf
+z
 
 # Android Emulator
 # openjdk@17
@@ -41,10 +41,12 @@ done
 
 # casks=(
 # iTerm2
+# raycast 
 # Spotify
 # Postman
 # Obsidian
 # Mozilla Firefox
+# insomnia
 # )
 #
 # echo " - Installing casks..."
@@ -64,3 +66,7 @@ done
 # Clean up
 echo " - Cleaning up Homebrew..."
 brew cleanup
+
+# NvChad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
