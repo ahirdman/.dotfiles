@@ -27,12 +27,16 @@ M.ui = {
     },
 
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc b m", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
+      { "Trouble Toggle", "<leader>xx", "..." },
+      { "Trouble Diagnostics", "<leader>xd", "..." },
+      { "Trouble Quickfix", "<leader>xq", "..." },
+      { "Undo Tree Toggle", "<leader>u", "..." },
+      { "Rename Symbol", "<leader>ra", "..." },
+      { "Lsp Saga Outline", "<leader>o", "..." },
+      { "Lsp Saga Code Action", "<leader>ca", "..." },
+      { "Lsp Saga Finder", "gh", "..." },
+      { "Lsp Saga Peek Definition", "gp", "..." },
+      { "Lsp Saga Peek Type Definition", "gt", "..." },
     },
   },
 }
