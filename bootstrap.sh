@@ -24,6 +24,9 @@ z
 
 # Android Emulator
 # openjdk@17
+
+# DevOps
+docker
 )
 
 echo " - Installing formulas..."
@@ -38,7 +41,13 @@ do
   fi
 done
 
-
+# arch -arm64 brew install dapr/tap/dapr-cli
+#
+# sudo sh -c 'cd $(mktemp -d) \
+#     && curl -fLO https://github.com/Azure/bicep/releases/latest/download/bicep-langserver.zip \
+#     && rm -rf /usr/local/bin/bicep-langserver \
+#     && unzip -d /usr/local/bin/bicep-langserver bicep-langserver.zip'
+#
 # casks=(
 # iTerm2
 # raycast 
@@ -47,6 +56,7 @@ done
 # Obsidian
 # Mozilla Firefox
 # insomnia
+# dotnet-sdk
 # )
 #
 # echo " - Installing casks..."
@@ -62,6 +72,9 @@ done
 # done
 
 # TODO - Fonts
+#
+# brew tap omnisharp/omnisharp-roslyn
+# brew install omnisharp-mono
 
 # Clean up
 echo " - Cleaning up Homebrew..."
