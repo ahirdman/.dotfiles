@@ -22,7 +22,8 @@ local plugins = {
 		end,
 	},
 
-	-- override plugin configs
+	-- Overrides
+
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
@@ -47,6 +48,15 @@ local plugins = {
 		end,
 	},
 
+	-- Disbale plugins
+
+	{
+		"NvChad/nvterm",
+		enabled = false,
+	},
+
+	-- Additions
+
 	{
 		"tpope/vim-fugitive",
 		lazy = false,
@@ -66,6 +76,16 @@ local plugins = {
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		lazy = false,
+	},
+
+	{
+		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		opts = overrides.lspsaga,
 	},
 }
 

@@ -8,6 +8,7 @@ M.treesitter = {
 		"css",
 		"javascript",
 		"typescript",
+		"tsx",
 		"json",
 		"toml",
 		"yaml",
@@ -16,9 +17,6 @@ M.treesitter = {
 	},
 	indent = {
 		enable = true,
-		-- disable = {
-		--   "python"
-		-- },
 	},
 }
 
@@ -68,6 +66,28 @@ M.nvimtree = {
 				},
 			},
 		},
+	},
+}
+
+M.lspsaga = {
+	lightbulb = {
+		enable = false,
+	},
+	symbol_in_winbar = {
+		enable = false,
+	},
+	finder = {
+		keys = {
+			expand_or_jump = "<CR>",
+		},
+	},
+	outline = {
+		keys = {
+			expand_or_jump = "<CR>",
+		},
+	},
+	ui = {
+		title = true,
 	},
 }
 
