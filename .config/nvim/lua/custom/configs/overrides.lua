@@ -6,6 +6,8 @@ M.treesitter = {
 		"lua",
 		"html",
 		"css",
+    "c_sharp",
+    "bicep",
 		"javascript",
 		"typescript",
 		"tsx",
