@@ -5,7 +5,7 @@ local lspconfig = require "lspconfig"
 local bicep_lsp_bin = "/usr/local/bin/bicep-langserver/Bicep.LangServer.dll"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "jsonls" }
+local servers = { "html", "cssls", "tsserver", "clangd", "jsonls", "csharp_ls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -30,7 +30,7 @@ lspconfig.omnisharp.setup {
     enable_ms_build_load_projects_on_demand = false,
 
     -- Enables support for roslyn analyzers, code fixes and rulesets.
-    enable_roslyn_analyzers = false,
+    enable_roslyn_analyzers = true,
 
     -- Specifies whether 'using' directives should be grouped and sorted during
     -- document formatting.
