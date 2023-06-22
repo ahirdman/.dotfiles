@@ -26,3 +26,4 @@
 ## Todo:
 
 - Manage Font installs
+- Configure Raycast to be managed by Brew
