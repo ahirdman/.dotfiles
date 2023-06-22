@@ -37,6 +37,9 @@ M.mason = {
 		"deno",
 		"prettier",
 		"eslint_d",
+    "csharp-language-server",
+    "omnisharp-mono",
+    "csharpier",
 
 		-- dev ops stuff
 		"actionlint",
