@@ -23,6 +23,6 @@
 - Vimrc setuo:
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 
-## Symlinks:
+## Todo:
 
-Execute symlinks.sh to create all symlinks needed
+- Manage Font installs

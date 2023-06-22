@@ -19,8 +19,8 @@
     - ~/Developer
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  # - [git submodule update --init --recursive, Installing submodules]
   -
-    command: ./test.zsh 
+    command: ./setup_homebrew.zsh
     stdout: true
     stderr: true
