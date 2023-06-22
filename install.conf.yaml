@@ -5,12 +5,12 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc:
+    ~/.zshrc: .zshrc
     ~/.vim: vim
-    ~/.vimrc: 
-    ~/.gitconfig:
-    ~/.yabairc:
-    ~/.skhdrc:
+    ~/.vimrc: .vimrc
+    ~/.gitconfig: .gitconfig
+    ~/.yabairc: .yabairc
+    ~/.skhdrc: .skhdrc
     ~/.config/tmux: tmux 
     ~/.config/nvim/lua/custom: nvChad-custom
     ~/.config/gh/config.yml: gh.config.yml

@@ -1,7 +1,20 @@
-# Path to your oh-my-zsh installation.
+# Set Variables
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export ZSH="$HOME/.oh-my-zsh"
+export BAT_THEME='gruvbox-dark'
+export NVM_AUTO_USE=true
+export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+
+# Set Starship as ZSH prompt - https://starship.rs/
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# Functions
+function help() {
+    "$@" --help 2>&1 | bathelp
+}
 
 eval $(/opt/homebrew/bin/brew shellenv)
+eval "$(starship init zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -20,8 +33,6 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-export NVM_AUTO_USE=true
-
 plugins+=(
 zsh-nvm 
 zsh-autosuggestions
@@ -34,6 +45,8 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias ls="exa --icons --all --ignore-glob="node_modules" "
 alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
+
+alias bathelp='bat --plain --language=help'
 
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
@@ -50,20 +63,5 @@ alias coa='git add -A && git commit -m'
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # fpath=($fpath "/Users/hirdman/.zfunctions")
-
-export STARSHIP_CONFIG=~/.dotfiles/starship.toml
-
-eval "$(starship init zsh)"
-
-function brew() {
-  command brew "$@" 
-
-  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-    sketchybar --trigger brew_update
-  fi
-}
-
-# Set Starship as ZSH prompt - https://starship.rs/
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 . /opt/homebrew/etc/profile.d/z.sh
