@@ -26,7 +26,12 @@ z
 # openjdk@17
 
 # DevOps
-docker
+# docker
+# docker-buildx
+ngrok/ngrok/ngrok
+
+
+# arch -arm64 brew install --cask docker
 )
 
 echo " - Installing formulas..."
@@ -41,13 +46,6 @@ do
   fi
 done
 
-# arch -arm64 brew install dapr/tap/dapr-cli
-#
-# sudo sh -c 'cd $(mktemp -d) \
-#     && curl -fLO https://github.com/Azure/bicep/releases/latest/download/bicep-langserver.zip \
-#     && rm -rf /usr/local/bin/bicep-langserver \
-#     && unzip -d /usr/local/bin/bicep-langserver bicep-langserver.zip'
-#
 # casks=(
 # iTerm2
 # raycast 
@@ -58,9 +56,9 @@ done
 # insomnia
 # dotnet-sdk
 # )
-#
+
 # echo " - Installing casks..."
-#
+
 # for cask in "${casks[@]}"
 # do
 #   if brew list --cask "$cask" 2>&1 | grep -q "Error: No installed cask" ; then
@@ -72,9 +70,6 @@ done
 # done
 
 # TODO - Fonts
-#
-# brew tap omnisharp/omnisharp-roslyn
-# brew install omnisharp-mono
 
 # Clean up
 echo " - Cleaning up Homebrew..."
@@ -82,4 +77,17 @@ brew cleanup
 
 # NvChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
+# .NET
+echo " - Installing .NET requirements"
+# brew tap omnisharp/omnisharp-roslyn
+# brew install omnisharp-mono
+dotnet tool install --global csharp-ls
+
+arch -arm64 brew install dapr/tap/dapr-cli
+
+sudo sh -c 'cd $(mktemp -d) \
+  && curl -fLO https://github.com/Azure/bicep/releases/latest/download/bicep-langserver.zip \
+  && rm -rf /usr/local/bin/bicep-langserver \
+  && unzip -d /usr/local/bin/bicep-langserver bicep-langserver.zip'
 
