@@ -11,9 +11,15 @@
     ~/.gitconfig: .gitconfig
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
-    ~/.config/tmux: tmux 
-    ~/.config/nvim/lua/custom: nvChad-custom
-    ~/.config/gh/config.yml: gh.config.yml
+    ~/.config/tmux: 
+      create: true
+      path: tmux 
+    ~/.config/nvim/lua/custom:
+      create: true
+      path: nvChad-custom
+    ~/.config/gh/config.yml: 
+      create: true
+      path: gh.config.yml
 
 - create:
     - ~/Developer

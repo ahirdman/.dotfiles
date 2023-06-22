@@ -4,6 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export BAT_THEME='gruvbox-dark'
 export NVM_AUTO_USE=true
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Set Starship as ZSH prompt - https://starship.rs/
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
@@ -43,10 +44,12 @@ zsh-completions
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
-alias ls="exa --icons --all --ignore-glob="node_modules" "
+alias ls="exa -la --icons --git --group-directories-first"
 alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
 alias bathelp='bat --plain --language=help'
+
+alias brewdump='brew bundle dump --force'
 
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
