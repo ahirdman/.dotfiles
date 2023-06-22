@@ -5,7 +5,15 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+    ~/.vim:
+    ~/.vimrc: vim/vimrc
+    ~/.gitconfig:
+    ~/.yabairc:
+    ~/.skhdrc:
+    ~/.config/tmux: tmux 
+    ~/.config/nvim/lua/custom: nvChad-custom
+    ~/.config/gh/config.yml: gh.config.yml
 
 # - create:
 #     - ~/.vim/undo-history
