@@ -6,8 +6,8 @@
 
 - link:
     ~/.zshrc:
-    ~/.vim:
-    ~/.vimrc: vim/vimrc
+    ~/.vim: vim
+    ~/.vimrc: 
     ~/.gitconfig:
     ~/.yabairc:
     ~/.skhdrc:
@@ -15,8 +15,12 @@
     ~/.config/nvim/lua/custom: nvChad-custom
     ~/.config/gh/config.yml: gh.config.yml
 
-# - create:
-#     - ~/.vim/undo-history
-#
-# - shell:
-#   - [git submodule update --init --recursive, Installing submodules]
+- create:
+    - ~/Developer
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  -
+    command: ./test.zsh 
+    stdout: true
+    stderr: true
