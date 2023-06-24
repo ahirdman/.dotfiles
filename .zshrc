@@ -6,13 +6,19 @@ export NVM_AUTO_USE=true
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat
-
-# Set Starship as ZSH prompt - https://starship.rs/
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # Functions
 function help() {
     "$@" --help 2>&1 | bat --plain --language=help
+}
+
+function g() {
+  if [[ $# -gt 0 ]]; then
+    git "$@"
+  else
+    git status
+  fi
 }
 
 # Set name of the theme to load --- if set to "random", it will
