@@ -1,3 +1,9 @@
 [user]
 	email = 126080861+AlexHird@users.noreply.github.com
-	name = Alexander Hirdman
+  name = Alexander Hirdman
+[init]
+  defaultBranch = main
+[fetch]
+  prune = true
+[core]
+  editor = nvim
