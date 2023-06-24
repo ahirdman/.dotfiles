@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-if ! command -v brew &> /dev/null
+if exists brew
 then
-    echo " - Homebrew not found. Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo " - Homebrew is already installed."
 else
-    echo " - Homebrew is already installed."
+  echo " - Homebrew not found. Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 brew bundle --verbose

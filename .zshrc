@@ -5,17 +5,15 @@ export BAT_THEME='gruvbox-dark'
 export NVM_AUTO_USE=true
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+export NULLCMD=bat
 
 # Set Starship as ZSH prompt - https://starship.rs/
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # Functions
 function help() {
-    "$@" --help 2>&1 | bathelp
+    "$@" --help 2>&1 | bat --plain --language=help
 }
-
-eval $(/opt/homebrew/bin/brew shellenv)
-eval "$(starship init zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -44,12 +42,11 @@ zsh-completions
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
+alias trail='<<<${(F)path}'
 alias ls="exa -la --icons --git --group-directories-first"
 alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
-alias bathelp='bat --plain --language=help'
-
-alias brewdump='brew bundle dump --force'
+alias bbd='brew bundle dump --force'
 
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
@@ -68,3 +65,9 @@ alias coa='git add -A && git commit -m'
 # fpath=($fpath "/Users/hirdman/.zfunctions")
 
 . /opt/homebrew/etc/profile.d/z.sh
+
+# Eval ???
+eval $(/opt/homebrew/bin/brew shellenv)
+eval "$(starship init zsh)"
+
+
