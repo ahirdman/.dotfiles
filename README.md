@@ -27,3 +27,5 @@
 
 - Manage Font installs
 - Configure Raycast to be managed by Brew
+## Homebrew
+- Verify Apple Silicon installs end up in /opt/homebrew as opposed to /usr/local (not the case for docker currently)

@@ -7,3 +7,5 @@
   prune = true
 [core]
   editor = nvim
+[commit]
+	template = /Users/ahirdman/.gitmessage

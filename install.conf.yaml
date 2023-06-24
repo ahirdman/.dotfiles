@@ -6,9 +6,11 @@
 
 - link:
     ~/.zshrc: .zshrc
+    ~/.zshenv: .zshenv
     ~/.vim: vim
     ~/.vimrc: .vimrc
-    ~/.gitconfig: .gitconfig
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitmessage: git/.gitmessage
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
     ~/.config/tmux: 
@@ -19,7 +21,7 @@
       path: nvChad-custom
     ~/.config/gh/config.yml: 
       create: true
-      path: gh.config.yml
+      path: github/gh.config.yml
 
 - create:
     - ~/Developer
