@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$os\
+$shlvl\
 [](bg:#504945 fg:#3c3836)\
 $directory\
 [](fg:#504945 bg:#665c54)\
@@ -33,6 +33,13 @@ $line_break\
 $character
 """
 
+[shlvl]
+style = "bg:#3c3836"
+disabled = false
+symbol = ''
+format = '[ $shlvl $symbol ]($style)'
+# threshold = 0
+
 [fill]
 symbol = " "
 
@@ -51,7 +58,7 @@ error_symbol = '[✗](#fb4934) '
 
 [os]
 style = "bg:#3c3836"
-disabled = false
+disabled = true
 format = "[ $symbol]($style)"
 
 [os.symbols]
