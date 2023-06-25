@@ -16,6 +16,9 @@
 - Vimrc setuo:
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 
+**Configure SSH & Github Profiles**
+- https://engineeringfordatascience.com/posts/how_to_manage_multiple_git_accounts_on_the_same_machine/
+
 ## Todo:
 - [ ] Reconfigure git/github to use multiple accounts. In order to avoid forking dotfiles repository between accounts
 - [ ] Switch Node managment from NVM to N
