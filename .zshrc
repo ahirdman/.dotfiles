@@ -6,6 +6,7 @@ export NVM_AUTO_USE=true
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat
+
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 # Functions
