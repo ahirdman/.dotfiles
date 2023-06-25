@@ -17,10 +17,11 @@
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 
 **Configure SSH & Github Profiles**
+- Adding "ssh-add --apple-use-keychain ~/.ssh/id_<id>" correctly set the accounts 
 - https://engineeringfordatascience.com/posts/how_to_manage_multiple_git_accounts_on_the_same_machine/
 
 ## Todo:
-- [ ] Reconfigure git/github to use multiple accounts. In order to avoid forking dotfiles repository between accounts
+- [x] Reconfigure git/github to use multiple accounts. In order to avoid forking dotfiles repository between accounts
 - [ ] Switch Node managment from NVM to N
 - [ ] Fix duplications in $PATH
 - [ ] Manage Font installs
