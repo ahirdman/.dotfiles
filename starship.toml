@@ -44,7 +44,6 @@ style = "bg:#3c3836"
 disabled = false
 symbol = ''
 format = '[$shlvl $symbol ]($style)'
-# threshold = 0
 
 [fill]
 symbol = " "
