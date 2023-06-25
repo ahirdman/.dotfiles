@@ -12,6 +12,13 @@
 - Git configurations
 - Github CLI configurations
 
+## Installation:
+
+- Install xcode
+- Genereate SSH keys and Config file
+- Clone repository
+- In this repo `./install`
+
 ## Links:
 - Vimrc setuo:
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
