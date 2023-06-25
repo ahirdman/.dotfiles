@@ -9,7 +9,7 @@
     ~/.zshenv: .zshenv
     ~/.vim: vim
     ~/.vimrc: .vimrc
-    ~/.gitconfig: git/.gitconfig
+    ~/.gitconfig: git/.gitconfig_global
     ~/.gitmessage: git/.gitmessage
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
