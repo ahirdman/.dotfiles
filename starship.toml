@@ -2,6 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$shell\
 $shlvl\
 [](bg:#504945 fg:#3c3836)\
 $directory\
@@ -24,20 +25,25 @@ $rust\
 $scala\
 [](fg:#fbf1c7 bg:#fbf1c7)\
 [](fg:#fbf1c7)\
-$fill\
-[](fg:#fe8019 )\
-$battery\
-[](fg:#d65d0e bg:#fe8019)\
-$time\
 $line_break\
 $character
 """
+
+[shell]
+style = "bg:#3c3836"
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+bash_indicator = 'bsh'
+zsh_indicator = 'zsh'
+disabled = false
+format = '[$indicator ]($style)'
 
 [shlvl]
 style = "bg:#3c3836"
 disabled = false
 symbol = ''
-format = '[ $shlvl $symbol ]($style)'
+format = '[$shlvl $symbol ]($style)'
 # threshold = 0
 
 [fill]

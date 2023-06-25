@@ -17,10 +17,11 @@
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 
 ## Todo:
+- [ ] Reconfigure git/github to use multiple accounts. In order to avoid forking dotfiles repository between accounts
+- [ ] Switch Node managment from NVM to N
+- [ ] Fix duplications in $PATH
 - [ ] Manage Font installs
 - [ ] Remove oh-my-zsh in favor of bare setup
-- [ ] Extend aliasas
-- [ ] Fix duplications in $PATH
 - [ ] Configure Raycast to be managed by Brew
 - [ ] HomeBrew - Verify Apple Silicon installs end up in /opt/homebrew as opposed to /usr/local (not the case for docker currently)
 - [ ] Uninstall or configure vim
