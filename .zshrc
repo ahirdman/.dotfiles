@@ -9,7 +9,6 @@ export NULLCMD=bat
 
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
-# Functions
 function help() {
     "$@" --help 2>&1 | bat --plain --language=help
 }
