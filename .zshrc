@@ -1,4 +1,3 @@
-export ZSH="$HOME/.oh-my-zsh"
 export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -40,16 +39,6 @@ function cd() {
   fi
 }
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-plugins+=(
-zsh-autosuggestions
-zsh-syntax-highlighting
-zsh-completions
-)
-
-source $ZSH/oh-my-zsh.sh
-
 alias trail='<<<${(F)path}'
 alias ls="exa -la --icons --git --group-directories-first"
 alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
@@ -66,3 +55,6 @@ alias coa='git add -A && git commit -m'
 
 # Eval
 eval "$(starship init zsh)"
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
