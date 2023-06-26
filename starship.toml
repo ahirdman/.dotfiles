@@ -7,6 +7,7 @@ $shlvl\
 [](bg:#504945 fg:#3c3836)\
 $directory\
 [](fg:#504945 bg:#665c54)\
+${custom.git_user}\
 $git_branch\
 [](fg:#665c54 bg:#bdae93)\
 $git_status\
@@ -28,6 +29,13 @@ $scala\
 $line_break\
 $character
 """
+
+[custom.git_user]
+command = "git config user.email | awk -F'[+@]' '{print $2}'"
+when = "git rev-parse --git-dir 2> /dev/null"
+format = "[ $output]($style)"
+style = "bg:#665c54"
+
 
 [shell]
 style = "bg:#3c3836"
