@@ -1,14 +1,16 @@
 export ZSH="$HOME/.oh-my-zsh"
 export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
 
-export NVM_AUTO_USE=true
-
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_THEME='gruvbox-dark'
 export NULLCMD=bat
 
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 
+export N_PREFIX="$HOME/.n"
+export PREFIX="$N_PREFIX"
+
+export PATH="$N_PREFIX/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
 function help() {
@@ -23,10 +25,24 @@ function g() {
   fi
 }
 
+function cd() {
+  builtin cd "$@"
+
+  local nvmrc_file=".nvmrc"
+
+  if [[ -f "$PWD/$nvmrc_file" ]]; then
+    local desired_version=$(cat "$PWD/$nvmrc_file")
+    local current_version=$(node -v)
+
+    if [[ "$current_version" != "$desired_version" ]]; then
+      n auto
+    fi
+  fi
+}
+
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 plugins+=(
-zsh-nvm 
 zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-completions
@@ -50,5 +66,3 @@ alias coa='git add -A && git commit -m'
 
 # Eval
 eval "$(starship init zsh)"
-
-

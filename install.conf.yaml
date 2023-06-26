@@ -29,7 +29,9 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  -
-    command: ./setup_homebrew.zsh
+  - command: ./setup_homebrew.zsh
+    stdout: true
+    stderr: true
+  - command: ./setup_node.zsh
     stdout: true
     stderr: true
