@@ -8,6 +8,9 @@
     ~/.zshrc: .zshrc
     ~/.zprofile: .zprofile
     ~/.zshenv: .zshenv
+    ~/.config/alacritty/alacritty.yml:
+      create: true
+      path: alacritty.yml
     ~/.vim: vim
     ~/.vimrc: .vimrc
     ~/.gitconfig: git/.gitconfig_global

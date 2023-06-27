@@ -45,7 +45,7 @@ unknown_indicator = 'mystery shell'
 bash_indicator = 'bsh'
 zsh_indicator = 'zsh'
 disabled = false
-format = '[$indicator ]($style)'
+format = '[ $indicator ]($style)'
 
 [shlvl]
 style = "bg:#3c3836"
