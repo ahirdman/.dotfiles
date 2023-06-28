@@ -33,8 +33,14 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - command: ./setup_homebrew.zsh
+    description: Installing HomeBrew and packages
     stdout: true
     stderr: true
   - command: ./setup_node.zsh
+    description: Installing Node and NPM
+    stdout: true
+    stderr: true
+  - command: ./install_fonts.zsh
+    description: Install Fonts
     stdout: true
     stderr: true
