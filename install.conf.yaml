@@ -15,7 +15,8 @@
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
     ~/.config/tmux: tmux 
-    ~/.config/nvim/lua/custom: nvChad-custom
+    ~/.config/nvim: nvim/NvChad
+    ~/.dotfiles/nvim/NvChad/lua/custom: nvim/nvChad-custom
     ~/.config/gh/config.yml: github/gh.config.yml
 
 - create:
