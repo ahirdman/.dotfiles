@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - clean: ['~']
 
@@ -8,24 +9,14 @@
     ~/.zshrc: .zshrc
     ~/.zprofile: .zprofile
     ~/.zshenv: .zshenv
-    ~/.config/alacritty/alacritty.yml:
-      create: true
-      path: alacritty.yml
-    ~/.vim: vim
-    ~/.vimrc: .vimrc
+    ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.gitconfig: git/.gitconfig_global
     ~/.gitmessage: git/.gitmessage
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
-    ~/.config/tmux: 
-      create: true
-      path: tmux 
-    ~/.config/nvim/lua/custom:
-      create: true
-      path: nvChad-custom
-    ~/.config/gh/config.yml: 
-      create: true
-      path: github/gh.config.yml
+    ~/.config/tmux: tmux 
+    ~/.config/nvim/lua/custom: nvChad-custom
+    ~/.config/gh/config.yml: github/gh.config.yml
 
 - create:
     - ~/Developer
