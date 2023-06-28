@@ -16,6 +16,10 @@
 - Git configurations
 - Github CLI configurations
 
+## Post Installation
+Configure desktop applications manually:
+- Raycast
+
 ## Links:
 **Vimrc setuo**
 - https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
