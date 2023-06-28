@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-echo "\n --- Starting Node Setup ---\n"
-
 if exists node
 then
   echo " - Node $(node -v) & NPM $(npm -v) already installed"
