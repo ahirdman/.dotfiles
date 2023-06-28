@@ -68,6 +68,10 @@ format = '[ $time ]($style)'
 [character]
 success_symbol = '[](#fe8019) '
 error_symbol = '[✗](#fb4934) '
+vimcmd_symbol = '[V](bold green) '
+vimcmd_replace_one_symbol = '[❮](bold pink)'
+vimcmd_replace_symbol = '[❮](bold purple)'
+vimcmd_visual_symbol = '[❮](bold yellow)'
 
 [os]
 style = "bg:#3c3836"

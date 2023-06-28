@@ -9,6 +9,9 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export N_PREFIX="$HOME/.n"
 export PREFIX="$N_PREFIX"
 
+export ZVM_VI_EDITOR="nvim"
+export ZVM_CURSOR_STYLE_ENABLED=false
+
 export PATH="$N_PREFIX/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
