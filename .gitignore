@@ -36,11 +36,5 @@
 ehthumbs.db
 Thumbs.db
 
-# Vim
-.vim/backup
-
-# Tmux
-.tmux/plugins
-
 # Homebrew
 Brewfile.lock.json
