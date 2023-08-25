@@ -24,7 +24,7 @@ M.general = {
 
     -- Lsp Saga
 
-    ["gh"] = { "<cmd>Lspsaga lsp_finder<CR>", "lsp finder" },
+    ["gh"] = { "<cmd>Lspsaga finder<CR>", "lsp finder" },
     ["gp"] = { "<cmd>Lspsaga peek_definition<CR>", "peek definition" },
     ["gt"] = { "<cmd>Lspsaga peek_type_definition<CR>", "peek type definition" },
 
