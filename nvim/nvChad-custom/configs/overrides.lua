@@ -1,13 +1,46 @@
 local M = {}
 
+M.dashboard = {
+	theme = "hyper",
+	config = {
+		week_header = {
+			enable = true,
+		},
+		project = { enable = false },
+		shortcut = {
+			{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+			{
+				icon = " ",
+				icon_hl = "@variable",
+				desc = "Files",
+				group = "Label",
+				action = "Telescope find_files",
+				key = "f",
+			},
+			{
+				desc = " Apps",
+				group = "DiagnosticHint",
+				action = "Telescope app",
+				key = "a",
+			},
+			{
+				desc = " dotfiles",
+				group = "Number",
+				action = "Telescope dotfiles",
+				key = "d",
+			},
+		},
+	},
+}
+
 M.treesitter = {
 	ensure_installed = {
 		"vim",
 		"lua",
 		"html",
 		"css",
-    "c_sharp",
-    "bicep",
+		"c_sharp",
+		"bicep",
 		"javascript",
 		"typescript",
 		"tsx",
@@ -37,9 +70,9 @@ M.mason = {
 		"deno",
 		"prettier",
 		"eslint_d",
-    "csharp-language-server",
-    "omnisharp-mono",
-    "csharpier",
+		"csharp-language-server",
+		"omnisharp-mono",
+		"csharpier",
 
 		-- dev ops stuff
 		"actionlint",

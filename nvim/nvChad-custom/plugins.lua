@@ -58,6 +58,15 @@ local plugins = {
 	-- Additions
 
 	{
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    },
+    opts = overrides.dashboard
+	},
+
+	{
 		"tpope/vim-fugitive",
 		lazy = false,
 	},
