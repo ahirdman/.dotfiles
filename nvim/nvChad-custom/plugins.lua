@@ -77,11 +77,6 @@ local plugins = {
 	},
 
 	{
-		"mbbill/undotree",
-		lazy = false,
-	},
-
-	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		lazy = false,
