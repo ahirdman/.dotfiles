@@ -7,7 +7,7 @@ yabai -m signal --add event=window_destroyed action="sketchybar --trigger window
 sudo yabai --load-sa
 
 yabai -m config                                 \
-    mouse_follows_focus          on             \
+    mouse_follows_focus          off            \
     focus_follows_mouse          off            \
     window_origin_display        default        \
     window_placement             second_child   \
