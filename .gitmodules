@@ -17,3 +17,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "nvim/NvChad"]
+	path = nvim/NvChad
+	url = https://github.com/NvChad/NvChad.git
