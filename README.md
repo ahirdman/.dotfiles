@@ -15,6 +15,7 @@
 - Window managment with Yabai and Skhdrc
 - Git configurations
 - Github CLI configurations
+- Shared SSH config - no keys
 
 ## Post Installation
 Configure desktop applications manually:
