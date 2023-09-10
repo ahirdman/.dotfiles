@@ -61,9 +61,9 @@ local plugins = {
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
 		dependencies = {
-      "nvim-tree/nvim-web-devicons"
-    },
-    opts = overrides.dashboard
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = overrides.dashboard,
 	},
 
 	{
