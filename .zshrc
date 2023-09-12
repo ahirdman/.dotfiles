@@ -15,6 +15,12 @@ export ZVM_CURSOR_STYLE_ENABLED=false
 export PATH="$N_PREFIX/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
+export GUM_INPUT_CURSOR_FOREGROUND="#ff6d12"
+export GUM_INPUT_PROMPT_FOREGROUND="#fff2eb"
+export GUM_INPUT_PLACEHOLDER="..."
+export GUM_INPUT_PROMPT=" "
+export GUM_INPUT_WIDTH=80
+
 function help() {
     "$@" --help 2>&1 | bat --plain --language=help
 }
@@ -53,6 +59,9 @@ alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %C
 alias status='git status -s'
 alias branch='git branch -v'
 alias coa='git add -A && git commit -m'
+
+alias gc="~/.dotfiles/functions/git_clone.zsh"
+alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
 
 . /opt/homebrew/etc/profile.d/z.sh
 
