@@ -10,11 +10,10 @@ REPO=${GIT_URL#*:}
 
 PREFIX=""
 
-if [ "$MODE" == "Work" ]; then
+if [ "$MODE" = "Work" ]; then
   PREFIX="workgit"
 else
   PREFIX="personalgit"
 fi
 
-echo $PREFIX:$REPO
-# gum confirm "Clone repo?" && git clone $PREFIX:$REPO
+gum confirm "Clone repo?" && git clone $PREFIX:$REPO
