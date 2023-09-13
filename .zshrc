@@ -69,6 +69,7 @@ alias coa='git add -A && git commit -m'
 
 alias gc="~/.dotfiles/functions/git_clone.zsh"
 alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
+alias gb="~/.dotfiles/functions/git_branch.zsh"
 
 . /opt/homebrew/etc/profile.d/z.sh
 
