@@ -45,6 +45,7 @@ M.treesitter = {
 		"typescript",
 		"tsx",
 		"json",
+    "rust",
 		"toml",
 		"yaml",
 		"markdown",
@@ -73,6 +74,9 @@ M.mason = {
 		"csharp-language-server",
 		"omnisharp-mono",
 		"csharpier",
+
+    -- Chad stuff
+    "rust-analyzer",
 
 		-- dev ops stuff
 		"actionlint",

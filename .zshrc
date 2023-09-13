@@ -48,6 +48,13 @@ function cd() {
   fi
 }
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 alias trail='<<<${(F)path}'
 alias ls="exa -la --icons --git --group-directories-first"
 alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "

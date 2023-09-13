@@ -159,8 +159,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#fbf1c7"
+format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
 
 [scala]
 symbol = " "
