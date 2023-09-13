@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-echo "# Clone Repository with SSH profile: \n" "" | gum format
+echo "# Clone Repository with SSH profile: \n" | gum format
+echo ""
 
 MODE=$(gum choose  "Work" "Personal")
 
