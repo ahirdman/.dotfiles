@@ -35,21 +35,35 @@ M.dashboard = {
 
 M.treesitter = {
 	ensure_installed = {
+		-- common
+		"toml",
+		"yaml",
+		"json",
+		"markdown",
+		"markdown_inline",
+
+		-- nvim
 		"vim",
 		"lua",
+
+		-- web development
 		"html",
 		"css",
-		"c_sharp",
-		"bicep",
+
+		-- javascript
 		"javascript",
 		"typescript",
 		"tsx",
-		"json",
-    "rust",
-		"toml",
-		"yaml",
-		"markdown",
-		"markdown_inline",
+
+		-- C#
+		"c_sharp",
+		"bicep",
+
+		-- rust
+		"rust",
+
+    -- GO
+    "go",
 	},
 	indent = {
 		enable = true,
@@ -58,29 +72,36 @@ M.treesitter = {
 
 M.mason = {
 	ensure_installed = {
-		-- lua stuff
+		-- common
+		"json-lsp",
+		"actionlint",
+		"yaml-language-server",
+
+		-- nvim
 		"lua-language-server",
 		"stylua",
 
-		-- web dev stuff
+		-- web development
 		"css-lsp",
 		"html-lsp",
+
+		-- javascript
 		"typescript-language-server",
 		"tailwindcss-language-server",
-		"json-lsp",
 		"deno",
 		"prettier",
 		"eslint_d",
+
+		-- C#
 		"csharp-language-server",
 		"omnisharp-mono",
 		"csharpier",
 
-    -- Chad stuff
-    "rust-analyzer",
+		-- rust
+		"rust-analyzer",
 
-		-- dev ops stuff
-		"actionlint",
-		"yaml-language-server",
+    -- GO
+    "gopls"
 	},
 }
 

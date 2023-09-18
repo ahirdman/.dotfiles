@@ -129,8 +129,8 @@ format = '[[ $all_status$ahead_behind ](fg:#1d2021 bg:#bdae93)]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
+style = "bg:#fbf1c7"
+format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
 
 [haskell]
 symbol = " "
