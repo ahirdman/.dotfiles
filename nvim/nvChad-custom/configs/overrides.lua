@@ -68,6 +68,9 @@ M.treesitter = {
 
     -- GO
     "go",
+
+    -- iOS
+    "swift"
 	},
 	indent = {
 		enable = true,
