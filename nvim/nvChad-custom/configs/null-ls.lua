@@ -17,6 +17,10 @@ local sources = {
 
 	-- cpp
 	b.formatting.clang_format,
+
+  -- mobile dev
+  -- b.formatting.swiftlint,
+  -- b.formatting.swiftformat
 }
 
 null_ls.setup({
