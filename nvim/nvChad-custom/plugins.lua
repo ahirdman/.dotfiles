@@ -64,8 +64,8 @@ local plugins = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-    opts = overrides.octo,
-    lazy = false
+		opts = overrides.octo,
+		lazy = false,
 	},
 
 	{
@@ -89,7 +89,8 @@ local plugins = {
 
 	{
 		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = overrides.trouble,
 		lazy = false,
 	},
 

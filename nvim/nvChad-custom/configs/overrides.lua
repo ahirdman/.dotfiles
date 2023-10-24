@@ -1,7 +1,16 @@
 local M = {}
 
+M.trouble = {
+	position = "right",
+	width = 50,
+	icons = true,
+	auto_open = false,
+	auto_close = true,
+	use_diagnostic_signs = false
+}
+
 M.octo = {
-  ssh_aliases = {["workgit"] = "github.com"}, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
+	ssh_aliases = { ["workgit"] = "github.com" }, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
 }
 
 M.dashboard = {
@@ -66,11 +75,11 @@ M.treesitter = {
 		-- rust
 		"rust",
 
-    -- GO
-    "go",
+		-- GO
+		"go",
 
-    -- iOS
-    "swift"
+		-- iOS
+		"swift",
 	},
 	indent = {
 		enable = true,
@@ -107,8 +116,8 @@ M.mason = {
 		-- rust
 		"rust-analyzer",
 
-    -- GO
-    "gopls"
+		-- GO
+		"gopls",
 	},
 }
 
