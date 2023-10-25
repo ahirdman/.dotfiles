@@ -15,6 +15,8 @@ export ZVM_CURSOR_STYLE_ENABLED=false
 export PATH="$N_PREFIX/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
+export EDITOR="nvim"
+
 export GUM_INPUT_CURSOR_FOREGROUND="#ff6d12"
 export GUM_INPUT_PROMPT_FOREGROUND="#fff2eb"
 export GUM_INPUT_PLACEHOLDER="..."
@@ -70,6 +72,11 @@ alias coa='git add -A && git commit -m'
 alias gc="~/.dotfiles/functions/git_clone.zsh"
 alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
 alias gb="~/.dotfiles/functions/git_branch.zsh"
+
+alias tmn="tmuxinator new"
+alias tmr="tmuxinator start"
+alias tme="tmuxinator edit"
+alias tms="tmuxinator stop"
 
 . /opt/homebrew/etc/profile.d/z.sh
 
