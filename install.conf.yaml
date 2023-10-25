@@ -18,6 +18,7 @@
     ~/.config/nvim: nvim/NvChad
     ~/.dotfiles/nvim/NvChad/lua/custom: nvim/nvChad-custom
     ~/.config/gh/config.yml: github/gh.config.yml
+    ~/.config/tmuxinator: workspaces
     ~/.ssh/config: ssh/config
 
 - create:
