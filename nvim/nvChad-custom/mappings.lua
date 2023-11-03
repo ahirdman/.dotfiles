@@ -5,6 +5,14 @@ M.general = {
 	n = {
 		[";"] = { ":", "enter command mode", opts = { nowait = true } },
 
+		-- Tabbuffline
+		["<leader>xa"] = {
+			function()
+				require("nvchad.tabufline").closeAllBufs()
+			end,
+			"Close all buffers",
+		},
+
 		-- TMUX
 
 		["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
