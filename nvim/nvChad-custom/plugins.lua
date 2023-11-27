@@ -58,6 +58,15 @@ local plugins = {
 	-- Additions
 
 	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+
+	{
 		"pwntester/octo.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",

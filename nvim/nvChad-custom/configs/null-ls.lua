@@ -9,8 +9,19 @@ local b = null_ls.builtins
 local sources = {
 
 	-- webdev stuff
-	b.formatting.deno_fmt.with({ filetypes = { "javascript", "javascriptreact", "json", "jsonc", "markdown", "typescript", "typescriptreact" } }),
-	b.formatting.prettier.with({ filetypes = { "html", "css", "scss", "yaml", "handlebars" } }),
+	-- b.formatting.deno_fmt.with({ filetypes = { "javascript", "javascriptreact", "json", "jsonc", "markdown", "typescript", "typescriptreact" } }),
+	-- b.formatting.prettier.with({ filetypes = { "html", "css", "scss", "yaml", "handlebars" } }),
+
+  b.formatting.prettier.with({
+    filetypes = { "html", "css", "scss", "yaml", "handlebars", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    extra_args = { "--config-precedence", "prefer-file" }, -- Ensure local config is used if present
+  }),
+
+  -- ESLint for JavaScript and TypeScript
+  -- b.diagnostics.eslint.with({
+  --   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  --   prefer_local = "node_modules/.bin",
+  -- }),
 
 	-- Lua
 	b.formatting.stylua,
