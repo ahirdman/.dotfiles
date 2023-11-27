@@ -30,6 +30,9 @@ $line_break\
 $character
 """
 
+[package]
+format = 'via [🎁 $version](208 bold) '
+
 [custom.git_user]
 command = "git config user.email | awk -F'[+@]' '{print $2}'"
 when = "git rev-parse --git-dir 2> /dev/null"
