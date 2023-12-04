@@ -1,12 +1,17 @@
 local M = {}
 
+M.masonDap = {
+	ensure_installed = { "node2", "js" },
+  automatic_installation = true
+}
+
 M.trouble = {
 	position = "right",
 	width = 50,
 	icons = true,
 	auto_open = false,
 	auto_close = true,
-	use_diagnostic_signs = false
+	use_diagnostic_signs = false,
 }
 
 M.dashboard = {

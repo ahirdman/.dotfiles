@@ -38,6 +38,13 @@ M.general = {
 
 		["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "lsp saga outline" },
 		["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
+
+    -- Dap UI
+
+    ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle breakpoint"},
+    ["<leader>dc"] = { "<cmd>DapContinue<CR>", "Dap continue"},
+    ["<leader>dt"] = { "<cmd>:lua require('dapui').toggle()<CR>", "Toggle Dap-UI"}
+
 	},
 	v = {
 		["J"] = { ":m '>+1<CR>gv=gv", "move line down" },

@@ -57,6 +57,29 @@ local plugins = {
 
 	-- Additions
 
+
+	{
+		"rcarriga/nvim-dap-ui",
+		lazy = false,
+		dependencies = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			require("dapui").setup()
+		end,
+	},
+
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    lazy = false,
+    opts = overrides.masonDap
+
+  },
+
+  {
+    "David-Kunz/jester"
+  },
+
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
