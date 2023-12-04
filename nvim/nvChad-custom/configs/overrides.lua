@@ -9,10 +9,6 @@ M.trouble = {
 	use_diagnostic_signs = false
 }
 
-M.octo = {
-	ssh_aliases = { ["workgit"] = "github.com" }, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`
-}
-
 M.dashboard = {
 	theme = "hyper",
 	config = {
@@ -157,12 +153,10 @@ M.lspsaga = {
 	},
 	finder = {
 		keys = {
-			expand_or_jump = "<CR>",
 		},
 	},
 	outline = {
 		keys = {
-			expand_or_jump = "<CR>",
 		},
 	},
 	ui = {
