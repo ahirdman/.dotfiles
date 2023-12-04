@@ -1,60 +1,10 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
-$shell\
-$shlvl\
-[](bg:#504945 fg:#3c3836)\
-$directory\
-[](fg:#504945 bg:#665c54)\
-${custom.git_user}\
-$git_branch\
-[](fg:#665c54 bg:#bdae93)\
-$git_status\
-[](fg:#bdae93 bg:#fbf1c7)\
-$c\
-$elixir\
-$elm\
-$golang\
-$gradle\
-$haskell\
-$java\
-$julia\
-$nodejs\
-$nim\
-$rust\
-$scala\
-[](fg:#fbf1c7 bg:#fbf1c7)\
-[](fg:#fbf1c7)\
-$line_break\
-$character
-"""
-
-[package]
-format = 'via [🎁 $version](208 bold) '
-
-[custom.git_user]
-command = "git config user.email | awk -F'[+@]' '{print $2}'"
-when = "git rev-parse --git-dir 2> /dev/null"
-format = "[ $output]($style)"
-style = "bg:#665c54"
-
-
-[shell]
-style = "bg:#3c3836"
-fish_indicator = '󰈺 '
-powershell_indicator = '_'
-unknown_indicator = 'mystery shell'
-bash_indicator = 'bsh'
-zsh_indicator = 'zsh'
-disabled = false
-format = '[ $indicator ]($style)'
-
-[shlvl]
-style = "bg:#3c3836"
-disabled = false
-symbol = ''
-format = '[$shlvl $symbol ]($style)'
+format = """$directory$character"""
+right_format = """$all$shell$shlvl"""
+continuation_prompt = '▶▶ '
+add_newline = false
 
 [fill]
 symbol = " "
@@ -62,44 +12,61 @@ symbol = " "
 [line_break]
 disabled = false
 
-[time]
+[custom.git_user]
+command = "git config user.email | awk -F'[+@]' '{print $2}'"
+when = "git rev-parse --git-dir 2> /dev/null"
+format = "[ $output]($style)"
+style = "bg:#665c54"
+disabled = true
+
+[shell]
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+bash_indicator = 'bsh'
+zsh_indicator = 'zsh'
+format = '[ $indicator ]($style)'
 disabled = false
+
+[shlvl]
+symbol = ''
+style = "fg:#665c54"
+format = '[$shlvl $symbol]($style)'
+disabled = false
+
+[time]
 time_format = "%R"
 style = "bg:#d65d0e"
 format = '[ $time ]($style)'
+disabled = true
 
 [character]
-success_symbol = '[](#fe8019) '
-error_symbol = '[✗](#fb4934) '
-vimcmd_symbol = '[V](bold green) '
+success_symbol = '[](#fe8019)'
+error_symbol = '[✗](#fb4934)'
+vimcmd_symbol = '[](bold green)'
 vimcmd_replace_one_symbol = '[❮](bold pink)'
 vimcmd_replace_symbol = '[❮](bold purple)'
 vimcmd_visual_symbol = '[❮](bold yellow)'
 
 [os]
 style = "bg:#3c3836"
-disabled = true
 format = "[ $symbol]($style)"
+disabled = true
 
 [os.symbols]
 Macos = " "
 
 [directory]
-style = "bg:#504945"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+style = "fg:#fbf1c7"
+format = "[$path ]($style)"
+truncation_length = 1
+truncation_symbol = ""
 
 [directory.substitutions]
 "Documents" = " "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = "  "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important  " = "  "
 
 [c]
 symbol = " "
@@ -111,61 +78,44 @@ symbol = " "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style) $path'
 
-[elixir]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[elm]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
 [git_branch]
 symbol = ""
-style = "bg:#665c54"
+style = "fg:#665c54"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#bdae93"
-format = '[[ $all_status$ahead_behind ](fg:#1d2021 bg:#bdae93)]($style)'
+style = "fg:#fe8019"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
 
 [golang]
 symbol = " "
-style = "bg:#fbf1c7"
-format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
-
-[haskell]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[java]
-symbol = " "
-style = "bg:#86BBD8"
-format = '[ $symbol ($version) ]($style)'
-
-[julia]
-symbol = " "
-style = "bg:#86BBD8"
+style = "fg:#fbf1c7"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#fbf1c7"
-format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
-
-[nim]
-symbol = " "
-style = "bg:#86BBD8"
+style = "fg:#fbf1c7"
 format = '[ $symbol ($version) ]($style)'
+
+[bun]
+symbol = ""
+style = "fg:#fbf1c7"
+format = '[ $symbol ($version) ]($style) '
 
 [rust]
 symbol = ""
-style = "bg:#fbf1c7"
-format = '[[ $symbol ($version) ](fg:#3c3836 bg:#fbf1c7)]($style)'
-
-[scala]
-symbol = " "
-style = "bg:#86BBD8"
+style = "fg:#fbf1c7"
 format = '[ $symbol ($version) ]($style)'
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration](bold yellow)'
+disabled = true
+
+[package]
+format = 'via [🎁 $version](208 bold) '
+disabled = false
