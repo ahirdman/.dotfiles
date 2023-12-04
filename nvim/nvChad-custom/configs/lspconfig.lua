@@ -1,58 +1,40 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
+local lspconfig = require("lspconfig")
 local bicep_lsp_bin = "/usr/local/bin/bicep-langserver/Bicep.LangServer.dll"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "jsonls", "csharp_ls", "yamlls", "rust_analyzer", "gopls", "sourcekit" }
+local servers =
+	{ "html", "cssls", "tsserver", "clangd", "jsonls", "csharp_ls", "yamlls", "rust_analyzer", "gopls", "sourcekit", "sqlls" }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+	lspconfig[lsp].setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
 end
 
-lspconfig.omnisharp.setup {
-    cmd = { "dotnet", "/opt/homebrew/bin/omnisharp" },
+-- lspconfig.biome.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- 	cmd = { "biome", "lsp-proxy" },
+--   enable_editorconfig_support = true,
+--   enable_import_completion = true,
+-- 	filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact" },
+-- })
 
-    -- Enables support for reading code style, naming convention and analyzer
-    -- settings from .editorconfig.
-    enable_editorconfig_support = true,
+lspconfig.omnisharp.setup({
+	cmd = { "dotnet", "/opt/homebrew/bin/omnisharp" },
+	enable_editorconfig_support = true,
+	enable_ms_build_load_projects_on_demand = false,
+	enable_roslyn_analyzers = true,
+	organize_imports_on_format = false,
+	enable_import_completion = false,
+	sdk_include_prereleases = true,
+	analyze_open_documents_only = false,
+})
 
-    -- If true, MSBuild project system will only load projects for files that
-    -- were opened in the editor. This setting is useful for big C# codebases
-    -- and allows for faster initialization of code navigation features only
-    -- for projects that are relevant to code that is being edited. With this
-    -- setting enabled OmniSharp may load fewer projects and may thus display
-    -- incomplete reference lists for symbols.
-    enable_ms_build_load_projects_on_demand = false,
-
-    -- Enables support for roslyn analyzers, code fixes and rulesets.
-    enable_roslyn_analyzers = true,
-
-    -- Specifies whether 'using' directives should be grouped and sorted during
-    -- document formatting.
-    organize_imports_on_format = false,
-
-    -- Enables support for showing unimported types and unimported extension
-    -- methods in completion lists. When committed, the appropriate using
-    -- directive will be added at the top of the current file. This option can
-    -- have a negative impact on initial completion responsiveness,
-    -- particularly for the first few completion sessions after opening a
-    -- solution.
-    enable_import_completion = false,
-
-    -- Specifies whether to include preview versions of the .NET SDK when
-    -- determining which version to use for project loading.
-    sdk_include_prereleases = true,
-
-    -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-    -- true
-    analyze_open_documents_only = false,
-}
-
-lspconfig.bicep.setup {
-  cmd = { "dotnet", bicep_lsp_bin }
-}
+lspconfig.bicep.setup({
+	cmd = { "dotnet", bicep_lsp_bin },
+})
