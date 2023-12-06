@@ -22,9 +22,13 @@ M.general = {
 
 		-- Trouble
 
-		["<leader>xx"] = { "<cmd>TroubleToggle<cr>", "toggle trouble" },
-		["<leader>xd"] = { "<cmd>TroubleToggle<cr>", "trouble diagnostics" },
-		["<leader>xq"] = { "<cmd>TroubleToggle<cr>", "trouble quickfix" },
+		["<leader>tr"] = { "<cmd>TroubleToggle<cr>", "toggle trouble" },
+		["<leader>td"] = { "<cmd>TroubleToggle<cr>", "trouble diagnostics" },
+		["<leader>tq"] = { "<cmd>TroubleToggle<cr>", "trouble quickfix" },
+
+		-- Todo
+
+		["<leader>to"] = { "<cmd>TodoTelescope<cr>", "open todos in telescope" },
 
 		-- Undo Tree
 
