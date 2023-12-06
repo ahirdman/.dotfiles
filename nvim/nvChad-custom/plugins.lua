@@ -4,6 +4,8 @@ local overrides = require("custom.configs.overrides")
 local plugins = {
 
 	-- Override plugin definition options
+	--
+	-- TODO: Add some things
 
 	{
 		"neovim/nvim-lspconfig",
@@ -27,7 +29,6 @@ local plugins = {
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
-		lazy = false,
 	},
 
 	{
@@ -58,13 +59,11 @@ local plugins = {
 	-- Additions
 
 	{
-		"rcarriga/nvim-dap-ui",
-		lazy = false,
-		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
+		"folke/todo-comments.nvim",
+		event = "VimEnter",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("dapui").setup()
+			require("todo-comments").setup()
 		end,
 	},
 
