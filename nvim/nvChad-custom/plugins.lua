@@ -4,8 +4,6 @@ local overrides = require("custom.configs.overrides")
 local plugins = {
 
 	-- Override plugin definition options
-	--
-	-- TODO: Add some things
 
 	{
 		"neovim/nvim-lspconfig",
@@ -53,10 +51,20 @@ local plugins = {
 
 	{
 		"NvChad/nvterm",
-		enabled = false,
+		enabled = true,
 	},
 
 	-- Additions
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		opts = overrides.noice,
+	},
 
 	{
 		"folke/todo-comments.nvim",
