@@ -186,12 +186,6 @@ M.lspsaga = {
 	symbol_in_winbar = {
 		enable = false,
 	},
-	finder = {
-		keys = {},
-	},
-	outline = {
-		keys = {},
-	},
 	ui = {
 		title = true,
 	},

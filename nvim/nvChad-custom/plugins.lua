@@ -54,8 +54,6 @@ local plugins = {
 		enabled = true,
 	},
 
-	-- Additions
-
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -64,7 +62,10 @@ local plugins = {
 			"rcarriga/nvim-notify",
 		},
 		opts = overrides.noice,
+    enabled = false
 	},
+
+	-- Additions
 
 	{
 		"folke/todo-comments.nvim",
