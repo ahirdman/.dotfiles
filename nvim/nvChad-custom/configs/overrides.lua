@@ -134,10 +134,7 @@ M.mason = {
 
 		-- javascript
 		"typescript-language-server",
-		"tailwindcss-language-server",
-		"deno",
-		"prettier",
-		"eslint_d",
+		"quick_lint_js",
 
 		-- C#
 		"csharp-language-server",
