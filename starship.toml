@@ -12,12 +12,12 @@ symbol = " "
 [line_break]
 disabled = false
 
-[custom.git_user]
-command = "git config user.email | awk -F'[+@]' '{print $2}'"
-when = "git rev-parse --git-dir 2> /dev/null"
-format = "[ $output]($style)"
-style = "bg:#665c54"
-disabled = true
+# [custom.git_user]
+# command = "git config user.email | awk -F'[+@]' '{print $2}'"
+# when = "git rev-parse --git-dir 2> /dev/null"
+# format = "[ $output]($style)"
+# style = "bg:#665c54"
+# disabled = true
 
 [shell]
 fish_indicator = '󰈺 '
