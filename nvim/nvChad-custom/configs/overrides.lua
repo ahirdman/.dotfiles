@@ -134,7 +134,7 @@ M.mason = {
 
 		-- javascript
 		"typescript-language-server",
-		"quick_lint_js",
+		"quick-lint-js",
 
 		-- C#
 		"csharp-language-server",

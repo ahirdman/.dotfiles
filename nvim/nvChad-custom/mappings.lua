@@ -43,6 +43,10 @@ M.general = {
 		["<leader>o"] = { "<cmd>Lspsaga outline<CR>", "lsp saga outline" },
 		["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "code action" },
 
+    -- Telescope
+
+    ["<leader>gs"] = { "<cmd> Telescope git_stash <CR>", "Git stash" },
+
     -- Dap UI
 
     ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", "Toggle breakpoint"},
