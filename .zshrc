@@ -85,6 +85,7 @@ alias vc="NVIM_APPNAME=nvim-custom nvim"
 
 # Eval
 eval "$(starship init zsh)"
+eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
 
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
