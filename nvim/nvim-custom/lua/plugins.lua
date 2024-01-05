@@ -4,28 +4,33 @@ local plugins = {
 		"catppuccin/nvim",
 		lazy = false,
 		name = "catppuccin",
-		-- colorschemes need high priority
 		priority = 1000,
 		config = function()
 			require("config.catppuccin").init()
 		end,
 	},
 
-	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
-
-	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-sleuth",
+	{ "tpope/vim-fugitive" },
 
 	{
-		-- LSP Configuration & Plugins
+		"akinsho/bufferline.nvim",
+		config = function()
+			require("config.bufferline").init()
+		end,
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+
+	{
 		"neovim/nvim-lspconfig",
+		config = function()
+			require("config.lsp").init()
+		end,
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
 			{ "williamboman/mason.nvim", config = true },
 			"williamboman/mason-lspconfig.nvim",
 
-			-- Useful status updates for LSP
 			{ "j-hui/fidget.nvim", opts = {} },
 
 			-- Additional lua configuration, makes nvim stuff amazing!
@@ -142,14 +147,10 @@ local plugins = {
 	{
 		-- Set lualine as statusline
 		"nvim-lualine/lualine.nvim",
-		opts = {
-			options = {
-				icons_enabled = false,
-				theme = "onedark",
-				component_separators = "|",
-				section_separators = "",
-			},
-		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("config.lualine").init()
+		end,
 	},
 
 	{
@@ -168,15 +169,13 @@ local plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
+		config = function()
+			require("config.telescope").init()
+		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
-			-- Only load if `make` is available. Make sure you have the system
-			-- requirements installed.
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
-				-- NOTE: If you are having trouble with this installation,
-				--       refer to the README for telescope-fzf-native for more instructions.
 				build = "make",
 				cond = function()
 					return vim.fn.executable("make") == 1
@@ -186,27 +185,15 @@ local plugins = {
 	},
 
 	{
-		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("config.treesitter").init()
+		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
 	},
-
-	-- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-	--       These are some example plugins that I've included in the kickstart repository.
-	--       Uncomment any of the lines below to enable them.
-	-- require 'kickstart.plugins.autoformat',
-	-- require 'kickstart.plugins.debug',
-
-	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-	--    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-	--    up-to-date with whatever is in the kickstart repo.
-	--    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-	--
-	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-	-- { import = 'custom.plugins' },
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
