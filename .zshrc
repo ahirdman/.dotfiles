@@ -78,6 +78,9 @@ alias tmr="tmuxinator start"
 alias tme="tmuxinator edit"
 alias tms="tmuxinator stop"
 
+alias v="nvim"
+alias vc="NVIM_APPNAME=nvim-custom nvim"
+
 . /opt/homebrew/etc/profile.d/z.sh
 
 # Eval

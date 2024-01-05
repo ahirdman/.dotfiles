@@ -1,0 +1,40 @@
+live_config_reload = true
+
+# [colors.normal]
+# black = "#1b1b1b"
+# blue = "#458588"
+# cyan = "#689d6a"
+# green = "#98971a"
+# magenta = "#b16286"
+# red = "#cc241d"
+# white = "#a89984"
+# yellow = "#d79921"
+
+[colors.bright]
+black =  '#928374'
+red  =   '#fb4934'
+green =  '#b8bb26'
+yellow = '#fabd2f'
+blue  =  '#83a598'
+magenta = '#d3869b'
+cyan =    '#8ec07c'
+white =  '#ebdbb2'
+
+[colors.primary]
+background = "#1b1b1b"
+foreground = "#ebdbb2"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[window]
+decorations = "buttonless"
+opacity = 0.9
+blur = true
