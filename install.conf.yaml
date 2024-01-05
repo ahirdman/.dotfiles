@@ -7,19 +7,27 @@
 
 - link:
     ~/.zshrc: .zshrc
-    ~/.actrc: .actrc
     ~/.zprofile: .zprofile
     ~/.zshenv: .zshenv
-    ~/.config/alacritty/alacritty.yml: alacritty.yml
-    ~/.gitconfig: git/.gitconfig_global
-    ~/.gitmessage: git/.gitmessage
+
+    ~/.config/alacritty/alacritty.toml: alacritty.toml
+
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
-    ~/.config/tmux: tmux 
+
     ~/.config/nvim: nvim/NvChad
     ~/.dotfiles/nvim/NvChad/lua/custom: nvim/nvChad-custom
-    ~/.config/gh/config.yml: github/gh.config.yml
+    ~/.config/nvim-custom: nvim/nvim-custom
+
+    ~/.config/tmux: tmux 
     ~/.config/tmuxinator: workspaces
+
+    ~/.gitconfig: git/.gitconfig_global
+    ~/.gitmessage: git/.gitmessage
+    ~/.config/gh/config.yml: github/gh.config.yml
+
+    ~/.actrc: .actrc
+
     ~/.ssh/config: ssh/config
 
 - create:
