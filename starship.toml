@@ -41,12 +41,12 @@ format = '[ $time ]($style)'
 disabled = true
 
 [character]
-success_symbol = '[](#fe8019)'
-error_symbol = '[✗](#fb4934)'
-vimcmd_symbol = '[](bold green)'
-vimcmd_replace_one_symbol = '[❮](bold pink)'
-vimcmd_replace_symbol = '[❮](bold purple)'
-vimcmd_visual_symbol = '[❮](bold yellow)'
+success_symbol = '[](#e78a4e)'
+error_symbol = '[✗](#ea6962)'
+vimcmd_symbol = '[](bold #a9b665)'
+vimcmd_replace_one_symbol = '[❮](bold #d3869b)'
+vimcmd_replace_symbol = '[❮](bold #7daea3)'
+vimcmd_visual_symbol = '[❮](bold #d8a657)'
 
 [os]
 style = "bg:#3c3836"
@@ -70,26 +70,26 @@ truncation_symbol = ""
 
 [c]
 symbol = " "
-style = "bg:#86BBD8"
+style = "bg:#7daea3"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#06969A"
+style = "bg:#86BBD8"
 format = '[ $symbol $context ]($style) $path'
 
 [git_branch]
 symbol = ""
-style = "fg:#665c54"
+style = "fg:#595959"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:#fe8019"
+style = "fg:#e78a4e"
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = '[🍒 PICKING](bold red)'
+cherry_pick = '[🍒 PICKING](bold #ea6962)'
 
 [golang]
 symbol = " "
@@ -113,7 +113,7 @@ format = '[ $symbol ($version) ]($style)'
 
 [cmd_duration]
 min_time = 500
-format = 'took [$duration](bold yellow)'
+format = 'took [$duration](bold #d8a657)'
 disabled = true
 
 [package]
