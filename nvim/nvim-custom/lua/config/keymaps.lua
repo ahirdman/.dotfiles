@@ -10,6 +10,10 @@ vim.keymap.set({ "i" }, "<C-l>", "<Right>")
 vim.keymap.set({ "i" }, "<C-j>", "<Down>")
 vim.keymap.set({ "i" }, "<C-k>", "<Up>")
 
+-- move line up/down in visual mode
+vim.keymap.set({ "v" }, "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set({ "v" }, "K", ":m '<-2<CR>gv=gv")
+
 -- switch between windows
 vim.keymap.set({ "n" }, "<C-h>", "<C-w>h") -- Move left
 vim.keymap.set({ "n" }, "<C-l>", "<C-w>l") -- Move Right
