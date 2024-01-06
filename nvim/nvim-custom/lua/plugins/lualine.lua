@@ -17,7 +17,7 @@ return {
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {
-						"Alpha",
+            "dashboard-nvim",
 						"help",
 						"NvimTree",
 						"Trouble",
