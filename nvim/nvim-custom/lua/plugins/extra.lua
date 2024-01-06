@@ -12,7 +12,7 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = "ibl",
-    opts = {},
+    enabled = false
   },
 
   {
@@ -104,5 +104,16 @@ return {
         auto_attach = true,
       },
     }
-  }
+  },
+
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
+    end,
+  },
 }

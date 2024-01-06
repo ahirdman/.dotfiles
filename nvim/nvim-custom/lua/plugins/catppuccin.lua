@@ -77,7 +77,7 @@ return {
 				cmp = true,
 				gitsigns = true,
 				hop = true,
-				illuminate = { enabled = true },
+				illuminate = true,
 				native_lsp = { enabled = true, inlay_hints = { background = true } },
 				neogit = true,
 				neotree = true,
@@ -142,7 +142,7 @@ return {
 						VertSplit = { bg = colors.base, fg = colors.surface0 },
 						WhichKeyFloat = { bg = colors.mantle },
 						YankHighlight = { bg = colors.surface2 },
-						FidgetTask = { fg = colors.subtext2 },
+						FidgetTask = { fg = colors.subtext1 }, -- Changed
 						FidgetTitle = { fg = colors.peach },
 
 						IblIndent = { fg = colors.surface0 },
@@ -174,8 +174,8 @@ return {
 						SpecialChar = { fg = colors.yellow },
 						Type = { fg = colors.yellow, style = { "bold" } },
 						Function = { fg = colors.green, style = { "bold" } },
-						Delimiter = { fg = colors.subtext2 },
-						Ignore = { fg = colors.subtext2 },
+						Delimiter = { fg = colors.subtext1 }, -- changed
+						Ignore = { fg = colors.subtext1 }, -- changed
 						Macro = { fg = colors.teal },
 
 						TSAnnotation = { fg = colors.mauve },
@@ -225,7 +225,7 @@ return {
 						TSRepeat = { fg = colors.red },
 						TSStorageClass = { fg = colors.peach },
 						TSStorageClassLifetime = { fg = colors.peach },
-						TSStrike = { fg = colors.subtext2 },
+						TSStrike = { fg = colors.subtext1 }, -- changed
 						TSString = { fg = colors.teal },
 						TSStringEscape = { fg = colors.green },
 						TSStringRegex = { fg = colors.green },

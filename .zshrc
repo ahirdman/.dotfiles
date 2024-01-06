@@ -77,6 +77,7 @@ alias tmn="tmuxinator new"
 alias tmr="tmuxinator start"
 alias tme="tmuxinator edit"
 alias tms="tmuxinator stop"
+alias tsource="tmux source-file $HOME/.dotfiles/tmux/tmux.conf"
 
 alias v="nvim"
 alias vc="NVIM_APPNAME=nvim-custom nvim"
