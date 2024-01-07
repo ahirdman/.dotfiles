@@ -40,6 +40,7 @@ return {
 					mantle = "#f0ebce",
 					crust = "#e8e3c8",
 				},
+
 				mocha = {
 					rosewater = "#ea6962",
 					flamingo = "#ea6962",
@@ -68,6 +69,7 @@ return {
 					mantle = "#191b1c",
 					crust = "#141617",
 				},
+
 			},
 			transparent_background = false,
 			show_end_of_buffer = false,
