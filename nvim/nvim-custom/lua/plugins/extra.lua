@@ -23,9 +23,13 @@ return {
   -- Ui enhancments for vum.ui methods ( such as lsp rename )
   {
     'stevearc/dressing.nvim',
+    dependencies = { "MunifTanjim/nui.nvim" },
     opts = {
       border = "rounded"
     },
+    config = function()
+      require("dressing").setup()
+    end,
   },
 
   {
