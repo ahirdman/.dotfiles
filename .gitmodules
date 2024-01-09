@@ -1,6 +1,3 @@
-[submodule ".config/tmux/plugins/tmux-gruvbox"]
-	path = tmux/plugins/tmux-gruvbox
-	url = https://github.com/egel/tmux-gruvbox.git
 [submodule ".config/tmux/plugins/tmux-sensible"]
 	path = tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible

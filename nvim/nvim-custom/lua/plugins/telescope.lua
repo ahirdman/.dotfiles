@@ -96,6 +96,8 @@ return {
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
+
+      print(vim.bo.filetype)
 		end
 
 		vim.keymap.set("n", "<leader>s/", telescope_live_grep_open_files, { desc = "[S]earch [/] in Open Files" })

@@ -12,25 +12,22 @@ return {
 				theme = "catppuccin",
 				globalstatus = true,
 				icons_enabled = true,
-				-- component_separators = { left = "│", right = "│" },
 				component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
 					statusline = {
             "dashboard-nvim",
 						"help",
-						"NvimTree",
+						"neo-tree",
 						"Trouble",
-						"spectre_panel",
 						"toggleterm",
+            "TelescopePrompt"
 					},
 					winbar = {},
 				},
 			},
 			sections = {
-				lualine_a = {
-
-				},
+				lualine_a = {},
 				lualine_b = {
 					"fancy_branch",
 				},
