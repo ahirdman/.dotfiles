@@ -3,15 +3,14 @@ return {
   cmd = { "TroubleToggle", "Trouble" },
   lazy = true,
   config = function()
+    local icons = require("config.icons")
+
     require("trouble").setup {
-      -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-      -- mode = "workspace_diagnostics",
-      position = "bottom", -- position of the list can be: bottom, top, left, right
+      position = "bottom",
       height = 15,
       icons = true,
       padding = false,
       action_keys = {
-        -- key mappings for actions in the trouble list
         close = "q",                -- close the list
         cancel = "<esc>",           -- cancel the preview and get back to your last window / buffer / cursor
         refresh = "r",              -- manually refresh
@@ -30,12 +29,11 @@ return {
       },
       auto_jump = {},
       signs = {
-        -- icons / text used for a diagnostic
-        error = "",
-        warning = "",
-        hint = "",
-        information = "",
-        other = "",
+        error = icons.diagnostics.Error,
+        warning = icons.diagnostics.Warning,
+        hint = icons.diagnostics.Hint,
+        information = icons.diagnostics.Information,
+        other = icons.ui.Gear
       },
       use_diagnostic_signs = false,
     }

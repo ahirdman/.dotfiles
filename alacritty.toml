@@ -26,5 +26,4 @@ style = "Regular"
 
 [window]
 decorations = "buttonless"
-padding = { x = 8, y = 4 }
-dynamic_padding = true
+padding = { x = 2, y = 6 }
