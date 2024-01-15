@@ -29,7 +29,15 @@ return {
         toggle_fold = { "za" },     -- toggle fold of current file
       },
       auto_jump = {},
-      use_diagnostic_signs = true,
+      signs = {
+        -- icons / text used for a diagnostic
+        error = "",
+        warning = "",
+        hint = "",
+        information = "",
+        other = "",
+      },
+      use_diagnostic_signs = false,
     }
   end
 }
