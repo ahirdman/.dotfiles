@@ -118,7 +118,7 @@ disabled = true
 
 [package]
 format = 'via [🎁 $version](208 bold) '
-isabled = false
+disabled = false
 
 [lua]
 symbol = ""

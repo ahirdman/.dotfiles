@@ -11,7 +11,7 @@ local options = {
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   confirm = true,                          -- confirm to save changes before exiting modified buffer
-  cursorline = false,                       -- highlight the current line
+  cursorline = false,                      -- highlight the current line
   expandtab = true,
   hlsearch = true,
   ignorecase = true,     -- ignore case in search patterns
@@ -39,4 +39,18 @@ local options = {
 
 for k, v in pairs(options) do
   vim.opt[k] = v
+end
+
+local icons = require("config.icons")
+
+local signs = {
+  Error = icons.diagnostics.BoldError,
+  Warn = icons.diagnostics.BoldWarning,
+  Hint = icons.diagnostics.BoldHint,
+  Info = icons.diagnostics.BoldInformation,
+}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
