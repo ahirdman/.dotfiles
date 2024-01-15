@@ -1,4 +1,5 @@
 return {
+  yamlls = {},
   jsonls = {
     settings = {
       json = {

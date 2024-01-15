@@ -11,7 +11,7 @@ return {
           enable = true,
         },
         shortcut = {
-          { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+          { desc = '󰊳 Lazy', group = '@property', action = 'Lazy', key = 'l' },
           { desc = ' Mason', group = 'Config', action = 'Mason', key = 'm' },
           {
             icon = ' ',
@@ -22,7 +22,7 @@ return {
             key = 'f',
           },
         },
-        packages = { enable = true }, -- show how many plugins neovim loaded
+        packages = { enable = true },
         project = { enable = false, limit = 4, icon = 'your icon', label = '', action = 'Telescope find_files cwd=' },
       },
     }
