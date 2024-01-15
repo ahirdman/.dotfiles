@@ -15,9 +15,7 @@
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
 
-    ~/.config/nvim: nvim/NvChad
-    ~/.dotfiles/nvim/NvChad/lua/custom: nvim/nvChad-custom
-    ~/.config/nvim-custom: nvim/nvim-custom
+    ~/.config/nvim: nvim
 
     ~/.config/tmux: tmux 
     ~/.config/tmuxinator: workspaces
