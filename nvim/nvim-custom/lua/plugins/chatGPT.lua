@@ -6,6 +6,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim"
   },
+  enabled = false,
   config = function()
     require("chatgpt").setup({
       api_key_cmd = "op read op://personal/OpenAI-API/credential --no-newline",
