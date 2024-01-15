@@ -79,8 +79,7 @@ alias tme="tmuxinator edit"
 alias tms="tmuxinator stop"
 alias tsource="tmux source-file $HOME/.dotfiles/tmux/tmux.conf"
 
-alias chad="nvim"
-alias v="NVIM_APPNAME=nvim-custom nvim"
+alias v="nvim"
 
 . /opt/homebrew/etc/profile.d/z.sh
 
