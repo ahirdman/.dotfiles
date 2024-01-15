@@ -1,33 +1,22 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	build = ":TSUpdate",
 	config = function()
-		-- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 		vim.defer_fn(function()
 			require("nvim-treesitter.configs").setup({
-				-- Add languages to be installed here that you want installed for treesitter
 				ensure_installed = {
-					"c",
-					"cpp",
-					"go",
 					"lua",
-					"python",
 					"rust",
 					"tsx",
 					"javascript",
 					"typescript",
-					"vimdoc",
 					"vim",
 					"bash",
 				},
-
-				-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-				auto_install = false,
-
+				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
 				incremental_selection = {
@@ -54,7 +43,7 @@ return {
 						},
 					},
 					move = {
-						enable = true,
+						enable = false,
 						set_jumps = true, -- whether to set jumps in the jumplist
 						goto_next_start = {
 							["]m"] = "@function.outer",
@@ -74,7 +63,7 @@ return {
 						},
 					},
 					swap = {
-						enable = true,
+						enable = false,
 						swap_next = {
 							["<leader>a"] = "@parameter.inner",
 						},

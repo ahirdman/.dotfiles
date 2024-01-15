@@ -1,17 +1,19 @@
 return {
   "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
   config = function()
     local wk = require("which-key")
 
     wk.setup({
       plugins = {
-        marks = true,     -- shows a list of your marks on ' and `
-        registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-        -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-        -- No actual key bindings are created
+        marks = false,
+        registers = false,
         spelling = {
-          enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-          suggestions = 20, -- how many suggestions should be shown in the list?
+          enabled = false,
         },
         presets = {
           operators = true,    -- adds help for operators like d, y, ...
@@ -95,18 +97,22 @@ return {
     local telescope_builtin = require("telescope.builtin")
 
     wk.register({
-      d = {
-        name = "+Diagnostics",
-        t = { "<cmd> TroubleToggle <cr>", "Toggle Trouble" }
+      ["<leader>d"] = {
+        name = "Diagnostics",
+        t = { "<cmd> TroubleToggle <cr>", "Toggle Trouble" },
+        r = { "<cmd> TroubleRefresh <cr>", "Toggle Trouble" }
       },
-      f = {
+      ["<leader>f"] = {
+        name = "Files",
         f = { telescope_builtin.find_files, "[F]ind [F]iles" },
         m = { function() vim.lsp.buf.format({ async = true }) end, "Format" }
       },
-      g = {
+      ["<leader>g"] = {
+        name = "Git",
         f = { telescope_builtin.git_files, "Search [G]it [F]iles" }
       },
-      s = {
+      ["<leader>s"] = {
+        name = "Search",
         d = { telescope_builtin.diagnostics, "[S]earch [D]iagnostics" },
         g = { telescope_builtin.live_grep, "[S]earch by [G]rep" },
         G = { ":LiveGrepGitRoot<cr>", "[S]earch by [G]rep on Git Root" },
@@ -117,6 +123,6 @@ return {
       },
       ["?"] = { telescope_builtin.oldfiles, "[?] Find recently opened files" },
       ["<leader><leader>"] = { telescope_builtin.buffers, "[ ] Find existing buffers" }
-    }, { mode = "n", prexif = "<leader>" })
+    }, { mode = "n", prexif = "" })
   end,
 }
