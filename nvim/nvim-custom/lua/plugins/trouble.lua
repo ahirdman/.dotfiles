@@ -1,7 +1,6 @@
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
-  opts = { use_diagnostic_signs = true },
   lazy = true,
   config = function()
     require("trouble").setup {
@@ -9,6 +8,7 @@ return {
       -- mode = "workspace_diagnostics",
       position = "bottom", -- position of the list can be: bottom, top, left, right
       height = 15,
+      icons = true,
       padding = false,
       action_keys = {
         -- key mappings for actions in the trouble list
