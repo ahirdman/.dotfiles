@@ -28,6 +28,7 @@ return {
         toggle_fold = { "za" },     -- toggle fold of current file
       },
       auto_jump = {},
+      auto_close = true,
       signs = {
         error = icons.diagnostics.Error,
         warning = icons.diagnostics.Warning,
