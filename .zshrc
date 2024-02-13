@@ -70,8 +70,10 @@ alias branch='git branch -v'
 alias coa='git add -A && git commit -m'
 
 alias gc="~/.dotfiles/functions/git_clone.zsh"
-alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
 alias gb="~/.dotfiles/functions/git_branch.zsh"
+alias gp="git pull"
+
+alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
 
 alias tmn="tmuxinator new"
 alias tmr="tmuxinator start"
