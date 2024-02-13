@@ -2,6 +2,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- clear highlight
 vim.keymap.set({ "n" }, "<Esc>", ":noh <CR>")
+vim.keymap.set({ "n" }, "<Space>z", "<cmd> ZenMode <CR>")
 
 -- switch between windows
 vim.keymap.set({ "n" }, "<C-h>", "<C-w>h")                       -- Move left
