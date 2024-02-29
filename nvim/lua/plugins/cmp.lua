@@ -12,7 +12,7 @@ return {
     "hrsh7th/cmp-path",
 
     -- Adds a number of user-friendly snippets
-    "rafamadriz/friendly-snippets",
+    -- "rafamadriz/friendly-snippets",
 
     -- Adds vscode-like pictograms
     "onsails/lspkind.nvim",
@@ -21,7 +21,7 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
-    require("luasnip.loaders.from_vscode").lazy_load()
+    -- require("luasnip.loaders.from_vscode").lazy_load()
 
     luasnip.config.setup({})
 
