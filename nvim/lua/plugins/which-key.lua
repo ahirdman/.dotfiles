@@ -109,7 +109,8 @@ return {
       },
       ["<leader>g"] = {
         name = "Git",
-        f = { telescope_builtin.git_files, "Search [G]it [F]iles" }
+        f = { telescope_builtin.git_files, "Search [G]it [F]iles" },
+        d = { "<cmd> DiffviewOpen origin/main...HEAD <cr>", "View diff against main"}
       },
       ["<leader>s"] = {
         name = "Search",
