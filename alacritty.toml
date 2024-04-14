@@ -11,8 +11,10 @@ cyan =    '#89b482'
 white =  '#ebdbb2'
 
 [colors.primary]
-background = "#1d2021"
-foreground = "#ebdbb2"
+#background = "#1d2021"
+background = "#000000"
+#foreground = "#ebdbb2"
+foreground = "#FFFFFF"
 
 [env]
 TERM = "xterm-256color"
