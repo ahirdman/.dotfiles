@@ -65,7 +65,7 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      -- extensions = { "neo-tree", "lazy" },
+      -- extensions = { "neo-tree", "lazy", "trouble" },
     })
   end,
 }

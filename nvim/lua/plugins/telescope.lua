@@ -34,6 +34,13 @@ return {
             ["<C-d>"] = false,
           },
         },
+
+--        border = true,
+        -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+
+        -- prompt_title = false,
+        -- prompt_border = true,
+
         prompt_prefix = " " .. icons.ui.Telescope .. "  ",
         selection_caret = icons.ui.BoldArrowRight .. " ",
         file_ignore_patterns = { "node_modules", "package-lock.json", "*.ttf" },
@@ -44,6 +51,9 @@ return {
         layout_config = {
           prompt_position = "top",
           preview_cutoff = 120,
+
+          -- prompt_title = { padding = { 2, 2, 2, 2 } },
+          -- results_title = { padding = { 1, 1, 1, 1 } },
         },
       },
       pickers = {
@@ -67,7 +77,6 @@ return {
           },
           previewer = false,
           initial_mode = "normal",
-          -- theme = "dropdown",
           layout_config = {
             height = 0.4,
             width = 0.6,
