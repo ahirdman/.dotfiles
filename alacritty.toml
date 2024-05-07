@@ -23,8 +23,11 @@ TERM = "xterm-256color"
 size = 14
 
 [font.normal]
-family = "BerkeleyMonoTrial Nerd Font"
+family = "JetBrainsMonoNL Nerd Font Mono"
 style = "Regular"
+
+#family = "BerkeleyMonoTrial Nerd Font"
+#style = "Regular"
 
 [window]
 decorations = "buttonless"
