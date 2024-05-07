@@ -120,7 +120,8 @@ return {
         h = { telescope_builtin.help_tags, "[S]earch [H]elp" },
         r = { telescope_builtin.resume, "[S]earch [R]esume" },
         s = { telescope_builtin.builtin, "[S]earch [S]elect Telescope" },
-        w = { telescope_builtin.grep_string, "[S]earch current [W]ord" }
+        w = { telescope_builtin.grep_string, "[S]earch current [W]ord" },
+        t = { "<cmd> TodoTelescope <cr>", "[S]earch [T]odos" },
       },
       ["?"] = { telescope_builtin.oldfiles, "[?] Find recently opened files" },
       ["<leader><leader>"] = { telescope_builtin.buffers, "[ ] Find existing buffers" }
