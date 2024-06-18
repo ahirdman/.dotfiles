@@ -9,7 +9,18 @@ return {
     },
   },
   quick_lint_js = {},
-  tsserver = {},
+  tsserver = {
+    settings = {
+      enable = true,
+      single_file_support = false
+    }
+  },
+  -- denols = {
+  --   settings = {
+  --     enable = false,
+  --     single_file_support = true
+  --   }
+  -- },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
