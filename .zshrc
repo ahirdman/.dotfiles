@@ -29,10 +29,6 @@ export GUM_INPUT_PLACEHOLDER="..."
 export GUM_INPUT_PROMPT=" "
 export GUM_INPUT_WIDTH=80
 
-function batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
-}
-
 # FZF Defaults
 export FZF_DEFAULT_OPTS='
   --height 40%
@@ -119,8 +115,8 @@ alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
 alias branch='git branch -v'
 alias coa='git add -A && git commit -m'
-alias gc="~/.dotfiles/functions/git_clone.zsh"
-alias gb="~/.dotfiles/functions/git_branch.zsh"
+alias gc="clone"
+alias gb="switchBranch"
 alias gp="git pull"
 
 alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
