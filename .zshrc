@@ -3,7 +3,7 @@ export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
 
 # Pager and theme settings
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export BAT_THEME='gruvbox-dark'
+export BAT_THEME='1337'
 export NULLCMD=bat
 
 # Homebrew settings
