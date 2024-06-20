@@ -17,6 +17,8 @@
 
     ~/.config/nvim: nvim
 
+    ~/.config/ohmyposh: omp
+
     ~/.config/tmux: tmux 
     ~/.config/tmuxinator: workspaces
 
