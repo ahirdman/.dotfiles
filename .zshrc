@@ -1,5 +1,4 @@
-# Starship prompt configuration
-export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 
 # Pager and theme settings
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -66,8 +65,6 @@ fi
 # Source additional scripts and plugins
 . /opt/homebrew/etc/profile.d/z.sh
 
-# Starship prompt initialization
-eval "$(starship init zsh)"
 eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
 
 # Zsh plugins
