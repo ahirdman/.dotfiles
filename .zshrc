@@ -1,4 +1,5 @@
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
 
 # Pager and theme settings
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -54,28 +55,22 @@ export FZF_DEFAULT_OPTS='
   --color=scrollbar:#665c54
   '
 
-# Homebrew completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+# Bun settings
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$PATH:$HOME/.maestro/bin"
 
-  autoload -Uz compinit
-  compinit
-fi
+# Aliases
+[[ -f ~/.config/zsh/aliases.zsh ]] && source ~/.config/zsh/aliases.zsh
 
-# Source additional scripts and plugins
-. /opt/homebrew/etc/profile.d/z.sh
+# Functions
+[[ -f ~/.config/zsh/functions.zsh ]] && source ~/.config/zsh/functions.zsh
 
-eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
+# Completions
+[[ -f ~/.config/zsh/completions.zsh ]] && source ~/.config/zsh/completions.zsh
 
-# Zsh plugins
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# Zsh Custom functions
-source $HOME/.dotfiles/functions/git.zsh
-source $HOME/.dotfiles/functions/help.zsh
-source $HOME/.dotfiles/functions/cd.zsh
+# Plugins
+[[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
 # Custom initialization function
 function init_fzf() {
@@ -91,38 +86,3 @@ function init_fzf() {
 export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
 
 zvm_after_init_commands+=(init_fzf)
-
-# Bun completions
-[ -s "/Users/ahirdman/.bun/_bun" ] && source "/Users/ahirdman/.bun/_bun"
-
-# Bun settings
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:$HOME/.maestro/bin"
-
-# Aliases
-alias trail='<<<${(F)path}'
-
-alias ls="exa -la --icons --git --group-directories-first"
-alias lt="exa --tree --level=2 --icons --all --ignore-glob="node_modules" "
-
-alias bbd='brew bundle dump --force'
-
-alias glt='git log --oneline --decorate --graph --all'
-alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
-alias branch='git branch -v'
-alias coa='git add -A && git commit -m'
-alias gc="clone"
-alias gb="switchBranch"
-alias gp="git pull"
-
-alias ts="~/.dotfiles/functions/tmux_sessions.zsh"
-alias tmn="tmuxinator new"
-alias tmr="tmuxinator start"
-alias tme="tmuxinator edit"
-alias tms="tmuxinator stop"
-alias tsource="tmux source-file $HOME/.dotfiles/tmux/tmux.conf"
-
-alias v="nvim"
-
-alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
