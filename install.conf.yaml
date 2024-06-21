@@ -9,24 +9,19 @@
     ~/.zshrc: .zshrc
     ~/.zprofile: .zprofile
     ~/.zshenv: .zshenv
-
-    ~/.config/alacritty/alacritty.toml: alacritty.toml
-
+    ~/.actrc: .actrc
     ~/.yabairc: .yabairc
     ~/.skhdrc: .skhdrc
-
-    ~/.config/nvim: nvim
-
-    ~/.config/ohmyposh: omp
-
-    ~/.config/tmux: tmux 
-    ~/.config/tmuxinator: workspaces
-
     ~/.gitconfig: git/.gitconfig_global
     ~/.gitmessage: git/.gitmessage
-    ~/.config/gh/config.yml: github/gh.config.yml
 
-    ~/.actrc: .actrc
+    ~/.config/alacritty/alacritty.toml: alacritty.toml
+    ~/.config/nvim: nvim
+    ~/.config/ohmyposh: omp
+    ~/.config/zsh: .config/zsh
+    ~/.config/tmux: tmux 
+    ~/.config/tmuxinator: workspaces
+    ~/.config/gh/config.yml: github/gh.config.yml
 
     ~/.ssh/config: ssh/config
 

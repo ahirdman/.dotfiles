@@ -1,5 +1,20 @@
-#!/bin/zsh
+# Use cd to switch node version
+function cd() {
+  builtin cd "$@"
 
+  local nvmrc_file=".nvmrc"
+
+  if [[ -f "$PWD/$nvmrc_file" ]]; then
+    local desired_version=$(cat "$PWD/$nvmrc_file")
+    local current_version=$(node -v)
+
+    if [[ "$current_version" != "$desired_version" ]]; then
+      n auto
+    fi
+  fi
+}
+
+#Git
 function g() {
   if [[ $# -gt 0 ]]; then
     git "$@"
@@ -37,4 +52,13 @@ function clone() {
 
 function batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+
+# Help pages
+function help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+}
+
+function tmuxPickSession() {
+  SESSION=$(tmux list-sessions -F \#S | gum filter --placeholder "Pick session...") tmux switch-client -t $SESSION || tmux attach -t $SESSION
 }
