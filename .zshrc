@@ -55,6 +55,8 @@ export FZF_DEFAULT_OPTS='
   --color=scrollbar:#665c54
   '
 
+export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
+
 # Bun settings
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -71,18 +73,3 @@ export PATH="$PATH:$HOME/.maestro/bin"
 
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
-
-# Custom initialization function
-function init_fzf() {
-  source <(fzf --zsh)
-
-  HISTFILE=~/.zsh_history
-  HISTSIZE=10000
-  SAVEHIST=10000
-
-  setopt appendhistory
-}
-
-export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
-
-zvm_after_init_commands+=(init_fzf)
