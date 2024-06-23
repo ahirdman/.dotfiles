@@ -15,9 +15,9 @@
     ~/.gitconfig: git/.gitconfig_global
     ~/.gitmessage: git/.gitmessage
 
-    ~/.config/alacritty/alacritty.toml: alacritty.toml
+    ~/.config/alacritty: .config/alacritty
     ~/.config/nvim: nvim
-    ~/.config/ohmyposh: omp
+    ~/.config/ohmyposh: .config/ohmyposh
     ~/.config/zsh: .config/zsh
     ~/.config/tmux: tmux 
     ~/.config/tmuxinator: workspaces
