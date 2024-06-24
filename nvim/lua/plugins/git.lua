@@ -49,7 +49,7 @@ return {
         current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
         current_line_blame_opts = {
           virt_text = true,
-          virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+          virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
           delay = 1000,
           ignore_whitespace = false,
         },
@@ -68,14 +68,19 @@ return {
         yadm = { enable = false },
 
         on_attach = function(bufnr)
-          vim.keymap.set('n', '<leader>H', require('gitsigns').preview_hunk,
-            { buffer = bufnr, desc = 'Preview git hunk' })
+          local gitsigns = require('gitsigns')
 
-          vim.keymap.set('n', ']]', require('gitsigns').next_hunk,
-            { buffer = bufnr, desc = 'Next git hunk' })
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
 
-          vim.keymap.set('n', '[[', require('gitsigns').prev_hunk,
-            { buffer = bufnr, desc = 'Previous git hunk' })
+          map('n', '<leader>H', gitsigns.preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+          map('n', ']]', gitsigns.next_hunk, { buffer = bufnr, desc = 'Next git hunk' })
+          map('n', '[[', gitsigns.prev_hunk, { buffer = bufnr, desc = 'Previous git hunk' })
+          map('n', '<leader>td', gitsigns.toggle_deleted, { buffer = bufnr, desc = 'Toggle deleted hunks' })
+          map('n', '<leader>hb', function() gitsigns.blame_line { full = false } end, { desc = "Preview blame" })
         end,
       }
     end
