@@ -37,7 +37,7 @@ style = "plain"
 overflow = "hide"
 foreground = "p:grey"
 background = "transparent"
-template = " {{ .HEAD }} <p:orange>{{ if (.Working.Changed) }}!{{ end }}{{ if (.Working.Untracked) }}+{{end}}{{ if (.Working.Deleted) }}-{{end}} {{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}</>{{ if (.Staging.Added) }}<p:green>+</>{{end}} "
+template = " {{ .HEAD }} <p:orange>{{ if (.Working.Changed) }}!{{ end }}{{ if (.Working.Untracked) }}?{{end}}{{ if (.Working.Deleted) }}-{{end}} {{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}</>{{ if (.Staging.Added) }}<p:green>+</>{{end}} "
 
 [blocks.segments.properties]
 commit_icon = "@"
