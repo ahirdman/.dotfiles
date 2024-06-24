@@ -2,15 +2,10 @@
 
 ### Includes:
 - Zsh configurations
-     **Plugins**
-    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/master)
-
-- Starship Prompt
-- Vim (not configured)
-- Neovim - Using NvChad
+- Oh My Posh Prompt
+- Neovim
 - Tmux
-- Dotbot
+- Dotbot, (might move to stow in future)
 - Brewfile and executable
 - Window managment with Yabai and Skhdrc
 - Git configurations
