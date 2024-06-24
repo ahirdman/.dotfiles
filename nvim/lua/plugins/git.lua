@@ -7,34 +7,34 @@ return {
       require("gitsigns").setup {
         signs = {
           add = {
-            hl = "GitSignsAdd",
+            --hl = "GitSignsAdd",
             text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsAddNr",
-            linehl = "GitSignsAddLn",
+            --numhl = "GitSignsAddNr",
+            --linehl = "GitSignsAddLn",
           },
           change = {
-            hl = "GitSignsChange",
+            --hl = "GitSignsChange",
             text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
+            --numhl = "GitSignsChangeNr",
+            --linehl = "GitSignsChangeLn",
           },
           delete = {
-            hl = "GitSignsDelete",
+            --hl = "GitSignsDelete",
             text = icons.ui.TriangleShortArrowRight,
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
+            --numhl = "GitSignsDeleteNr",
+            --linehl = "GitSignsDeleteLn",
           },
           topdelete = {
-            hl = "GitSignsDelete",
+            --hl = "GitSignsDelete",
             text = icons.ui.TriangleShortArrowRight,
-            numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn",
+            --numhl = "GitSignsDeleteNr",
+            --linehl = "GitSignsDeleteLn",
           },
           changedelete = {
-            hl = "GitSignsChange",
+            --hl = "GitSignsChange",
             text = icons.ui.BoldLineLeft,
-            numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn",
+            --numhl = "GitSignsChangeNr",
+            --linehl = "GitSignsChangeLn",
           },
         },
         signcolumn = true,
@@ -46,10 +46,10 @@ return {
           follow_files = true,
         },
         attach_to_untracked = true,
-        current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+        current_line_blame = false,
         current_line_blame_opts = {
           virt_text = true,
-          virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
+          virt_text_pos = "eol",
           delay = 1000,
           ignore_whitespace = false,
         },
@@ -76,11 +76,23 @@ return {
             vim.keymap.set(mode, l, r, opts)
           end
 
-          map('n', '<leader>H', gitsigns.preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+          local wk = require("which-key")
+
+          wk.register({
+            g = {
+              b = { function() gitsigns.blame_line { full = false } end, "Preview blame" },
+            }
+          }, { prefix = "<leader>" })
+
+          wk.register({
+            g = {
+              h = { gitsigns.preview_hunk, 'Preview git hunk' },
+              t = { gitsigns.toggle_deleted, 'Toggle deleted hunks' }
+            }
+          }, { prefix = "<leader>", buffer = bufnr })
+
           map('n', ']]', gitsigns.next_hunk, { buffer = bufnr, desc = 'Next git hunk' })
           map('n', '[[', gitsigns.prev_hunk, { buffer = bufnr, desc = 'Previous git hunk' })
-          map('n', '<leader>td', gitsigns.toggle_deleted, { buffer = bufnr, desc = 'Toggle deleted hunks' })
-          map('n', '<leader>hb', function() gitsigns.blame_line { full = false } end, { desc = "Preview blame" })
         end,
       }
     end
