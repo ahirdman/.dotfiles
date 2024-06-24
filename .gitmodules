@@ -1,14 +1,14 @@
 [submodule ".config/tmux/plugins/tmux-sensible"]
-	path = tmux/plugins/tmux-sensible
+	path = .config/tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule ".config/tmux/plugins/tmux-yank"]
-	path = tmux/plugins/tmux-yank
+	path = .config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
 [submodule ".config/tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
+	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule ".config/tmux/plugins/vim-tmux-navigator"]
-	path = tmux/plugins/vim-tmux-navigator
+	path = .config/tmux/plugins/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
 [submodule "dotbot"]
 	path = dotbot

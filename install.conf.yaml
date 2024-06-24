@@ -6,24 +6,24 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: .zshrc
+    ~/.actrc: .actrc
+    ~/.gitconfig: .gitconfig_global
+    ~/.gitmessage: .gitmessage
+    ~/.skhdrc: .skhdrc
+    ~/.yabairc: .yabairc
     ~/.zprofile: .zprofile
     ~/.zshenv: .zshenv
-    ~/.actrc: .actrc
-    ~/.yabairc: .yabairc
-    ~/.skhdrc: .skhdrc
-    ~/.gitconfig: git/.gitconfig_global
-    ~/.gitmessage: git/.gitmessage
+    ~/.zshrc: .zshrc
 
     ~/.config/alacritty: .config/alacritty
-    ~/.config/nvim: nvim
+    ~/.config/nvim: .config/nvim
     ~/.config/ohmyposh: .config/ohmyposh
     ~/.config/zsh: .config/zsh
-    ~/.config/tmux: tmux 
-    ~/.config/tmuxinator: workspaces
-    ~/.config/gh/config.yml: github/gh.config.yml
+    ~/.config/gh/config.yml: .config/gh/gh.config.yml
+    ~/.config/tmux: .config/tmux 
+    ~/.config/tmuxinator: .config/tmuxinator
 
-    ~/.ssh/config: ssh/config
+    ~/.ssh/config: .ssh/config
 
 - create:
     - ~/Developer
@@ -33,15 +33,15 @@
     description: Installing submodules
     stdout: true
     stderr: true
-  - command: ./setup_homebrew.zsh
+  - command: ./scripts/setup_homebrew.zsh
     description: Installing HomeBrew and packages
     stdout: true
     stderr: true
-  - command: ./setup_node.zsh
+  - command: ./scripts/setup_node.zsh
     description: Installing Node and NPM
     stdout: true
     stderr: true
-  - command: ./install_fonts.zsh
+  - command: ./scripts/install_fonts.zsh
     description: Install Fonts
     stdout: true
     stderr: true
