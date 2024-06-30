@@ -65,8 +65,8 @@ return {
           surface2 = "#4d4d4d",
           surface1 = "#404040",
           surface0 = "#292929", -- Hover neotree
-          base = "#000000", -- Background
-          mantle = "#0C0A09", -- Neotree background
+          base = "#000000",     -- Background
+          mantle = "#0C0A09",   -- Neotree background
           crust = "#141617",
         },
 
@@ -112,6 +112,11 @@ return {
             LineNr = { fg = colors.overlay0 },
 
             LspInfoBorder = { link = "FloatBorder" },
+
+            FlashMatch = { fg = colors.text, bg = colors.crust },
+            FlashCurrent = { fg = colors.red },
+            -- FlashBackdrop = { bg = colors.overlay0 },
+            FlashLabel = { fg = colors.peach, bg = colors.surface1 },
 
             -- normal = {
             --   c = {
@@ -196,7 +201,7 @@ return {
             Type = { fg = colors.yellow, style = { "bold" } },
             Function = { fg = colors.green, style = { "bold" } },
             Delimiter = { fg = colors.subtext1 }, -- changed
-            Ignore = { fg = colors.subtext1 }, -- changed
+            Ignore = { fg = colors.subtext1 },    -- changed
             Macro = { fg = colors.teal },
 
             -- Typescript
