@@ -35,7 +35,7 @@ return {
           },
         },
 
---        border = true,
+        --        border = true,
         -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
 
         -- prompt_title = false,
@@ -43,7 +43,7 @@ return {
 
         prompt_prefix = " " .. icons.ui.Telescope .. "  ",
         selection_caret = icons.ui.BoldArrowRight .. " ",
-        file_ignore_patterns = { "node_modules", "package-lock.json", "*.ttf" },
+        file_ignore_patterns = { "node_modules", "package-lock.json", ".git", "*.ttf" },
         initial_mode = "insert",
         select_strategy = "reset",
         sorting_strategy = "ascending",
@@ -59,6 +59,7 @@ return {
       pickers = {
         find_files = {
           previewer = false,
+          hidden = true,
           layout_config = {
             height = 0.4,
             prompt_position = "top",
@@ -88,6 +89,7 @@ return {
     })
 
     pcall(telescope.load_extension, "fzf")
+    pcall(telescope.load_extension, "glyph")
 
     local function find_git_root()
       -- Use the current buffer's path as the starting point for the git search

@@ -12,6 +12,10 @@ return {
   },
 
   {
+    'ghassan0/telescope-glyph.nvim',
+  },
+
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
@@ -142,8 +146,8 @@ return {
         -- import existing settings from other plugins
         import = {
           vscode = true, -- local .vscode/settings.json
-          coc = true, -- global/local coc-settings.json
-          nlsp = true, -- global/local nlsp-settings.nvim json settings
+          coc = true,    -- global/local coc-settings.json
+          nlsp = true,   -- global/local nlsp-settings.nvim json settings
         },
         -- send new configuration to lsp clients when changing json settings
         live_reload = true,
