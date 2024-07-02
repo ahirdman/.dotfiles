@@ -108,14 +108,14 @@ return {
               readonly = "  ",
               unnamed = "  ",
             },
-            color = { fg = colors.subtext0 }
+            color = { fg = colors.subtext0 },
           },
           {
             "diff",
           },
           {
             "fancy_searchcount",
-            color = { fg = colors.peach }
+            color = { fg = colors.white }
           },
         },
         lualine_c = {
@@ -124,7 +124,6 @@ return {
             sources = { "nvim_lsp" },
             symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " ", info = icons.diagnostics.Information .. " " },
           },
-
         },
         lualine_x = {
           {
@@ -132,6 +131,7 @@ return {
             color = { fg = colors.peach },
             icon = icons.git.Branch
           },
+          { "fancy_lsp_servers" },
           {
             "progress",
             color = { fg = colors.subtext0 }
