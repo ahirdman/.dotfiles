@@ -1,31 +1,29 @@
 return {
   yamlls = {},
-  jsonls = {
-    settings = {
-      json = {
-        schema = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
-    },
-  },
   quick_lint_js = {},
+  tailwindcss = {},
+  pyright = {},
+  taplo = {},
+  -- denols = {},
   tsserver = {
     settings = {
       enable = true,
       single_file_support = false
     }
   },
-  -- denols = {
-  --   settings = {
-  --     enable = false,
-  --     single_file_support = true
-  --   }
-  -- },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = { disable = { 'missing-fields' } },
+    },
+  },
+  jsonls = {
+    settings = {
+      json = {
+        schema = require("schemastore").json.schemas(),
+        validate = { enable = true },
+      },
     },
   },
   sqls = {
