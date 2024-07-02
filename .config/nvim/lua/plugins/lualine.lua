@@ -11,10 +11,11 @@ return {
     -- NOTE: These should be extracted from current theme instead
     local colors = {
       white        = '#ebdbb2',
-      red          = '#fb4934',
+      red          = '#ea6962',
       pink         = '#d3869b',
       green        = '#a9b665',
-      blue         = '#83a598',
+      teal         = '#89b482',
+      blue         = '#7daea3',
       yellow       = '#d8a657',
       peach        = "#e78a4e",
       gray         = '#a89984',
@@ -22,32 +23,42 @@ return {
       lightgray    = '#504945',
       inactivegray = '#7c6f64',
       base         = "#000000",
+      subtext1     = "#d5c4a1",
+      subtext0     = "#bdae93",
+      overlay2     = "#a89984",
+      overlay1     = "#928374",
+      overlay0     = "#595959",
+      surface2     = "#4d4d4d",
+      surface1     = "#404040",
+      surface0     = "#292929",
+      mantle       = "#0C0A09",
+      crust        = "#141617",
     }
 
     local customTheme = {
       normal = {
         a = { bg = colors.blue, fg = colors.base, gui = 'bold' },
-        b = { bg = colors.lightgray, fg = colors.white },
+        b = { bg = colors.base, fg = colors.white },
         c = { bg = colors.base, fg = colors.gray }
       },
       insert = {
         a = { bg = colors.yellow, fg = colors.base, gui = 'bold' },
-        b = { bg = colors.lightgray, fg = colors.white },
+        b = { bg = colors.base, fg = colors.white },
         c = { bg = colors.base, fg = colors.white }
       },
       visual = {
         a = { bg = colors.pink, fg = colors.base, gui = 'bold' },
-        b = { bg = colors.lightgray, fg = colors.white },
+        b = { bg = colors.base, fg = colors.white },
         c = { bg = colors.base, fg = colors.base }
       },
       replace = {
         a = { bg = colors.red, fg = colors.base, gui = 'bold' },
-        b = { bg = colors.lightgray, fg = colors.white },
+        b = { bg = colors.base, fg = colors.white },
         c = { bg = colors.base, fg = colors.white }
       },
       command = {
         a = { bg = colors.green, fg = colors.base, gui = 'bold' },
-        b = { bg = colors.lightgray, fg = colors.white },
+        b = { bg = colors.base, fg = colors.white },
         c = { bg = colors.base, fg = colors.base }
       },
       inactive = {
@@ -65,7 +76,7 @@ return {
         theme = customTheme,
         globalstatus = true,
         icons_enabled = true,
-        component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
+        component_separators = { left = '', right = '' },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {
@@ -85,6 +96,11 @@ return {
         },
         lualine_b = {
           {
+            -- NOTE: Margin looks wierd, create a custom component for this
+            "filetype",
+            icon_only = true,
+          },
+          {
             "filename",
             path = 0,
             symbols = {
@@ -92,15 +108,14 @@ return {
               readonly = "  ",
               unnamed = "  ",
             },
-            color = { fg = colors.white, bg = '' }
+            color = { fg = colors.subtext0 }
           },
           {
             "diff",
-            color = { bg = '' },
           },
           {
             "fancy_searchcount",
-            color = { fg = colors.peach, bg = '' }
+            color = { fg = colors.peach }
           },
         },
         lualine_c = {
@@ -114,15 +129,12 @@ return {
         lualine_x = {
           {
             "branch",
-            color = { fg = colors.peach, bg = '' },
+            color = { fg = colors.peach },
             icon = icons.git.Branch
           },
-
-          "fancy_lsp_servers",
           {
-
             "progress",
-            color = { bg = '' }
+            color = { fg = colors.subtext0 }
           }
         },
         lualine_y = {},

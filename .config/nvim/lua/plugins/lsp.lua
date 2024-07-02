@@ -10,6 +10,7 @@ return {
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
+    local lsp_config = require('lspconfig')
     local neodev = require("neodev")
     local servers = require("config.lsp.servers")
     local on_attach = require("config.lsp.on-attach")
@@ -37,7 +38,7 @@ return {
 
     mason_lspconfig.setup_handlers({
       function(server_name)
-        require("lspconfig")[server_name].setup({
+        lsp_config[server_name].setup({
           capabilities = capabilities,
           on_attach = on_attach,
           settings = servers[server_name],
@@ -54,7 +55,7 @@ return {
       update_in_insert = false,
       severity_sort = true,
       float = {
-        source = "always",
+        source = true,
         style = "minimal",
         border = "rounded",
         header = "",
