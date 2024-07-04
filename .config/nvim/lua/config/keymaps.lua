@@ -15,7 +15,7 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateRight <CR>") -- Move Right
 vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateDown <CR>")  -- Move Down
 vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateUp <CR>")    -- Move Up
 
-vim.keymap.set({ "n" }, "F", "<cmd>:lua vim.diagnostic.open_float() <CR>")
+vim.keymap.set({ "n" }, "L", "<cmd>:lua vim.diagnostic.open_float() <CR>")
 
 -- save
 vim.keymap.set({ "n" }, "<C-s>", "<cmd> w <CR>")
