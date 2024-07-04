@@ -59,9 +59,23 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+      view = {
+        entries = "custom"
+      },
       completion = {
         completeopt = "menu,menuone,noinsert",
       },
+      enabled = function()
+        -- disable completion in comments
+        local context = require 'cmp.config.context'
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == 'c' then
+          return true
+        else
+          return not context.in_treesitter_capture("comment")
+              and not context.in_syntax_group("Comment")
+        end
+      end,
       mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -106,6 +120,7 @@ return {
         { name = "emoji" },
         { name = "treesitter" },
         { name = "tmux" },
+        { name = 'tsnip' }
       },
       formatting = {
         format = function(entry, vim_item)
@@ -115,12 +130,13 @@ return {
             vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             -- Source
             vim_item.menu = ({
-              copilot = "[Copilot]",
+              -- copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               nvim_lua = "[Lua]",
               luasnip = "[LuaSnip]",
               buffer = "[Buffer]",
               latex_symbols = "[LaTeX]",
+              tsnip = "[tsnip]"
             })[entry.source.name]
             return vim_item
           else
