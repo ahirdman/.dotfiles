@@ -79,7 +79,7 @@ return {
           mode = 'virtualtext', -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = "lsp",                                -- Enable tailwind colors
+          tailwind = true,                                 -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
           sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
           virtualtext = "",
@@ -140,10 +140,17 @@ return {
       })
     end
   },
+
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
   }
 }
