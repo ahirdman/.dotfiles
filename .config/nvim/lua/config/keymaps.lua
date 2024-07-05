@@ -5,15 +5,10 @@ vim.keymap.set({ "n" }, "<Esc>", ":noh <CR>")
 vim.keymap.set({ "n" }, "<Space>z", "<cmd> ZenMode <CR>")
 
 -- switch between windows
-vim.keymap.set({ "n" }, "<C-h>", "<C-w>h")                       -- Move left
-vim.keymap.set({ "n" }, "<C-l>", "<C-w>l")                       -- Move Right
-vim.keymap.set({ "n" }, "<C-l>", "<C-w>j")                       -- Move Down
-vim.keymap.set({ "n" }, "<C-l>", "<C-w>k")                       -- Move Up
-
-vim.keymap.set({ "n" }, "<C-h>", "<cmd> TmuxNavigateLeft <CR>")  -- Move left
-vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateRight <CR>") -- Move Right
-vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateDown <CR>")  -- Move Down
-vim.keymap.set({ "n" }, "<C-l>", "<cmd> TmuxNavigateUp <CR>")    -- Move Up
+vim.keymap.set({ "n" }, "<C-h>", "<C-w>h") -- Move left
+vim.keymap.set({ "n" }, "<C-l>", "<C-w>l") -- Move Right
+vim.keymap.set({ "n" }, "<C-l>", "<C-w>j") -- Move Down
+vim.keymap.set({ "n" }, "<C-l>", "<C-w>k") -- Move Up
 
 vim.keymap.set({ "n" }, "L", "<cmd>:lua vim.diagnostic.open_float() <CR>")
 
