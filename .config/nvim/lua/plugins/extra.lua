@@ -7,6 +7,7 @@ return {
         easing_function = "sine",
         hide_cursor = true,
         cursor_scrolls_alone = true,
+        performance_mode = false
       })
     end,
   },
@@ -17,19 +18,21 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    },
   },
 
   { 'echasnovski/mini.pairs', version = '*', opts = {} },
-
-  {
-    -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
-    main = "ibl",
-    enabled = false
-  },
 
   {
     "numToStr/Comment.nvim",
@@ -49,17 +52,6 @@ return {
   },
 
   {
-    "j-hui/fidget.nvim",
-    branch = "legacy",
-    enabled = false,
-    config = function()
-      require("fidget").setup({
-        window = { blend = 0 },
-      })
-    end
-  },
-
-  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -75,19 +67,19 @@ return {
       colorizer.setup({
         filetypes = { "*" },
         user_default_options = {
-          RGB = true,        -- #RGB hex codes
-          RRGGBB = true,     -- #RRGGBB hex codes
-          names = false,      -- "Name" codes like Blue or blue
-          RRGGBBAA = false,  -- #RRGGBBAA hex codes
-          AARRGGBB = false,  -- 0xAARRGGBB hex codes
-          rgb_fn = false,    -- CSS rgb() and rgba() functions
-          hsl_fn = false,    -- CSS hsl() and hsla() functions
-          css = false,       -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = false,    -- Enable all CSS *functions*: rgb_fn, hsl_fn
-          mode = "virtualtext", -- Set the display mode.
+          RGB = true,           -- #RGB hex codes
+          RRGGBB = true,        -- #RRGGBB hex codes
+          names = false,        -- "Name" codes like Blue or blue
+          RRGGBBAA = false,     -- #RRGGBBAA hex codes
+          AARRGGBB = false,     -- 0xAARRGGBB hex codes
+          rgb_fn = false,       -- CSS rgb() and rgba() functions
+          hsl_fn = false,       -- CSS hsl() and hsla() functions
+          css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          mode = 'virtualtext', -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = true,                              -- Enable tailwind colors
+          tailwind = "lsp",                                -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
           sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
           virtualtext = "",
