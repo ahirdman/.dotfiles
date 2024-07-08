@@ -4,6 +4,7 @@ return {
   tailwindcss = {},
   pyright = {},
   taplo = {},
+  -- actionlint = {},
   -- denols = {},
   tsserver = {
     settings = {
