@@ -19,3 +19,4 @@
   ca = commit --amend
   pf = push --force-with-lease
   prune-branches = !git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
+  undo = reset --soft HEAD^
