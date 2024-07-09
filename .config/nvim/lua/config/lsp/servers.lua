@@ -9,7 +9,12 @@ return {
   tsserver = {
     settings = {
       enable = true,
-      single_file_support = false
+      single_file_support = false,
+    },
+    init_options = {
+      preferences = {
+        disableSuggestions = true
+      }
     }
   },
   lua_ls = {
