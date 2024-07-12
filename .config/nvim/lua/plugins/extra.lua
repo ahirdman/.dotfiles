@@ -152,5 +152,25 @@ return {
     "vhyrro/luarocks.nvim",
     priority = 1000,
     config = true,
+  },
+
+  { -- Temp until telescope builtin go to defenition works again
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup({
+        symbol_in_winbar = {
+          enable = false
+        },
+        lightbulb = { enable = false },
+        definition = {
+          width = 0.9,
+          height = 0.6
+        }
+      })
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
+    }
   }
 }

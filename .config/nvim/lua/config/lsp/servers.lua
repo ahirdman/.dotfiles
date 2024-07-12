@@ -1,6 +1,6 @@
 return {
   yamlls = {},
-  quick_lint_js = {},
+  -- quick_lint_js = {},
   tailwindcss = {},
   pyright = {},
   taplo = {},
