@@ -116,13 +116,7 @@ return {
             FlashMatch = { fg = colors.text, bg = colors.crust },
             FlashCurrent = { fg = colors.red },
             -- FlashBackdrop = { bg = colors.overlay0 },
-            FlashLabel = { fg = colors.peach, bg = colors.surface1 },
-
-            -- normal = {
-            --   c = {
-            --     bg = colors.peach
-            --   }
-            -- },
+            FlashLabel = { fg = colors.base, bg = colors.text },
 
             NeoTreeDirectoryIcon = { fg = colors.subtext1 },
             NeoTreeDirectoryName = { fg = colors.subtext1 },
