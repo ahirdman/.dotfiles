@@ -130,15 +130,9 @@ return {
       return
     end
 
-    vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
+    local utils = require("config.utils")
 
-    vim.keymap.set("n", "<leader>/", function()
-      -- You can pass additional configuration to telescope to change theme, layout, etc.
-      telescope_builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-      }))
-    end, { desc = "[/] Fuzzily search in current buffer" })
+    vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 
     local function telescope_live_grep_open_files()
       require("telescope.builtin").live_grep({
@@ -149,6 +143,14 @@ return {
       print(vim.bo.filetype)
     end
 
-    vim.keymap.set("n", "<leader>s/", telescope_live_grep_open_files, { desc = "[S]earch [/] in Open Files" })
+    utils.keymap("n", "<leader>/", function()
+      -- You can pass additional configuration to telescope to change theme, layout, etc.
+      telescope_builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        winblend = 10,
+        previewer = false,
+      }))
+    end, "[/] Fuzzily search in current buffer")
+
+    utils.keymap("n", "<leader>s/", telescope_live_grep_open_files, "[S]earch [/] in Open Files")
   end,
 }
