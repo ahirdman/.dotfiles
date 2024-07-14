@@ -69,13 +69,7 @@ return {
 
         on_attach = function(bufnr)
           local gitsigns = require('gitsigns')
-
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
+          local utils = require("config.utils")
           local wk = require("which-key")
 
           wk.register({
@@ -91,8 +85,8 @@ return {
             }
           }, { prefix = "<leader>", buffer = bufnr })
 
-          map('n', ']]', gitsigns.next_hunk, { buffer = bufnr, desc = 'Next git hunk' })
-          map('n', '[[', gitsigns.prev_hunk, { buffer = bufnr, desc = 'Previous git hunk' })
+          utils.buffer_keymap(bufnr, "n", ']]', gitsigns.next_hunk, "Next git hunk")
+          utils.buffer_keymap(bufnr, "n", '[[', gitsigns.prev_hunk, 'Previous git hunk')
         end,
       }
     end
