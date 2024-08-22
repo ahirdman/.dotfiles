@@ -72,18 +72,11 @@ return {
           local utils = require("config.utils")
           local wk = require("which-key")
 
-          wk.register({
-            g = {
-              b = { function() gitsigns.blame_line { full = false } end, "Preview blame" },
-            }
-          }, { prefix = "<leader>" })
-
-          wk.register({
-            g = {
-              h = { gitsigns.preview_hunk, 'Preview git hunk' },
-              t = { gitsigns.toggle_deleted, 'Toggle deleted hunks' }
-            }
-          }, { prefix = "<leader>", buffer = bufnr })
+          wk.add({
+            { "<leader>gb", function() gitsigns.blame_line { full = false } end, desc = "Preview blame" },
+            { "<leader>gh", gitsigns.preview_hunk,                               buffer = bufnr,        desc = "Preview git hunk" },
+            { "<leader>gt", gitsigns.toggle_deleted,                             buffer = bufnr,        desc = "Toggle deleted hunks" },
+          })
 
           utils.buffer_keymap(bufnr, "n", ']]', gitsigns.next_hunk, "Next git hunk")
           utils.buffer_keymap(bufnr, "n", '[[', gitsigns.prev_hunk, 'Previous git hunk')
