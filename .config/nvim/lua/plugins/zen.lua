@@ -44,12 +44,6 @@ return {
         font = "14", -- font size
       },
     },
-    -- callback where you can add custom code when the Zen window opens
-    on_open = function(win)
-    end,
-    -- callback where you can add custom code when the Zen window closes
-    on_close = function()
-    end,
   },
   {
     "folke/twilight.nvim",

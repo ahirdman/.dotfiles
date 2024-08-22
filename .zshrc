@@ -73,3 +73,10 @@ export PATH="$PATH:$HOME/.maestro/bin"
 
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
+
+# pnpm config
+export PNPM_HOME="/Users/ahirdman/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac

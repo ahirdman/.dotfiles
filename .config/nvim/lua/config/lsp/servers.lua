@@ -32,6 +32,7 @@ return {
       },
     },
   },
+  gopls = {},
   sqls = {
     settings = {
       sqls = {
