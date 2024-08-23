@@ -62,6 +62,9 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:$HOME/.maestro/bin"
 
+# Go Executables
+export PATH=$PATH:/Users/hirdman/go/bin
+
 # Aliases
 [[ -f ~/.config/zsh/aliases.zsh ]] && source ~/.config/zsh/aliases.zsh
 
