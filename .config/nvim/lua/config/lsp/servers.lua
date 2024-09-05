@@ -1,6 +1,52 @@
 return {
-  yamlls = {},
-  -- quick_lint_js = {},
+  -- Work specifik LSP servers
+  eslint = {
+    settings = {
+      codeAction = {
+        disableRuleComment = {
+          enable = true,
+          location = "separateLine"
+        },
+        showDocumentation = {
+          enable = true
+        }
+      },
+      codeActionOnSave = {
+        enable = false,
+        mode = "all"
+      },
+      experimental = {
+        useFlatConfig = false
+      },
+      format = true,
+      nodePath = "",
+      onIgnoredFiles = "off",
+      problems = {
+        shortenToSingleLine = false
+      },
+      quiet = false,
+      rulesCustomizations = {},
+      run = "onType",
+      useESLintClass = false,
+      validate = "on",
+      workingDirectory = {
+        mode = "location"
+      }
+    }
+  },
+  -- Everyday usage LSP servers
+  yamlls = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
+      }
+    },
+  },
+  biome = {
+    settings = {
+      enable = false
+    }
+  },
   tailwindcss = {},
   pyright = {},
   taplo = {},
@@ -25,11 +71,9 @@ return {
     },
   },
   jsonls = {
-    settings = {
-      json = {
-        schema = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
+    json = {
+      schema = require("schemastore").json.schemas(),
+      validate = { enable = true },
     },
   },
   gopls = {},
