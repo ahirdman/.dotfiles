@@ -47,12 +47,21 @@ return {
       enable = false
     }
   },
-  tailwindcss = {},
+  tailwindcss = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+        },
+      },
+    }
+  },
   pyright = {},
   taplo = {},
   -- actionlint = {},
   -- denols = {},
-  tsserver = {
+  ts_ls = {
     settings = {
       enable = true,
       single_file_support = false,

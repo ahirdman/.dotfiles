@@ -196,6 +196,7 @@ return {
       { "<leader>g",        group = "Git" },
       { "<leader>gf",       telescope_builtin.git_files,                         desc = "Search [G]it [F]iles" },
       { "<leader>gd",       "<cmd> DiffviewOpen origin/main...HEAD <cr>",        desc = "View diff against main" },
+      { "<leader>gg",       "<cmd> Neogit <cr>",                                 desc = "Open Neogit" },
       { "<leader>s",        group = "Search" },
       { "<leader>sd",       telescope_builtin.diagnostics,                       desc = "[S]earch [D]iagnostics" },
       { "<leader>sg",       telescope_builtin.live_grep,                         desc = "[S]earch by [G]rep" },
