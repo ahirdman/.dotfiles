@@ -6,12 +6,8 @@ return {
     "MunifTanjim/nui.nvim",
   },
   event = "VeryLazy",
-  keys = {
-    { "<leader><tab>", ":Neotree toggle float<CR>", silent = true, desc = "Float File Explorer" },
-    { "<leader>e",     ":Neotree reveal right<CR>", silent = true, desc = "Right File Explorer" },
-    { "<c-n>",         ":Neotree toggle right<CR>", silent = true, desc = "Toggle Explorer" },
-  },
   config = function()
+    local icons = require("config.icons")
     local events = require("neo-tree.events")
     ---@class FileMovedArgs
     ---@field source string
@@ -19,7 +15,8 @@ return {
 
     ---@param args FileMovedArgs
     local function on_file_remove(args)
-      local ts_clients = vim.lsp.get_active_clients({ name = "tsserver" })
+      local ts_clients = vim.lsp.get_active_clients({ name = "ts_ls" })
+
       for _, ts_client in ipairs(ts_clients) do
         ts_client.request("workspace/executeCommand", {
           command = "_typescript.applyRenameFile",
@@ -53,6 +50,11 @@ return {
           symbol = " ",
           highlight = "NeoTreeModified",
         },
+        name = {
+          trailing_slash = false,
+          use_git_status_colors = true,
+          highlight = "NeoTreeFileName",
+        },
         icon = {
           folder_closed = "󰉋",
           folder_open = "󰝰",
@@ -62,16 +64,16 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added = "",
-            deleted = "",
-            modified = "",
-            renamed = "",
+            added = icons.git.LineAdded,
+            modified = icons.git.LineModified,
+            deleted = icons.git.FileDeleted,
+            renamed = icons.git.FileRenamed,
             -- Status type
-            untracked = "",
-            ignored = "",
-            unstaged = "",
-            staged = "",
-            conflict = "",
+            untracked = icons.git.FileUntracked,
+            ignored = icons.git.FileIgnored,
+            unstaged = icons.git.FileUnstaged,
+            staged = icons.git.FileStaged,
+            conflict = icons.git.Diff,
           },
         },
       },
@@ -127,7 +129,7 @@ return {
           -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
           -- some commands may take optional config options, see `:h neo-tree-mappings` for details
           config = {
-            show_path = "absolute" -- "none", "relative", "absolute"
+            show_path = "relative" -- "none", "relative", "absolute"
           }
         },
       }

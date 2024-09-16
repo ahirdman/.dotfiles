@@ -4,7 +4,6 @@ utils.keymap({ "n", "v" }, "<Space>", "<Nop>")
 
 -- clear highlight
 utils.keymap({ "n" }, "<Esc>", ":noh <CR>")
-utils.keymap({ "n" }, "<Space>z", "<cmd> ZenMode <CR>")
 
 -- switch between windows
 utils.keymap({ "n" }, "<C-h>", "<C-w>h") -- Move left
@@ -21,10 +20,8 @@ utils.keymap({ "n" }, "<C-s>", "<cmd> w <CR>")
 utils.keymap({ "v" }, "J", ":m '>+1<CR>gv=gv")
 utils.keymap({ "v" }, "K", ":m '<-2<CR>gv=gv")
 
-
 -- navigate within insert mode
 utils.keymap({ "i" }, "<C-h>", "<Left>")
-
 utils.keymap({ "i" }, "<C-l>", "<Right>")
 utils.keymap({ "i" }, "<C-j>", "<Down>")
 utils.keymap({ "i" }, "<C-k>", "<Up>")

@@ -172,5 +172,14 @@ return {
       'nvim-treesitter/nvim-treesitter', -- optional
       'nvim-tree/nvim-web-devicons',     -- optional
     }
+  },
+
+  {
+    'mfussenegger/nvim-lint',
+    config = function()
+      require('lint').linters_by_ft = {
+        yaml = { 'actionlint' }
+      }
+    end
   }
 }
