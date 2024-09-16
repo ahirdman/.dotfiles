@@ -34,6 +34,7 @@ return {
       }
     }
   },
+  bicep = {},
   -- Everyday usage LSP servers
   yamlls = {
     yaml = {
