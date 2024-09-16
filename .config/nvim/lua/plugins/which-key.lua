@@ -7,49 +7,22 @@ return {
   end,
   config = function()
     local wk = require("which-key")
-    local icons = require("config.icons")
 
     ---@class wk.Opts
     local defaults = {
       ---@type false | "classic" | "modern" | "helix"
-      preset = "classic",
+      preset = "helix",
       -- Delay before showing the popup. Can be a number or a function that returns a number.
       ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
       delay = function(ctx)
         return ctx.plugin and 0 or 200
       end,
-      ---@param mapping wk.Mapping
-      filter = function(mapping)
-        -- example to exclude mappings without a description
-        -- return mapping.desc and mapping.desc ~= ""
-        return true
-      end,
-      --- You can add any mappings here, or use `require('which-key').add()` later
-      ---@type wk.Spec
-      spec = {},
-      -- show a warning when issues were detected with your mappings
       notify = true,
-      -- Which-key automatically sets up triggers for your mappings.
-      -- But you can disable this and setup the triggers manually.
-      -- Check the docs for more info.
-      ---@type wk.Spec
-      triggers = {
-        { "<auto>", mode = "nxsot" },
-      },
-      -- Start hidden and wait for a key to be pressed before showing the popup
-      -- Only used by enabled xo mapping modes.
-      ---@param ctx { mode: string, operator: string }
-      defer = function(ctx)
-        return ctx.mode == "V" or ctx.mode == "<C-V>"
-      end,
       plugins = {
-        marks = true,     -- shows a list of your marks on ' and `
-        registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-        -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-        -- No actual key bindings are created
+        marks = false,
+        registers = false,
         spelling = {
-          enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-          suggestions = 20, -- how many suggestions should be shown in the list?
+          enabled = false,
         },
         presets = {
           operators = true,    -- adds help for operators like d, y, ...
@@ -63,9 +36,8 @@ return {
       },
       ---@type wk.Win.opts
       win = {
-        -- don't allow the popup to overlap with the cursor
-        no_overlap = true,
-        -- width = 1,
+        no_overlap = false,
+        -- width = 2,
         -- height = { min = 4, max = 25 },
         -- col = 0,
         -- row = math.huge,
@@ -179,35 +151,8 @@ return {
         ft = {},
         bt = {},
       },
-      debug = false, -- enable wk.log in the current directory
     }
 
     wk.setup(defaults)
-
-    local telescope_builtin = require("telescope.builtin")
-
-    wk.add({
-      { "<leader>d",        group = "Diagnostics" },
-      { "<leader>dt",       "<cmd> TroubleToggle <cr>",                          desc = "Toggle Trouble" },
-      { "<leader>dr",       "<cmd> TroubleRefresh <cr>",                         desc = "Toggle Trouble" },
-      { "<leader>f",        group = "Files" },
-      { "<leader>ff",       telescope_builtin.find_files,                        desc = "[F]ind [F]iles" },
-      { "<leader>fm",       function() vim.lsp.buf.format({ async = true }) end, desc = "Format" },
-      { "<leader>g",        group = "Git" },
-      { "<leader>gf",       telescope_builtin.git_files,                         desc = "Search [G]it [F]iles" },
-      { "<leader>gd",       "<cmd> DiffviewOpen origin/main...HEAD <cr>",        desc = "View diff against main" },
-      { "<leader>gg",       "<cmd> Neogit <cr>",                                 desc = "Open Neogit" },
-      { "<leader>s",        group = "Search" },
-      { "<leader>sd",       telescope_builtin.diagnostics,                       desc = "[S]earch [D]iagnostics" },
-      { "<leader>sg",       telescope_builtin.live_grep,                         desc = "[S]earch by [G]rep" },
-      { "<leader>sG",       ":LiveGrepGitRoot<cr>",                              desc = "[S]earch by [G]rep on Git Root" },
-      { "<leader>sh",       telescope_builtin.help_tags,                         desc = "[S]earch [H]elp" },
-      { "<leader>sr",       telescope_builtin.resume,                            desc = "[S]earch [R]esume" },
-      { "<leader>ss",       telescope_builtin.builtin,                           desc = "[S]earch [S]elect Telescope" },
-      { "<leader>sw",       telescope_builtin.grep_string,                       desc = "[S]earch current [W]ord" },
-      { "<leader>st",       "<cmd> TodoTelescope <cr>",                          desc = "[S]earch [T]odos" },
-      { "<leader>s?",       telescope_builtin.oldfiles,                          desc = "[?] Find recently opened files" },
-      { "<leader><leader>", telescope_builtin.buffers,                           desc = "[ ] Find existing buffers" }
-    }, { mode = "n", prexif = "" })
   end,
 }

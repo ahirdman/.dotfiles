@@ -1,24 +1,24 @@
 local on_attach = function(_, bufnr)
-  local utils = require("config.utils")
+  local wk = require("which-key")
+  local icons = require("config.icons")
+  local telescope = require("telescope.builtin")
+  local lspsaga = require('lspsaga')
 
-  utils.buffer_keymap(bufnr, "n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-  utils.buffer_keymap(bufnr, "n", "<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+  wk.add({
+    { "<leader>l",  group = "LSP",           icon = icons.kind.Package },
+    { "<leader>lr", vim.lsp.buf.rename,      desc = "Rename symbol",   buffer = bufnr },
+    { "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions",    buffer = bufnr },
+    { "<leader>lf", vim.lsp.buf.format,      desc = "Format buffer",   buffer = bufnr }
+  }, { mode = "n", prexif = "" })
+
+  wk.add({
+    { "gd", lspsaga.peek_definition,  desc = "Peek Definition" },
+    { "gr", telescope.lsp_references, desc = "Find References" },
+    { "K",  vim.lsp.buf.hover,        desc = "Hover Documentation" }
+  }, { mode = 'n', prexif = "" })
+
 
   --nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-  utils.buffer_keymap(bufnr, "n", "gd", "<cmd> :Lspsaga peek_definition <cr>", "[G]oto [D]efinition") -- temp replacement
-  utils.buffer_keymap(bufnr, "n", "gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-  utils.buffer_keymap(bufnr, "n", "gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-  utils.buffer_keymap(bufnr, "n", "<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-  utils.buffer_keymap(bufnr, "n", "<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-  utils.buffer_keymap(bufnr, "n", "K", vim.lsp.buf.hover, "Hover Documentation")
-  utils.buffer_keymap(bufnr, "n", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-  utils.buffer_keymap(bufnr, "n", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-
-  utils.buffer_keymap(bufnr, "n", "<leader>fm", "<cmd> Format <cr>", "Format buffer")
-
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    vim.lsp.buf.format()
-  end, { desc = "Format current buffer with LSP" })
 
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
