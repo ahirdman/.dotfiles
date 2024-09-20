@@ -27,3 +27,6 @@ alias tsource="tmux source-file $HOME/.config/tmux/tmux.conf"
 alias v="nvim"
 
 alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
+
+### Work related
+alias az-sub-id="az account list --query '[?isDefault].id' --output tsv"
