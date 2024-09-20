@@ -65,13 +65,9 @@ return {
       -- Flag description: https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortltkeygt
       -- Sorting keys: https://git-scm.com/docs/git-for-each-ref#_options
       sort_branches = "-committerdate",
-      -- Change the default way of opening neogit
-      kind = "floating",
-      -- Disable line numbers and relative line numbers
+      kind = "tab",
       disable_line_numbers = true,
-      -- The time after which an output console is shown for slow running commands
       console_timeout = 2000,
-      -- Automatically show console if a command takes more than console_timeout milliseconds
       auto_show_console = true,
       status = {
         recent_commit_count = 10,
@@ -83,7 +79,7 @@ return {
         kind = "tab",
       },
       commit_view = {
-        kind = "vsplit",
+        kind = "floating",
         verify_commit = os.execute("which gpg") == 0, -- Can be set to true or false, otherwise we try to find the binary
       },
       log_view = {

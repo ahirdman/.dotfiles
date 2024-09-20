@@ -2,7 +2,6 @@ local on_attach = function(_, bufnr)
   local wk = require("which-key")
   local icons = require("config.icons")
   local telescope = require("telescope.builtin")
-  local lspsaga = require('lspsaga')
 
   wk.add({
     { "<leader>l",  group = "LSP",           icon = icons.kind.Package },
@@ -12,9 +11,9 @@ local on_attach = function(_, bufnr)
   }, { mode = "n", prexif = "" })
 
   wk.add({
-    { "gd", lspsaga.peek_definition,  desc = "Peek Definition" },
-    { "gr", telescope.lsp_references, desc = "Find References" },
-    { "K",  vim.lsp.buf.hover,        desc = "Hover Documentation" }
+    { "gd", "<cmd> :Lspsaga peek_definition <cr>", desc = "Peek Definition" },
+    { "gr", telescope.lsp_references,              desc = "Find References" },
+    { "K",  vim.lsp.buf.hover,                     desc = "Hover Documentation" }
   }, { mode = 'n', prexif = "" })
 
 
