@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local icons = require("config.icons")
 local telescope_builtin = require("telescope.builtin")
+local gitsigns = require('gitsigns')
 
 wk.add({
   { "<leader><leader>", telescope_builtin.buffers,                                    desc = "Find Open Buffers" },
@@ -17,6 +18,8 @@ wk.add({
   { "<leader>gf",       telescope_builtin.git_files,                                  desc = "Search [G]it [F]iles" },
   { "<leader>gd",       "<cmd> DiffviewOpen origin/main...HEAD <cr>",                 desc = "View diff against main" },
   { "<leader>gg",       "<cmd> Neogit <cr>",                                          desc = "Open Neogit" },
+  { "<leader>gr",       gitsigns.reset_hunk,                                          desc = "Reset hunk" },
+  { "<leader>gs",       gitsigns.stage_hunk,                                          desc = "Stage hunk" },
 
   { "<leader>s",        group = "Search",                                             icon = icons.ui.Telescope },
   { "<leader>sf",       telescope_builtin.find_files,                                 desc = "[S]earch [F]iles" },
@@ -36,4 +39,6 @@ wk.add({
   { "<leader>xl",       "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)", },
   { "<leader>xL",       "<cmd>Trouble loclist toggle<cr>",                            desc = "Location List (Trouble)", },
   { "<leader>xQ",       "<cmd>Trouble qflist toggle<cr>",                             desc = "Quickfix List (Trouble)", },
+
+  { '<leader>cs',       "",                                                           hidden = true }
 }, { mode = "n", prexif = "" })
