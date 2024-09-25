@@ -38,3 +38,6 @@ Thumbs.db
 
 # Homebrew
 Brewfile.lock.json
+
+# Secrets
+env.zsh

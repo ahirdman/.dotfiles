@@ -77,6 +77,9 @@ export PATH=$PATH:/Users/hirdman/go/bin
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
+# Secrets
+[[ -f ~/.dotfiles/env.zsh ]] && source ~/.dotfiles/env.zsh
+
 # pnpm config
 export PNPM_HOME="/Users/ahirdman/Library/pnpm"
 case ":$PATH:" in

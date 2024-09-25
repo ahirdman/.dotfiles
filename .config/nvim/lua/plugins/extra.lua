@@ -4,7 +4,7 @@ return {
     config = function()
       require("neoscroll").setup({
         stop_eof = true,
-        easing_function = "sine",
+        easing = "linear",
         hide_cursor = true,
         cursor_scrolls_alone = true,
         performance_mode = false
