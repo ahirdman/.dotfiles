@@ -11,11 +11,7 @@ wk.add({
   { "<leader>q",        "<cmd>q<cr>",                                                 desc = "Quit" },
   { "<leader>w",        "<cmd>w<cr>",                                                 desc = "Write",                                        icon = icons.ui.Pencil },
 
-  { "<leader>f",        group = "Files",                                              icon = icons.ui.Files },
-  { "<leader>fm",       function() vim.lsp.buf.format({ async = true }) end,          desc = "Format" },
-
   { "<leader>g",        group = "Git" },
-  { "<leader>gf",       telescope_builtin.git_files,                                  desc = "Search [G]it [F]iles" },
   { "<leader>gd",       "<cmd> DiffviewOpen origin/main...HEAD <cr>",                 desc = "View diff against main" },
   { "<leader>gg",       "<cmd> Neogit <cr>",                                          desc = "Open Neogit" },
   { "<leader>gr",       gitsigns.reset_hunk,                                          desc = "Reset hunk" },

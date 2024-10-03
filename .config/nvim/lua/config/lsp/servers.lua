@@ -1,4 +1,5 @@
-return {
+---@type lspconfig.options
+local servers = {
   -- Work specifik LSP servers
   eslint = {
     settings = {
@@ -101,3 +102,5 @@ return {
     },
   }
 }
+
+return servers
