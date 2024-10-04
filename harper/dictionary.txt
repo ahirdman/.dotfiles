@@ -10,13 +10,17 @@ href
 Jira
 json
 nvim
+prev
 const
 biome
 Rädda
 jsonc
 neovim
+stylua
 Servera
 Chatbot
+cmdline
+Keymaps
 keychain
 filetype
 lspconfig
