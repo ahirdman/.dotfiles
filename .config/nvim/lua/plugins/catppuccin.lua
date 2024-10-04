@@ -197,6 +197,31 @@ return {
 						Ignore = { fg = colors.subtext1 }, -- changed
 						Macro = { fg = colors.teal },
 
+						NotifyERRORBorder = { fg = colors.red },
+						NotifyERRORTitle = { fg = colors.red },
+						NotifyERRORIcon = { fg = colors.red },
+						NotifyERRORBody = { link = "Normal" },
+
+						NotifyWARNBorder = { fg = colors.yellow },
+						NotifyWARNTitle = { fg = colors.yellow },
+						NotifyWARNIcon = { fg = colors.yellow },
+						NotifyWARNBody = { link = "Normal" },
+
+						NotifyDEBUGBorder = { fg = "#8B8B8B" },
+						NotifyDEBUGTitle = { fg = "#8B8B8B" },
+						NotifyDEBUGIcon = { fg = "#8B8B8B" },
+						NotifyDEBUGBody = { link = "Normal" },
+
+						NotifyINFOBorder = { fg = colors.teal }, -- Darker higher
+						NotifyINFOTitle = { fg = colors.teal },
+						NotifyINFOIcon = { fg = colors.teal },
+						NotifyINFOBody = { link = "Normal" },
+
+						NotifyTRACEBorder = { fg = colors.pink },
+						NotifyTRACETitle = { fg = colors.pink },
+						NotifyTRACEIcon = { fg = colors.pink },
+						NotifyTRACEBody = { link = "Normal" },
+
 						-- Typescript
 
 						TSAnnotation = { fg = colors.mauve },
