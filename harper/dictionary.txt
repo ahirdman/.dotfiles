@@ -1,0 +1,17 @@
+GPT
+pdf
+api
+tmux
+const
+biome
+neovim
+Servera
+Chatbot
+keychain
+lspconfig
+noForEach
+formatter
+alacritty
+formatters
+appSettings
+noExplicitAny

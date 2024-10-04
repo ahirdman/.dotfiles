@@ -25,6 +25,8 @@
 
     ~/.ssh/config: .ssh/config
 
+    ~/Library/Application Support/harper-ls: harper
+
 - create:
     - ~/Developer
 
