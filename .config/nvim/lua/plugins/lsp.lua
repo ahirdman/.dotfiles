@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
-		{ "j-hui/fidget.nvim", opts = {} },
+		--{ "j-hui/fidget.nvim", opts = {} },
 		{ "b0o/schemastore.nvim" },
 		"williamboman/mason-lspconfig.nvim",
 		"folke/neodev.nvim",
