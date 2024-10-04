@@ -146,12 +146,6 @@ return {
 	},
 
 	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-	},
-
-	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			require("lspsaga").setup({

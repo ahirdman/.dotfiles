@@ -1,7 +1,9 @@
 return {
 	"mfussenegger/nvim-lint",
 	config = function()
-		require("lint").linters_by_ft = {
+		local nvim_lint = require("lint")
+
+		nvim_lint.linters_by_ft = {
 			yaml = { "actionlint" },
 		}
 	end,
