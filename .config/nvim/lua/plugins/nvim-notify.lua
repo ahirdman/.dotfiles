@@ -27,7 +27,5 @@ return {
 			timeout = 3000,
 			top_down = true,
 		})
-
-		vim.notify = notify
 	end,
 }
