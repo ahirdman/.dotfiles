@@ -1,71 +1,59 @@
 return {
 	"mhartington/formatter.nvim",
 	config = function()
+		local formatter = require("formatter")
 		local util = require("formatter.util")
 
-		-- TODO: Conditionally set prettier for repositories with prettier configured, otherwise use biome
+		local stylua = require("formatter.filetypes.lua").stylua
 
-		require("formatter").setup({
+		local prettier = function()
+			return {
+				exe = "prettier",
+				args = {
+					"--stdin-filepath",
+					util.escape_path(util.get_current_buffer_file_path()),
+					"--ignore-path=''",
+				},
+				stdin = true,
+				try_node_modules = true,
+			}
+		end
+
+		local biome = function()
+			return {
+				exe = "biome",
+				args = {
+					"format",
+					"--stdin-file-path",
+					util.escape_path(util.get_current_buffer_file_path()),
+				},
+				stdin = true,
+			}
+		end
+
+		local javascript = function()
+			if vim.loop.fs_stat("biome.json") == nil then
+				return prettier()
+			end
+
+			return biome()
+		end
+
+		formatter.setup({
 			logging = true,
-			log_level = vim.log.levels.DEBUG,
+			log_level = vim.log.levels.INFO,
 			filetype = {
 				javascript = {
-					require("formatter.filetypes.javascript").prettier,
-					function()
-						return {
-							exe = "prettier",
-							args = {
-								"--log-level debug",
-								"--config-precedence prefer-file",
-								--"--search-parent-directories",
-								"--stdin-filepath",
-								util.escape_path(util.get_current_buffer_file_path()),
-								--"--",
-								--"-",
-							},
-							stdin = true,
-							try_node_modules = true,
-						}
-					end,
+					javascript,
 				},
 				typescriptreact = {
-					require("formatter.filetypes.typescriptreact").prettier,
-					function()
-						return {
-							exe = "prettier",
-							args = {
-								"--log-level debug",
-								"--config-precedence prefer-file",
-								--"--search-parent-directories",
-								"--stdin-filepath",
-								util.escape_path(util.get_current_buffer_file_path()),
-								--"--",
-								--"-",
-							},
-							stdin = true,
-							try_node_modules = true,
-						}
-					end,
+					javascript,
 				},
 				typescript = {
-					require("formatter.filetypes.typescript").prettier,
-					function()
-						return {
-							exe = "prettier",
-							args = {
-								"--search-parent-directories",
-								"--stdin-filepath",
-								util.escape_path(util.get_current_buffer_file_path()),
-								"--",
-								"-",
-							},
-							stdin = true,
-							try_node_modules = true,
-						}
-					end,
+					javascript,
 				},
 				lua = {
-					require("formatter.filetypes.lua").stylua,
+					stylua,
 				},
 			},
 		})
