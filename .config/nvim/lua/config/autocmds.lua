@@ -1,6 +1,15 @@
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+local formatter_group = augroup("__formatter__", { clear = true })
+local highlight_group = augroup("YankHighlight", { clear = true })
+
+autocmd("BufWritePost", {
+	group = formatter_group,
+	command = ":FormatWrite",
+})
+
+autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
