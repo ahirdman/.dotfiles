@@ -3,6 +3,8 @@ return {
 	config = function()
 		local util = require("formatter.util")
 
+		-- TODO: Conditionally set prettier for repositories with prettier configured, otherwise use biome
+
 		require("formatter").setup({
 			logging = true,
 			log_level = vim.log.levels.DEBUG,
