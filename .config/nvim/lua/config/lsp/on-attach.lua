@@ -4,10 +4,10 @@ local on_attach = function(_, bufnr)
   local telescope = require("telescope.builtin")
 
   wk.add({
-    { "<leader>l",  group = "LSP",           icon = icons.kind.Package },
-    { "<leader>lr", vim.lsp.buf.rename,      desc = "Rename symbol",   buffer = bufnr },
-    { "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions",    buffer = bufnr },
-    { "<leader>lf", vim.lsp.buf.format,      desc = "Format buffer",   buffer = bufnr }
+    { "<leader>l",  group = "LSP",             icon = icons.kind.Package },
+    { "<leader>lr", vim.lsp.buf.rename,        desc = "Rename symbol",   buffer = bufnr },
+    { "<leader>la", vim.lsp.buf.code_action,   desc = "Code Actions",    buffer = bufnr },
+    { "<leader>lf", "<CMD> :FormatWrite <CR>", desc = "Format buffer",   buffer = bufnr, noremap = true, silent = true }
   }, { mode = "n", prexif = "" })
 
   wk.add({
@@ -19,11 +19,11 @@ local on_attach = function(_, bufnr)
 
   --nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
-  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    callback = function()
-      require("lint").try_lint()
-    end,
-  })
+  -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  --   callback = function()
+  --     require("lint").try_lint()
+  --   end,
+  -- })
 end
 
 return on_attach

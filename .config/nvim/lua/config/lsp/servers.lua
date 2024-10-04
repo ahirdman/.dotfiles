@@ -1,125 +1,120 @@
 ---@type lspconfig.options
 local servers = {
-  -- Work specific LSP servers
-  eslint = {
-    settings = {
-      codeAction = {
-        disableRuleComment = {
-          enable = true,
-          location = "separateLine"
-        },
-        showDocumentation = {
-          enable = true
-        }
-      },
-      codeActionOnSave = {
-        enable = false,
-        mode = "all"
-      },
-      experimental = {
-        useFlatConfig = false
-      },
-      format = true,
-      nodePath = "",
-      onIgnoredFiles = "off",
-      problems = {
-        shortenToSingleLine = false
-      },
-      quiet = false,
-      rulesCustomizations = {},
-      run = "onType",
-      useESLintClass = false,
-      validate = "on",
-      workingDirectory = {
-        mode = "location"
-      }
-    }
-  },
-  bicep = {},
-  -- Everyday usage LSP servers
-  yamlls = {
-    yaml = {
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
-      }
-    },
-  },
-  biome = {},
-  tailwindcss = {
-    tailwindCSS = {
-      experimental = {
-        classRegex = {
-          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" }
-        },
-      },
-    }
-  },
-  harper_ls = {
-    ["harper-ls"] = {
+	eslint = {
+		settings = {
+			codeAction = {
+				disableRuleComment = {
+					enable = true,
+					location = "separateLine",
+				},
+				showDocumentation = {
+					enable = true,
+				},
+			},
+			codeActionOnSave = {
+				enable = false,
+				mode = "all",
+			},
+			experimental = {
+				useFlatConfig = false,
+			},
+			format = true,
+			nodePath = "",
+			onIgnoredFiles = "off",
+			problems = {
+				shortenToSingleLine = false,
+			},
+			quiet = false,
+			rulesCustomizations = {},
+			run = "onType",
+			useESLintClass = false,
+			validate = "on",
+			workingDirectory = {
+				mode = "location",
+			},
+		},
+	},
+	bicep = {},
+	yamlls = {
+		yaml = {
+			schemas = {
+				["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
+			},
+		},
+	},
+	biome = {},
+	tailwindcss = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+					{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+				},
+			},
+		},
+	},
+	harper_ls = {
+		["harper-ls"] = {
 
-      linters = {
-        spell_check = true,
-        spelled_numbers = false,
-        an_a = true,
-        sentence_capitalization = false,
-        unclosed_quotes = true,
-        wrong_quotes = false,
-        long_sentences = true,
-        repeated_words = true,
-        spaces = true,
-        matcher = true,
-        correct_number_suffix = true,
-        number_suffix_capitalization = true,
-        multiple_sequential_pronouns = true,
-        linking_verbs = false,
-        avoid_curses = true,
-        terminating_conjunctions = true
-      }
-    }
-  },
-  pyright = {},
-  taplo = {},
-  -- actionlint = {},
-  -- denols = {},
-  ts_ls = {
-    settings = {
-      enable = true,
-      single_file_support = false,
-    },
-    init_options = {
-      preferences = {
-        disableSuggestions = true
-      }
-    }
-  },
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = { disable = { 'missing-fields' } },
-    },
-  },
-  jsonls = {
-    json = {
-      schema = require("schemastore").json.schemas(),
-      validate = { enable = true },
-    },
-  },
-  gopls = {},
-  sqls = {
-    settings = {
-      sqls = {
-        connections = {
-          {
-            driver = 'postgresql',
-            dataSourceName =
-            'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
-          },
-        },
-      },
-    },
-  }
+			linters = {
+				spell_check = true,
+				spelled_numbers = false,
+				an_a = true,
+				sentence_capitalization = false,
+				unclosed_quotes = true,
+				wrong_quotes = false,
+				long_sentences = true,
+				repeated_words = true,
+				spaces = false,
+				matcher = true,
+				correct_number_suffix = true,
+				number_suffix_capitalization = true,
+				multiple_sequential_pronouns = true,
+				linking_verbs = false,
+				avoid_curses = true,
+				terminating_conjunctions = true,
+			},
+		},
+	},
+	pyright = {},
+	taplo = {},
+	ts_ls = {
+		settings = {
+			enable = true,
+			single_file_support = false,
+		},
+		init_options = {
+			preferences = {
+				disableSuggestions = true,
+			},
+		},
+	},
+	lua_ls = {
+		Lua = {
+			workspace = { checkThirdParty = false },
+			telemetry = { enable = false },
+			diagnostics = { disable = { "missing-fields" } },
+		},
+	},
+	jsonls = {
+		json = {
+			schema = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+	gopls = {},
+	sqls = {
+		settings = {
+			sqls = {
+				connections = {
+					{
+						driver = "postgresql",
+						dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+					},
+				},
+			},
+		},
+	},
 }
 
 return servers
