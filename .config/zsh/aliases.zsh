@@ -28,5 +28,7 @@ alias v="nvim"
 
 alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
 
+alias cl='clear'
+
 ### Work related
 alias az-sub-id="az account list --query '[?isDefault].id' --output tsv"
