@@ -44,4 +44,3 @@ env.zsh
 
 # Submodules / Repositories
 .config/tmux/plugins/
-dotbot/
