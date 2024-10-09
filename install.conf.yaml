@@ -16,6 +16,7 @@
     ~/.zshrc: .zshrc
 
     ~/.config/alacritty: .config/alacritty
+    ~/.config/wezterm: .config/wezterm
     ~/.config/nvim: .config/nvim
     ~/.config/ohmyposh: .config/ohmyposh
     ~/.config/zsh: .config/zsh
