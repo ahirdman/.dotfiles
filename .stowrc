@@ -3,9 +3,7 @@
 --ignore=DS_Store
 --ignore=Brewfile
 --ignore=Brewfile.lock.json
---ignore=install
---ignore=install.conf.yaml
 --ignore=README.md
---ignore=scripts
 --ignore=fonts
 --ignore=.git
+--ignore=setup.zsh
