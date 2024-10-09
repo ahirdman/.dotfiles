@@ -41,3 +41,7 @@ Brewfile.lock.json
 
 # Secrets
 env.zsh
+
+# Submodules / Repositories
+.config/tmux/plugins/
+dotbot/
