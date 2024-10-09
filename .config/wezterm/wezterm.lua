@@ -7,6 +7,10 @@ return {
 
 		cursor_bg = "#ebdbb2",
 		cursor_fg = "black",
+		cursor_border = "#ebdbb2",
+
+		selection_fg = "black",
+		selection_bg = "#fffacd",
 
 		ansi = {
 			"#928374", -- black

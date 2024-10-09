@@ -1,5 +1,7 @@
 alias trail='<<<${(F)path}'
 
+alias cat="bat"
+
 alias ls="eza -la --icons --git --group-directories-first"
 alias lt="eza --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
