@@ -47,7 +47,7 @@ function clone() {
     PREFIX="personalgit"
   fi
 
-  gum confirm "Clone repo?" && git clone $PREFIX:$REPO
+  gum confirm "Clone repo?" && git clone --bare $PREFIX:$REPO
 }
 
 function batdiff() {

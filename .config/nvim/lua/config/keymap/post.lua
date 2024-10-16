@@ -25,6 +25,16 @@ wk.add({
 	{ "<leader>gg", "<cmd> Neogit <cr>", desc = "Open Neogit" },
 	{ "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
 	{ "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },
+	{
+		"<leader>gw",
+		"<cmd> :lua require('telescope').extensions.git_worktree.git_worktrees() <cr>",
+		desc = "Switch Worktree",
+	},
+	{
+		"<leader>gc",
+		"<cmd> :lua require('telescope').extensions.git_worktree.create_git_worktree() <cr>",
+		desc = "Create Worktree",
+	},
 
 	{ "<leader>s", group = "Search", icon = icons.ui.Telescope },
 	{ "<leader>sf", telescope_builtin.find_files, desc = "[S]earch [F]iles" },

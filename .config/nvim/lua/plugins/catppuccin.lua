@@ -112,6 +112,16 @@ return {
 
 						LspInfoBorder = { link = "FloatBorder" },
 
+						DashboardGit = { fg = colors.red },
+						DashboardOrange = { fg = colors.peach },
+						DashboardYellow = { fg = colors.yellow },
+						DashboardGreen = { fg = colors.green },
+
+						DashboardHeader = { fg = colors.text },
+						DashboardFiles = { fg = colors.text },
+						DashboardShortCutIcon = { fg = colors.yellow },
+						DashboardMruTitle = { fg = colors.peach },
+
 						FlashMatch = { fg = colors.text, bg = colors.crust },
 						FlashCurrent = { fg = colors.red },
 						-- FlashBackdrop = { bg = colors.overlay0 },
