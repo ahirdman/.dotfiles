@@ -2,35 +2,61 @@ return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-		require("dashboard").setup({
-			theme = "hyper",
-			preview = {},
-			config = {
-				week_header = {
-					enable = true,
+	opts = {
+		theme = "hyper",
+		config = {
+			disable_move = true,
+			week_header = {
+				enable = true,
+			},
+			shortcut = {
+				{
+					icon = " ",
+					icon_hl = "DashboardYellow",
+					group = "Text",
+					desc = "Lazy",
+					action = "Lazy",
+					key = "l",
 				},
-				shortcut = {
-					{ desc = "󰊳 Lazy", group = "@property", action = "Lazy", key = "l" },
-					{ desc = " Mason", group = "Config", action = "Mason", key = "m" },
-					{
-						icon = " ",
-						icon_hl = "@variable",
-						desc = "Files",
-						group = "Label",
-						action = "Telescope find_files",
-						key = "f",
-					},
+				{
+					icon = " ",
+					icon_hl = "DashboardOrange",
+					group = "Text",
+					desc = "Mason",
+					action = "Mason",
+					key = "m",
 				},
-				packages = { enable = true },
-				project = {
-					enable = false,
-					limit = 4,
-					icon = "your icon",
-					label = "",
-					action = "Telescope find_files cwd=",
+				{
+					icon = " ",
+					icon_hl = "DashboardGit",
+					group = "Text",
+					desc = "Neogit",
+					action = ":Neogit ",
+					key = "g",
+				},
+				{
+					icon = " ",
+					icon_hl = "DashboardGreen",
+					group = "Text",
+					desc = "Files",
+					action = "Telescope find_files",
+					key = "f",
+				},
+				{
+					icon = " ",
+					icon_hl = "DashboardGit",
+					group = "Text",
+					desc = "Worktree",
+					action = ":lua require('telescope').extensions.git_worktree.git_worktrees()",
+					key = "w",
 				},
 			},
-		})
-	end,
+			packages = { enable = true },
+			footer = {},
+			mru = { limit = 5, icon = " ", label = "Recent files", cwd_only = true },
+			project = {
+				enable = false,
+			},
+		},
+	},
 }

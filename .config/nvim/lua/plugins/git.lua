@@ -106,4 +106,7 @@ return {
 		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
 	},
 	"tpope/vim-fugitive",
+	{
+		"ThePrimeagen/git-worktree.nvim",
+	},
 }

@@ -88,6 +88,7 @@ return {
 			},
 		})
 
+		pcall(telescope.load_extension, "git_worktree")
 		pcall(telescope.load_extension, "fzf")
 		pcall(telescope.load_extension, "glyph")
 
