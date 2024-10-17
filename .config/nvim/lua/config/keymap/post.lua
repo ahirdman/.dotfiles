@@ -38,11 +38,7 @@ wk.add({
 
 	{ "<leader>s", group = "Search", icon = icons.ui.Telescope },
 	{ "<leader>sf", telescope_builtin.find_files, desc = "[S]earch [F]iles" },
-	{
-		"<leader>sd",
-		telescope_builtin.diagnostics,
-		desc = "[S]earch [D]iagnostics",
-	},
+	{ "<leader>sd", telescope_builtin.diagnostics, desc = "[S]earch [D]iagnostics" },
 	{ "<leader>sg", telescope_builtin.live_grep, desc = "[S]earch by [G]rep" },
 	{ "<leader>sh", telescope_builtin.help_tags, desc = "[S]earch [H]elp" },
 	{ "<leader>sr", telescope_builtin.resume, desc = "[S]earch [R]esume" },

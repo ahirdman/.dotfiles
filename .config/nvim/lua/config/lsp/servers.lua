@@ -1,6 +1,10 @@
+---@diagnostic disable: missing-fields
+local nvim_lsp = require("lspconfig")
+
 ---@type lspconfig.options
 local servers = {
 	eslint = {
+		root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
 		settings = {
 			codeAction = {
 				disableRuleComment = {
@@ -34,32 +38,43 @@ local servers = {
 			},
 		},
 	},
-	bicep = {},
 	yamlls = {
-		yaml = {
-			schemas = {
-				["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
-			},
-		},
-	},
-	biome = {},
-	tailwindcss = {
-		tailwindCSS = {
-			experimental = {
-				classRegex = {
-					{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-					{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+		settings = {
+			yaml = {
+				schemas = {
+					["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
 				},
 			},
 		},
 	},
-	pyright = {},
-	taplo = {},
-	ts_ls = {
+	biome = {
+		root_dir = nvim_lsp.util.root_pattern("biome.json"),
+	},
+	tailwindcss = {
+		root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js"),
 		settings = {
-			enable = true,
-			single_file_support = false,
+			tailwindCSS = {
+				experimental = {
+					classRegex = {
+						{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+						{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+					},
+				},
+			},
 		},
+	},
+	denols = {
+		root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+		single_file_support = false,
+		settings = {
+			deno = {
+				future = true,
+			},
+		},
+	},
+	ts_ls = {
+		root_dir = nvim_lsp.util.root_pattern("package.json"),
+		single_file_support = false,
 		init_options = {
 			preferences = {
 				disableSuggestions = true,
@@ -67,19 +82,22 @@ local servers = {
 		},
 	},
 	lua_ls = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-			diagnostics = { disable = { "missing-fields" } },
+		settings = {
+			Lua = {
+				-- workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
+				-- diagnostics = { disable = { "missing-fields" } },
+			},
 		},
 	},
 	jsonls = {
-		json = {
-			schema = require("schemastore").json.schemas(),
-			validate = { enable = true },
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+			},
 		},
 	},
-	gopls = {},
 	sqls = {
 		settings = {
 			sqls = {
@@ -92,6 +110,10 @@ local servers = {
 			},
 		},
 	},
+	gopls = {},
+	pyright = {},
+	taplo = {},
+	bicep = {},
 }
 
 return servers

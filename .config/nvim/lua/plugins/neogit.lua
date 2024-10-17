@@ -5,6 +5,7 @@ return {
 		"sindrets/diffview.nvim",
 		"nvim-telescope/telescope.nvim",
 	},
+	cmd = "Neogit",
 	config = function()
 		local neogit = require("neogit")
 

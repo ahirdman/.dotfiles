@@ -2,18 +2,20 @@ local on_attach = function(_, bufnr)
 	local wk = require("which-key")
 	local icons = require("config.icons")
 	local telescope = require("telescope.builtin")
+	local conform = require("conform")
 
 	wk.add({
 		{ "<leader>l", group = "LSP", icon = icons.kind.Package },
 		{ "<leader>lr", vim.lsp.buf.rename, desc = "Rename symbol", buffer = bufnr },
+
 		{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", buffer = bufnr },
 		{
 			"<leader>lf",
-			"<CMD> :FormatWrite <CR>",
+			conform.format,
 			desc = "Format buffer",
 			buffer = bufnr,
 			noremap = true,
-			silent = true,
+			silent = false,
 		},
 	}, { mode = "n", prexif = "" })
 
