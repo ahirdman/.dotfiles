@@ -116,6 +116,7 @@ return {
 						DashboardOrange = { fg = colors.peach },
 						DashboardYellow = { fg = colors.yellow },
 						DashboardGreen = { fg = colors.green },
+						DashboardPink = { fg = colors.pink },
 
 						DashboardHeader = { fg = colors.text },
 						DashboardFiles = { fg = colors.text },

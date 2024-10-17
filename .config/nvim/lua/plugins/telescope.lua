@@ -4,6 +4,8 @@ return {
 	version = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"ghassan0/telescope-glyph.nvim",
+		"ThePrimeagen/git-worktree.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",

@@ -1,13 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local formatter_group = augroup("__formatter__", { clear = true })
 local highlight_group = augroup("YankHighlight", { clear = true })
-
-autocmd("BufWritePost", {
-	group = formatter_group,
-	command = ":FormatWrite",
-})
 
 autocmd("TextYankPost", {
 	callback = function()
@@ -34,3 +28,22 @@ autocmd({ "InsertEnter", "WinLeave" }, {
 		end
 	end,
 })
+
+-- TODO: Hide cursor on dashboard
+
+-- autocmd({ "FileType" }, {
+-- 	callback = function()
+-- 		local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+--
+-- 		if buf_ft == "dashboard" then
+-- 			--print("Match")
+-- 			--vim.wo.concealcursor()
+-- 			--vim.cmd("hi Cursor guifg=bg guibg=bg")
+-- 			--vim.api.nvim_set_option("guicursor", "")
+-- 			--vim.opt.guicursor = "a:Cursor/lCursor" -- Make the cursor invisible or change the style
+-- 		else
+-- 			-- Re-enable the cursor for other buffers
+-- 			vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+-- 		end
+-- 	end,
+-- })

@@ -80,9 +80,13 @@ export PATH=$PATH:/Users/hirdman/go/bin
 # Secrets
 [[ -f ~/.dotfiles/env.zsh ]] && source ~/.dotfiles/env.zsh
 
+# Deno Completions
+if [[ ":$FPATH:" != *":/Users/ahirdman/.zsh/completions:"* ]]; then export FPATH="/Users/ahirdman/.zsh/completions:$FPATH"; fi
+
 # pnpm config
 export PNPM_HOME="/Users/ahirdman/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+. "/Users/ahirdman/.deno/env"

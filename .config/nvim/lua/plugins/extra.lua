@@ -13,10 +13,6 @@ return {
 	},
 
 	{
-		"ghassan0/telescope-glyph.nvim",
-	},
-
-	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
 			"TmuxNavigateLeft",
@@ -42,6 +38,7 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
+		event = "VeryLazy",
 		opts = {
 			border = "rounded",
 		},
@@ -147,21 +144,20 @@ return {
 
 	{
 		"nvimdev/lspsaga.nvim",
-		config = function()
-			require("lspsaga").setup({
-				symbol_in_winbar = {
-					enable = false,
-				},
-				lightbulb = { enable = false },
-				definition = {
-					width = 0.9,
-					height = 0.6,
-				},
-			})
-		end,
+		event = "VeryLazy",
+		opts = {
+			symbol_in_winbar = {
+				enable = false,
+			},
+			lightbulb = { enable = false },
+			definition = {
+				width = 0.9,
+				height = 0.6,
+			},
+		},
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
 		},
 	},
 }

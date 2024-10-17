@@ -28,7 +28,7 @@ return {
 				},
 				{
 					icon = " ",
-					icon_hl = "DashboardGit",
+					icon_hl = "DashboardPink",
 					group = "Text",
 					desc = "Neogit",
 					action = ":Neogit ",
