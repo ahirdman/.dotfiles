@@ -47,12 +47,6 @@ return {
 	}),
 
 	window_decorations = "RESIZE",
-	window_padding = {
-		left = 2,
-		right = 2,
-		top = 6,
-		bottom = 6,
-	},
 
 	enable_tab_bar = false,
 	enable_scroll_bar = false,
