@@ -1,7 +1,7 @@
-#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
-
-version = 2
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 final_space = true
+version = 2
+
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
 [[blocks]]
@@ -52,10 +52,10 @@ background = "transparent"
 template = "  {{ .Full }} "
 
 [[blocks.segments]]
-type = "bun"
+type = "az"
 style = "plain"
-foreground = "p:white"
-template = " 🥟 {{ .Full }} "
+foreground = "p:blue"
+template = "  {{ .Name }}"
 
 [[blocks]]
 type = "prompt"
