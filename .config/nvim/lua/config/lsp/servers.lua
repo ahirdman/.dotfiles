@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 local nvim_lsp = require("lspconfig")
 
 ---@type lspconfig.options
