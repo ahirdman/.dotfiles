@@ -38,9 +38,9 @@ M.kind = {
 }
 
 M.git = {
-	LineAdded = "",
-	LineModified = "",
-	LineRemoved = "",
+	LineAdded = "+",
+	LineModified = "!",
+	LineRemoved = "-",
 	FileDeleted = "",
 	FileIgnored = "◌",
 	FileRenamed = "",
@@ -71,7 +71,6 @@ M.ui = {
 	BoxChecked = "",
 	Bug = "",
 	Stacks = "",
-	Scopes = "",
 	Watches = "",
 	DebugConsole = "",
 	Calendar = "",
@@ -149,7 +148,6 @@ M.diagnostics = {
 
 M.misc = {
 	Robot = "ﮧ",
-	Squirrel = "",
 	Tag = "",
 	Watch = "",
 	Smiley = "",
