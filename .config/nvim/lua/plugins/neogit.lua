@@ -66,7 +66,7 @@ return {
 			-- Flag description: https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortltkeygt
 			-- Sorting keys: https://git-scm.com/docs/git-for-each-ref#_options
 			sort_branches = "-committerdate",
-			kind = "tab",
+			kind = "floating",
 			disable_line_numbers = true,
 			console_timeout = 2000,
 			auto_show_console = true,
