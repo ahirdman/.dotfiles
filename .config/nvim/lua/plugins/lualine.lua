@@ -96,22 +96,25 @@ return {
 				},
 				lualine_b = {
 					{
-						-- NOTE: Margin looks wierd, create a custom component for this
-						"filetype",
-						icon_only = true,
-					},
-					{
-						"filename",
-						path = 0,
-						symbols = {
-							modified = "  ",
-							readonly = "  ",
-							unnamed = "  ",
-						},
-						color = { fg = colors.subtext0 },
+						"branch",
+						color = { fg = colors.peach },
+						icon = icons.git.Branch,
 					},
 					{
 						"diff",
+						draw_empty = false,
+						padding = { left = 0.5, right = 0.5 },
+					},
+					{
+						"filename",
+						path = 4,
+						symbols = {
+							modified = icons.ui.Pencil,
+							readonly = icons.ui.Lock,
+							unnamed = "  ",
+							newfile = icons.ui.Plus,
+						},
+						color = { fg = colors.subtext0 },
 					},
 					{
 						"fancy_searchcount",
@@ -131,9 +134,8 @@ return {
 				},
 				lualine_x = {
 					{
-						"branch",
-						color = { fg = colors.peach },
-						icon = icons.git.Branch,
+						"filetype",
+						icon_only = false,
 					},
 					{ "fancy_lsp_servers" },
 					{
@@ -153,7 +155,6 @@ return {
 				lualine_z = {},
 			},
 			tabline = {},
-			--extensions = { "neo-tree", "lazy", "trouble" },
 		})
 	end,
 }
