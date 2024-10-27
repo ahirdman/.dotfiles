@@ -5,92 +5,100 @@ version = 2
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
 [[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
 
-[[blocks.segments]]
-type = "path"
-style = 'plain'
-foreground = 'p:white'
-background = "transparent"
-template = '{{ .Path }}'
+  [[blocks.segments]]
+    type = "path"
+    style = 'plain'
+    foreground = 'p:white'
+    background = "transparent"
+    template = '{{ .Path }}'
 
-[blocks.segments.properties]
-style = "full"
+    [blocks.segments.properties]
+      style = "full"
 
-[[blocks.segments]]
-type = "text"
-style = "plain"
-foreground = 'p:grey'
-background = "transparent"
-template = '  {{ .SHLVL }}'
-
-[[blocks]]
-type = "prompt"
-alignment = 'right'
-overflow = 'hide'
-
-[[blocks.segments]]
-type = "git"
-style = "plain"
-overflow = "hide"
-foreground = "p:grey"
-background = "transparent"
-template = " {{ .HEAD }} <p:orange>{{ if (.Working.Changed) }}!{{ end }}{{ if (.Working.Untracked) }}?{{end}}{{ if (.Working.Deleted) }}-{{end}} {{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}</>{{ if (.Staging.Added) }}<p:green>+</>{{end}} "
-
-[blocks.segments.properties]
-commit_icon = "@"
-fetch_status = true
-branch_icon = ""
-
-[[blocks.segments]]
-type = "node"
-style = "plain"
-foreground = "p:white"
-background = "transparent"
-template = "  {{ .Full }} "
-
-[[blocks.segments]]
-type = "az"
-style = "plain"
-foreground = "p:blue"
-template = "  {{ .Name }}"
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = 'p:grey'
+    background = "transparent"
+    template = '  {{ .SHLVL }}'
 
 [[blocks]]
-type = "prompt"
-alignment = "left"
-newline = true
+  type = "prompt"
+  alignment = 'right'
+  overflow = 'hide'
 
-[[blocks.segments]]
-type = "text"
-style = "plain"
-foreground_templates = [
-  "{{if gt .Code 0}}p:red{{end}}",
-  "{{if eq .Code 0}}p:orange{{end}}",
-]
-background = "transparent"
-template = ""
+  [[blocks.segments]]
+    type = "git"
+    style = "plain"
+    overflow = "hide"
+    foreground = "p:grey"
+    background = "transparent"
+    template = """\
+      {{ .HEAD }} <p:orange>\
+      {{ if (.Working.Changed) }}!{{ end }}\
+      {{ if (.Working.Deleted) }}-{{end}}\
+      </>\
+      {{ if (.Working.Untracked) }}<p:green>?</>{{ end }}\
+      {{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}\
+      {{ if (.Staging.Added) }}<p:green>+</>{{end}}\
+    """
+
+    [blocks.segments.properties]
+      commit_icon = "@"
+      fetch_status = true
+      branch_icon = ""
+
+  [[blocks.segments]]
+    type = "node"
+    style = "plain"
+    foreground = "p:white"
+    background = "transparent"
+    template = "  {{ .Full }} "
+
+  [[blocks.segments]]
+    type = "az"
+    style = "plain"
+    foreground = "p:blue"
+    template = "  {{ .Name }}"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground_templates = [
+      "{{if gt .Code 0}}p:red{{end}}",
+      "{{if eq .Code 0}}p:orange{{end}}",
+    ]
+    background = "transparent"
+    template = ""
 
 [transient_prompt]
-foreground_templates = [
-  "{{if gt .Code 0}}p:red{{end}}",
-  "{{if eq .Code 0}}p:orange{{end}}",
-]
-background = "transparent"
-template = " "
+  foreground_templates = [
+    "{{if gt .Code 0}}p:red{{end}}",
+    "{{if eq .Code 0}}p:orange{{end}}",
+  ]
+  background = "transparent"
+  template = " "
 
 [secondary_prompt]
-foreground = "p:white"
-background = "transparent"
-template = "-"
+  foreground = "p:white"
+  background = "transparent"
+  template = "-"
 
 [palette]
-white = "#fbf1c7"
-orange = "#e78a4e"
-red = "#ea6962"
-grey = "#665c54"
-green = "#a9b665"
-blue = "#7daea3"
-purple = "#d3869b"
-yellow = "#d8a657"
+  white = "#fbf1c7"
+  orange = "#e78a4e"
+  red = "#ea6962"
+  grey = "#665c54"
+  green = "#a9b665"
+  blue = "#7daea3"
+  purple = "#d3869b"
+  yellow = "#d8a657"

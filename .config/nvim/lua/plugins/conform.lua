@@ -13,6 +13,9 @@ return {
 			timeout_ms = 500,
 			lsp_format = "fallback",
 		},
+		formatters = {
+			taplo = {},
+		},
 	},
 	init = function()
 		-- If you want the formatexpr, here is the place to set it

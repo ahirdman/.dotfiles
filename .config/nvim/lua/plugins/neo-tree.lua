@@ -9,13 +9,14 @@ return {
 	config = function()
 		local icons = require("config.icons")
 		local events = require("neo-tree.events")
+
 		---@class FileMovedArgs
 		---@field source string
 		---@field destination string
 
 		---@param args FileMovedArgs
 		local function on_file_remove(args)
-			local ts_clients = vim.lsp.get_active_clients({ name = "ts_ls" })
+			local ts_clients = vim.lsp.client({ name = "ts_ls" })
 
 			for _, ts_client in ipairs(ts_clients) do
 				ts_client.request("workspace/executeCommand", {
@@ -47,7 +48,7 @@ return {
 					with_expanders = true,
 				},
 				modified = {
-					symbol = " ",
+					symbol = icons.ui.Pencil,
 					highlight = "NeoTreeModified",
 				},
 				name = {
@@ -64,8 +65,8 @@ return {
 				git_status = {
 					symbols = {
 						-- Change type
-						added = icons.git.LineAdded,
-						modified = icons.git.LineModified,
+						added = "",
+						modified = "",
 						deleted = icons.git.FileDeleted,
 						renamed = icons.git.FileRenamed,
 						-- Status type
