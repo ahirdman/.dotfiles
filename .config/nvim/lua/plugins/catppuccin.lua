@@ -128,6 +128,11 @@ return {
 						-- FlashBackdrop = { bg = colors.overlay0 },
 						FlashLabel = { fg = colors.base, bg = colors.text },
 
+						NeogitSectionHeader = { fg = colors.peach },
+						NeogitUnstagedchanges = { fg = colors.red },
+						NeogitStagedchanges = { fg = colors.green },
+						NeogitChangeModified = { fg = colors.peach },
+
 						NeoTreeDirectoryIcon = { fg = colors.subtext1 },
 						NeoTreeDirectoryName = { fg = colors.subtext1 },
 						NeoTreeFloatBorder = { link = "TelescopeResultsBorder" },
@@ -176,8 +181,6 @@ return {
 
 						IblIndent = { fg = colors.surface0 },
 						IblScope = { fg = colors.overlay0 },
-
-						-- Code
 
 						Boolean = { fg = colors.mauve },
 						Number = { fg = colors.mauve },

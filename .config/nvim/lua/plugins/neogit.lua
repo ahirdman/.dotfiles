@@ -8,10 +8,10 @@ return {
 	cmd = "Neogit",
 	config = function()
 		local neogit = require("neogit")
+		local icons = require("config.icons")
 
 		neogit.setup({
-			-- Hides the hints at the top of the status buffer
-			disable_hint = false,
+			disable_hint = true,
 			-- Disables changing the buffer highlights based on where the cursor is.
 			disable_context_highlighting = false,
 			-- Disables signs for sections/items/hunks
@@ -66,12 +66,33 @@ return {
 			-- Flag description: https://git-scm.com/docs/git-branch#Documentation/git-branch.txt---sortltkeygt
 			-- Sorting keys: https://git-scm.com/docs/git-for-each-ref#_options
 			sort_branches = "-committerdate",
-			kind = "floating",
+			kind = "tab",
 			disable_line_numbers = true,
 			console_timeout = 2000,
 			auto_show_console = true,
 			status = {
+				show_head_commit_hash = true,
 				recent_commit_count = 10,
+				HEAD_padding = 10,
+				HEAD_folded = true,
+				mode_padding = 3,
+				mode_text = {
+					M = "modified",
+					N = "new file",
+					A = "added",
+					D = "deleted",
+					C = "copied",
+					U = "updated",
+					R = "renamed",
+					DD = "unmerged",
+					AU = "unmerged",
+					UD = "unmerged",
+					UA = "unmerged",
+					DU = "unmerged",
+					AA = "unmerged",
+					UU = "unmerged",
+					["?"] = "",
+				},
 			},
 			commit_editor = {
 				kind = "floating",
@@ -106,9 +127,9 @@ return {
 			},
 			signs = {
 				-- { CLOSED, OPENED }
-				hunk = { "", "" },
-				item = { ">", "v" },
-				section = { ">", "v" },
+				hunk = { icons.ui.TriangleShortArrowRight, icons.ui.TriangleShortArrowDown },
+				item = { icons.ui.BoldArrowRight, icons.ui.BoldArrowDown },
+				section = { icons.ui.ArrowCircleRight, icons.ui.ArrowCircleDown },
 			},
 			-- Each Integration is auto-detected through plugin presence, however, it can be disabled by setting to `false`
 			integrations = {
