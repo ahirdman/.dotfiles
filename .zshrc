@@ -1,7 +1,3 @@
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
-eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
-
-# Pager and theme settings
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_THEME='1337'
 export NULLCMD=bat
@@ -77,9 +73,6 @@ export PATH=$PATH:/Users/hirdman/go/bin
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
-# Secrets
-[[ -f ~/.dotfiles/env.zsh ]] && source ~/.dotfiles/env.zsh
-
 # Deno Completions
 if [[ ":$FPATH:" != *":/Users/ahirdman/.zsh/completions:"* ]]; then export FPATH="/Users/ahirdman/.zsh/completions:$FPATH"; fi
 
@@ -90,3 +83,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 . "/Users/ahirdman/.deno/env"
+
+# oh-my-posh
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+
+# EAS-cli completions
+eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
+
+# Direnv
+eval "$(direnv hook zsh)"
