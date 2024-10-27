@@ -38,13 +38,13 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     foreground = "p:grey"
     background = "transparent"
     template = """\
-      {{ .HEAD }} <p:orange>\
-      {{ if (.Working.Changed) }}!{{ end }}\
-      {{ if (.Working.Deleted) }}-{{end}}\
-      </>\
-      {{ if (.Working.Untracked) }}<p:green>?</>{{ end }}\
-      {{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}\
-      {{ if (.Staging.Added) }}<p:green>+</>{{end}}\
+       {{ .HEAD }} \
+      {{ if (.Working.Changed) }}<p:orange>!</>{{end}}\
+      {{ if (.Working.Deleted) }}<p:red>-</>{{end}}\
+      {{ if (.Working.Untracked) }}<p:green>?</>{{end}}\
+      {{ if (.Staging.Changed) }}<p:green>+</>{{end}}\
+      {{ if (.Detached) }}<p:yellow>  </>{{end}}\
+      {{ if gt .StashCount 0 }}<p:grey> {{ .StashCount }} </>{{end}}\
     """
 
     [blocks.segments.properties]
@@ -98,6 +98,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   orange = "#e78a4e"
   red = "#ea6962"
   grey = "#665c54"
+  black = "#292929"
+  overlay = "#928374"
   green = "#a9b665"
   blue = "#7daea3"
   purple = "#d3869b"
