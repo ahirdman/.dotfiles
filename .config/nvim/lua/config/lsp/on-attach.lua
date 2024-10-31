@@ -11,7 +11,9 @@ local on_attach = function(_, bufnr)
 		{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", buffer = bufnr },
 		{
 			"<leader>lf",
-			conform.format,
+			function()
+				conform.format({ bufnr })
+			end,
 			desc = "Format buffer",
 			buffer = bufnr,
 			noremap = true,
