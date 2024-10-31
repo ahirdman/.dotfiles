@@ -5,6 +5,7 @@ return {
 		{ "b0o/schemastore.nvim" },
 		"williamboman/mason-lspconfig.nvim",
 		"folke/neodev.nvim",
+		"folke/neoconf.nvim",
 	},
 	config = function()
 		local mason = require("mason")
@@ -13,6 +14,42 @@ return {
 		local neodev = require("neodev")
 		local servers = require("config.lsp.servers")
 		local on_attach = require("config.lsp.on-attach")
+
+		require("neoconf").setup({
+			local_settings = ".neoconf.json",
+			global_settings = "neoconf.json",
+			import = {
+				vscode = true, -- local .vscode/settings.json
+				coc = true, -- global/local coc-settings.json
+				nlsp = true, -- global/local nlsp-settings.nvim json settings
+			},
+			live_reload = true,
+			-- set the filetype to jsonc for settings files, so you can use comments
+			-- make sure you have the jsonc treesitter parser installed!
+			filetype_jsonc = true,
+			plugins = {
+				-- configures lsp clients with settings in the following order:
+				-- - lua settings passed in lspconfig setup
+				-- - global json settings
+				-- - local json settings
+				lspconfig = {
+					enabled = true,
+				},
+				-- configures jsonls to get completion in .nvim.settings.json files
+				jsonls = {
+					enabled = true,
+					-- only show completion in json settings for configured lsp servers
+					configured_servers_only = true,
+				},
+				-- configures lua_ls to get completion of lspconfig server settings
+				lua_ls = {
+					-- by default, lua_ls annotations are only enabled in your neovim config directory
+					enabled_for_neovim_config = true,
+					-- explicitly enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
+					enabled = false,
+				},
+			},
+		})
 
 		mason.setup({
 			ui = {
