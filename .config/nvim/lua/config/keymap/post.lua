@@ -60,6 +60,9 @@ wk.add({
 		desc = "[?] Find recently opened files",
 	},
 
+	{ "<leader>t", group = "Todo", icon = icons.ui.Check },
+	{ "<leader>tl", "<cmd>TodoTelescope<cr>", desc = "List Todos" },
+
 	{ "<leader>x", group = "Diagnostics" },
 	{
 		"<leader>xx",
