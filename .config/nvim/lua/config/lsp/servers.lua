@@ -42,6 +42,7 @@ local servers = {
 			yaml = {
 				schemas = {
 					["https://json.schemastore.org/github-workflow.json"] = "./.github/workflows/*",
+					["https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json"] = "**/azure.yaml",
 				},
 			},
 		},
