@@ -38,19 +38,23 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     foreground = "p:grey"
     background = "transparent"
     template = """\
-       {{ .HEAD }} \
+      {{ .HEAD }} \
       {{ if (.Working.Changed) }}<p:orange>!</>{{end}}\
       {{ if (.Working.Deleted) }}<p:red>-</>{{end}}\
       {{ if (.Working.Untracked) }}<p:green>?</>{{end}}\
       {{ if (.Staging.Changed) }}<p:green>+</>{{end}}\
-      {{ if (.Detached) }}<p:yellow>  </>{{end}}\
-      {{ if gt .StashCount 0 }}<p:grey> {{ .StashCount }} </>{{end}}\
+      {{ if (.Detached) }}<p:yellow>   </>{{end}}\
+      {{ if (.Rebase)}}<p:yellow> 𥉉 </>{{end}}\
+      {{ if gt .Ahead 0 }}<p:green>  </>{{ end }}\
+      {{ if gt .Behind 0 }}<p:red>  </>{{ end }}\
+      {{ if gt .StashCount 0 }}<p:grey>  {{ .StashCount }} </>{{end}}\
     """
 
     [blocks.segments.properties]
       commit_icon = "@"
       fetch_status = true
-      branch_icon = ""
+      fetch_user = false
+      branch_icon = " "
 
   [[blocks.segments]]
     type = "node"
