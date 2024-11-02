@@ -57,10 +57,10 @@ return {
 					highlight = "NeoTreeFileName",
 				},
 				icon = {
-					folder_closed = "󰉋",
-					folder_open = "󰝰",
-					folder_empty = "󰉖",
-					folder_empty_open = "󰷏",
+					folder_closed = icons.ui.Folder,
+					folder_open = icons.ui.FolderOpen,
+					folder_empty = icons.ui.EmptyFolder,
+					folder_empty_open = icons.ui.EmptyFolderOpen
 				},
 				git_status = {
 					symbols = {

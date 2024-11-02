@@ -2,6 +2,7 @@ return {
 	"sindrets/diffview.nvim",
 	config = function()
 		local actions = require("diffview.actions")
+		local icons = require("config.icons")
 
 		require("diffview").setup({
 			diff_binaries = false, -- Show diffs for binaries
@@ -12,8 +13,8 @@ return {
 			show_help_hints = true, -- Show hints for how to open the help panel
 			watch_index = true, -- Update views and index buffers when the git index changes.
 			icons = { -- Only applies when use_icons is true.
-				folder_closed = "",
-				folder_open = "",
+				folder_closed = icons.ui.Folder,
+				folder_open = icons.ui.FolderOpen,
 			},
 			signs = {
 				fold_closed = "",
@@ -34,7 +35,7 @@ return {
 				default = {
 					-- Config for changed files, and staged files in diff views.
 					layout = "diff2_horizontal",
-					winbar_info = false, -- See |diffview-config-view.x.winbar_info|
+					winbar_info = true, -- See |diffview-config-view.x.winbar_info|
 				},
 				merge_tool = {
 					-- Config for conflicted files in diff views during a merge or rebase.
