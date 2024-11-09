@@ -30,11 +30,18 @@ local on_attach = function(_, bufnr)
 		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation" },
 	}, { mode = "n", prexif = "" })
 
-	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		callback = function()
-			require("lint").try_lint()
-		end,
-	})
+	-- autocmd({ "BufWritePost" }, {
+	-- 	callback = function()
+	-- 		lint.try_lint()
+	-- 	end,
+	-- })
+
+	-- autocmd({ "BufWritePre" }, {
+	-- 	pattern = "*",
+	-- 	callback = function()
+	-- 		vim.cmd(":Format")
+	-- 	end,
+	-- })
 end
 
 return on_attach

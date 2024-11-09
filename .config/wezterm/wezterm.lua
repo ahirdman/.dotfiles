@@ -34,17 +34,17 @@ return {
 		},
 	},
 
-	font_rules = {
-		{
-			italic = true,
-			font = wezterm.font("Berkeley Mono", { weight = "Regular" }),
-		},
-	},
-	font_size = 16.0,
-	font = wezterm.font({
-		family = "Berkeley Mono",
-		weight = "Regular",
-	}),
+	-- font_rules = {
+	-- 	{
+	-- 		italic = true,
+	-- 		font = wezterm.font("Berkeley Mono", { weight = "Regular" }),
+	-- 	},
+	-- },
+	-- font_size = 16.0,
+	-- font = wezterm.font({
+	-- 	family = "Berkeley Mono",
+	-- 	weight = "Regular",
+	-- }),
 
 	window_decorations = "RESIZE",
 
