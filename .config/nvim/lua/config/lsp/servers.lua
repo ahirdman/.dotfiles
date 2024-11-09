@@ -2,6 +2,7 @@ local nvim_lsp = require("lspconfig")
 
 ---@type lspconfig.options
 local servers = {
+	nil_ls = {},
 	eslint = {
 		root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
 		settings = {
