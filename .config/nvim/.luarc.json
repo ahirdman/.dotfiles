@@ -1,8 +1,0 @@
-{
-    "diagnostics.globals": [
-        "root_pattern"
-    ],
-    "diagnostics.disable": [
-        "missing-fields"
-    ]
-}
