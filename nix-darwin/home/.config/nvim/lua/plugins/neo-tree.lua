@@ -60,7 +60,7 @@ return {
 					folder_closed = icons.ui.Folder,
 					folder_open = icons.ui.FolderOpen,
 					folder_empty = icons.ui.EmptyFolder,
-					folder_empty_open = icons.ui.EmptyFolderOpen
+					folder_empty_open = icons.ui.EmptyFolderOpen,
 				},
 				git_status = {
 					symbols = {
@@ -89,6 +89,7 @@ return {
 					hide_gitignored = false,
 					hide_by_name = {
 						"node_modules",
+						".git",
 					},
 					never_show = {
 						".DS_Store",
