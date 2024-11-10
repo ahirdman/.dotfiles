@@ -80,6 +80,20 @@ return {
 
 				lsp_config[server_name].setup(server_opts)
 			end,
+
+			lsp_config.nixd.setup({
+				cmd = { "nixd" },
+				settings = {
+					nixd = {
+						nixpgs = {
+							expr = "import <nixpgs> { }",
+						},
+						formatting = {
+							command = { "alejandra" },
+						},
+					},
+				},
+			}),
 		})
 
 		vim.diagnostic.config({
