@@ -1,0 +1,90 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[palette]
+  black = '#292929'
+  blue = '#7daea3'
+  green = '#a9b665'
+  grey = '#665c54'
+  orange = '#e78a4e'
+  overlay = '#928374'
+  purple = '#d3869b'
+  red = '#ea6962'
+  white = '#fbf1c7'
+  yellow = '#d8a657'
+
+[secondary_prompt]
+  template = '-'
+  foreground = 'p:white'
+  background = 'transparent'
+
+[transient_prompt]
+  template = ' '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '{{ .Path }}'
+    foreground = 'p:white'
+    background = 'transparent'
+    type = 'path'
+
+    [blocks.segments.properties]
+      style = 'full'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '  {{ .SHLVL }}'
+    foreground = 'p:grey'
+    background = 'transparent'
+    type = 'text'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  overflow = 'hide'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '{{ .HEAD }} {{ if (.Working.Changed) }}<p:orange>!</>{{end}}{{ if (.Working.Deleted) }}<p:red>-</>{{end}}{{ if (.Working.Untracked) }}<p:green>?</>{{end}}{{ if (.Staging.Changed) }}<p:green>+</>{{end}}{{ if (.Detached) }}<p:yellow>   </>{{end}}{{ if (.Rebase)}}<p:yellow> 𥉉 </>{{end}}{{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}{{ if gt .Ahead 0 }}<p:green></>{{ end }}{{ if gt .Behind 0 }}<p:red></>{{ end }}{{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}{{ if gt .StashCount 0 }}<p:grey>  {{ .StashCount }} </>{{end}}'
+    foreground = 'p:grey'
+    background = 'transparent'
+    type = 'git'
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      commit_icon = '@'
+      fetch_status = true
+      fetch_user = false
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '  {{ .Full }} '
+    foreground = 'p:white'
+    background = 'transparent'
+    type = 'node'
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = '  {{ .DefaultEnvironment }} '
+    foreground = 'p:blue'
+    type = 'azd'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    style = 'plain'
+    template = ''
+    background = 'transparent'
+    type = 'text'
+    foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']
