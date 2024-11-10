@@ -11,8 +11,8 @@
   home.file = {
     #".yabairc".source = ./../dummy.json;
     #".yabairc".source = ./../../.dotfiles/.yabairc;
-    #".config/ohmyposh".source = ~/.dotfiles/.config/ohmyposh;
-    #".config/nvim".source = ~/.dotfiles/.config/nvim;
+    ".config/ohmyposh".source = ./.config/ohmyposh;
+    ".config/nvim".source = ./.config/nvim;
   };
 
   imports = [
