@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   programs.home-manager.enable = true;
 
   home.username = "ahirdman";
@@ -13,6 +13,7 @@
     #".yabairc".source = ./../../.dotfiles/.yabairc;
     ".config/ohmyposh".source = ./.config/ohmyposh;
     ".config/nvim".source = ./.config/nvim;
+    "dummy.json".source = config.lib.file.mkOutOfStoreSymlink "~/.config/";
   };
 
   imports = [
