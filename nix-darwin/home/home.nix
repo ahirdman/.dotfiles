@@ -1,0 +1,24 @@
+{...}: {
+  programs.home-manager.enable = true;
+
+  home.username = "ahirdman";
+  home.homeDirectory = "/Users/ahirdman";
+  home.stateVersion = "24.05";
+  home.sessionPath = [
+    "/run/current-system/sw/bin"
+    "$HOME/.nix-profile/bin"
+  ];
+  home.file = {
+    #".yabairc".source = ./../dummy.json;
+    #".yabairc".source = ./../../.dotfiles/.yabairc;
+    #".config/ohmyposh".source = ~/.dotfiles/.config/ohmyposh;
+    #".config/nvim".source = ~/.dotfiles/.config/nvim;
+  };
+
+  imports = [
+    ./tmux.nix
+    ./git.nix
+    ./alacritty.nix
+    ./zsh.nix
+  ];
+}
