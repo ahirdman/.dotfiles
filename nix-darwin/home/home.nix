@@ -5,12 +5,18 @@
   home.homeDirectory = "/Users/ahirdman";
   home.stateVersion = "24.05";
 
+  home.activation = {
+    linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+      ln -s ${toString ./../../.yabairc} ~/.yabairc
+      ln -s ${toString ./../../.skhdrc} ~/.skhdrc
+    '';
+  };
+
   home.file = {
-    ".yabairc".source = config.lib.file.mkOutOfStoreSymlink ../../.yabairc;
-    ".skhdrc".source = config.lib.file.mkOutOfStoreSymlink ../../.skhdrc;
+    # ".yabairc".source = config.lib.file.mkOutOfStoreSymlink "~/.dotfiles/.yabairc";
+    # ".skhdrc".source = config.lib.file.mkOutOfStoreSymlink "~/.dotfiles/.skhdrc";
     ".config/ohmyposh".source = ./.config/ohmyposh;
     ".config/nvim".source = ./.config/nvim;
-    #"dummy.json".source = config.lib.file.mkOutOfStoreSymlink ../../dummy.json;
   };
 
   imports = [
