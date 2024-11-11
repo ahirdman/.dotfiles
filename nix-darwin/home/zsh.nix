@@ -7,7 +7,7 @@
 
     shellAliases = {
       v = "nvim";
-      switch = "darwin-rebuild switch --flake ~/.config/nix-darwin#work";
+      switch = "darwin-rebuild switch --flake ~/.dotfiles/nix-darwin#work";
 
       ".." = "cd ..";
       "..." = "cd ../..";
