@@ -52,6 +52,8 @@
         bat
         yabai
         skhd
+        pnpm
+        nodejs
       ];
 
       homebrew = {
