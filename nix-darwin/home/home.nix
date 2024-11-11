@@ -4,16 +4,13 @@
   home.username = "ahirdman";
   home.homeDirectory = "/Users/ahirdman";
   home.stateVersion = "24.05";
-  home.sessionPath = [
-    "/run/current-system/sw/bin"
-    "$HOME/.nix-profile/bin"
-  ];
+
   home.file = {
-    #".yabairc".source = ./../dummy.json;
-    #".yabairc".source = ./../../.dotfiles/.yabairc;
+    ".yabairc".source = config.lib.file.mkOutOfStoreSymlink ../../.yabairc;
+    ".skhdrc".source = config.lib.file.mkOutOfStoreSymlink ../../.skhdrc;
     ".config/ohmyposh".source = ./.config/ohmyposh;
     ".config/nvim".source = ./.config/nvim;
-    "dummy.json".source = config.lib.file.mkOutOfStoreSymlink "~/.config/";
+    #"dummy.json".source = config.lib.file.mkOutOfStoreSymlink ../../dummy.json;
   };
 
   imports = [
