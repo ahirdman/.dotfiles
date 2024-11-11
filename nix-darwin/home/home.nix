@@ -7,8 +7,8 @@
 
   home.activation = {
     linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      ln -s ${toString ./../../.yabairc} ~/.yabairc
-      ln -s ${toString ./../../.skhdrc} ~/.skhdrc
+      ln -s ~/.dotfiles/.yabairc ~/.yabairc
+      ln -s ~/.dotfiles/.skhdrc  ~/.skhdrc
     '';
   };
 
