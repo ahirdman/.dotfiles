@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-stow .
-
 source_directory="$HOME/.dotfiles/fonts"
 target_directory="$HOME/Library/Fonts"
 
