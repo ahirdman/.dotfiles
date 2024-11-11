@@ -11,7 +11,7 @@ return {
 			},
 			shortcut = {
 				{
-					icon = " ",
+					icon = "  ",
 					icon_hl = "DashboardYellow",
 					group = "Text",
 					desc = "Lazy",
@@ -19,7 +19,7 @@ return {
 					key = "l",
 				},
 				{
-					icon = " ",
+					icon = "年 ",
 					icon_hl = "DashboardOrange",
 					group = "Text",
 					desc = "Mason",

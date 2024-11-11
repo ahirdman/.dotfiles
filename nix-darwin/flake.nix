@@ -50,6 +50,8 @@
         zed-editor
         raycast
         bat
+        yabai
+        skhd
       ];
 
       homebrew = {

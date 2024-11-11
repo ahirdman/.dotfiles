@@ -8,6 +8,7 @@
     shellAliases = {
       v = "nvim";
       switch = "darwin-rebuild switch --flake ~/.dotfiles/nix-darwin#work";
+      g = "git status -s";
 
       ".." = "cd ..";
       "..." = "cd ../..";
@@ -52,14 +53,6 @@
           if [[ "$current_version" != "$desired_version" ]]; then
             n auto
           fi
-        fi
-      }
-
-      function g() {
-        if [[ $# -gt 0 ]]; then
-          git "$@"
-        else
-          git status -s
         fi
       }
 
