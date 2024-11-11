@@ -7,10 +7,10 @@
 
   home.activation = {
     linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      ln -s ~/.dotfiles/.yabairc ~/.yabairc
-      ln -s ~/.dotfiles/.skhdrc  ~/.skhdrc
-      ln -s ~/.dotfiles/.config/ohmyposh ~/.config/ohmyposh
-      ln -s ~/.dotfiles/.config/nvim  ~/.config/nvim/
+      ln -sf ~/.dotfiles/.yabairc ~/.yabairc
+      ln -sf ~/.dotfiles/.skhdrc  ~/.skhdrc
+      ln -sf ~/.dotfiles/.config/ohmyposh ~/.config/ohmyposh
+      ln -sf ~/.dotfiles/.config/nvim  ~/.config/nvim
     '';
   };
 
