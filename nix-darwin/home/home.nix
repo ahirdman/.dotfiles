@@ -9,14 +9,16 @@
     linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
       ln -s ~/.dotfiles/.yabairc ~/.yabairc
       ln -s ~/.dotfiles/.skhdrc  ~/.skhdrc
+      ln -s ~/.dotfiles/.config/ohmyposh ~/.config/ohmyposh
+      ln -s ~/.dotfiles/.config/nvim  ~/.config/nvim/
     '';
   };
 
   home.file = {
     # ".yabairc".source = config.lib.file.mkOutOfStoreSymlink "~/.dotfiles/.yabairc";
     # ".skhdrc".source = config.lib.file.mkOutOfStoreSymlink "~/.dotfiles/.skhdrc";
-    ".config/ohmyposh".source = ./.config/ohmyposh;
-    ".config/nvim".source = ./.config/nvim;
+    # ".config/ohmyposh".source = ./.config/ohmyposh;
+    # ".config/nvim".source = ./.config/nvim;
   };
 
   imports = [
