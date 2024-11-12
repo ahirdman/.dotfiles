@@ -81,7 +81,6 @@ return {
 
 			lsp_config.nixd.setup({
 				cmd = { "nixd" },
-				offset_encoding = "utf-8",
 				settings = {
 					nixd = {
 						nixpgs = {
