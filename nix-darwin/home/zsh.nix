@@ -8,7 +8,6 @@
     shellAliases = {
       v = "nvim";
       switch = "darwin-rebuild switch --flake ~/.dotfiles/nix-darwin#work";
-      g = "git status -s";
 
       ".." = "cd ..";
       "..." = "cd ../..";
@@ -57,7 +56,7 @@
       }
 
       function g() {
-        if [[ $# -gt 0 ]]; then
+        if [ $# -gt 0 ]; then
           git "$@"
         else
           git status -s
