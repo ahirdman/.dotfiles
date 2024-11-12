@@ -48,7 +48,6 @@
         alejandra
         nixd
         zed-editor
-        raycast
         bat
         yabai
         skhd
@@ -78,6 +77,7 @@
           "sf-symbols"
           "slack"
           "spotify"
+          "raycast"
         ];
         onActivation.cleanup = "zap";
         # onActivation.autoUpdate = true;

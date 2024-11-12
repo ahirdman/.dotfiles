@@ -61,7 +61,7 @@ return {
 			pickers = {
 				find_files = {
 					previewer = false,
-					hidden = true,
+					hidden = false,
 					layout_config = {
 						height = 0.4,
 						prompt_position = "top",
