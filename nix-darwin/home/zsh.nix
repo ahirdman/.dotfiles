@@ -56,8 +56,16 @@
         fi
       }
 
+      function g() {
+        if [[ $# -gt 0 ]]; then
+          git "$@"
+        else
+          git status -s
+        fi
+      }
+
       function switchBranch() {
-        BRANCH=$(git branch -v | gum choose |  awk '{print $1}')
+        BRANCH=$(git branch -v | gum choose |  awk "{print $1}")
 
         git switch $BRANCH
       }

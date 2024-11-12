@@ -53,6 +53,7 @@
         skhd
         pnpm
         nodejs
+        ripgrep
       ];
 
       homebrew = {
