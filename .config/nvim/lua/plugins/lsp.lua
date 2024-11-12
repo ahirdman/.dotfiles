@@ -20,8 +20,6 @@ return {
 			global_settings = "neoconf.json",
 			import = {
 				vscode = true, -- local .vscode/settings.json
-				coc = true, -- global/local coc-settings.json
-				nlsp = true, -- global/local nlsp-settings.nvim json settings
 			},
 			live_reload = true,
 			-- set the filetype to jsonc for settings files, so you can use comments
@@ -83,6 +81,7 @@ return {
 
 			lsp_config.nixd.setup({
 				cmd = { "nixd" },
+				offset_encoding = "utf-8",
 				settings = {
 					nixd = {
 						nixpgs = {
