@@ -35,7 +35,6 @@
         oh-my-posh
         eza
         fzf
-        direnv
         wezterm
         alacritty
         skhd
@@ -54,6 +53,7 @@
         pnpm
         nodejs
         ripgrep
+        bun
       ];
 
       homebrew = {
@@ -101,6 +101,18 @@
       system = {
         configurationRevision = self.rev or self.dirtyRev or null;
         stateVersion = 5;
+
+        defaults = {
+          dock = {
+            autohide = true;
+            show-recents = false;
+            orientation = "bottom";
+          };
+          NSGlobalDomain = {
+            AppleInterfaceStyle = "Dark";
+            AppleInterfaceStyleSwitchesAutomatically = true;
+          };
+        };
       };
     };
   in {
