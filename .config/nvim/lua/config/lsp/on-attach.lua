@@ -1,10 +1,8 @@
-local autocmd = vim.api.nvim_create_autocmd
-
 local on_attach = function(_, bufnr)
 	local wk = require("which-key")
 	local icons = require("config.icons")
 	local telescope = require("telescope.builtin")
-	local lint = require("lint")
+	local conform = require("conform")
 
 	wk.add({
 		{ "<leader>l", group = "LSP", icon = icons.kind.Package },
@@ -13,10 +11,9 @@ local on_attach = function(_, bufnr)
 		{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", buffer = bufnr },
 		{
 			"<leader>lf",
-			"<cmd> :Format <cr>",
-			-- 			function()
-			-- 				conform.format({ bufnr })
-			-- 			end,
+			function()
+				conform.format({ bufnr })
+			end,
 			desc = "Format buffer",
 			buffer = bufnr,
 			noremap = true,
