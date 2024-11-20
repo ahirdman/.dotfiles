@@ -30,9 +30,9 @@
         file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
       }
       {
-        name = "powerlevel10k";
+        name = "vi-mode";
         src = pkgs.zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];
 
@@ -73,11 +73,13 @@
         GIT_URL=$(gum input --placeholder "Repositry url")
         REPO=$\{GIT_URL#*:}
         PREFIX=""
+
         if [ "$MODE" = "Work" ]; then
           PREFIX="workgit"
         else
           PREFIX="personalgit"
         fi
+
         gum confirm "Clone repo?" && git clone --bare $PREFIX:$REPO
       }
 
@@ -94,6 +96,8 @@
       MANPAGER = "sh -c 'col -bx | bat -l man -p'";
       BAT_THEME = "1337";
       NULLCMD = "bat";
+
+      ZVM_VI_ESCAPE_BINDKEY = "jj";
 
       EDITOR = "nvim";
       ZVM_VI_EDITOR = "nvim";
