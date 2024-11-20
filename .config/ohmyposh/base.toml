@@ -22,7 +22,10 @@ final_space = true
 [transient_prompt]
   template = ' '
   background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']
+  foreground_templates = [
+    '{{if gt .Code 0}}p:red{{end}}',
+    '{{if eq .Code 0}}p:orange{{end}}',
+  ]
 
 [[blocks]]
   type = 'prompt'
@@ -87,4 +90,7 @@ final_space = true
     template = ''
     background = 'transparent'
     type = 'text'
-    foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']
+    foreground_templates = [
+      '{{if gt .Code 0}}p:red{{end}}',
+      '{{if eq .Code 0}}p:orange{{end}}',
+    ]
