@@ -26,6 +26,17 @@
       nixpkgs = {
         hostPlatform = "aarch64-darwin";
         config.allowUnfree = true;
+        overlays = [
+          (final: prev: {
+            pnpm = prev.pnpm.overrideAttrs (oldAttrs: rec {
+              version = "9.12.3";
+              src = prev.fetchurl {
+                url = "https://registry.npmjs.org/pnpm/-/pnpm-${version}.tgz";
+                sha256 = "sha256-JCNXcsxKyCpiYnzUf4NMcmZ6LOh3mahG7E6OVV4tS4s=";
+              };
+            });
+          })
+        ];
       };
 
       environment.systemPackages = with pkgs; [
