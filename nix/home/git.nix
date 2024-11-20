@@ -18,6 +18,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+      pull.rebase = true;
       fetch.prune = true;
       core.editor = "nvim";
       commit.template = "~/.gitmessage";

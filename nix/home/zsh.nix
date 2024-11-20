@@ -1,9 +1,40 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+
+    #programs.fzf.enableZshIntegration = true;
+
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+
+    plugins = [
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.zsh-autosuggestions;
+        file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+      }
+      {
+        name = "zsh-completions";
+        src = pkgs.zsh-completions;
+        file = "share/zsh-completions/zsh-completions.zsh";
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.zsh-syntax-highlighting;
+        file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
+      }
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.zsh";
+      }
+    ];
 
     shellAliases = {
       ".." = "cd ..";
@@ -25,11 +56,6 @@
       pr = "gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout";
       gclean = "git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D";
       gpick = "git log --oneline | gum filter | cut -d' ' -f1 # | copy";
-    };
-
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
     };
 
     profileExtra = "eval $(/opt/homebrew/bin/brew shellenv)";
@@ -104,6 +130,4 @@
       '';
     };
   };
-
-  programs.fzf.enableZshIntegration = true;
 }
