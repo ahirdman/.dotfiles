@@ -46,7 +46,6 @@
         oh-my-posh
         eza
         fzf
-        wezterm
         alacritty
         skhd
         yabai
@@ -136,7 +135,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.ahirdman = import ./home/home.nix;
+            users.ahirdman = import ../home/home.nix;
           };
         }
       ];
