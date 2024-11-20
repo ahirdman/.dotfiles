@@ -12,7 +12,7 @@
       ls = "eza -la --icons --git --group-directories-first";
       lt = "eza --tree --level=2 --icons --all --ignore-glob='node_modules' ";
       v = "nvim";
-      switch = "darwin-rebuild switch --flake ~/.dotfiles/nix-darwin#work";
+      switch = "darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#work";
       cl = "clear";
       cat = "bat";
       ts = "tmuxPickSession";
