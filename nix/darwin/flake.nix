@@ -64,6 +64,7 @@
         nodejs
         ripgrep
         bun
+        chafa
       ];
 
       homebrew = {

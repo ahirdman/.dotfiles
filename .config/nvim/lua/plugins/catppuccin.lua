@@ -119,6 +119,10 @@ return {
 						DashboardPink = { fg = colors.pink },
 						DashboardTodo = { fg = colors.teal },
 
+						SnacksDashboardHeader = { fg = colors.text },
+						SnacksDashboardNormal = { fg = colors.text },
+						SnacksDashboardTitle = { fg = colors.text },
+
 						DashboardHeader = { fg = colors.text },
 						DashboardFiles = { fg = colors.text },
 						DashboardShortCutIcon = { fg = colors.yellow },
