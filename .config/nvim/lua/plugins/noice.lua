@@ -2,7 +2,7 @@ return {
 	"folke/noice.nvim",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		-- "rcarriga/nvim-notify",
+		"rcarriga/nvim-notify",
 	},
 	config = function()
 		require("noice").setup({
@@ -35,7 +35,7 @@ return {
 				},
 			},
 			notify = {
-				enabled = false, -- NOTE: Evaluating snacks
+				enabled = true,
 				view = "notify",
 			},
 			presets = {

@@ -58,13 +58,12 @@
         nixd
         zed-editor
         bat
-        yabai
-        skhd
         pnpm
         nodejs
         ripgrep
         bun
         chafa
+        aerospace
       ];
 
       homebrew = {
