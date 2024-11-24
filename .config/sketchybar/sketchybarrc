@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+
+PADDINGS=3 # All paddings use this value (icon, label, background)
+
+POPUP_BORDER_WIDTH=2
+POPUP_CORNER_RADIUS=11
+
+SHADOW=on
+
+############## FINALIZING THE SETUP ##############
+sketchybar --update
+
+echo "sketchybar configuation loaded.."

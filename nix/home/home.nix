@@ -13,6 +13,7 @@ in {
       nvim.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/nvim";
       aeorpsace.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/aerospace";
       ohmyposh.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/ohmyposh";
+      sketchybar.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/sketchybar";
     };
   };
 
