@@ -110,6 +110,14 @@
         package = pkgs.nix;
       };
 
+      launchd.daemons = {
+        sketchybar = {
+          program = "${pkgs.sketchybar}/bin/sketchybar";
+          runAtLoad = true;
+          keepAlive = true;
+        };
+      };
+
       system = {
         configurationRevision = self.rev or self.dirtyRev or null;
         stateVersion = 5;
