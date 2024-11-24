@@ -80,6 +80,7 @@
           "discord"
           "docker"
           "expo-orbit"
+          "font-hack-nerd-font"
           "google-chrome"
           "linear-linear"
           "microsoft-teams"
