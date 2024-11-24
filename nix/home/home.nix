@@ -1,16 +1,19 @@
-{config, ...}: {
+{config, ...}: let
+  inherit (config.lib.file) mkOutOfStoreSymlink;
+in {
   programs.home-manager.enable = true;
 
   home.username = "ahirdman";
   home.homeDirectory = "/Users/ahirdman";
   home.stateVersion = "24.05";
 
-  home.activation = {
-    linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      ln -sf ~/.dotfiles/.config/aerospace ~/.config/aerospace
-      ln -sf ~/.dotfiles/.config/ohmyposh ~/.config/ohmyposh
-      ln -sf ~/.dotfiles/.config/nvim  ~/.config/nvim
-    '';
+  xdg = {
+    enable = true;
+    configFile = {
+      nvim.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/nvim";
+      aeorpsace.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/aerospace";
+      ohmyposh.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/ohmyposh";
+    };
   };
 
   home.file = {
@@ -22,10 +25,6 @@
 
       --container-architecture linux/amd64
     '';
-
-    # ".skhdrc".source = config.lib.file.mkOutOfStoreSymlink "~/.dotfiles/.skhdrc";
-
-    # ".config/ohmyposh".source = ./.config/ohmyposh;
   };
 
   imports = [
