@@ -100,7 +100,14 @@
       users.users.ahirdman.home = "/Users/ahirdman";
       security.pam.enableSudoTouchIdAuth = true;
       home-manager.backupFileExtension = "backup";
-      services.nix-daemon.enable = true;
+
+      services = {
+        nix-daemon.enable = true;
+        sketchybar = {
+          enable = true;
+          package = pkgs.sketchybar;
+        };
+      };
 
       nix = {
         configureBuildUsers = true;
@@ -110,13 +117,11 @@
         package = pkgs.nix;
       };
 
-      launchd.daemons = {
-        sketchybar = {
-          program = "${pkgs.sketchybar}/bin/sketchybar";
-          runAtLoad = true;
-          keepAlive = true;
-        };
-      };
+      # launchd.daemons = {
+      #   sketchybar = {
+      #     command = "sketchybar";
+      #   };
+      # };
 
       system = {
         configurationRevision = self.rev or self.dirtyRev or null;
