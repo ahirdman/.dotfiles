@@ -64,6 +64,7 @@
         bun
         chafa
         aerospace
+        sketchybar
       ];
 
       homebrew = {
