@@ -122,6 +122,7 @@
           NSGlobalDomain = {
             AppleInterfaceStyle = "Dark";
             AppleInterfaceStyleSwitchesAutomatically = true;
+            _HIHideMenuBar = true;
           };
         };
       };
