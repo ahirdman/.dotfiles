@@ -12,7 +12,7 @@ local on_attach = function(_, bufnr)
 		{
 			"<leader>lf",
 			function()
-				conform.format({ bufnr })
+				conform.format({ bufnr, async = true })
 			end,
 			desc = "Format buffer",
 			buffer = bufnr,
