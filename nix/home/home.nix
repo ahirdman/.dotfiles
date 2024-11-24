@@ -7,7 +7,7 @@
 
   home.activation = {
     linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      ln -sf ~/.dotfiles/.config/aerospace ~/.config/aerospace/.aerospace.toml
+      ln -sf ~/.dotfiles/.config/aerospace ~/.config/aerospace
       ln -sf ~/.dotfiles/.config/ohmyposh ~/.config/ohmyposh
       ln -sf ~/.dotfiles/.config/nvim  ~/.config/nvim
     '';
