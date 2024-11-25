@@ -89,14 +89,14 @@ exec-on-workspace-change = [
   alt-shift-equal = 'resize smart +50'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-  alt-1 = 'workspace 1'
-  alt-2 = 'workspace 2'
-  alt-3 = 'workspace 3'
+  alt-a = 'workspace 1'
+  alt-s = 'workspace 2'
+  alt-d = 'workspace 3'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-  alt-shift-1 = 'move-node-to-workspace 1'
-  alt-shift-2 = 'move-node-to-workspace 2'
-  alt-shift-3 = 'move-node-to-workspace 3'
+  alt-shift-a = 'move-node-to-workspace 1'
+  alt-shift-s = 'move-node-to-workspace 2'
+  alt-shift-d = 'move-node-to-workspace 3'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
   alt-tab = 'workspace-back-and-forth'
