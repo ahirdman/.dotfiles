@@ -2,7 +2,6 @@
   programs.tmux = {
     enable = true;
     baseIndex = 1;
-    prefix = "C-b";
     escapeTime = 0;
     clock24 = true;
     mouse = true;
@@ -20,14 +19,6 @@
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-
-      # Unbind Escape key
-      unbind-key -T copy-mode Escape
-      unbind-key -T copy-mode-vi Escape
-
-      # Bind Ctrl+C
-      bind-key -T copy-mode C-c send-keys -X cancel
-      bind-key -T copy-mode-vi C-c send-keys -X clear-selection
 
       # Shift arrow to switch windows
       bind -n S-Left  previous-window
