@@ -9,9 +9,6 @@ return {
 		-- Adds LSP completion capabilities
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
-
-		-- Adds a number of user-friendly snippets
-		-- "rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -61,11 +58,10 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			sources = {
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
+				{ name = "nvim_lsp", keyword_length = 0 },
+				{ name = "luasnip", keyword_length = 0 },
 				{ name = "path" },
 				{ name = "nvim_lua" },
-				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "calc" },
 				{ name = "emoji" },
@@ -83,7 +79,6 @@ return {
 						nvim_lsp = "[LSP]",
 						nvim_lua = "[Lua]",
 						luasnip = "[LuaSnip]",
-						buffer = "[Buffer]",
 						latex_symbols = "[LaTeX]",
 						tsnip = "[tsnip]",
 					})[entry.source.name]
@@ -95,7 +90,13 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete({}),
+				["<C-a>"] = cmp.mapping.complete({
+					config = {
+						sources = {
+							{ name = "nvim_lsp" },
+						},
+					},
+				}),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,

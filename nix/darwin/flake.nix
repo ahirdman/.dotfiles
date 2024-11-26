@@ -117,12 +117,6 @@
         package = pkgs.nix;
       };
 
-      # launchd.daemons = {
-      #   sketchybar = {
-      #     command = "sketchybar";
-      #   };
-      # };
-
       system = {
         configurationRevision = self.rev or self.dirtyRev or null;
         stateVersion = 5;
