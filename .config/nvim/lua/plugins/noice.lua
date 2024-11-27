@@ -4,6 +4,7 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
+	enable = false,
 	config = function()
 		require("noice").setup({
 			lsp = {
