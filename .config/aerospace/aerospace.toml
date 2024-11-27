@@ -1,5 +1,12 @@
-start-at-login = true
-after-login-command = []
+after-startup-command = ['exec-and-forget sketchybar']
+
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+start-at-login = false
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -7,19 +14,11 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 
 default-root-container-layout = 'tiles'
-
 default-root-container-orientation = 'auto'
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
-
-after-startup-command = ['exec-and-forget sketchybar']
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change',
-]
 
 [key-mapping]
   preset = 'qwerty'

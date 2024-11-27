@@ -103,10 +103,6 @@
 
       services = {
         nix-daemon.enable = true;
-        sketchybar = {
-          enable = true;
-          package = pkgs.sketchybar;
-        };
       };
 
       nix = {

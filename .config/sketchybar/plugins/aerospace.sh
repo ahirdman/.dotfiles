@@ -2,8 +2,6 @@
 
 source "$HOME/.config/sketchybar/colors.sh"
 
-FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
-
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     set=(
       background.drawing=on
