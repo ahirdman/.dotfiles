@@ -24,7 +24,7 @@
       bind -n S-Left  previous-window
       bind -n S-Right next-window
 
-      # Shift Alt vim keys to switch windows
+      # Alt vim keys to switch windows
       bind -n M-H previous-window
       bind -n M-L next-window
 

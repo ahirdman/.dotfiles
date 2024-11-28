@@ -28,6 +28,18 @@
         config.allowUnfree = true;
         overlays = [
           (final: prev: {
+            lla = final.rustPlatform.buildRustPackage {
+              pname = "lla";
+              version = "0.2.9";
+              src = final.fetchFromGitHub {
+                owner = "triyanox";
+                repo = "lla";
+                rev = "main";
+                sha256 = "sha256-C2wbMOYiowx21YDDVEQgilH9rODUlPdHbdVVKFv63fI=";
+              };
+              cargoHash = "sha256-sjJUG32jchAG/q4y649PyTJ2kqjT+0COSvO2QM6GnV0=";
+            };
+
             pnpm = prev.pnpm.overrideAttrs (oldAttrs: rec {
               version = "9.12.3";
               src = prev.fetchurl {
@@ -66,6 +78,8 @@
         aerospace
         sketchybar
         hub
+        cargo
+        lla
       ];
 
       homebrew = {
