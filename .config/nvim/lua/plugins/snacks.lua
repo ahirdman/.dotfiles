@@ -63,7 +63,9 @@ return {
 					file = function(item, ctx)
 						local fname = vim.fn.fnamemodify(item.file, ":~")
 						fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+
 						local dir, file = fname:match("^(.*)/(.+)$")
+
 						return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } }
 							or { { fname, hl = "file" } }
 					end,
