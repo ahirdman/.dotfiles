@@ -65,6 +65,7 @@
         chafa
         aerospace
         sketchybar
+        hub
       ];
 
       homebrew = {
