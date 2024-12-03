@@ -85,6 +85,8 @@
         ollama
         httpie
         azure-cli
+        bicep
+        dotnet-sdk_8
       ];
 
       homebrew = {
