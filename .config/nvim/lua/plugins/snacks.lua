@@ -106,10 +106,7 @@ return {
 						icon = " ",
 						title = "Recent Files",
 						section = "recent_files",
-						indent = 2,
 						padding = 1,
-						pane = 1,
-						align = "left",
 					},
 					{
 						icon = { " ", hl = "DashboardPink" },
