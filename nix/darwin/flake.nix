@@ -25,7 +25,9 @@
     configuration = {pkgs, ...}: {
       nixpkgs = {
         hostPlatform = "aarch64-darwin";
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+        };
         overlays = [
           (final: prev: {
             lla = final.rustPlatform.buildRustPackage {
@@ -80,6 +82,9 @@
         hub
         cargo
         lla
+        ollama
+        httpie
+        azure-cli
       ];
 
       homebrew = {
@@ -87,6 +92,12 @@
         # enableRosetta = true;
         # user = "ahirdman";
         # autoMigrate = true;
+        taps = [
+          "azure/azd"
+        ];
+        brews = [
+          "azd"
+        ];
         casks = [
           "firefox"
           "1password"
@@ -106,6 +117,7 @@
           "slack"
           "spotify"
           "raycast"
+          "httpie"
         ];
         onActivation.cleanup = "zap";
         # onActivation.autoUpdate = true;
