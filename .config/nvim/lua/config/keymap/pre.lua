@@ -25,3 +25,6 @@ utils.keymap({ "i" }, "<C-h>", "<Left>")
 utils.keymap({ "i" }, "<C-l>", "<Right>")
 utils.keymap({ "i" }, "<C-j>", "<Down>")
 utils.keymap({ "i" }, "<C-k>", "<Up>")
+utils.keymap({ "i" }, "<C-k>", "<Up>")
+
+utils.keymap({ "i" }, "jj", "<Esc>")
