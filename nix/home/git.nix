@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     aliases = {
@@ -32,5 +32,6 @@
       editor = "nvim";
       git_protocol = "ssh";
     };
+    extensions = [pkgs.gh-notify];
   };
 }

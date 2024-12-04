@@ -3,35 +3,34 @@
   pkgs,
   ...
 }: {
+  programs.fzf.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
-
-    #programs.fzf.enableZshIntegration = true;
 
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
 
-    plugins = [
+    plugins = with pkgs; [
       {
         name = "zsh-autosuggestions";
-        src = pkgs.zsh-autosuggestions;
+        src = zsh-autosuggestions;
         file = "share/zsh-autosuggestions/zsh-autosuggestions.zsh";
       }
       {
         name = "zsh-completions";
-        src = pkgs.zsh-completions;
+        src = zsh-completions;
         file = "share/zsh-completions/zsh-completions.zsh";
       }
       {
         name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-syntax-highlighting;
+        src = zsh-syntax-highlighting;
         file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh";
       }
       {
         name = "vi-mode";
-        src = pkgs.zsh-vi-mode;
+        src = zsh-vi-mode;
         file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
       }
     ];

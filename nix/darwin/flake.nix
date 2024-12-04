@@ -61,16 +61,11 @@
         eza
         fzf
         alacritty
-        skhd
-        yabai
-        zsh-syntax-highlighting
-        zsh-autosuggestions
         gh
         ngrok
         zoxide
         alejandra
         nixd
-        zed-editor
         bat
         pnpm
         nodejs
@@ -83,7 +78,6 @@
         cargo
         lla
         ollama
-        httpie
         azure-cli
         bicep
         dotnet-sdk_8
@@ -119,7 +113,6 @@
           "slack"
           "spotify"
           "raycast"
-          "httpie"
         ];
         onActivation.cleanup = "zap";
         # onActivation.autoUpdate = true;

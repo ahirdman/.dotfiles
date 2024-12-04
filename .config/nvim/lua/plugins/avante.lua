@@ -5,17 +5,34 @@ return {
 	enabled = false,
 	version = false, -- set this if you want to always pull the latest change
 	opts = {
-		provider = "azure",
-		auto_suggestions_provider = nil,
-		---@type AvanteAzureProvider
-		azure = {
-			endpoint = "https://openai-ms-chatbot851489380601.openai.azure.com/",
-			api_version = "2024-05-13",
-			deployment = "gpt-4o-V3",
-			timeout = 30000,
-			temperature = 0,
-			max_tokens = 4096,
+		provider = "ollama",
+		vendors = {
+			---@type AvanteProvider
+			ollama = {
+				["local"] = true,
+				endpoint = "127.0.0.1:11434/v1",
+				model = "llama3.1:latest",
+				parse_curl_args = function(opts, code_opts)
+					return {
+						url = opts.endpoint .. "/chat/completions",
+						headers = {
+							["Accept"] = "application/json",
+							["Content-Type"] = "application/json",
+						},
+						body = {
+							model = opts.model,
+							messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+							max_tokens = 2048,
+							stream = true,
+						},
+					}
+				end,
+				parse_response_data = function(data_stream, event_state, opts)
+					require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+				end,
+			},
 		},
+		auto_suggestions_provider = nil,
 		behaviour = {
 			auto_suggestions = false, -- Experimental stage
 			auto_set_highlight_group = true,
