@@ -9,6 +9,7 @@ for sid in $(aerospace list-workspaces --all); do
     background.height=20
     label.padding_left=0
     label.padding_right=10
+    label.highlight_color="$ORANGE" 
     label="$sid"
     click_script="aerospace workspace $sid"
     script="$PLUGIN_DIR/aerospace.sh $sid"

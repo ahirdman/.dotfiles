@@ -11,5 +11,5 @@ item=(
   script="$PLUGIN_DIR/gh.sh"
 )
 
-sketchybar  --add item github right \
+sketchybar  --add item github center \
             --set github "${item[@]}"

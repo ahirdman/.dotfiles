@@ -3,12 +3,7 @@
 source "$HOME/.config/sketchybar/colors.sh"
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-    set=(
-      background.drawing=on
-      background.color=$ORANGE
-    )
-
-    sketchybar --set $NAME "${set[@]}"
+    sketchybar --set $NAME label.highlight=on
 else
-    sketchybar --set $NAME background.drawing=off
+    sketchybar --set $NAME label.highlight=off
 fi
