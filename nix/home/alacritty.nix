@@ -28,19 +28,19 @@
       font = {
         size = 18;
         normal = {
-          family = "BerkeleyMonoVariable Nerd Font";
+          family = "BerkeleyMono Nerd Font Propo";
           style = "Regular";
         };
         italic = {
-          family = "BerkeleyMonoVariable Nerd Font";
+          family = "BerkeleyMono Nerd Font Propo";
           style = "Regular";
         };
         bold = {
-          family = "BerkeleyMonoVariable Nerd Font";
+          family = "BerkeleyMono Nerd Font Propo";
           style = "Regular";
         };
         bold_italic = {
-          family = "BerkeleyMonoVariable Nerd Font";
+          family = "BerkeleyMono Nerd Font Propo";
           style = "Regular";
         };
       };
