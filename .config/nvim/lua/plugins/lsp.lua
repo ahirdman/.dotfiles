@@ -19,7 +19,7 @@ return {
 			local_settings = ".neoconf.json",
 			global_settings = "neoconf.json",
 			import = {
-				vscode = true, -- local .vscode/settings.json
+				vscode = false, -- local .vscode/settings.json
 			},
 			live_reload = true,
 			-- set the filetype to jsonc for settings files, so you can use comments

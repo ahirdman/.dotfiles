@@ -1,3 +1,5 @@
+local jsFormatters = { "biome", "prettier", stop_after_first = true }
+
 return {
 	"stevearc/conform.nvim",
 	config = function()
@@ -8,64 +10,26 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				bicep = { "bicep" },
-				json = { "jsonls" },
-				javascript = { "biome", "prettier", stop_after_first = true },
-				javascriptreact = { "biome", "prettier", stop_after_first = true },
-				typescript = { "prettier", stop_after_first = true },
-				typescriptreact = { "prettier", stop_after_first = true },
+				json = { "biome" },
 				nix = { "alejandra" },
+				javascript = jsFormatters,
+				javascriptreact = jsFormatters,
+				typescript = jsFormatters,
+				typescriptreact = jsFormatters,
 			},
 			formatters = {
 				taplo = {},
+				biome = {
+					require_cwd = true,
+				},
+				prettier = {
+					require_cwd = true,
+				},
 			},
 			format_on_save = {
 				timeout_ms = 500,
 				lsp_format = "fallback",
 			},
 		})
-
-		-- vim.api.nvim_create_user_command("Format", function()
-		-- 	local formatters = get_closest_formatter({
-		-- 		biome = { "biome.json" },
-		-- 		prettier = { ".prettierrc", "prettier.config.js" },
-		-- 		stylua = { "stylua.toml" },
-		-- 	})
-		--
-		-- 	if not formatters then
-		-- 		print("Formatter not found, using lsp")
-		-- 		require("conform").format({ async = true, lsp_fallback = true })
-		-- 	else
-		-- 		print("Formatted with " .. formatters[1])
-		-- 		require("conform").format({ async = true, formatters, lsp_fallback = false })
-		-- 	end
-		-- end, {})
-		--
-		-- vim.api.nvim_create_user_command("FormatWithBiome", function()
-		-- 	require("conform").format({
-		-- 		async = true,
-		-- 		formatters = { "biome" },
-		-- 		lsp_fallback = false,
-		-- 	})
-		-- end, {})
-		--
-		-- vim.api.nvim_create_user_command("FormatWithPrettier", function()
-		-- 	require("conform").format({
-		-- 		async = true,
-		-- 		formatters = { "prettier" },
-		-- 		lsp_fallback = false,
-		-- 	})
-		-- end, {})
-		vim.api.nvim_create_user_command("FWNix", function()
-			require("conform").format({
-				async = true,
-				formatters = { "nixpkgs-fmt" },
-				lsp_fallback = false,
-			})
-		end, {})
 	end,
-	--
-	-- init = function()
-	-- 	-- If you want the formatexpr, here is the place to set it
-	-- 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-	-- end,
 }
