@@ -81,7 +81,6 @@
         azure-cli
         bicep
         dotnet-sdk_8
-        nerd-font-patcher
       ];
 
       homebrew = {
@@ -103,7 +102,6 @@
           "discord"
           "docker"
           "expo-orbit"
-          "font-hack-nerd-font"
           "google-chrome"
           "linear-linear"
           "microsoft-teams"
