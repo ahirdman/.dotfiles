@@ -5,9 +5,7 @@ source "$HOME/.config/sketchybar/colors.sh"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
-#  TODO: Fix Berkeley font
-# Needs to have Regular, Bold, Semibold, Heavy and Black variants
-# FONT="BerkeleyMonoVariable Nerd Font" 
+FONT="BerkeleyMono Nerd Font Mono"
 
 PADDINGS=3
 RADIUS=8
@@ -31,7 +29,7 @@ default=(
   padding_right=5
   updates="when_shown"
   icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:15.0"
+  label.font="$FONT:Bold:18.0"
   icon.color=$ICON_COLOR
   label.color=$LABEL_COLOR
   icon.padding_left=4

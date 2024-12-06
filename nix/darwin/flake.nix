@@ -81,6 +81,7 @@
         azure-cli
         bicep
         dotnet-sdk_8
+        nerd-font-patcher
       ];
 
       homebrew = {
