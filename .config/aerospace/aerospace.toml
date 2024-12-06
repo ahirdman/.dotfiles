@@ -20,6 +20,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
+[exec.env-vars]
+  ACTIVE_MODE = "main"
+
 [key-mapping]
   preset = 'qwerty'
 
@@ -31,12 +34,12 @@ automatically-unhide-macos-hidden-apps = false
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-  inner.horizontal = 20
-  inner.vertical = 20
-  outer.left = 20
-  outer.bottom = 20
-  outer.top = 80
-  outer.right = 20
+  inner.horizontal = 10
+  inner.vertical = 10
+  outer.left = 10
+  outer.bottom = 10
+  outer.top = 60
+  outer.right = 10
 
 [mode.main.binding]
 
@@ -102,24 +105,25 @@ automatically-unhide-macos-hidden-apps = false
   # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
   alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-  # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-  alt-shift-semicolon = 'mode service'
+  alt-shift-s = [
+    'mode service',
+    'exec-and-forget sketchybar --trigger aerospace_binding_mode ACTIVE_MODE=service',
+  ]
 
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
-  esc = ['reload-config', 'mode main']
-  r = ['flatten-workspace-tree', 'mode main'] # reset layout
-  f = [
-    'layout floating tiling',
+  alt-shift-m = [
     'mode main',
-  ] # Toggle between floating and tiling layout
-  backspace = ['close-all-windows-but-current', 'mode main']
+    'exec-and-forget sketchybar --trigger aerospace_binding_mode ACTIVE_MODE=main',
+  ]
 
-  # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-  #s = ['layout sticky tiling', 'mode main']
-
-  alt-shift-h = ['join-with left', 'mode main']
-  alt-shift-j = ['join-with down', 'mode main']
-  alt-shift-k = ['join-with up', 'mode main']
-  alt-shift-l = ['join-with right', 'mode main']
+[mode.service.binding]
+  esc = ['reload-config', 'trigger-binding alt-shift-m --mode main']
+  r = ['flatten-workspace-tree', 'trigger-binding alt-shift-m --mode main']
+  f = ['layout floating tiling', 'trigger-binding alt-shift-m --mode main']
+  backspace = [
+    'close-all-windows-but-current',
+    'trigger-binding alt-shift-m --mode main',
+  ]
+  alt-shift-h = ['join-with left', 'trigger-binding alt-shift-m --mode main']
+  alt-shift-j = ['join-with down', 'trigger-binding alt-shift-m --mode main']
+  alt-shift-k = ['join-with up', 'trigger-binding alt-shift-m --mode main']
+  alt-shift-l = ['join-with right', 'trigger-binding alt-shift-m --mode main']

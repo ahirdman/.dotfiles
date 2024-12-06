@@ -15,8 +15,8 @@ RADIUS=8
 bar=(
   position=top
   height=40
-  margin=20
-  y_offset=20
+  margin=10
+  y_offset=10
   corner_radius=$RADIUS
   border_color=$GREY
   border_width=1
@@ -44,6 +44,7 @@ sketchybar --default "${default[@]}"
 
 source "$ITEM_DIR/front_app.sh"
 source "$ITEM_DIR/aerospace.sh"
+source "$ITEM_DIR/aerospace_binding_mode.sh"
 
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
