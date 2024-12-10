@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ "$ACTIVE_MODE" == "service" ]; then
-  sketchybar --set space.mode label="service"
+  sketchybar --set mode label="service"
 else
-  sketchybar --set space.mode label="main"
+  sketchybar --set mode label="main"
 fi
