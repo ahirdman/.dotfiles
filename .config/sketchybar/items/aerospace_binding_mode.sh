@@ -11,6 +11,6 @@ set=(
     script="$PLUGIN_DIR/aerospace_binding_mode.sh"
   )
 
-sketchybar  --add item space.mode left \
-            --subscribe space.mode aerospace_binding_mode \
-            --set space.mode "${set[@]}"
+sketchybar  --add item mode left \
+            --subscribe mode aerospace_binding_mode \
+            --set mode "${set[@]}"

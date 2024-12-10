@@ -81,6 +81,8 @@
         azure-cli
         bicep
         dotnet-sdk_8
+        docker
+        colima
       ];
 
       homebrew = {
@@ -100,7 +102,6 @@
           "1password-cli"
           "arc"
           "discord"
-          "docker"
           "expo-orbit"
           "google-chrome"
           "linear-linear"
