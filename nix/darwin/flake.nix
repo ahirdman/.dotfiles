@@ -81,8 +81,8 @@
         azure-cli
         bicep
         dotnet-sdk_8
-        docker
-        colima
+        #docker
+        #colima
       ];
 
       homebrew = {
@@ -99,6 +99,7 @@
         casks = [
           "firefox"
           "1password"
+          "docker"
           "1password-cli"
           "arc"
           "discord"
