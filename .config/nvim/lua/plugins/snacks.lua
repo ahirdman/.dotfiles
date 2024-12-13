@@ -14,6 +14,7 @@ return {
 			notifier = { enabled = true },
 			quickfile = { enabled = false },
 			statuscolumn = { enabled = false },
+			scroll = { enabled = false },
 			---@class snacks.dashboard.Config
 			---@field sections snacks.dashboard.Section
 			---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
