@@ -3,6 +3,8 @@ local on_attach = function(_, bufnr)
 	local icons = require("config.icons")
 	local telescope = require("telescope.builtin")
 	local conform = require("conform")
+  local autocmd = vim.api.nvim_create_autocmd
+  local lint = require('lint')
 
 	wk.add({
 		{ "<leader>l", group = "LSP", icon = icons.kind.Package },
@@ -27,11 +29,11 @@ local on_attach = function(_, bufnr)
 		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation" },
 	}, { mode = "n", prexif = "" })
 
-	-- autocmd({ "BufWritePost" }, {
-	-- 	callback = function()
-	-- 		lint.try_lint()
-	-- 	end,
-	-- })
+	autocmd({ "BufWritePost" }, {
+		callback = function()
+			lint.try_lint()
+		end,
+	})
 
 	-- autocmd({ "BufWritePre" }, {
 	-- 	pattern = "*",
