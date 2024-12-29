@@ -97,6 +97,7 @@
           "azd"
         ];
         casks = [
+          "ghostty"
           "firefox"
           "1password"
           "docker"
@@ -115,9 +116,11 @@
           "spotify"
           "raycast"
         ];
-        onActivation.cleanup = "zap";
-        # onActivation.autoUpdate = true;
-        # onActivation.upgrade = true;
+        onActivation = {
+          cleanup = "zap";
+          autoUpdate = true;
+          # upgrade = true;
+        };
       };
 
       users.users.ahirdman.home = "/Users/ahirdman";
