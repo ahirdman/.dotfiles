@@ -1,0 +1,47 @@
+#cheat-sheet: https://www.ditig.com/publications/256-colors-cheat-sheet
+
+#black
+palette = 0=#928374
+
+#maroon/red
+palette = 1=#ea6962
+
+#green
+palette = 2=#a9b665
+
+#olive/yellow
+palette = 3=#d8a657
+
+#navy/blue
+palette = 4=#7daea3
+
+#purple
+palette = 5=#d3869b
+
+palette = 6=#81c8be
+
+palette = 7=#a5adce
+
+palette = 8=#626880
+
+palette = 9=#e67172
+
+palette = 10=#8ec772
+
+palette = 11=#d9ba73
+
+palette = 12=#7b9ef0
+
+palette = 13=#f2a4db
+
+palette = 14=#5abfb5
+
+#white
+palette = 15=#ebdbb2
+
+background = 000000
+foreground = ffffff
+
+cursor-color = f2d5cf
+selection-background = 626880
+selection-foreground = c6d0f5
