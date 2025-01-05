@@ -81,6 +81,13 @@ return {
 							desc = "Preview blame",
 						},
 						{
+							"<leader>gB",
+							function()
+								gitsigns.blame()
+							end,
+							desc = "Open blame panel",
+						},
+						{
 							"<leader>gh",
 							gitsigns.preview_hunk,
 							buffer = bufnr,

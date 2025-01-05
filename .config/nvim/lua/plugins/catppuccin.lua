@@ -1,6 +1,7 @@
 return {
 	"catppuccin/nvim",
 	lazy = false,
+  enabled = true,
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
@@ -65,7 +66,8 @@ return {
 					surface2 = "#4d4d4d",
 					surface1 = "#404040",
 					surface0 = "#292929", -- Hover neotree
-					base = "#000000", -- Background
+					--base = "#000000", -- Background
+					base = "#0f1411", -- Background
 					mantle = "#0C0A09", -- Neotree background
 					crust = "#141617",
 				},
@@ -172,7 +174,7 @@ return {
 						TelescopePromptPrefix = { bg = colors.base, fg = colors.peach },
 						TelescopePromptTitle = { fg = colors.peach, bg = colors.base },
 						TelescopeResultsBorder = { bg = colors.base, fg = colors.text },
-						-- TelescopeResultsNormal = { bg = colors.mantle }, -- Result list
+						TelescopeResultsNormal = { bg = colors.base }, -- Result list
 						TelescopeResultsTitle = { fg = colors.text, bg = colors.base },
 						-- TelescopeSelection = { bg = colors.surface0 }, -- Active Row in selection list
 

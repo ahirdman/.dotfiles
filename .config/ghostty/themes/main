@@ -39,7 +39,7 @@ palette = 14=#5abfb5
 #white
 palette = 15=#ebdbb2
 
-background = 000000
+background = 0f1411
 foreground = ffffff
 
 cursor-color = f2d5cf

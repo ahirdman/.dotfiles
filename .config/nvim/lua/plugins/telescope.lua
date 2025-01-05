@@ -59,6 +59,10 @@ return {
 				},
 			},
 			pickers = {
+				colorscheme = {
+					ignore_builtins = true,
+					enable_preview = true,
+				},
 				find_files = {
 					previewer = false,
 					hidden = false,
