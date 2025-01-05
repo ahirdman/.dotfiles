@@ -22,7 +22,8 @@ return {
 			darkgray = "#3c3836",
 			lightgray = "#504945",
 			inactivegray = "#7c6f64",
-			base = "#000000",
+			--base = "#000000",
+			base = "#0f1411", -- Background
 			subtext1 = "#d5c4a1",
 			subtext0 = "#bdae93",
 			overlay2 = "#a89984",

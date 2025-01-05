@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-BLACK=0xff000000
+BLACK=0xff0f1411
 WHITE=0xffebdbb2
 RED=0xffed8796
 GREEN=0xffa6da95

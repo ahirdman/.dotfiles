@@ -111,4 +111,8 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
+
+	{
+		"tjdevries/colorbuddy.nvim",
+	},
 }
