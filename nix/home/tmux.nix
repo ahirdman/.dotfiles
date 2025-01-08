@@ -51,7 +51,7 @@
       set-option -g status-left-length 100
       set-option -g status-left " #{session_name}  "
       set-option -g status-right ""
-      set-option -g status-style "fg=#ebdbb2 bg=#0f1411"
+      set-option -g status-style "fg=#ebdbb2 bg=#121212"
 
       # set-option -ag status-right "#[fg=red,dim,bg=white]#(uptime | cut -f 4-5 -d ' ' | cut -f 1 -d ',') "
       # set-option -g window-status-format "#[fg=#ebdbb2,bg=#AB9881]#{window_index} #{window_name} #{window_flags}"
