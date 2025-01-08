@@ -66,8 +66,7 @@ return {
 					surface2 = "#4d4d4d",
 					surface1 = "#404040",
 					surface0 = "#292929", -- Hover neotree
-					--base = "#000000", -- Background
-					base = "#0f1411", -- Background
+					base = "#121212", -- Background
 					mantle = "#0C0A09", -- Neotree background
 					crust = "#141617",
 				},
