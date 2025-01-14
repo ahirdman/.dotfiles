@@ -81,6 +81,7 @@ return {
 				disabled_filetypes = {
 					statusline = {
 						"dashboard-nvim",
+						"snacks_dashboard",
 						"help",
 						"neo-tree",
 						"Trouble",
