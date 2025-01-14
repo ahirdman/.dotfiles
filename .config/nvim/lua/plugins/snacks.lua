@@ -87,7 +87,7 @@ return {
 							{ " ", hl = "DashboardYellow" },
 							{ " Lazy[l] ", hl = "SnacksDashboardTitle" },
 							{ "年", hl = "DashboardOrange" },
-							{ " Mason[m] ", hl = "SnacksDashboardTitle" },
+							{ "Mason[m] ", hl = "SnacksDashboardTitle" },
 							{ "", hl = "DashboardPink" },
 							{ " Neogit[g] ", hl = "SnacksDashboardTitle" },
 							{ "", hl = "DashboardGreen" },
