@@ -110,7 +110,6 @@ local servers = {
 			},
 		},
 	},
-	gopls = {},
 	pyright = {},
 	taplo = {},
 	bicep = {},
