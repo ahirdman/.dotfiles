@@ -81,6 +81,7 @@
         azure-cli
         bicep
         dotnet-sdk_8
+        nodePackages.eas-cli
         #docker
         #colima
       ];
