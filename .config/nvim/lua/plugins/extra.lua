@@ -61,7 +61,7 @@ return {
 		config = function()
 			local colorizer = require("colorizer")
 			colorizer.setup({
-				filetypes = { "*" },
+				filetypes = { "*", "!lazy" },
 				user_default_options = {
 					RGB = true, -- #RGB hex codes
 					RRGGBB = true, -- #RRGGBB hex codes
