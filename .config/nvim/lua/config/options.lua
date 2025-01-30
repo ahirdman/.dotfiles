@@ -7,6 +7,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.wo.number = true
 
 local options = {
+	laststatus = 3,
 	breakindent = false,
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
