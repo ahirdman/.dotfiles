@@ -116,6 +116,7 @@
           "slack"
           "spotify"
           "raycast"
+          "zed"
         ];
         onActivation = {
           cleanup = "zap";

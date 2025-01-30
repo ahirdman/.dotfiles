@@ -95,6 +95,10 @@ return {
 						".DS_Store",
 						"thumbs.db",
 					},
+					mappings = {
+						["<Tab>"] = "open",
+						nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+					},
 				},
 			},
 			event_handlers = {
