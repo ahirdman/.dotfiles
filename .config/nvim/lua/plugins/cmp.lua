@@ -15,8 +15,6 @@ return {
 		local luasnip = require("luasnip")
 		local icons = require("config.icons")
 
-		require("luasnip.loaders.from_vscode").lazy_load()
-
 		luasnip.config.setup({})
 
 		cmp.setup({
