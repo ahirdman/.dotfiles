@@ -51,7 +51,7 @@ local servers = {
 		root_dir = nvim_lsp.util.root_pattern("biome.json"),
 	},
 	tailwindcss = {
-		root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js"),
+		root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js", "tailwind.config.cjs"),
 		settings = {
 			tailwindCSS = {
 				experimental = {

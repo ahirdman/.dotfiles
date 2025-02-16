@@ -82,6 +82,7 @@
         bicep
         dotnet-sdk_8
         nodePackages.eas-cli
+        python3
         #docker
         #colima
       ];
@@ -121,7 +122,7 @@
         onActivation = {
           cleanup = "zap";
           autoUpdate = true;
-          # upgrade = true;
+          upgrade = true;
         };
       };
 
