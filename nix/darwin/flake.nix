@@ -97,6 +97,8 @@
         ];
         brews = [
           "azd"
+          "ghostscript"
+          "imagemagick"
         ];
         casks = [
           "ghostty"
