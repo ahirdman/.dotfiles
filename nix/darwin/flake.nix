@@ -114,12 +114,12 @@
           "microsoft-teams"
           "notion"
           "keymapp"
-          "postman"
           "sf-symbols"
           "slack"
           "spotify"
           "raycast"
           "zed"
+          "yaak"
         ];
         onActivation = {
           cleanup = "zap";
@@ -129,16 +129,10 @@
       };
 
       users.users.ahirdman.home = "/Users/ahirdman";
-      security.pam.enableSudoTouchIdAuth = true;
+      security.pam.services.sudo_local.touchIdAuth = true;
       home-manager.backupFileExtension = "backup";
 
-      services = {
-        nix-daemon.enable = true;
-      };
-
       nix = {
-        configureBuildUsers = true;
-        useDaemon = true;
         settings.experimental-features = "nix-command flakes";
         nixPath = ["nixpkgs=${inputs.nixpkgs}"];
         package = pkgs.nix;
