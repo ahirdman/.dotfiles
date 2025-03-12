@@ -2,6 +2,7 @@ local wk = require("which-key")
 local icons = require("config.icons")
 local telescope_builtin = require("telescope.builtin")
 local gitsigns = require("gitsigns")
+local copilot = require("copilot.suggestion")
 
 wk.add({
 	{ "<leader><leader>", telescope_builtin.buffers, desc = "Find Open Buffers" },
@@ -92,4 +93,7 @@ wk.add({
 	},
 
 	{ "<leader>cs", "", hidden = true },
+
+	{ "<leader>a", group = "AI" },
+	{ "<leader>aX", copilot.toggle_auto_trigger(), desc = "Toggle Auto Trigger" },
 }, { mode = "n", prexif = "" })
