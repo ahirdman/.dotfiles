@@ -87,6 +87,8 @@ final_space = true
     foreground = 'p:white'
     background = 'transparent'
     type = 'node'
+    cache_duration = 'none'
+    pnpm_icon = ''
 
   [[blocks.segments]]
     style = 'plain'

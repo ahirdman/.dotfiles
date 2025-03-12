@@ -42,13 +42,13 @@
               cargoHash = "sha256-sjJUG32jchAG/q4y649PyTJ2kqjT+0COSvO2QM6GnV0=";
             };
 
-            pnpm = prev.pnpm.overrideAttrs (oldAttrs: rec {
-              version = "9.12.3";
-              src = prev.fetchurl {
-                url = "https://registry.npmjs.org/pnpm/-/pnpm-${version}.tgz";
-                sha256 = "sha256-JCNXcsxKyCpiYnzUf4NMcmZ6LOh3mahG7E6OVV4tS4s=";
-              };
-            });
+            # pnpm = prev.pnpm.overrideAttrs (oldAttrs: rec {
+            #   version = "9.12.3";
+            #   src = prev.fetchurl {
+            #     url = "https://registry.npmjs.org/pnpm/-/pnpm-${version}.tgz";
+            #     sha256 = "sha256-JCNXcsxKyCpiYnzUf4NMcmZ6LOh3mahG7E6OVV4tS4s=";
+            #   };
+            # });
           })
         ];
       };
