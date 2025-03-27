@@ -12,6 +12,7 @@ return {
 				bicep = { "bicep" },
 				json = { "biome" },
 				nix = { "alejandra" },
+				--python = { "ruff" },
 				javascript = jsFormatters,
 				javascriptreact = jsFormatters,
 				typescript = jsFormatters,

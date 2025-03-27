@@ -110,7 +110,14 @@ local servers = {
 			},
 		},
 	},
-	pyright = {},
+	pyright = {
+		settings = {
+			pyright = {
+				disableOrganizeImports = true,
+			},
+		},
+	},
+	ruff = {},
 	taplo = {},
 	bicep = {},
 }
