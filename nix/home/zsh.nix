@@ -96,6 +96,8 @@
       BAT_THEME = "1337";
       NULLCMD = "bat";
 
+      GH_DASH_CONFIG = "$HOME/.config/ghdash/config.yml";
+
       ZVM_VI_ESCAPE_BINDKEY = "jj";
 
       EDITOR = "nvim";

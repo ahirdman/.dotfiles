@@ -8,9 +8,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = {
-      #url = "github:zhaofengli-wip/nix-homebrew";
+      url = "github:zhaofengli-wip/nix-homebrew";
       #url = "git+https://github.com/zhaofengli/nix-homebrew?ref=refs/pull/71/merge";
-      url = "git+https://github.com/zhaofengli/nix-homebrew?rev=04b0536479d2d2e8d71dc8c8ee97c2b61f0c9987";
+      #url = "git+https://github.com/zhaofengli/nix-homebrew?rev=04b0536479d2d2e8d71dc8c8ee97c2b61f0c9987";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -94,13 +94,11 @@
       homebrew = {
         enable = true;
         taps = [
-          "azure/azd"
           "azure/functions"
         ];
         brews = [
-          "azd"
           "azure-functions-core-tools@4"
-          "ghostscript"
+          #"ghostscript"
           "imagemagick"
         ];
         casks = [
@@ -114,6 +112,7 @@
           "expo-orbit"
           "google-chrome"
           "linear-linear"
+          "microsoft-auto-update"
           "microsoft-teams"
           "notion"
           "keymapp"
@@ -124,6 +123,8 @@
           "zed"
           "yaak"
           "zen-browser"
+          "orbstack"
+          "chatgpt"
         ];
         onActivation = {
           cleanup = "zap";

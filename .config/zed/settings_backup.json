@@ -1,0 +1,47 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "project_panel": {
+    "dock": "right"
+  },
+  "icon_theme": "Colored Zed Icons Theme Light",
+  "assistant": {
+    "language_models": {
+      "openai": {
+        "api_url": "https://oai-chatbot-test-sec.openai.azure.com/openai/deployments/gpt-4o",
+        "available_models": [
+          {
+            "name": "azure-openai",
+            "display_name": "Azure OpenAI",
+            "max_tokens": 131072,
+            "api_version": "2024-08-01-preview"
+          }
+        ]
+      }
+    },
+    "default_model": {
+      "provider": "openai",
+      "model": "azure-openai"
+    },
+    "enabled": true,
+    "version": "1"
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "0x96f Theme"
+  }
+}

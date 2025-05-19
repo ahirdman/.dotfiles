@@ -1,0 +1,33 @@
+[alias]
+	aa = "add --all"
+	ap = "add --patch"
+	ca = "commit --amend"
+	ci = "commit -v"
+	co = "checkout"
+	ls = "branch -v"
+	pb = "!git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
+	pf = "push --force-with-lease"
+	st = "status"
+	undo = "reset --soft HEAD^"
+
+[commit]
+	template = "~/.gitmessage"
+
+[core]
+	editor = "nvim"
+
+[fetch]
+	prune = true
+
+[init]
+	defaultBranch = "main"
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[user]
+	email = ""
+	name = ""
