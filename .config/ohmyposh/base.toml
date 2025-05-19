@@ -92,9 +92,19 @@ final_space = true
 
   [[blocks.segments]]
     style = 'plain'
-    template = '  {{ .DefaultEnvironment }} '
+    template = '  {{ .Name }} '
     foreground = 'p:blue'
-    type = 'azd'
+    type = 'az'
+
+# type = "az"
+# style = "powerline"
+# powerline_symbol = ""
+# foreground = "#000000"
+# background = "#9ec3f0"
+# template = "  {{ .EnvironmentName }}"
+#
+# [blocks.segments.properties]
+# source = "pwsh"
 
 [[blocks]]
   type = 'prompt'

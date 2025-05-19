@@ -1,6 +1,7 @@
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export BAT_THEME='1337'
 export NULLCMD=bat
+export GH_DASH_CONFIG="$HOME/.config/ghdash/config.yml"
 
 # Homebrew settings
 export HOMEBREW_CASK_OPTS="--no-quarantine"
@@ -17,6 +18,7 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export EDITOR="nvim"
 export ZVM_VI_EDITOR="nvim"
 export ZVM_CURSOR_STYLE_ENABLED=false
+export ZVM_VI_ESCAPE_BINDKEY="jj"
 
 # Gum settings
 export GUM_INPUT_CURSOR_FOREGROUND="#ff6d12"
@@ -61,18 +63,6 @@ export PATH="$PATH:$HOME/.maestro/bin"
 # Go Executables
 export PATH=$PATH:/Users/hirdman/go/bin
 
-# Aliases
-[[ -f ~/.config/zsh/aliases.zsh ]] && source ~/.config/zsh/aliases.zsh
-
-# Functions
-[[ -f ~/.config/zsh/functions.zsh ]] && source ~/.config/zsh/functions.zsh
-
-# Completions
-[[ -f ~/.config/zsh/completions.zsh ]] && source ~/.config/zsh/completions.zsh
-
-# Plugins
-[[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
-
 # Deno Completions
 if [[ ":$FPATH:" != *":/Users/ahirdman/.zsh/completions:"* ]]; then export FPATH="/Users/ahirdman/.zsh/completions:$FPATH"; fi
 
@@ -84,11 +74,17 @@ case ":$PATH:" in
 esac
 . "/Users/ahirdman/.deno/env"
 
-# oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+eval "$(zoxide init zsh)"
 
-# EAS-cli completions
-eval EAS_AC_ZSH_SETUP_PATH=/Users/ahirdman/Library/Caches/eas-cli/autocomplete/zsh_setup && test -f $EAS_AC_ZSH_SETUP_PATH && source $EAS_AC_ZSH_SETUP_PATH;
+# Aliases
+[[ -f ~/.config/zsh/alias.zsh ]] && source ~/.config/zsh/alias.zsh
 
-# Direnv
-eval "$(direnv hook zsh)"
+# Functions
+[[ -f ~/.config/zsh/functions.zsh ]] && source ~/.config/zsh/functions.zsh
+
+# Completions
+[[ -f ~/.config/zsh/completions.zsh ]] && source ~/.config/zsh/completions.zsh
+
+# Plugins
+[[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh

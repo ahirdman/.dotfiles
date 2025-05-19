@@ -13,8 +13,8 @@
       pb = "!git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D";
       undo = "reset --soft HEAD^";
     };
-    userEmail = "126080861+AlexHird@users.noreply.github.com";
-    userName = "Alexander Hirdman";
+    userEmail = "";
+    userName = "";
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
@@ -32,6 +32,7 @@
       editor = "nvim";
       git_protocol = "ssh";
     };
-    extensions = [pkgs.gh-notify];
+
+    extensions = [pkgs.gh-notify pkgs.gh-dash];
   };
 }

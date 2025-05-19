@@ -28,6 +28,7 @@ in {
       ohmyposh.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/ohmyposh";
       sketchybar.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/sketchybar";
       ghostty.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/ghostty";
+      ghdash.source = mkOutOfStoreSymlink "/Users/ahirdman/.dotfiles/.config/ghdash";
     };
   };
 
