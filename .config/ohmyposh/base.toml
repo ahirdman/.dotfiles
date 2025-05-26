@@ -92,7 +92,7 @@ final_space = true
 
   [[blocks.segments]]
     style = 'plain'
-    template = '  {{ .Name }} '
+    template = '  {{ .Name }}'
     foreground = 'p:blue'
     type = 'az'
 

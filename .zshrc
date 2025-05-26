@@ -34,7 +34,7 @@ export FZF_DEFAULT_OPTS='
   --layout reverse 
 
   --color=fg:-1:,fg+:#fbf1c7,bg:-1,bg+:#1F1F1F
-  --color=gutter:#000000
+  --color=gutter:#121212
   --color=hl:#a9b665,hl+:#e78a4e
   --color=info:#665c54
 
@@ -67,12 +67,12 @@ export PATH=$PATH:/Users/hirdman/go/bin
 if [[ ":$FPATH:" != *":/Users/ahirdman/.zsh/completions:"* ]]; then export FPATH="/Users/ahirdman/.zsh/completions:$FPATH"; fi
 
 # pnpm config
-export PNPM_HOME="/Users/ahirdman/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-. "/Users/ahirdman/.deno/env"
+# export PNPM_HOME="/Users/ahirdman/Library/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
+# . "/Users/ahirdman/.deno/env"
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 eval "$(zoxide init zsh)"
