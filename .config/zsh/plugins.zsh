@@ -9,6 +9,9 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Source additional scripts and plugins
 # . $(brew --prefix)/etc/profile.d/z.sh
 
+# Until zsh-vi-mode is fixed, we need to source it manually
+source <(fzf --zsh)
+
 # Fzf Has to be initialized after zsh-vi-mode
 function init_fzf() {
   source <(fzf --zsh)

@@ -11,3 +11,4 @@ window-padding-y = 6
 window-decoration = false
 
 keybind = ctrl+d=unbind
+keybind = ctrl+p=csi:A
