@@ -36,13 +36,13 @@
 		"light": "Zed (Default)"
 	},
 	"agent": {
-		"default_profile": "write",
+		"default_profile": "ask",
   "always_allow_tool_actions": true,
   "enabled": true,
 		"version": "2",
 		"default_model": {
-			"provider": "zed.dev",
-			"model": "claude-sonnet-4-thinking-latest"
+			"provider": "copilot_chat",
+			"model": "gpt-4.1"
 		},
 		"editor_model": {
 			"provider": "openai",
