@@ -1,7 +1,7 @@
 return {
 	"catppuccin/nvim",
 	lazy = false,
-  enabled = true,
+	enabled = true,
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
@@ -101,6 +101,11 @@ return {
 			highlight_overrides = {
 				all = function(colors)
 					return {
+						AvanteTitle = { bg = colors.mantle, fg = colors.peach },
+						AvanteReversedTitle = { fg = colors.mantle },
+						AvanteSidebarNormal = { bg = colors.mantle, fg = colors.text },
+						AvanteSidebarWinSeparator = { bg = colors.mantle, fg = colors.overlay0 },
+
 						CmpItemMenu = { fg = colors.surface2 },
 
 						CursorLineNr = { fg = colors.text },
