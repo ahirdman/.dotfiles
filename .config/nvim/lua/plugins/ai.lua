@@ -2,7 +2,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-    enabled = true,
+		enabled = true,
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
@@ -59,15 +59,20 @@ return {
 		enabled = true,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
+			mode = "agentic",
 			provider = "copilot",
+			copilot = {
+				model = "gpt-4.1",
+			},
 			auto_suggestions_provider = nil,
 			behaviour = {
-				auto_suggestions = false, -- Experimental stage
-				auto_set_highlight_group = true,
+				enable_cursor_planning_mode = true, -- enable cursor planning mode!
 				auto_set_keymaps = true,
+				auto_set_highlight_group = true,
+				minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+				auto_suggestions = false, -- Experimental stage
 				auto_apply_diff_after_generation = false,
 				support_paste_from_clipboard = false,
-				minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
 			},
 			mappings = {
 				--- @class AvanteConflictMappings
@@ -106,9 +111,7 @@ return {
 				wrap = true, -- similar to vim.o.wrap
 				width = 50, -- default % based on available width
 				sidebar_header = {
-					enabled = true, -- true, false to enable/disable the header
-					align = "center", -- left, center, right for title
-					rounded = true,
+					enabled = false,
 				},
 				input = {
 					prefix = "> ",
@@ -127,6 +130,7 @@ return {
 				},
 			},
 			highlights = {
+				---@type AvanteConflictHighlights
 				diff = {
 					current = "DiffText",
 					incoming = "DiffAdd",

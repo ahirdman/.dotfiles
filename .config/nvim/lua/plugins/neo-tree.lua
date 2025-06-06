@@ -5,6 +5,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
+	enabled = false,
 	event = "VeryLazy",
 	config = function()
 		local icons = require("config.icons")
