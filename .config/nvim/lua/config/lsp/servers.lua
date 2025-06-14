@@ -2,41 +2,53 @@ local nvim_lsp = require("lspconfig")
 
 ---@type lspconfig.options
 local servers = {
-	eslint = {
-		root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
-		settings = {
-			codeAction = {
-				disableRuleComment = {
-					enable = true,
-					location = "separateLine",
-				},
-				showDocumentation = {
-					enable = true,
-				},
-			},
-			codeActionOnSave = {
-				enable = false,
-				mode = "all",
-			},
-			experimental = {
-				useFlatConfig = false,
-			},
-			format = true,
-			nodePath = "",
-			onIgnoredFiles = "off",
-			problems = {
-				shortenToSingleLine = false,
-			},
-			quiet = false,
-			rulesCustomizations = {},
-			run = "onType",
-			useESLintClass = false,
-			validate = "on",
-			workingDirectory = {
-				mode = "location",
-			},
-		},
-	},
+  cssls = {
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    single_file_support = false,
+    settings = {
+      css = {
+        validate = true,
+        lint = {
+          unknownAtRules = "ignore",
+        },
+      },
+    },
+  },
+	-- eslint = {
+	-- 	root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
+	-- 	settings = {
+	-- 		codeAction = {
+	-- 			disableRuleComment = {
+	-- 				enable = true,
+	-- 				location = "separateLine",
+	-- 			},
+	-- 			showDocumentation = {
+	-- 				enable = true,
+	-- 			},
+	-- 		},
+	-- 		codeActionOnSave = {
+	-- 			enable = false,
+	-- 			mode = "all",
+	-- 		},
+	-- 		experimental = {
+	-- 			useFlatConfig = false,
+	-- 		},
+	-- 		format = true,
+	-- 		nodePath = "",
+	-- 		onIgnoredFiles = "off",
+	-- 		problems = {
+	-- 			shortenToSingleLine = false,
+	-- 		},
+	-- 		quiet = false,
+	-- 		rulesCustomizations = {},
+	-- 		run = "onType",
+	-- 		useESLintClass = false,
+	-- 		validate = "on",
+	-- 		workingDirectory = {
+	-- 			mode = "location",
+	-- 		},
+	-- 	},
+	-- },
 	yamlls = {
 		settings = {
 			yaml = {
@@ -63,15 +75,15 @@ local servers = {
 			},
 		},
 	},
-	denols = {
-		root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-		single_file_support = false,
-		settings = {
-			deno = {
-				future = true,
-			},
-		},
-	},
+	-- denols = {
+	-- 	root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+	-- 	single_file_support = false,
+	-- 	settings = {
+	-- 		deno = {
+	-- 			future = true,
+	-- 		},
+	-- 	},
+	-- },
 	ts_ls = {
 		root_dir = nvim_lsp.util.root_pattern("package.json"),
 		single_file_support = false,
@@ -98,18 +110,18 @@ local servers = {
 			},
 		},
 	},
-	sqls = {
-		settings = {
-			sqls = {
-				connections = {
-					{
-						driver = "postgresql",
-						dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
-					},
-				},
-			},
-		},
-	},
+	-- sqls = {
+	-- 	settings = {
+	-- 		sqls = {
+	-- 			connections = {
+	-- 				{
+	-- 					driver = "postgresql",
+	-- 					dataSourceName = "host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	pyright = {
 		settings = {
 			pyright = {

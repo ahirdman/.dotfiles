@@ -61,8 +61,10 @@ return {
 		opts = {
 			mode = "agentic",
 			provider = "copilot",
-			copilot = {
-				model = "gpt-4.1",
+			providers = {
+				copilot = {
+					model = "gpt-4.1",
+				},
 			},
 			auto_suggestions_provider = nil,
 			behaviour = {

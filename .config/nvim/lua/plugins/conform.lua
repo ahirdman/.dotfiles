@@ -13,6 +13,7 @@ return {
 				json = { "biome" },
 				nix = { "alejandra" },
 				--python = { "ruff" },
+        css = jsFormatters,
 				javascript = jsFormatters,
 				javascriptreact = jsFormatters,
 				typescript = jsFormatters,
