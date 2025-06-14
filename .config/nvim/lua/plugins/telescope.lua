@@ -36,16 +36,16 @@ return {
 						["<C-d>"] = false,
 					},
 				},
-
-				--        border = true,
-				-- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+				border = true,
+				borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 
 				-- prompt_title = false,
 				-- prompt_border = true,
 
 				prompt_prefix = " " .. icons.ui.Telescope .. "  ",
 				selection_caret = icons.ui.BoldArrowRight .. " ",
-				file_ignore_patterns = { "node_modules", "package-lock.json", ".git", "*.ttf" },
+				--file_ignore_patterns = { "node_modules", "package-lock.json", ".git/", "*.ttf" },
+        file_ignore_patterns = { "%.git/", "node_modules", "package%-lock%.json", "%.ttf" },
 				initial_mode = "insert",
 				select_strategy = "reset",
 				sorting_strategy = "ascending",
@@ -65,7 +65,7 @@ return {
 				},
 				find_files = {
 					previewer = false,
-					hidden = false,
+					hidden = true,
 					layout_config = {
 						height = 0.4,
 						prompt_position = "top",

@@ -5,6 +5,9 @@ local gitsigns = require("gitsigns")
 --local copilot = require("copilot.suggestion")
 
 wk.add({
+	{ "<leader>o", "<cmd> Oil <CR>", desc = "Open Oil" },
+	{ "<leader>p", "<cmd> Oil --float <CR>", desc = "Open Oil float" },
+
 	{ "<leader><leader>", telescope_builtin.buffers, desc = "Find Open Buffers" },
 	{ "<leader><tab>", "<cmd> Neotree toggle float <CR>", desc = "Float File Explorer" },
 	{ "<leader>e", "<cmd> Neotree reveal right<CR>", desc = "Right File Explorer" },
