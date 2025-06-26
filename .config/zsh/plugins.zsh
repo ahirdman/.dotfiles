@@ -10,7 +10,6 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # . $(brew --prefix)/etc/profile.d/z.sh
 
 # Until zsh-vi-mode is fixed, we need to source it manually
-source <(fzf --zsh)
 
 # Fzf Has to be initialized after zsh-vi-mode
 function init_fzf() {
@@ -22,5 +21,7 @@ function init_fzf() {
 
   setopt appendhistory
 }
+
+init_fzf
 
 zvm_after_init_commands+=(init_fzf)
