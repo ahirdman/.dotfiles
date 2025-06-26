@@ -21,11 +21,7 @@ wk.add({
 	},
 
 	{ "<leader>g", group = "Git" },
-	{
-		"<leader>gd",
-		"<cmd> DiffviewOpen origin/main...HEAD <cr>",
-		desc = "View diff against main",
-	},
+	{ "<leader>gd", "<cmd> DiffviewFileHistory <cr>", desc = "View diffs per commit" },
 	{ "<leader>gg", "<cmd> Neogit <cr>", desc = "Open Neogit" },
 	{ "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
 	{ "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },
