@@ -21,13 +21,13 @@ local on_attach = function(_, bufnr)
 			noremap = true,
 			silent = false,
 		},
-	}, { mode = "n", prexif = "" })
+        }, { mode = "n", prefix = "" })
 
 	wk.add({
 		{ "gd", "<cmd> :Lspsaga peek_definition <cr>", desc = "Peek Definition" },
 		{ "gr", telescope.lsp_references, desc = "Find References" },
 		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation" },
-	}, { mode = "n", prexif = "" })
+        }, { mode = "n", prefix = "" })
 
 	autocmd({ "BufWritePost" }, {
 		callback = function()
