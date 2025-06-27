@@ -95,4 +95,4 @@ wk.add({
 
 	{ "<leader>a", group = "AI" },
 	--{ "<leader>aX", copilot.toggle_auto_trigger(), desc = "Toggle Auto Trigger" },
-}, { mode = "n", prexif = "" })
+}, { mode = "n", prefix = "" })
