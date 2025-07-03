@@ -2,18 +2,18 @@ local nvim_lsp = require("lspconfig")
 
 ---@type lspconfig.options
 local servers = {
-  cssls = {
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
-    single_file_support = false,
-    settings = {
-      css = {
-        validate = true,
-        lint = {
-          unknownAtRules = "ignore",
-        },
-      },
-    },
-  },
+	cssls = {
+		root_dir = nvim_lsp.util.root_pattern("package.json"),
+		single_file_support = false,
+		settings = {
+			css = {
+				validate = true,
+				lint = {
+					unknownAtRules = "ignore",
+				},
+			},
+		},
+	},
 	-- eslint = {
 	-- 	root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
 	-- 	settings = {
@@ -63,15 +63,11 @@ local servers = {
 		root_dir = nvim_lsp.util.root_pattern("biome.json"),
 	},
 	tailwindcss = {
-		root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js", "tailwind.config.cjs", "postcss.config.mjs"),
+		--root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js", "tailwind.config.cjs", "postcss.config.mjs"),
+		root_dir = nvim_lsp.util.root_pattern("package.json"),
 		settings = {
 			tailwindCSS = {
-				experimental = {
-					classRegex = {
-						{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-						{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-					},
-				},
+				classFunctions = { "cva", "cx" },
 			},
 		},
 	},
