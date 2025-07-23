@@ -23,6 +23,7 @@ alias gp="git pull"
 alias pr="gh pr list | cut -f1,2 | gum choose | cut -f1 | xargs gh pr checkout"
 alias gclean="git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D"
 alias gpick="git log --oneline | gum filter | cut -d' ' -f1 # | copy"
+alias gitroot="git rev-parse --show-toplevel"
 
 alias ts="tmuxPickSession"
 alias tsource="tmux source-file $HOME/.config/tmux/tmux.conf"
@@ -30,3 +31,5 @@ alias tsource="tmux source-file $HOME/.config/tmux/tmux.conf"
 alias v="nvim"
 
 alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
+
+alias oc="opencode"

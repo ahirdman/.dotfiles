@@ -83,9 +83,25 @@ local servers = {
 	ts_ls = {
 		root_dir = nvim_lsp.util.root_pattern("package.json"),
 		single_file_support = false,
-		init_options = {
-			preferences = {
-				disableSuggestions = true,
+    init_options = {
+      hostInfo = "neovim",
+      preferences = {
+        includeCompletionsForModuleExports = true,
+        includeCompletionsForImportStatements = true,
+        importModuleSpecifierEnding = "minimal",
+        importModuleSpecifierPreference = "non-relative",
+        disableSuggestions = true,
+      },
+    },
+		settings = {
+			typescript = {
+				preferences = {
+					disableSuggestions = true,
+					importModuleSpecifier = "non-relative",
+					importModuleSpecifierEnding = "minimal",
+					includeCompletionsForModuleExports = true,
+					includeCompletionsForImportStatements = true,
+				},
 			},
 		},
 	},

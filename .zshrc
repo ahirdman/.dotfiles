@@ -11,6 +11,9 @@ export N_PREFIX="$HOME/.n"
 export PREFIX="$N_PREFIX"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# Postgres settings
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 # OpenJDK settings
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 
@@ -26,6 +29,9 @@ export GUM_INPUT_PROMPT_FOREGROUND="#fff2eb"
 export GUM_INPUT_PLACEHOLDER="..."
 export GUM_INPUT_PROMPT=" "
 export GUM_INPUT_WIDTH=80
+
+# Rainfrog settings
+export RAINFROG_CONFIG=~/.config/rainfrog
 
 # FZF Defaults
 export FZF_DEFAULT_OPTS='
