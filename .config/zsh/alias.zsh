@@ -8,8 +8,6 @@ alias ...="cd ../.."
 alias ls="eza -la --icons --git --group-directories-first"
 alias lt="eza --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
-
-
 alias bbd='brew bundle dump --force'
 alias bu="brew list | gum choose --no-limit | xargs brew uninstall"
 
