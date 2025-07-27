@@ -1,5 +1,5 @@
 local colorbuddy = require("colorbuddy")
---colorbuddy.colorscheme("moonlander")
+colorbuddy.colorscheme("moonlander")
 
 local Color = colorbuddy.Color
 local Group = colorbuddy.Group
