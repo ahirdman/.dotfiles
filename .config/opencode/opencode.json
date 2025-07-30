@@ -6,9 +6,7 @@
   "share": "disabled",
   "provider": {
     "azure": {
-      "models": {
-        "codex-mini": {}
-      },
+      "models": {},
       "options": {
         "apiKey": "{file:azure_api_key.txt}",
         "resourceName": "{file:azure_resource_name.txt}"
