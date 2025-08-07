@@ -31,3 +31,7 @@ alias v="nvim"
 alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
 
 alias oc="opencode"
+
+alias db="rainfrog"
+
+alias hardware="system_profiler SPHardwareDataType"
