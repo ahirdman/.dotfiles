@@ -12,5 +12,15 @@
         "resourceName": "{file:azure_resource_name.txt}"
       }
     }
+  },
+  "mcp": {
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "headers": {
+        "Authorization": "{file:github_pat.txt}"
+      }
+    }
   }
 }

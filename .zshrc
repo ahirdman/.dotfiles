@@ -94,3 +94,8 @@ eval "$(zoxide init zsh)"
 
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ahirdman/.lmstudio/bin"
+# End of LM Studio CLI section
+

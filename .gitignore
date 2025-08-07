@@ -43,6 +43,7 @@ Brewfile.lock.json
 env.zsh
 azure_api_key.txt
 azure_resource_name.txt
+github_pat.txt
 
 # Submodules / Repositories
 .config/tmux/plugins/
