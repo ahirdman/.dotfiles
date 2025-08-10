@@ -5,6 +5,16 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "jay-babu/mason-nvim-dap.nvim",
+      "nvim-neotest/nvim-nio",
+      {
+        "mxsdev/nvim-dap-vscode-js",
+        config = function()
+          require("dap-vscode-js").setup({
+            debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
+            adapters = { "pwa-node" },
+          })
+        end,
+      },
     },
     config = function()
       local dap = require("dap")
