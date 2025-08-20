@@ -21,6 +21,7 @@ description: >-
       Even without an explicit request, the assistant proactively launches ts-perf-auditor because the situation matches its mandate of catching performance pitfalls.
       </commentary>
     </example>
+model: github-copilot/claude-sonnet-4
 tools:
   write: false
   edit: false

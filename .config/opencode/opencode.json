@@ -1,12 +1,21 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "opencode",
-  "model": "azure/o3",
+  "model": "github-copilot/claude-sonnet-4",
   "autoupdate": true,
   "share": "disabled",
   "provider": {
     "azure": {
-      "models": {},
+      "models": {
+        "gpt-5": {
+          "options": {
+            "reasoningEffort": "high",
+            "textVerbosity": "low",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"]
+          }
+        }
+      },
       "options": {
         "apiKey": "{file:azure_api_key.txt}",
         "resourceName": "{file:azure_resource_name.txt}"

@@ -1,6 +1,6 @@
 ---
 description: Reviews code for best practices and potential issues
-model: azure/o3
+model: github-copilot/claude-sonnet-4
 tools:
   write: false
   edit: false
