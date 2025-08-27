@@ -22,6 +22,68 @@
       }
     }
   },
+  "agent": {
+    "bug-finder": {
+      "description": "Identify and report bugs in the codebase, including logical errors, runtime errors, and edge cases that may not have been considered during development.",
+      "prompt": "{file:./prompts/bug-finder.md}",
+      "model": "github-copilot/claude-sonnet-4",
+      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "mode": "all",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
+    },
+    "code-reviewer": {
+      "description": "Use this agent to conduct thorough code reviews to ensure code quality, adherence to coding standards, and best practices",
+      "prompt": "{file:./prompts/code-reviewer.md}",
+      "model": "github-copilot/claude-sonnet-4",
+      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "mode": "subagent",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
+    },
+    "ts-perf-auditor": {
+      "description": "Use this agent when you need an expert assessment of potential performance problems in TypeScript code",
+      "prompt": "{file:./prompts/ts-perf-auditor.md}",
+      "mode": "subagent",
+      "model": "github-copilot/claude-sonnet-4",
+      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
+    },
+    "agent-docs-writer": {
+      "description": "Use this agent when code changes have been made that affect how agents should interact with the repository, including updates to coding standards, infrastructure configuration, build processes, deployment procedures, project structure changes, or development workflows.",
+      "prompt": "{file:./prompts/agent-docs-writer.md}",
+      "model": "gpt-5",
+      "mode": "subagent",
+      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+       "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
+    }
+  },
   "mcp": {
     "github": {
       "type": "remote",
