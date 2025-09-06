@@ -94,21 +94,6 @@ return {
 	},
 
 	{
-		"nvimdev/lspsaga.nvim",
-		event = "VeryLazy",
-		opts = {
-			symbol_in_winbar = {
-				enable = false,
-			},
-			lightbulb = { enable = false },
-			definition = {
-				width = 0.9,
-				height = 0.6,
-			},
-		},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
+		"mfussenegger/nvim-lint",
 	},
 }

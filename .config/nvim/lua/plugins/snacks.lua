@@ -11,7 +11,7 @@ return {
 
 		snacks.setup({
 			bigfile = { enabled = false },
-			notifier = { enabled = true },
+			notifier = { enabled = false },
 			quickfile = { enabled = false },
 			statuscolumn = { enabled = false },
 			scroll = { enabled = false },
