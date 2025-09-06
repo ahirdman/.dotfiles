@@ -31,11 +31,6 @@ return {
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
 
 	{
-		"numToStr/Comment.nvim",
-		opts = {},
-	},
-
-	{
 		"stevearc/dressing.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		event = "VeryLazy",
