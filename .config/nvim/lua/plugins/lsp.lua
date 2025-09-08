@@ -7,6 +7,9 @@ return {
 		"folke/neodev.nvim",
 		"folke/neoconf.nvim",
 	},
+	opts = {
+		diagnostics = { virtual_text = { prefix = "icons" } },
+	},
 	config = function()
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
@@ -94,15 +97,45 @@ return {
 			}),
 		})
 
+		local icons = require("config.icons")
+
 		vim.diagnostic.config({
 			title = false,
-			underline = true,
-			virtual_text = true,
-			signs = true,
+			underline = false,
+			virtual_text = {
+				suffix = " ",
+				source = false,
+				prefix = function(diagnostic)
+					if diagnostic.severity == 1 then
+						return " " .. icons.diagnostics.BoldError
+					end
+
+					if diagnostic.severity == 2 then
+						return " " .. icons.diagnostics.BoldWarning
+					end
+					if diagnostic.severity == 3 then
+						return " " .. icons.diagnostics.BoldInformation
+					end
+					if diagnostic.severity == 4 then
+						return " " .. icons.diagnostics.BoldHint
+					end
+
+					return "●"
+				end,
+			},
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = icons.diagnostics.BoldError,
+					[vim.diagnostic.severity.WARN] = icons.diagnostics.BoldWarning,
+					[vim.diagnostic.severity.HINT] = icons.diagnostics.BoldHint,
+					[vim.diagnostic.severity.INFO] = icons.diagnostics.BoldInformation,
+				},
+			},
 			update_in_insert = false,
 			severity_sort = true,
+			virtual_lines = false,
 			float = {
-				source = true,
+				source = "if_many",
 				style = "minimal",
 				border = "rounded",
 				header = "",

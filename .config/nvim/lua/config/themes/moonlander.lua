@@ -4,6 +4,7 @@ function M.load()
 	local c = {
 		rosewater = "#ea6962",
 		flamingo = "#ea6962",
+		redBg = "#753030",
 		red = "#ea6962",
 		maroon = "#ea6962",
 		pink = "#d3869b",
@@ -137,10 +138,10 @@ function M.load()
 		NeoTreeTabSeparatorInactive = { fg = c.crust, bg = c.crust },
 		NeoTreeWinSeparator = { fg = c.base, bg = c.base },
 
-    lualine_b_diff_removed = { fg = c.red },
-    lualine_b_diff_removed_normal = { fg = c.red },
-    lualine_b_diff_removed_insert = { fg = c.red },
-    lualine_b_diff_removed_terminal = { fg = c.red },
+		lualine_b_diff_removed = { fg = c.red },
+		lualine_b_diff_removed_normal = { fg = c.red },
+		lualine_b_diff_removed_insert = { fg = c.red },
+		lualine_b_diff_removed_terminal = { fg = c.red },
 
 		Normal = { fg = c.text, bg = c.base },
 		NormalNC = { fg = c.text, bg = c.base },
@@ -179,7 +180,7 @@ function M.load()
 		Number = { fg = c.mauve },
 		Float = { fg = c.mauve },
 
-    Comment = { fg = c.overlay0, style = { "italic" } },
+		Comment = { fg = c.overlay0, style = { "italic" } },
 		PreProc = { fg = c.mauve },
 		PreCondit = { fg = c.mauve },
 		Include = { fg = c.mauve },
@@ -205,10 +206,17 @@ function M.load()
 		Ignore = { fg = c.subtext1 },
 		Macro = { fg = c.teal },
 
-    DiagnosticError = { fg = c.red },
-    DiagnosticUnderlineError = { fg = c.red, style = { "underline" } },
-    DiagnosticWarn = { fg = c.yellow },
-    DiagnosticInfo = { fg = c.teal },
+		DiagnosticError = { fg = c.red, bg = c.redBg },
+		DiagnosticUnderlineError = { fg = c.red, style = { "underline" } },
+		DiagnosticVirtualLinesError = { fg = c.yellow },
+		DiagnosticFloatingError = { fg = c.teal },
+		DiagnosticSignError = { fg = c.red },
+
+		DiagnosticWarn = { fg = c.yellow },
+		DiagnosticInfo = { fg = c.teal },
+
+		DiagnosticDeprecated = { fg = c.subtext1, style = { "strikethrough" } },
+		DiagnosticUnnecessary = { fg = c.overlay0 },
 
 		NotifyERRORBorder = { fg = c.red },
 		NotifyERRORTitle = { fg = c.red },

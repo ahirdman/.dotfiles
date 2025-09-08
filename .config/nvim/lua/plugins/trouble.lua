@@ -1,6 +1,7 @@
 return {
 	"folke/trouble.nvim",
 	cmd = "Trouble",
+	enabled = true,
 	config = function()
 		local icons = require("config.icons")
 
@@ -109,6 +110,11 @@ return {
 					params = {
 						-- don't include the current location in the results
 						include_current = false,
+					},
+				},
+				diagnostics = {
+					groups = {
+						{ "filename", format = "{file_icon} {basename:Title} {count}" },
 					},
 				},
 				-- more advanced example that extends the lsp_document_symbols
