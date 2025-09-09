@@ -2,21 +2,17 @@ local M = {}
 
 function M.load()
 	local c = {
-		rosewater = "#ea6962",
-		flamingo = "#ea6962",
-		redBg = "#753030",
 		red = "#ea6962",
+		redShadow = "#2a1616",
 		maroon = "#ea6962",
 		pink = "#d3869b",
-		mauve = "#d3869b",
 		peach = "#e78a4e",
 		yellow = "#d8a657",
+		yellowShadow = "#2a2416",
 		green = "#a9b665",
 		teal = "#89b482",
-		sky = "#89b482",
-		sapphire = "#89b482",
+		tealShadow = "#162a20",
 		blue = "#7daea3",
-		lavender = "#7daea3",
 		text = "#ebdbb2",
 		subtext1 = "#d5c4a1",
 		subtext0 = "#bdae93",
@@ -32,51 +28,6 @@ function M.load()
 		background = "#121212",
 		gray_dbg = "#8B8B8B",
 	}
-
-	local function flags(style_list)
-		local t = {}
-		if not style_list then
-			return t
-		end
-		for _, s in ipairs(style_list) do
-			if s == "bold" then
-				t.bold = true
-			elseif s == "italic" then
-				t.italic = true
-			elseif s == "underline" then
-				t.underline = true
-			elseif s == "undercurl" then
-				t.undercurl = true
-			elseif s == "strikethrough" then
-				t.strikethrough = true
-			elseif s == "reverse" then
-				t.reverse = true
-			end
-		end
-		return t
-	end
-
-	local function hi(name, spec)
-		if spec.link then
-			vim.api.nvim_set_hl(0, name, { link = spec.link, default = false })
-			return
-		end
-		local o = {}
-		if spec.fg then
-			o.fg = spec.fg
-		end
-		if spec.bg then
-			o.bg = spec.bg
-		end
-		if spec.sp then
-			o.sp = spec.sp
-		end
-		local st = flags(spec.style)
-		for k, v in pairs(st) do
-			o[k] = v
-		end
-		vim.api.nvim_set_hl(0, name, o)
-	end
 
 	local O = {
 		CmpItemMenu = { fg = c.surface2 },
@@ -156,14 +107,14 @@ function M.load()
 		TelescopePreviewNormal = { bg = c.base },
 		-- TelescopePreviewTitle = { fg = c.crust, bg = c.mantle },
 		TelescopePromptBorder = { fg = c.text },
-		-- TelescopePromptCounter = { fg = c.mauve, style = { "bold" } },
+		-- TelescopePromptCounter = { fg = c.pink, style = { "bold" } },
 		TelescopePromptNormal = { bg = c.base },
 		TelescopePromptPrefix = { fg = c.peach, bg = c.base },
 		TelescopePromptTitle = { fg = c.peach, bg = c.base },
 		TelescopeResultsBorder = { fg = c.text },
 		TelescopeResultsNormal = { bg = c.base },
 		TelescopeResultsTitle = { fg = c.text },
-		-- TelescopeSelection    = { bg = c.surface0 },
+		TelescopeSelection = { bg = c.surface0 },
 
 		VertSplit = { fg = c.surface0, bg = c.base },
 
@@ -176,15 +127,15 @@ function M.load()
 		IblIndent = { fg = c.surface0 },
 		IblScope = { fg = c.overlay0 },
 
-		Boolean = { fg = c.mauve },
-		Number = { fg = c.mauve },
-		Float = { fg = c.mauve },
+		Boolean = { fg = c.pink },
+		Number = { fg = c.pink },
+		Float = { fg = c.pink },
 
 		Comment = { fg = c.overlay0, style = { "italic" } },
-		PreProc = { fg = c.mauve },
-		PreCondit = { fg = c.mauve },
-		Include = { fg = c.mauve },
-		Define = { fg = c.mauve },
+		PreProc = { fg = c.pink },
+		PreCondit = { fg = c.pink },
+		Include = { fg = c.pink },
+		Define = { fg = c.pink },
 		Conditional = { fg = c.red },
 		Repeat = { fg = c.red },
 		Keyword = { fg = c.red },
@@ -206,17 +157,38 @@ function M.load()
 		Ignore = { fg = c.subtext1 },
 		Macro = { fg = c.teal },
 
-		DiagnosticError = { fg = c.red, bg = c.redBg },
+		NoiceCmdlineIcon = { fg = c.yellow },
+		NoiceCmdlinePopupBorder = { fg = c.peach },
+		NoiceCmdlinePopupTitleCmdline = { fg = c.text },
+
+		NoiceCmdlinePopupBorderSearch = { fg = c.peach },
+		NoiceCmdlinePopupTitleSearch = { fg = c.text },
+		NoiceCmdlineIconSearch = { fg = c.yellow },
+
+		DiagnosticError = { fg = c.red, bg = c.redShadow },
 		DiagnosticUnderlineError = { fg = c.red, style = { "underline" } },
 		DiagnosticVirtualLinesError = { fg = c.yellow },
 		DiagnosticFloatingError = { fg = c.teal },
 		DiagnosticSignError = { fg = c.red },
 
-		DiagnosticWarn = { fg = c.yellow },
-		DiagnosticInfo = { fg = c.teal },
+		DiagnosticWarn = { fg = c.yellow, bg = c.yellowShadow },
+		DiagnosticInfo = { fg = c.teal, bg = c.tealShadow },
 
 		DiagnosticDeprecated = { fg = c.subtext1, style = { "strikethrough" } },
 		DiagnosticUnnecessary = { fg = c.overlay0 },
+
+		-- NoiceCmdline = { fg = c.text, bg = c.base },
+		-- NoiceCmdlinePopup = { fg = c.text, bg = c.base },
+		-- NoiceCmdlinePopupBorder = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconCmdline = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconSearch = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconFilter = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconLua = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconHelp = { fg = c.text, bg = c.base },
+		-- NoiceCmdlineIconInput = { fg = c.text, bg = c.base },
+		-- NoicePopup = { fg = c.text, bg = c.base },
+		-- NoicePopupBorder = { fg = c.text, bg = c.base },
+		-- NoiceMini = { fg = c.text, bg = c.base },
 
 		NotifyERRORBorder = { fg = c.red },
 		NotifyERRORTitle = { fg = c.red },
@@ -244,15 +216,15 @@ function M.load()
 		NotifyTRACEBody = { fg = c.pink },
 
 		-- Legacy TS* groups
-		TSAnnotation = { fg = c.mauve },
-		TSAttribute = { fg = c.mauve },
-		TSBoolean = { fg = c.mauve },
+		TSAnnotation = { fg = c.pink },
+		TSAttribute = { fg = c.pink },
+		TSBoolean = { fg = c.pink },
 		TSCharacter = { fg = c.teal },
 		TSCharacterSpecial = { link = "SpecialChar" },
 		TSComment = { link = "Comment" },
 		TSConditional = { fg = c.red },
-		TSConstBuiltin = { fg = c.mauve },
-		TSConstMacro = { fg = c.mauve },
+		TSConstBuiltin = { fg = c.pink },
+		TSConstMacro = { fg = c.pink },
 		TSConstant = { fg = c.text },
 		TSConstructor = { fg = c.green },
 		TSDebug = { link = "Debug" },
@@ -262,7 +234,7 @@ function M.load()
 		TSError = { link = "Error" },
 		TSException = { fg = c.red },
 		TSField = { fg = c.blue },
-		TSFloat = { fg = c.mauve },
+		TSFloat = { fg = c.pink },
 		TSFuncBuiltin = { fg = c.green },
 		TSFuncMacro = { fg = c.green },
 		TSFunction = { fg = c.green },
@@ -279,7 +251,7 @@ function M.load()
 		TSMethodCall = { fg = c.green },
 		TSNamespace = { fg = c.yellow },
 		TSNone = { fg = c.text },
-		TSNumber = { fg = c.mauve },
+		TSNumber = { fg = c.pink },
 		TSOperator = { fg = c.peach },
 		TSParameter = { fg = c.text },
 		TSParameterReference = { fg = c.text },
@@ -310,7 +282,7 @@ function M.load()
 		TSTypeQualifier = { fg = c.peach, style = { "bold" } },
 		TSURI = { fg = c.blue },
 		TSVariable = { fg = c.text },
-		TSVariableBuiltin = { fg = c.mauve },
+		TSVariableBuiltin = { fg = c.pink },
 
 		-- Extra TS groups used by @text.* links
 		TSDanger = { fg = c.red, style = { "bold" } },
@@ -431,10 +403,57 @@ function M.load()
 	}
 
 	-- === Apply =======================================
+	local function flags(style_list)
+		local t = {}
+		if not style_list then
+			return t
+		end
+		for _, s in ipairs(style_list) do
+			if s == "bold" then
+				t.bold = true
+			elseif s == "italic" then
+				t.italic = true
+			elseif s == "underline" then
+				t.underline = true
+			elseif s == "undercurl" then
+				t.undercurl = true
+			elseif s == "strikethrough" then
+				t.strikethrough = true
+			elseif s == "reverse" then
+				t.reverse = true
+			end
+		end
+		return t
+	end
+
+	local function hi(name, spec)
+		if spec.link then
+			vim.api.nvim_set_hl(0, name, { link = spec.link, default = false })
+			return
+		end
+		local o = {}
+		if spec.fg then
+			o.fg = spec.fg
+		end
+		if spec.bg then
+			o.bg = spec.bg
+		end
+		if spec.sp then
+			o.sp = spec.sp
+		end
+		local st = flags(spec.style)
+		for k, v in pairs(st) do
+			o[k] = v
+		end
+		vim.api.nvim_set_hl(0, name, o)
+	end
+
 	local keys = {}
+
 	for k in pairs(O) do
 		table.insert(keys, k)
 	end
+
 	table.sort(keys, function(a, b)
 		return tostring(a) < tostring(b)
 	end)
