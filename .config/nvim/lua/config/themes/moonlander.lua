@@ -30,6 +30,17 @@ function M.load()
 	}
 
 	local O = {
+		Added = { fg = c.teal },
+
+		DiffText = { bg = c.tealShadow },
+		DiffAdd = { bg = c.tealShadow, fg = c.teal },
+		DiffDelete = { bg = c.redShadow },
+		DiffChange = { bg = c.yellowShadow },
+
+		RenderMarkdown_RenderMarkdownCodeBorder_bg_as_fg = { fg = c.text, bg = c.text },
+
+		ColorColumn = { bg = c.mantle, fg = c.peach },
+
 		CmpItemMenu = { fg = c.surface2 },
 
 		CursorLineNr = { fg = c.text },

@@ -9,30 +9,31 @@ return {
 	event = "VeryLazy",
 	config = function()
 		local icons = require("config.icons")
-		local events = require("neo-tree.events")
+		local neoTree = require("neo-tree")
+		-- local events = require("neo-tree.events")
 
-		---@class FileMovedArgs
-		---@field source string
-		---@field destination string
+		-- ---@class FileMovedArgs
+		-- ---@field source string
+		-- ---@field destination string
+		--
+		-- ---@param args FileMovedArgs
+		-- local function on_file_remove(args)
+		-- 	local ts_clients = vim.lsp.client({ name = "ts_ls" })
+		--
+		-- 	for _, ts_client in ipairs(ts_clients) do
+		-- 		ts_client.request("workspace/executeCommand", {
+		-- 			command = "_typescript.applyRenameFile",
+		-- 			arguments = {
+		-- 				{
+		-- 					sourceUri = vim.uri_from_fname(args.source),
+		-- 					targetUri = vim.uri_from_fname(args.destination),
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end
+		-- end
 
-		---@param args FileMovedArgs
-		local function on_file_remove(args)
-			local ts_clients = vim.lsp.client({ name = "ts_ls" })
-
-			for _, ts_client in ipairs(ts_clients) do
-				ts_client.request("workspace/executeCommand", {
-					command = "_typescript.applyRenameFile",
-					arguments = {
-						{
-							sourceUri = vim.uri_from_fname(args.source),
-							targetUri = vim.uri_from_fname(args.destination),
-						},
-					},
-				})
-			end
-		end
-
-		require("neo-tree").setup({
+		neoTree.setup({
 			use_popups_for_input = true,
 			close_if_last_window = true,
 			popup_border_style = "rounded",
@@ -119,14 +120,15 @@ return {
 						end
 					end,
 				},
-				{
-					event = events.FILE_MOVED,
-					handler = on_file_remove,
-				},
-				{
-					event = events.FILE_RENAMED,
-					handler = on_file_remove,
-				},
+				-- NOTE: These no longer work correctly, needs investigation
+				-- {
+				-- 	event = events.FILE_MOVED,
+				-- 	handler = on_file_remove,
+				-- },
+				-- {
+				-- 	event = events.FILE_RENAMED,
+				-- 	handler = on_file_remove,
+				-- },
 			},
 			mappings = {
 				["<Tab>"] = "open",
