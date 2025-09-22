@@ -2,3 +2,4 @@
 chatbot-local = { connection_string = "postgres://pgadmin:localpwd@localhost:5432/chatbot", driver = "postgres" }
 chatbot-prod = { host = "psql-chatbot-prod-sec.postgres.database.azure.com", driver = "postgres", port = 5432, database = "chatbot", username = "pgadmin" }
 chatbot-test = { host = "psql-chatbot-test-sec.postgres.database.azure.com", driver = "postgres", port = 5432, database = "chatbot", username = "pgadmin" }
+pimo-local = { connection_string = "postgres://pgadmin:localpwd@localhost:5433/pimo", driver = "postgres" }

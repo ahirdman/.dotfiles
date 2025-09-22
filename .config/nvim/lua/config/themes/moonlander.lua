@@ -80,6 +80,8 @@ function M.load()
 		NeogitStagedchanges = { fg = c.green },
 		NeogitChangeModified = { fg = c.peach },
 
+		NeogitHunkHeaderCursor = { fg = c.subtext1, bg = c.crust },
+
 		NeoTreeDirectoryIcon = { fg = c.subtext1 },
 		NeoTreeDirectoryName = { fg = c.subtext1 },
 		NeoTreeFloatBorder = { fg = c.overlay0 },
