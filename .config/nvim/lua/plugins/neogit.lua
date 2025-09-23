@@ -31,7 +31,11 @@ return {
 			graph_style = "ascii",
 			-- Used to generate URL's for branch popup action "pull request".
 			git_services = {
-				["github.com"] = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
+				["github.com"] = {
+					pull_request = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
+					commit = "https://github.com/${owner}/${repository}/commit/${oid}",
+					tree = "https://${host}/${owner}/${repository}/tree/${branch_name}",
+				},
 			},
 			-- Allows a different telescope sorter. Defaults to 'fuzzy_with_index_bias'. The example below will use the native fzf
 			-- sorter instead. By default, this function returns `nil`.
@@ -70,6 +74,7 @@ return {
 			disable_line_numbers = true,
 			console_timeout = 2000,
 			auto_show_console = true,
+			notification_icon = "󰊢",
 			status = {
 				show_head_commit_hash = true,
 				recent_commit_count = 10,
