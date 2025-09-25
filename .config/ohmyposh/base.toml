@@ -96,15 +96,17 @@ final_space = true
     foreground = 'p:blue'
     type = 'az'
 
-# type = "az"
-# style = "powerline"
-# powerline_symbol = ""
-# foreground = "#000000"
-# background = "#9ec3f0"
-# template = "  {{ .EnvironmentName }}"
-#
-# [blocks.segments.properties]
-# source = "pwsh"
+  [[blocks.segments]]
+    style = 'plain'
+    template = "  {{ .Output }}"
+    foreground = 'p:red'
+    background = 'transparent'
+    type = 'command'
+    
+    [blocks.segments.properties]
+      command = "~/.dotfiles/.config/ohmyposh/gh-profile.sh"
+      shell = 'bash'
+      cache_duration = "none"
 
 [[blocks]]
   type = 'prompt'
