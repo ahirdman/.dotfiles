@@ -1,4 +1,4 @@
-local jsFormatters = { "biome", "prettier", stop_after_first = true }
+local jsFormatters = { "biome" }
 
 return {
 	"stevearc/conform.nvim",
@@ -9,11 +9,9 @@ return {
 			log_level = 2,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				bicep = { "bicep" },
+        --bicep = { "bicep" },
 				json = { "biome" },
-				nix = { "alejandra" },
-				--python = { "ruff" },
-        css = jsFormatters,
+				css = jsFormatters,
 				javascript = jsFormatters,
 				javascriptreact = jsFormatters,
 				typescript = jsFormatters,
@@ -24,14 +22,7 @@ return {
 				biome = {
 					require_cwd = true,
 				},
-				prettier = {
-					require_cwd = true,
-				},
 			},
-			-- format_on_save = {
-			-- 	timeout_ms = 500,
-			-- 	lsp_format = "fallback",
-			-- },
 		})
 	end,
 }

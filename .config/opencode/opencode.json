@@ -5,6 +5,18 @@
   "autoupdate": true,
   "share": "disabled",
   "provider": {
+    "github-copilot": {
+      "models": {
+        "gpt-5": {
+          "options": {
+            "reasoningEffort": "medium",
+            "textVerbosity": "low",
+            "reasoningSummary": "auto",
+            "include": ["reasoning.encrypted_content"]
+          }
+        }
+      },
+    },
     "azure": {
       "models": {
         "gpt-5": {
@@ -21,6 +33,9 @@
         "resourceName": "{file:azure_resource_name.txt}"
       }
     }
+  },
+  "formatter": {
+    "biome": {}
   },
   "agent": {
     "bug-finder": {
@@ -85,10 +100,15 @@
     }
   },
   "mcp": {
+    "tavily": {
+      "type": "remote",
+      "url": "{file:tavily_mcp_url.txt}",
+      "enabled": true,
+    },
     "github": {
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
-      "enabled": true,
+      "enabled": false,
       "headers": {
         "Authorization": "{file:github_pat.txt}"
       }
