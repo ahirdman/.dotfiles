@@ -228,6 +228,8 @@ function M.load()
 		NotifyTRACEIcon = { fg = c.pink },
 		NotifyTRACEBody = { fg = c.pink },
 
+		NotifyBackground = { bg = c.base },
+
 		-- Legacy TS* groups
 		TSAnnotation = { fg = c.pink },
 		TSAttribute = { fg = c.pink },

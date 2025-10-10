@@ -99,3 +99,6 @@ eval "$(zoxide init zsh)"
 export PATH="$PATH:/Users/ahirdman/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# bun completions
+[ -s "/Users/ahirdman/.bun/_bun" ] && source "/Users/ahirdman/.bun/_bun"

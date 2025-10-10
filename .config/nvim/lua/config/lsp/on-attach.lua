@@ -14,7 +14,7 @@ local on_attach = function(_, bufnr)
 		{
 			"<leader>lf",
 			function()
-				conform.format({ bufnr, async = true })
+				conform.format({ bufnr, async = true, lsp_fallback = true })
 			end,
 			desc = "Format buffer",
 			buffer = bufnr,
