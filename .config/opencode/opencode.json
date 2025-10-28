@@ -1,7 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "opencode",
-  "model": "github-copilot/claude-sonnet-4",
+  "model": "github-copilot/claude-haiku-4.5",
   "autoupdate": true,
   "share": "disabled",
   "provider": {
@@ -12,7 +12,9 @@
             "reasoningEffort": "medium",
             "textVerbosity": "low",
             "reasoningSummary": "auto",
-            "include": ["reasoning.encrypted_content"]
+            "include": [
+              "reasoning.encrypted_content"
+            ]
           }
         }
       },
@@ -24,7 +26,9 @@
             "reasoningEffort": "high",
             "textVerbosity": "low",
             "reasoningSummary": "auto",
-            "include": ["reasoning.encrypted_content"]
+            "include": [
+              "reasoning.encrypted_content"
+            ]
           }
         }
       },
@@ -38,11 +42,38 @@
     "biome": {}
   },
   "agent": {
+    "ask": {
+      "description": "Use this agent for general questions about the codebase, project structure, or development practices.",
+      "prompt": "{file:./prompts/ask.md}",
+      "model": "github-copilot/claude-haiku-4.5",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git *": "deny"
+        },
+        "webfetch": "allow"
+      },
+      "mode": "all",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
+    },
     "bug-finder": {
       "description": "Identify and report bugs in the codebase, including logical errors, runtime errors, and edge cases that may not have been considered during development.",
       "prompt": "{file:./prompts/bug-finder.md}",
-      "model": "github-copilot/claude-sonnet-4",
-      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "model": "github-copilot/claude-haiku-4.5",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git *": "deny"
+        },
+        "webfetch": "allow"
+      },
       "mode": "all",
       "tools": {
         "write": false,
@@ -57,7 +88,13 @@
       "description": "Use this agent to conduct thorough code reviews to ensure code quality, adherence to coding standards, and best practices",
       "prompt": "{file:./prompts/code-reviewer.md}",
       "model": "github-copilot/claude-sonnet-4",
-      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git *": "deny"
+        },
+        "webfetch": "allow"
+      },
       "mode": "subagent",
       "tools": {
         "write": false,
@@ -73,7 +110,13 @@
       "prompt": "{file:./prompts/ts-perf-auditor.md}",
       "mode": "subagent",
       "model": "github-copilot/claude-sonnet-4",
-      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git *": "deny"
+        },
+        "webfetch": "allow"
+      },
       "tools": {
         "write": false,
         "edit": false,
@@ -88,8 +131,14 @@
       "prompt": "{file:./prompts/agent-docs-writer.md}",
       "model": "gpt-5",
       "mode": "subagent",
-      "permission": { "edit": "deny", "bash": { "git *": "deny"}, "webfetch": "allow" },
-       "tools": {
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git *": "deny"
+        },
+        "webfetch": "allow"
+      },
+      "tools": {
         "write": true,
         "edit": true,
         "bash": true,
