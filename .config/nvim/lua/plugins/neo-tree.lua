@@ -10,28 +10,11 @@ return {
 	config = function()
 		local icons = require("config.icons")
 		local neoTree = require("neo-tree")
-		-- local events = require("neo-tree.events")
+		local events = require("neo-tree.events")
 
-		-- ---@class FileMovedArgs
-		-- ---@field source string
-		-- ---@field destination string
-		--
-		-- ---@param args FileMovedArgs
-		-- local function on_file_remove(args)
-		-- 	local ts_clients = vim.lsp.client({ name = "ts_ls" })
-		--
-		-- 	for _, ts_client in ipairs(ts_clients) do
-		-- 		ts_client.request("workspace/executeCommand", {
-		-- 			command = "_typescript.applyRenameFile",
-		-- 			arguments = {
-		-- 				{
-		-- 					sourceUri = vim.uri_from_fname(args.source),
-		-- 					targetUri = vim.uri_from_fname(args.destination),
-		-- 				},
-		-- 			},
-		-- 		})
-		-- 	end
-		-- end
+		local function on_move(data)
+			Snacks.rename.on_rename_file(data.source, data.destination)
+		end
 
 		neoTree.setup({
 			use_popups_for_input = true,
@@ -105,7 +88,7 @@ return {
 			},
 			event_handlers = {
 				{
-					event = "neo_tree_window_after_open",
+					event = events.NEO_TREE_WINDOW_AFTER_OPEN,
 					handler = function(args)
 						if args.position == "left" or args.position == "right" then
 							vim.cmd("wincmd =")
@@ -113,22 +96,17 @@ return {
 					end,
 				},
 				{
-					event = "neo_tree_window_after_close",
+					event = events.NEO_TREE_WINDOW_AFTER_CLOSE,
+          -- Description: Equalize window sizes after Neo-tree window is closed
 					handler = function(args)
 						if args.position == "left" or args.position == "right" then
 							vim.cmd("wincmd =")
 						end
 					end,
 				},
-				-- NOTE: These no longer work correctly, needs investigation
-				-- {
-				-- 	event = events.FILE_MOVED,
-				-- 	handler = on_file_remove,
-				-- },
-				-- {
-				-- 	event = events.FILE_RENAMED,
-				-- 	handler = on_file_remove,
-				-- },
+
+				{ event = events.FILE_MOVED, handler = on_move },
+				{ event = events.FILE_RENAMED, handler = on_move },
 			},
 			mappings = {
 				["<Tab>"] = "open",

@@ -30,58 +30,69 @@ function M.load()
 	}
 
 	local O = {
-		Added = { fg = c.teal },
+		-- ========================================
+		-- NEOVIM UI
+		-- ========================================
+		Normal = { fg = c.text, bg = c.base },
+		NormalNC = { fg = c.text, bg = c.base },
+		NormalFloat = { bg = c.base },
+		FloatBorder = { fg = c.text },
+		SignColumn = { bg = c.base },
+		EndOfBuffer = { fg = c.base, bg = c.base },
+		ColorColumn = { bg = c.mantle, fg = c.peach },
+		LineNr = { fg = c.overlay0 },
+		CursorLineNr = { fg = c.text },
+		VertSplit = { fg = c.surface0, bg = c.base },
+		Pmenu = { bg = c.mantle },
+		PmenuSel = { bg = c.peach, fg = c.base },
+		YankHighlight = { bg = c.surface2 },
 
-		DiffText = { bg = c.tealShadow },
+		-- ========================================
+		-- DIFF & GIT
+		-- ========================================
+		Added = { fg = c.teal },
 		DiffAdd = { bg = c.tealShadow, fg = c.teal },
 		DiffDelete = { bg = c.redShadow },
 		DiffChange = { bg = c.yellowShadow },
-
-		RenderMarkdown_RenderMarkdownCodeBorder_bg_as_fg = { fg = c.text, bg = c.text },
-
-		ColorColumn = { bg = c.mantle, fg = c.peach },
-
-		CmpItemMenu = { fg = c.surface2 },
-
-		CursorLineNr = { fg = c.text },
-
-		FloatBorder = { fg = c.text },
-
-		GitSignsChange = { fg = c.peach },
+		DiffText = { bg = c.tealShadow },
 		GitSignsAdd = { fg = c.green },
+		GitSignsChange = { fg = c.peach },
 
-		LineNr = { fg = c.overlay0 },
+		-- ========================================
+		-- DIAGNOSTICS
+		-- ========================================
+		DiagnosticError = { fg = c.red, bg = c.redShadow },
+		DiagnosticUnderlineError = { sp = c.red, style = { "underline" } },
+		DiagnosticVirtualLinesError = { fg = c.yellow },
+		DiagnosticFloatingError = { fg = c.teal },
+		DiagnosticSignError = { fg = c.red },
 
-		LspInfoBorder = { fg = c.text, bg = c.base },
+		DiagnosticWarn = { fg = c.yellow, bg = c.yellowShadow },
+		DiagnosticUnderlineWarn = { sp = c.yellow, style = { "underline" } },
 
-		DashboardGit = { fg = c.red },
-		DashboardOrange = { fg = c.peach },
-		DashboardYellow = { fg = c.yellow },
-		DashboardGreen = { fg = c.green },
-		DashboardPink = { fg = c.pink },
-		DashboardTodo = { fg = c.teal },
+		DiagnosticInfo = { fg = c.teal, bg = c.tealShadow },
+		DiagnosticUnderlineInfo = { sp = c.teal, style = { "underline" } },
 
-		SnacksDashboardHeader = { fg = c.text },
-		SnacksDashboardNormal = { fg = c.text },
-		SnacksDashboardTitle = { fg = c.text },
+		DiagnosticDeprecated = { fg = c.subtext1, style = { "strikethrough" } },
+		DiagnosticUnnecessary = { fg = c.overlay0 },
 
-		DashboardHeader = { fg = c.text },
-		DashboardFiles = { fg = c.text },
-		DashboardShortCutIcon = { fg = c.yellow },
-		DashboardMruTitle = { fg = c.peach },
+		-- ========================================
+		-- PLUGIN: Telescope
+		-- ========================================
+		TelescopePreviewBorder = { fg = c.text },
+		TelescopePreviewNormal = { bg = c.base },
+		TelescopePromptBorder = { fg = c.text },
+		TelescopePromptNormal = { bg = c.base },
+		TelescopePromptPrefix = { fg = c.peach, bg = c.base },
+		TelescopePromptTitle = { fg = c.peach, bg = c.base },
+		TelescopeResultsBorder = { fg = c.text },
+		TelescopeResultsNormal = { bg = c.base },
+		TelescopeResultsTitle = { fg = c.text },
+		TelescopeSelection = { bg = c.surface0 },
 
-		FlashMatch = { fg = c.text, bg = c.crust },
-		FlashCurrent = { fg = c.red },
-		-- FlashBackdrop = { bg = c.overlay0 },
-		FlashLabel = { fg = c.base, bg = c.text },
-
-		NeogitSectionHeader = { fg = c.peach },
-		NeogitUnstagedchanges = { fg = c.red },
-		NeogitStagedchanges = { fg = c.green },
-		NeogitChangeModified = { fg = c.peach },
-
-		NeogitHunkHeaderCursor = { fg = c.subtext1, bg = c.crust },
-
+		-- ========================================
+		-- PLUGIN: NeoTree
+		-- ========================================
 		NeoTreeDirectoryIcon = { fg = c.subtext1 },
 		NeoTreeDirectoryName = { fg = c.subtext1 },
 		NeoTreeFloatBorder = { fg = c.overlay0 },
@@ -102,319 +113,294 @@ function M.load()
 		NeoTreeTabSeparatorInactive = { fg = c.crust, bg = c.crust },
 		NeoTreeWinSeparator = { fg = c.base, bg = c.base },
 
+		-- ========================================
+		-- PLUGIN: Dashboard
+		-- ========================================
+		DashboardHeader = { fg = c.text },
+		DashboardFiles = { fg = c.text },
+		DashboardShortCutIcon = { fg = c.yellow },
+		DashboardMruTitle = { fg = c.peach },
+		DashboardGit = { fg = c.red },
+		DashboardOrange = { fg = c.peach },
+		DashboardYellow = { fg = c.yellow },
+		DashboardGreen = { fg = c.green },
+		DashboardPink = { fg = c.pink },
+		DashboardTodo = { fg = c.teal },
+		SnacksDashboardHeader = { fg = c.text },
+		SnacksDashboardNormal = { fg = c.text },
+		SnacksDashboardTitle = { fg = c.text },
+
+		-- ========================================
+		-- PLUGIN: Flash
+		-- ========================================
+		FlashMatch = { fg = c.text, bg = c.crust },
+		FlashCurrent = { fg = c.red },
+		FlashLabel = { fg = c.base, bg = c.text },
+
+		-- ========================================
+		-- PLUGIN: Neogit
+		-- ========================================
+		NeogitSectionHeader = { fg = c.peach },
+		NeogitUnstagedchanges = { fg = c.red },
+		NeogitStagedchanges = { fg = c.green },
+		NeogitChangeModified = { fg = c.peach },
+		NeogitHunkHeaderCursor = { fg = c.subtext1, bg = c.crust },
+
+		-- ========================================
+		-- PLUGIN: Lualine
+		-- ========================================
 		lualine_b_diff_removed = { fg = c.red },
 		lualine_b_diff_removed_normal = { fg = c.red },
 		lualine_b_diff_removed_insert = { fg = c.red },
 		lualine_b_diff_removed_terminal = { fg = c.red },
 
-		Normal = { fg = c.text, bg = c.base },
-		NormalNC = { fg = c.text, bg = c.base },
-		NormalFloat = { bg = c.base },
-		SignColumn = { bg = c.base },
-		EndOfBuffer = { fg = c.base, bg = c.base }, -- or fg="NONE" to hide tildes
-
-		Pmenu = { bg = c.mantle },
-		PmenuSel = { bg = c.peach, fg = c.base },
-
-		TelescopePreviewBorder = { fg = c.text },
-		TelescopePreviewNormal = { bg = c.base },
-		-- TelescopePreviewTitle = { fg = c.crust, bg = c.mantle },
-		TelescopePromptBorder = { fg = c.text },
-		-- TelescopePromptCounter = { fg = c.pink, style = { "bold" } },
-		TelescopePromptNormal = { bg = c.base },
-		TelescopePromptPrefix = { fg = c.peach, bg = c.base },
-		TelescopePromptTitle = { fg = c.peach, bg = c.base },
-		TelescopeResultsBorder = { fg = c.text },
-		TelescopeResultsNormal = { bg = c.base },
-		TelescopeResultsTitle = { fg = c.text },
-		TelescopeSelection = { bg = c.surface0 },
-
-		VertSplit = { fg = c.surface0, bg = c.base },
-
-		WhichKeyFloat = { bg = c.mantle },
-
-		YankHighlight = { bg = c.surface2 },
-		FidgetTask = { fg = c.subtext1 },
-		FidgetTitle = { fg = c.peach },
-
-		IblIndent = { fg = c.surface0 },
-		IblScope = { fg = c.overlay0 },
-
-		Boolean = { fg = c.pink },
-		Number = { fg = c.pink },
-		Float = { fg = c.pink },
-
-		Comment = { fg = c.overlay0, style = { "italic" } },
-		PreProc = { fg = c.pink },
-		PreCondit = { fg = c.pink },
-		Include = { fg = c.pink },
-		Define = { fg = c.pink },
-		Conditional = { fg = c.red },
-		Repeat = { fg = c.red },
-		Keyword = { fg = c.red },
-		Typedef = { fg = c.red },
-		Exception = { fg = c.red },
-		Statement = { fg = c.red },
-		Error = { fg = c.red },
-		StorageClass = { fg = c.peach },
-		Tag = { fg = c.peach },
-		Label = { fg = c.peach },
-		Structure = { fg = c.peach },
-		Operator = { fg = c.peach },
-		Title = { fg = c.peach },
-		Special = { fg = c.yellow },
-		SpecialChar = { fg = c.yellow },
-		Type = { fg = c.yellow, style = { "bold" } },
-		Function = { fg = c.green, style = { "bold" } },
-		Delimiter = { fg = c.subtext1 },
-		Ignore = { fg = c.subtext1 },
-		Macro = { fg = c.teal },
-
+		-- ========================================
+		-- PLUGIN: Noice
+		-- ========================================
 		NoiceCmdlineIcon = { fg = c.yellow },
 		NoiceCmdlinePopupBorder = { fg = c.peach },
 		NoiceCmdlinePopupTitleCmdline = { fg = c.text },
-
 		NoiceCmdlinePopupBorderSearch = { fg = c.peach },
 		NoiceCmdlinePopupTitleSearch = { fg = c.text },
 		NoiceCmdlineIconSearch = { fg = c.yellow },
 
-		DiagnosticError = { fg = c.red, bg = c.redShadow },
-		DiagnosticUnderlineError = { fg = c.red, style = { "underline" } },
-		DiagnosticVirtualLinesError = { fg = c.yellow },
-		DiagnosticFloatingError = { fg = c.teal },
-		DiagnosticSignError = { fg = c.red },
-
-		DiagnosticWarn = { fg = c.yellow, bg = c.yellowShadow },
-		DiagnosticInfo = { fg = c.teal, bg = c.tealShadow },
-
-		DiagnosticDeprecated = { fg = c.subtext1, style = { "strikethrough" } },
-		DiagnosticUnnecessary = { fg = c.overlay0 },
-
-		-- NoiceCmdline = { fg = c.text, bg = c.base },
-		-- NoiceCmdlinePopup = { fg = c.text, bg = c.base },
-		-- NoiceCmdlinePopupBorder = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconCmdline = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconSearch = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconFilter = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconLua = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconHelp = { fg = c.text, bg = c.base },
-		-- NoiceCmdlineIconInput = { fg = c.text, bg = c.base },
-		-- NoicePopup = { fg = c.text, bg = c.base },
-		-- NoicePopupBorder = { fg = c.text, bg = c.base },
-		-- NoiceMini = { fg = c.text, bg = c.base },
-
+		-- ========================================
+		-- PLUGIN: Notify
+		-- ========================================
 		NotifyERRORBorder = { fg = c.red },
 		NotifyERRORTitle = { fg = c.red },
 		NotifyERRORIcon = { fg = c.red },
 		NotifyERRORBody = { fg = c.red },
-
 		NotifyWARNBorder = { fg = c.yellow },
 		NotifyWARNTitle = { fg = c.yellow },
 		NotifyWARNIcon = { fg = c.yellow },
 		NotifyWARNBody = { fg = c.yellow },
-
 		NotifyDEBUGBorder = { fg = c.gray_dbg },
 		NotifyDEBUGTitle = { fg = c.gray_dbg },
 		NotifyDEBUGIcon = { fg = c.gray_dbg },
 		NotifyDEBUGBody = { fg = c.gray_dbg },
-
 		NotifyINFOBorder = { fg = c.teal },
 		NotifyINFOTitle = { fg = c.teal },
 		NotifyINFOIcon = { fg = c.teal },
 		NotifyINFOBody = { fg = c.teal },
-
 		NotifyTRACEBorder = { fg = c.pink },
 		NotifyTRACETitle = { fg = c.pink },
 		NotifyTRACEIcon = { fg = c.pink },
 		NotifyTRACEBody = { fg = c.pink },
-
 		NotifyBackground = { bg = c.base },
 
-		-- Legacy TS* groups
-		TSAnnotation = { fg = c.pink },
-		TSAttribute = { fg = c.pink },
-		TSBoolean = { fg = c.pink },
-		TSCharacter = { fg = c.teal },
-		TSCharacterSpecial = { link = "SpecialChar" },
-		TSComment = { link = "Comment" },
-		TSConditional = { fg = c.red },
-		TSConstBuiltin = { fg = c.pink },
-		TSConstMacro = { fg = c.pink },
-		TSConstant = { fg = c.text },
-		TSConstructor = { fg = c.green },
-		TSDebug = { link = "Debug" },
-		TSDefine = { link = "Define" },
-		TSEnvironment = { link = "Macro" },
-		TSEnvironmentName = { link = "Type" },
-		TSError = { link = "Error" },
-		TSException = { fg = c.red },
-		TSField = { fg = c.blue },
-		TSFloat = { fg = c.pink },
-		TSFuncBuiltin = { fg = c.green },
-		TSFuncMacro = { fg = c.green },
-		TSFunction = { fg = c.green },
-		TSFunctionCall = { fg = c.green },
-		TSInclude = { fg = c.red },
-		TSKeyword = { fg = c.red },
-		TSKeywordFunction = { fg = c.red },
-		TSKeywordOperator = { fg = c.peach },
-		TSKeywordReturn = { fg = c.red },
-		TSLabel = { fg = c.peach },
-		TSLiteral = { link = "String" },
-		TSMath = { fg = c.blue },
-		TSMethod = { fg = c.green },
-		TSMethodCall = { fg = c.green },
-		TSNamespace = { fg = c.yellow },
-		TSNone = { fg = c.text },
-		TSNumber = { fg = c.pink },
-		TSOperator = { fg = c.peach },
-		TSParameter = { fg = c.text },
-		TSParameterReference = { fg = c.text },
-		TSPreProc = { link = "PreProc" },
-		TSProperty = { fg = c.blue },
-		TSPunctBracket = { fg = c.text },
-		TSPunctDelimiter = { link = "Delimiter" },
-		TSPunctSpecial = { fg = c.blue },
-		TSRepeat = { fg = c.red },
-		TSStorageClass = { fg = c.peach },
-		TSStorageClassLifetime = { fg = c.peach },
-		TSStrike = { fg = c.subtext1 },
-		TSString = { fg = c.teal },
-		TSStringEscape = { fg = c.green },
-		TSStringRegex = { fg = c.green },
-		TSStringSpecial = { link = "SpecialChar" },
-		TSSymbol = { fg = c.text },
-		TSTag = { fg = c.peach },
-		TSTagAttribute = { fg = c.green },
-		TSTagDelimiter = { fg = c.green },
-		TSText = { fg = c.green },
-		TSTextReference = { link = "Constant" },
-		TSTitle = { link = "Title" },
-		TSTodo = { link = "Todo" },
-		TSType = { fg = c.yellow, style = { "bold" } },
-		TSTypeBuiltin = { fg = c.yellow, style = { "bold" } },
-		TSTypeDefinition = { fg = c.yellow, style = { "bold" } },
-		TSTypeQualifier = { fg = c.peach, style = { "bold" } },
-		TSURI = { fg = c.blue },
-		TSVariable = { fg = c.text },
-		TSVariableBuiltin = { fg = c.pink },
+		-- ========================================
+		-- PLUGIN: WhichKey
+		-- ========================================
+		WhichKeyFloat = { bg = c.mantle },
 
-		-- Extra TS groups used by @text.* links
-		TSDanger = { fg = c.red, style = { "bold" } },
-		TSEmphasis = { fg = c.text, style = { "italic" } },
-		TSStrong = { fg = c.text, style = { "bold" } },
-		TSUnderline = { fg = c.text, style = { "underline" } },
-		TSNote = { fg = c.blue },
-		TSWarning = { fg = c.yellow },
+		-- ========================================
+		-- PLUGIN: Indent Blankline
+		-- ========================================
+		IblIndent = { fg = c.surface0 },
+		IblScope = { fg = c.overlay0 },
 
-		-- Modern @captures
-		["@annotation"] = { link = "TSAnnotation" },
-		["@attribute"] = { link = "TSAttribute" },
-		["@boolean"] = { link = "TSBoolean" },
-		["@character"] = { link = "TSCharacter" },
-		["@character.special"] = { link = "TSCharacterSpecial" },
-		["@comment"] = { link = "TSComment" },
-		["@conceal"] = { link = "TSComment" },
-		["@conditional"] = { link = "TSConditional" },
-		["@constant"] = { link = "TSConstant" },
-		["@constant.builtin"] = { link = "TSConstBuiltin" },
-		["@constant.macro"] = { link = "TSConstMacro" },
-		["@constructor"] = { link = "TSConstructor" },
-		["@debug"] = { link = "TSDebug" },
-		["@define"] = { link = "TSDefine" },
-		["@error"] = { link = "TSError" },
-		["@exception"] = { link = "TSException" },
-		["@field"] = { link = "TSField" },
-		["@float"] = { link = "TSFloat" },
-		["@function"] = { link = "TSFunction" },
-		["@function.builtin"] = { link = "TSFuncBuiltin" },
-		["@function.call"] = { link = "TSFunctionCall" },
-		["@function.macro"] = { link = "TSFuncMacro" },
-		["@include"] = { link = "TSInclude" },
-		["@keyword"] = { link = "TSKeyword" },
-		["@keyword.function"] = { link = "TSKeywordFunction" },
-		["@keyword.operator"] = { link = "TSKeywordOperator" },
-		["@keyword.return"] = { link = "TSKeywordReturn" },
-		["@label"] = { link = "TSLabel" },
-		["@math"] = { link = "TSMath" },
-		["@method"] = { link = "TSMethod" },
-		["@method.call"] = { link = "TSMethodCall" },
-		["@namespace"] = { link = "TSNamespace" },
-		["@none"] = { link = "TSNone" },
-		["@number"] = { link = "TSNumber" },
-		["@operator"] = { link = "TSOperator" },
-		["@parameter"] = { link = "TSParameter" },
-		["@parameter.reference"] = { link = "TSParameterReference" },
-		["@preproc"] = { link = "TSPreProc" },
-		["@property"] = { link = "TSProperty" },
-		["@punctuation.bracket"] = { link = "TSPunctBracket" },
-		["@punctuation.delimiter"] = { link = "TSPunctDelimiter" },
-		["@punctuation.special"] = { link = "TSPunctSpecial" },
-		["@repeat"] = { link = "TSRepeat" },
-		["@storageclass"] = { link = "TSStorageClass" },
-		["@storageclass.lifetime"] = { link = "TSStorageClassLifetime" },
-		["@strike"] = { link = "TSStrike" },
-		["@string"] = { link = "TSString" },
-		["@string.escape"] = { link = "TSStringEscape" },
-		["@string.regex"] = { link = "TSStringRegex" },
-		["@string.special"] = { link = "TSStringSpecial" },
-		["@symbol"] = { link = "TSSymbol" },
-		["@tag"] = { link = "TSTag" },
-		["@tag.attribute"] = { link = "TSTagAttribute" },
-		["@tag.delimiter"] = { link = "TSTagDelimiter" },
-		["@text"] = { link = "TSText" },
-		["@text.danger"] = { link = "TSDanger" },
-		["@text.diff.add"] = { link = "DiffAdd" }, -- fixed
-		["@text.diff.delete"] = { link = "DiffDelete" }, -- fixed
-		["@text.emphasis"] = { link = "TSEmphasis" },
-		["@text.environment"] = { link = "TSEnvironment" },
-		["@text.environment.name"] = { link = "TSEnvironmentName" },
-		["@text.literal"] = { link = "TSLiteral" },
-		["@text.math"] = { link = "TSMath" },
-		["@text.note"] = { link = "TSNote" },
-		["@text.reference"] = { link = "TSTextReference" },
-		["@text.strike"] = { link = "TSStrike" },
-		["@text.strong"] = { link = "TSStrong" },
-		["@text.title"] = { link = "TSTitle" },
-		["@text.todo"] = { link = "TSTodo" },
-		["@text.todo.checked"] = { link = "TSFunction" },
+		-- ========================================
+		-- PLUGIN: Fidget
+		-- ========================================
+		FidgetTask = { fg = c.subtext1 },
+		FidgetTitle = { fg = c.peach },
+
+		-- ========================================
+		-- PLUGIN: LSP Info
+		-- ========================================
+		LspInfoBorder = { fg = c.text, bg = c.base },
+
+		-- ========================================
+		-- PLUGIN: CMP
+		-- ========================================
+		CmpItemMenu = { fg = c.surface2 },
+
+		-- ========================================
+		-- PLUGIN: RenderMarkdown
+		-- ========================================
+		RenderMarkdown_RenderMarkdownCodeBorder_bg_as_fg = { fg = c.text, bg = c.text },
+
+		-- ========================================
+		-- SYNTAX: Comments
+		-- ========================================
+		Comment = { fg = c.overlay0, style = { "italic" } },
+		["@comment"] = { link = "Comment" },
+		["@conceal"] = { link = "Comment" },
+		["@lsp.type.comment"] = { link = "@comment" },
+
+		-- ========================================
+		-- SYNTAX: Functions & Methods
+		-- ========================================
+		Function = { fg = c.green, style = { "bold" } },
+		["@function"] = { fg = c.green },
+		["@function.builtin"] = { fg = c.green },
+		["@function.call"] = { fg = c.green },
+		["@function.macro"] = { fg = c.green },
+		["@method"] = { fg = c.green },
+		["@method.call"] = { fg = c.green },
+		["@constructor"] = { fg = c.green },
+		["@lsp.type.function"] = { link = "@function" },
+		["@lsp.type.method"] = { link = "@method" },
+		["@lsp.type.decorator"] = { link = "@function" },
+
+		-- ========================================
+		-- SYNTAX: Keywords & Control Flow
+		-- ========================================
+		Keyword = { fg = c.red },
+		Conditional = { fg = c.red },
+		Repeat = { fg = c.red },
+		Statement = { fg = c.red },
+		Exception = { fg = c.red },
+		["@keyword"] = { fg = c.red },
+		["@keyword.function"] = { fg = c.red },
+		["@keyword.return"] = { fg = c.red },
+		["@conditional"] = { fg = c.red },
+		["@repeat"] = { fg = c.red },
+		["@exception"] = { fg = c.red },
+		["@lsp.type.keyword"] = { link = "@keyword" },
+
+		-- ========================================
+		-- SYNTAX: Operators & Punctuation
+		-- ========================================
+		Operator = { fg = c.peach },
+		Delimiter = { fg = c.subtext1 },
+		["@operator"] = { fg = c.peach },
+		["@keyword.operator"] = { fg = c.peach },
+		["@punctuation.bracket"] = { fg = c.text },
+		["@punctuation.delimiter"] = { link = "Delimiter" },
+		["@punctuation.special"] = { fg = c.blue },
+		["@lsp.type.operator"] = { link = "@operator" },
+
+		-- ========================================
+		-- SYNTAX: Types & Structures
+		-- ========================================
+		Type = { fg = c.yellow, style = { "bold" } },
+		Typedef = { fg = c.red },
+		Structure = { fg = c.peach },
+		StorageClass = { fg = c.peach },
+		["@type"] = { fg = c.yellow, style = { "bold" } },
+		["@type.builtin"] = { fg = c.yellow, style = { "bold" } },
+		["@type.definition"] = { fg = c.yellow, style = { "bold" } },
+		["@type.qualifier"] = { fg = c.peach, style = { "bold" } },
+		["@storageclass"] = { fg = c.peach },
+		["@storageclass.lifetime"] = { fg = c.peach },
+		["@lsp.type.type"] = { link = "@type" },
+		["@lsp.type.class"] = { link = "@type" },
+		["@lsp.type.enum"] = { link = "@type" },
+		["@lsp.type.interface"] = { link = "@type" },
+		["@lsp.type.struct"] = { link = "@type" },
+		["@lsp.type.typeParameter"] = { link = "@type.definition" },
+		["@lsp.type.modifier"] = { link = "@type.qualifier" },
+
+		-- ========================================
+		-- SYNTAX: Variables, Constants & Parameters
+		-- ========================================
+		["@variable"] = { fg = c.text },
+		["@variable.builtin"] = { fg = c.pink },
+		["@constant"] = { fg = c.text },
+		["@constant.builtin"] = { fg = c.pink },
+		["@constant.macro"] = { fg = c.pink },
+		["@parameter"] = { fg = c.text },
+		["@parameter.reference"] = { fg = c.text },
+		["@lsp.type.variable"] = { link = "@variable" },
+		["@lsp.type.parameter"] = { link = "@parameter" },
+		["@lsp.type.macro"] = { link = "@constant.macro" },
+
+		-- ========================================
+		-- SYNTAX: Strings, Numbers & Booleans
+		-- ========================================
+		Number = { fg = c.pink },
+		Float = { fg = c.pink },
+		Boolean = { fg = c.pink },
+		["@string"] = { fg = c.teal },
+		["@string.escape"] = { fg = c.green },
+		["@string.regex"] = { fg = c.green },
+		["@string.special"] = { link = "SpecialChar" },
+		["@character"] = { fg = c.teal },
+		["@character.special"] = { link = "SpecialChar" },
+		["@number"] = { fg = c.pink },
+		["@float"] = { fg = c.pink },
+		["@boolean"] = { fg = c.pink },
+		["@lsp.type.string"] = { link = "@string" },
+		["@lsp.type.number"] = { link = "@number" },
+		["@lsp.type.regexp"] = { link = "@string.regex" },
+
+		-- ========================================
+		-- SYNTAX: Properties & Fields
+		-- ========================================
+		["@property"] = { fg = c.blue },
+		["@field"] = { fg = c.blue },
+		["@lsp.type.property"] = { link = "@property" },
+		["@lsp.type.enumMember"] = { link = "@property" },
+
+		-- ========================================
+		-- SYNTAX: Preprocessor & Macros
+		-- ========================================
+		PreProc = { fg = c.pink },
+		PreCondit = { fg = c.pink },
+		Include = { fg = c.pink },
+		Define = { fg = c.pink },
+		Macro = { fg = c.teal },
+		["@preproc"] = { link = "PreProc" },
+		["@include"] = { fg = c.red },
+		["@define"] = { link = "Define" },
+
+		-- ========================================
+		-- SYNTAX: Tags, Labels & Attributes
+		-- ========================================
+		Tag = { fg = c.peach },
+		Label = { fg = c.peach },
+		Title = { fg = c.peach },
+		["@tag"] = { fg = c.peach },
+		["@tag.attribute"] = { fg = c.green },
+		["@tag.delimiter"] = { fg = c.green },
+		["@label"] = { fg = c.peach },
+		["@attribute"] = { fg = c.pink },
+		["@annotation"] = { fg = c.pink },
+		["@namespace"] = { fg = c.yellow },
+		["@lsp.type.events"] = { link = "@label" },
+		["@lsp.type.namespace"] = { link = "@namespace" },
+
+		-- ========================================
+		-- SYNTAX: Special & Misc
+		-- ========================================
+		Special = { fg = c.yellow },
+		SpecialChar = { fg = c.yellow },
+		Error = { fg = c.red },
+		Ignore = { fg = c.subtext1 },
+		["@error"] = { link = "Error" },
+		["@none"] = { fg = c.text },
+		["@symbol"] = { fg = c.text },
+		["@debug"] = { link = "Debug" },
+		["@math"] = { fg = c.blue },
+		["@strike"] = { fg = c.subtext1 },
+
+		-- ========================================
+		-- SYNTAX: Text & Markup
+		-- ========================================
+		["@text"] = { fg = c.green },
+		["@text.danger"] = { fg = c.red, style = { "bold" } },
+		["@text.warning"] = { fg = c.yellow },
+		["@text.note"] = { fg = c.blue },
+		["@text.todo"] = { link = "Todo" },
+		["@text.todo.checked"] = { fg = c.green },
 		["@text.todo.unchecked"] = { link = "Ignore" },
-		["@text.underline"] = { link = "TSUnderline" },
-		["@text.uri"] = { link = "TSURI" },
-		["@text.warning"] = { link = "TSWarning" },
-		["@todo"] = { link = "TSTodo" },
-		["@type"] = { link = "TSType" },
-		["@type.builtin"] = { link = "TSTypeBuiltin" },
-		["@type.definition"] = { link = "TSTypeDefinition" },
-		["@type.qualifier"] = { link = "TSTypeQualifier" },
-		["@uri"] = { link = "TSURI" },
-		["@variable"] = { link = "TSVariable" },
-		["@variable.builtin"] = { link = "TSVariableBuiltin" },
-
-		-- LSP semantic tokens
-		["@lsp.type.class"] = { link = "TSType" },
-		["@lsp.type.comment"] = { link = "TSComment" },
-		["@lsp.type.decorator"] = { link = "TSFunction" },
-		["@lsp.type.enum"] = { link = "TSType" },
-		["@lsp.type.enumMember"] = { link = "TSProperty" },
-		["@lsp.type.events"] = { link = "TSLabel" },
-		["@lsp.type.function"] = { link = "TSFunction" },
-		["@lsp.type.interface"] = { link = "TSType" },
-		["@lsp.type.keyword"] = { link = "TSKeyword" },
-		["@lsp.type.macro"] = { link = "TSConstMacro" },
-		["@lsp.type.method"] = { link = "TSMethod" },
-		["@lsp.type.modifier"] = { link = "TSTypeQualifier" },
-		["@lsp.type.namespace"] = { link = "TSNamespace" },
-		["@lsp.type.number"] = { link = "TSNumber" },
-		["@lsp.type.operator"] = { link = "TSOperator" },
-		["@lsp.type.parameter"] = { link = "TSParameter" },
-		["@lsp.type.property"] = { link = "TSProperty" },
-		["@lsp.type.regexp"] = { link = "TSStringRegex" },
-		["@lsp.type.string"] = { link = "TSString" },
-		["@lsp.type.struct"] = { link = "TSType" },
-		["@lsp.type.type"] = { link = "TSType" },
-		["@lsp.type.typeParameter"] = { link = "TSTypeDefinition" },
-		["@lsp.type.variable"] = { link = "TSVariable" },
+		["@text.diff.add"] = { link = "DiffAdd" },
+		["@text.diff.delete"] = { link = "DiffDelete" },
+		["@text.emphasis"] = { fg = c.text, style = { "italic" } },
+		["@text.strong"] = { fg = c.text, style = { "bold" } },
+		["@text.underline"] = { fg = c.text, style = { "undercurl" } },
+		["@text.strike"] = { fg = c.subtext1 },
+		["@text.title"] = { link = "Title" },
+		["@text.literal"] = { link = "String" },
+		["@text.uri"] = { fg = c.blue },
+		["@text.math"] = { fg = c.blue },
+		["@text.reference"] = { link = "Constant" },
+		["@text.environment"] = { link = "Macro" },
+		["@text.environment.name"] = { link = "Type" },
+		["@todo"] = { link = "Todo" },
+		["@uri"] = { fg = c.blue },
 	}
 
 	-- === Apply =======================================

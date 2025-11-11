@@ -1,18 +1,5 @@
 return {
 	{
-		"karb94/neoscroll.nvim",
-		config = function()
-			require("neoscroll").setup({
-				stop_eof = true,
-				easing = "linear",
-				hide_cursor = true,
-				cursor_scrolls_alone = true,
-				performance_mode = false,
-			})
-		end,
-	},
-
-	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
 			"TmuxNavigateLeft",
