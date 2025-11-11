@@ -11,6 +11,7 @@ return {
 		diagnostics = { virtual_text = { prefix = "icons" } },
 	},
 	config = function()
+		local icons = require("config.icons")
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local lsp_config = require("lspconfig")
@@ -97,14 +98,13 @@ return {
 			}),
 		})
 
-		local icons = require("config.icons")
-
 		vim.diagnostic.config({
-			title = false,
-			underline = false,
+			title = true,
+			underline = true,
 			virtual_text = {
 				suffix = " ",
 				source = false,
+				current_line = false,
 				prefix = function(diagnostic)
 					if diagnostic.severity == 1 then
 						return " " .. icons.diagnostics.BoldError
