@@ -2,6 +2,10 @@ local nvim_lsp = require("lspconfig")
 
 ---@type lspconfig.options
 local servers = {
+	graphql = {
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    single_file_support = true,
+  },
 	cssls = {
 		root_dir = nvim_lsp.util.root_pattern("package.json"),
 		single_file_support = false,
@@ -83,16 +87,16 @@ local servers = {
 	ts_ls = {
 		root_dir = nvim_lsp.util.root_pattern("package.json"),
 		single_file_support = false,
-    init_options = {
-      hostInfo = "neovim",
-      preferences = {
-        includeCompletionsForModuleExports = true,
-        includeCompletionsForImportStatements = true,
-        importModuleSpecifierEnding = "minimal",
-        importModuleSpecifierPreference = "non-relative",
-        disableSuggestions = true,
-      },
-    },
+		init_options = {
+			hostInfo = "neovim",
+			preferences = {
+				includeCompletionsForModuleExports = true,
+				includeCompletionsForImportStatements = true,
+				importModuleSpecifierEnding = "minimal",
+				importModuleSpecifierPreference = "non-relative",
+				disableSuggestions = true,
+			},
+		},
 		settings = {
 			typescript = {
 				preferences = {

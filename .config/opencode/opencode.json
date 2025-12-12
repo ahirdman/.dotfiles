@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "opencode",
+  "theme": "moonlander",
   "model": "github-copilot/claude-sonnet-4.5",
   "autoupdate": true,
   "share": "disabled",
@@ -39,19 +39,73 @@
     }
   },
   "formatter": {
-    "biome": {}
+    "biome": {
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".json",
+        ".md",
+        ".mdx",
+        ".css",
+        ".scss",
+        ".html"
+      ]
+    }
   },
   "agent": {
+    "build": {
+      "color": "#ea6962"
+    },
+    "plan": {
+      "description": "Create a detailed plan for addressing complex tasks that require multiple steps or sub-tasks.",
+      "prompt": "{file:./prompts/plan.md}",
+      "model": "github-copilot/claude-sonnet-4.5",
+      "color": "#e78a4e",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "git diff*": "allow",
+          "git status*": "allow",
+          "git *": "deny",
+          "jq*": "allow",
+        },
+        "webfetch": "allow",
+        "doom_loop": "ask",
+        "external_directory": "allow",
+      },
+      "mode": "all",
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "write": false,
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "list": true,
+        "patch": false,
+        "todowrite": true,
+        "todoread": true,
+        "webfetch": true
+      }
+    },
     "ask": {
       "description": "Use this agent for general questions about the codebase, project structure, or development practices.",
       "prompt": "{file:./prompts/ask.md}",
       "model": "github-copilot/claude-sonnet-4.5",
+      "color": "#7daea3",
       "permission": {
         "edit": "deny",
         "bash": {
-          "git *": "deny"
+          "git diff*": "allow",
+          "git status*": "allow",
+          "git *": "deny",
+          "jq*": "allow"
         },
-        "webfetch": "allow"
+        "webfetch": "allow",
+        "doom_loop": "ask",
+        "external_directory": "allow",
       },
       "mode": "all",
       "tools": {
@@ -70,6 +124,8 @@
       "permission": {
         "edit": "deny",
         "bash": {
+          "git diff*": "allow",
+          "git status*": "allow",
           "git *": "deny"
         },
         "webfetch": "allow"
@@ -91,6 +147,8 @@
       "permission": {
         "edit": "deny",
         "bash": {
+          "git diff*": "allow",
+          "git status*": "allow",
           "git *": "deny"
         },
         "webfetch": "allow"
@@ -113,6 +171,8 @@
       "permission": {
         "edit": "deny",
         "bash": {
+          "git diff*": "allow",
+          "git status*": "allow",
           "git *": "deny"
         },
         "webfetch": "allow"
@@ -134,7 +194,8 @@
       "permission": {
         "edit": "deny",
         "bash": {
-          "git *": "deny"
+          "git diff*": "allow",
+          "git status*": "allow",
         },
         "webfetch": "allow"
       },
@@ -152,7 +213,7 @@
     "tavily": {
       "type": "remote",
       "url": "{file:tavily_mcp_url.txt}",
-      "enabled": true,
+      "enabled": false,
     },
     "github": {
       "type": "remote",

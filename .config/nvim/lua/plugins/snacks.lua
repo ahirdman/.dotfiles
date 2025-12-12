@@ -98,7 +98,27 @@ return {
 					},
 				},
 			},
-			bigfile = { enabled = false },
+			bigfile = {
+				notify = true, -- show notification when big file detected
+				size = 1.5 * 1024 * 1024, -- 1.5MB
+				line_length = 1000, -- average line length (useful for minified files)
+				-- Enable or disable features when big file detected
+				---@param ctx {buf: number, ft:string}
+				setup = function(ctx)
+					if vim.fn.exists(":NoMatchParen") ~= 0 then
+						vim.cmd([[NoMatchParen]])
+					end
+					Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
+					vim.b.completion = false
+					vim.b.minianimate_disable = true
+					vim.b.minihipatterns_disable = true
+					vim.schedule(function()
+						if vim.api.nvim_buf_is_valid(ctx.buf) then
+							vim.bo[ctx.buf].syntax = ctx.ft
+						end
+					end)
+				end,
+			},
 			notifier = { enabled = false },
 			quickfile = { enabled = false },
 			statuscolumn = { enabled = false },
@@ -191,37 +211,22 @@ return {
 				pane_gap = 4, -- empty columns between vertical panes
 				autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
 				preset = {
-					-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-					---@type fun(cmd:string, opts:table)|nil
 					pick = nil,
-					-- Used by the `keys` section to show keymaps.
-					-- Set your curstom keymaps here.
-					-- When using a function, the `items` argument are the default keymaps.
-					---@type snacks.dashboard.Item[]
-					keys = {},
 					header = [[
- ██████╗  ██████╗ ██████╗██╗   ██╗██████╗ ██╗   ██╗
-██╔═══██╗██╔════╝██╔════╝██║   ██║██╔══██╗╚██╗ ██╔╝
-██║   ██║██║     ██║     ██║   ██║██████╔╝ ╚████╔╝
-██║   ██║██║     ██║     ██║   ██║██╔═══╝   ╚██╔╝ 
-╚██████╔╝╚██████╗╚██████╗╚██████╔╝██║        ██║  
- ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝        ╚═╝  
-███╗   ███╗ █████╗ ██████╗ ███████╗
-████╗ ████║██╔══██╗██╔══██╗██╔════╝
-██╔████╔██║███████║██████╔╝███████╗
-██║╚██╔╝██║██╔══██║██╔══██╗╚════██║
-██║ ╚═╝ ██║██║  ██║██║  ██║███████║
-╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
-]],
+					 ██████╗  ██████╗ ██████╗██╗   ██╗██████╗ ██╗   ██╗
+					██╔═══██╗██╔════╝██╔════╝██║   ██║██╔══██╗╚██╗ ██╔╝
+					██║   ██║██║     ██║     ██║   ██║██████╔╝ ╚████╔╝
+					██║   ██║██║     ██║     ██║   ██║██╔═══╝   ╚██╔╝
+					╚██████╔╝╚██████╗╚██████╗╚██████╔╝██║        ██║
+					 ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝        ╚═╝
+					███╗   ███╗ █████╗ ██████╗ ███████╗
+					████╗ ████║██╔══██╗██╔══██╗██╔════╝
+					██╔████╔██║███████║██████╔╝███████╗
+					██║╚██╔╝██║██╔══██║██╔══██╗╚════██║
+					██║ ╚═╝ ██║██║  ██║██║  ██║███████║
+					╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ]],
 				},
-				-- item field formatters
 				formats = {
-					-- icon = function(item)
-					-- 	if item.file and item.icon == "file" or item.icon == "directory" then
-					-- 		return M.icon(item.file, item.icon)
-					-- 	end
-					-- 	return { item.icon, width = 2, hl = "icon" }
-					-- end,
 					footer = { "%s", align = "center" },
 					header = { "%s", align = "center" },
 					file = function(item, ctx)
@@ -234,21 +239,28 @@ return {
 							or { { fname, hl = "file" } }
 					end,
 				},
+				keys = {
+					{ icon = " ", text = " Lazy[l] ", key = "l" },
+					{ icon = "年", text = "Mason[m] ", key = "m" },
+					{ icon = "", text = " Neogit[g] ", key = "g" },
+					{ icon = " ", text = "Github[G] ", key = "G" },
+					{ icon = "", text = " Files[f] ", key = "f" },
+					{ icon = "", text = " Worktree[w] ", key = "w" },
+					{ icon = "", text = " Todos[t] ", key = "t" },
+					{ icon = "", text = " Quit[q]", key = "q" },
+				},
 				sections = {
 					{
 						section = "terminal",
-						enabled = false, -- displaySecondColumn,
-						cmd = "chafa /Users/ahirdman/mars.png --format=symbols --symbols=vhalf --fit-width --align=center; sleep .1",
+						enabled = true,
+						cmd = "chafa /Users/ahirdman/duke.jpg --format=symbols --symbols=vhalf --fit-width --align=center; sleep .1",
 						height = 17,
-						padding = 1,
-					},
-					{
-						section = "header",
-						padding = 1,
+						padding = 4,
 					},
 					{
 						align = "center",
 						padding = 1,
+						pane = 1,
 						text = {
 							{ " ", hl = "DashboardYellow" },
 							{ " Lazy[l] ", hl = "SnacksDashboardTitle" },
@@ -256,8 +268,8 @@ return {
 							{ "Mason[m] ", hl = "SnacksDashboardTitle" },
 							{ "", hl = "DashboardPink" },
 							{ " Neogit[g] ", hl = "SnacksDashboardTitle" },
-							{ "", hl = "DashboardPink" },
-							{ " Github[G] ", hl = "SnacksDashboardTitle" },
+							{ " ", hl = "DashboardGit" },
+							{ "Github[G] ", hl = "SnacksDashboardTitle" },
 							{ "", hl = "DashboardGreen" },
 							{ " Files[f] ", hl = "SnacksDashboardTitle" },
 							{ "", hl = "DashboardGit" },
