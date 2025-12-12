@@ -8,8 +8,17 @@ alias ...="cd ../.."
 alias ls="eza -la --icons --git --group-directories-first"
 alias lt="eza --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
+# Homebrew aliases
+# Dump to Brewfile
 alias bbd='brew bundle dump --force'
-alias bu="brew list | gum choose --no-limit | xargs brew uninstall"
+# Install from
+alias brewi='brew bundle --file=~/.dotfiles/Brewfile'
+# Cleanup unneeded packages
+alias brewc='brew bundle cleanup --file=~/.dotfiles/Brewfile'
+# Force cleanup unneeded packages
+alias brewcf='brew bundle cleanup --file=~/.dotfiles/Brewfile --force'
+# Check for missing packages
+alias brewcheck='brew bundle check --file=~/.dotfiles/Brewfile'
 
 alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
 alias glt='git log --oneline --decorate --graph --all'
