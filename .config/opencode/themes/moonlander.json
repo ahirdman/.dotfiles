@@ -1,0 +1,230 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "red": "#ea6962",
+    "redShadow": "#2a1616",
+    "maroon": "#ea6962",
+    "pink": "#d3869b",
+    "peach": "#e78a4e",
+    "yellow": "#d8a657",
+    "yellowShadow": "#2a2416",
+    "green": "#a9b665",
+    "teal": "#89b482",
+    "tealShadow": "#162a20",
+    "blue": "#7daea3",
+    "text": "#ebdbb2",
+    "subtext1": "#d5c4a1",
+    "subtext0": "#bdae93",
+    "overlay2": "#a89984",
+    "overlay1": "#928374",
+    "overlay0": "#595959",
+    "surface2": "#4d4d4d",
+    "surface1": "#404040",
+    "surface0": "#292929",
+    "base": "#121212",
+    "mantle": "#0C0A09",
+    "crust": "#141617"
+  },
+  "theme": {
+    "primary": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "secondary": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "accent": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "error": {
+      "dark": "red",
+      "light": "red"
+    },
+    "warning": {
+      "dark": "yellow",
+      "light": "yellow"
+    },
+    "success": {
+      "dark": "green",
+      "light": "green"
+    },
+    "info": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "text": {
+      "dark": "text",
+      "light": "base"
+    },
+    "textMuted": {
+      "dark": "overlay1",
+      "light": "overlay2"
+    },
+    "background": {
+      "dark": "base",
+      "light": "text"
+    },
+    "backgroundPanel": {
+      "dark": "crust",
+      "light": "subtext1"
+    },
+    "backgroundElement": {
+      "dark": "surface0",
+      "light": "subtext0"
+    },
+    "border": {
+      "dark": "surface1",
+      "light": "overlay1"
+    },
+    "borderActive": {
+      "dark": "overlay0",
+      "light": "surface1"
+    },
+    "borderSubtle": {
+      "dark": "surface0",
+      "light": "overlay2"
+    },
+    "diffAdded": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "diffRemoved": {
+      "dark": "red",
+      "light": "red"
+    },
+    "diffContext": {
+      "dark": "overlay0",
+      "light": "overlay0"
+    },
+    "diffHunkHeader": {
+      "dark": "overlay1",
+      "light": "overlay1"
+    },
+    "diffHighlightAdded": {
+      "dark": "green",
+      "light": "green"
+    },
+    "diffHighlightRemoved": {
+      "dark": "red",
+      "light": "red"
+    },
+    "diffAddedBg": {
+      "dark": "tealShadow",
+      "light": "teal"
+    },
+    "diffRemovedBg": {
+      "dark": "redShadow",
+      "light": "red"
+    },
+    "diffContextBg": {
+      "dark": "base",
+      "light": "subtext1"
+    },
+    "diffLineNumber": {
+      "dark": "overlay0",
+      "light": "overlay1"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "tealShadow",
+      "light": "teal"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "redShadow",
+      "light": "red"
+    },
+    "markdownText": {
+      "dark": "text",
+      "light": "base"
+    },
+    "markdownHeading": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "markdownLink": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "markdownLinkText": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "markdownCode": {
+      "dark": "green",
+      "light": "green"
+    },
+    "markdownBlockQuote": {
+      "dark": "overlay1",
+      "light": "overlay1"
+    },
+    "markdownEmph": {
+      "dark": "text",
+      "light": "base"
+    },
+    "markdownStrong": {
+      "dark": "text",
+      "light": "base"
+    },
+    "markdownHorizontalRule": {
+      "dark": "surface1",
+      "light": "surface1"
+    },
+    "markdownListItem": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "markdownListEnumeration": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "markdownImage": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "markdownImageText": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "markdownCodeBlock": {
+      "dark": "text",
+      "light": "base"
+    },
+    "syntaxComment": {
+      "dark": "overlay0",
+      "light": "overlay0"
+    },
+    "syntaxKeyword": {
+      "dark": "red",
+      "light": "red"
+    },
+    "syntaxFunction": {
+      "dark": "green",
+      "light": "green"
+    },
+    "syntaxVariable": {
+      "dark": "text",
+      "light": "base"
+    },
+    "syntaxString": {
+      "dark": "teal",
+      "light": "teal"
+    },
+    "syntaxNumber": {
+      "dark": "pink",
+      "light": "pink"
+    },
+    "syntaxType": {
+      "dark": "yellow",
+      "light": "yellow"
+    },
+    "syntaxOperator": {
+      "dark": "peach",
+      "light": "peach"
+    },
+    "syntaxPunctuation": {
+      "dark": "text",
+      "light": "base"
+    }
+  }
+}

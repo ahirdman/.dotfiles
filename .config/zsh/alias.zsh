@@ -35,3 +35,5 @@ alias oc="opencode"
 alias db="rainfrog"
 
 alias hardware="system_profiler SPHardwareDataType"
+
+alias work="tmuxinator start work"
