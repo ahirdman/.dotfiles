@@ -1,5 +1,5 @@
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
-version = 3
+version = 4
 final_space = true
 
 [palette]
@@ -22,10 +22,7 @@ final_space = true
 [transient_prompt]
   template = ' '
   background = 'transparent'
-  foreground_templates = [
-    '{{if gt .Code 0}}p:red{{end}}',
-    '{{if eq .Code 0}}p:orange{{end}}',
-  ]
+  foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -33,21 +30,21 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    style = 'plain'
     template = '{{ .Path }}'
     foreground = 'p:white'
     background = 'transparent'
     type = 'path'
+    style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       style = 'full'
 
   [[blocks.segments]]
-    style = 'plain'
     template = '  {{ .SHLVL }}'
     foreground = 'p:grey'
     background = 'transparent'
     type = 'text'
+    style = 'plain'
 
 [[blocks]]
   type = 'prompt'
@@ -55,58 +52,43 @@ final_space = true
   overflow = 'hide'
 
   [[blocks.segments]]
-    style = 'plain'
-    template = """\
-      {{ .HEAD }} \
-      {{ if (.Working.Changed) }}<p:orange>!</>{{end}}\
-      {{ if (.Working.Deleted) }}<p:red>-</>{{end}}\
-      {{ if (.Working.Untracked) }}<p:green>?</>{{end}}\
-      {{ if (.Staging.Changed) }}<p:green>+</>{{end}}\
-      {{ if (.Detached) }}<p:yellow>   </>{{end}}\
-      {{ if (.Rebase)}}<p:yellow>  </>{{end}}\
-      {{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}\
-      {{ if gt .Ahead 0 }}<p:green></>{{ end }}\
-      {{ if gt .Behind 0 }}<p:red></>{{ end }}\
-      {{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}\
-      {{ if gt .StashCount 0 }}<p:grey>  {{ .StashCount }} </>{{end}}\
-      """
+    template = '{{ .HEAD }} {{ if (.Working.Changed) }}<p:orange>!</>{{end}}{{ if (.Working.Deleted) }}<p:red>-</>{{end}}{{ if (.Working.Untracked) }}<p:green>?</>{{end}}{{ if (.Staging.Changed) }}<p:green>+</>{{end}}{{ if (.Detached) }}<p:yellow>   </>{{end}}{{ if (.Rebase)}}<p:yellow>  </>{{end}}{{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}{{ if gt .Ahead 0 }}<p:green></>{{ end }}{{ if gt .Behind 0 }}<p:red></>{{ end }}{{ if or (gt .Ahead 0) (gt .Behind 0) }} {{ end }}{{ if gt .StashCount 0 }}<p:grey>  {{ .StashCount }} </>{{end}}'
     foreground = 'p:grey'
     background = 'transparent'
     type = 'git'
+    style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       branch_icon = ' '
       commit_icon = '@'
-      tag_icon = ' '
       fetch_status = true
       fetch_user = false
+      tag_icon = ' '
 
   [[blocks.segments]]
-    style = 'plain'
     template = '  {{ .Full }} '
     foreground = 'p:white'
     background = 'transparent'
     type = 'node'
-    cache_duration = 'none'
-    pnpm_icon = ''
+    style = 'plain'
 
   [[blocks.segments]]
-    style = 'plain'
     template = '  {{ .Name }}'
     foreground = 'p:blue'
     type = 'az'
+    style = 'plain'
 
   [[blocks.segments]]
-    style = 'plain'
-    template = "  {{ .Output }}"
+    template = '  {{ .Output }}'
     foreground = 'p:red'
     background = 'transparent'
     type = 'command'
-    
-    [blocks.segments.properties]
-      command = "~/.dotfiles/.config/ohmyposh/gh-profile.sh"
+    style = 'plain'
+
+    [blocks.segments.options]
+      cache_duration = 'none'
+      command = '$HOME/.config/ohmyposh/gh-profile.sh'
       shell = 'bash'
-      cache_duration = "none"
 
 [[blocks]]
   type = 'prompt'
@@ -114,11 +96,8 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    style = 'plain'
     template = ''
     background = 'transparent'
     type = 'text'
-    foreground_templates = [
-      '{{if gt .Code 0}}p:red{{end}}',
-      '{{if eq .Code 0}}p:orange{{end}}',
-    ]
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}p:red{{end}}', '{{if eq .Code 0}}p:orange{{end}}']

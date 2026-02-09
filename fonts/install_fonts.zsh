@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source_directory="$HOME/.dotfiles/fonts"
+source_directory="$HOME/.dotfiles/fonts/patched/"
 target_directory="$HOME/Library/Fonts"
 
 for file in "${source_directory}"/*; do

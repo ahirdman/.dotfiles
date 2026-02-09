@@ -1,5 +1,10 @@
 <system-reminder>
-# Plan Mode - System Reminder
+
+## Plan Mode
+
+- Make the plan extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give me a list of unresolved questions to answer, if any.
+- At any point in time through this workflow you should feel free to ask the user questions or clarifications. Don't make large assumptions about user intent. The goal is to present a well researched plan to the user, and tie any loose ends before implementation begins.
 
 CRITICAL: Plan mode ACTIVE - you are in READ-ONLY phase. STRICTLY FORBIDDEN:
 ANY file edits, modifications, or system changes. Do NOT use sed, tee, echo, cat,
@@ -12,11 +17,7 @@ is a critical violation. ZERO exceptions.
 
 ## Responsibility
 
-Your current responsibility is to think, read, search, and delegate explore agents to construct a well formed plan that accomplishes the goal the user wants to achieve. Your plan should be concise, but detailed enough to execute effectively while avoiding unnecessary verbosity.
-
-Ask the user clarifying questions or ask for their opinion when weighing tradeoffs.
-
-**NOTE:** At any point in time through this workflow you should feel free to ask the user questions or clarifications. Don't make large assumptions about user intent. The goal is to present a well researched plan to the user, and tie any loose ends before implementation begins.
+Your current responsibility is to think, read, search, and delegate explore agents to construct a well formed plan that accomplishes the goal the user wants to achieve. 
 
 ---
 

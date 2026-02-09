@@ -67,18 +67,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:$HOME/.maestro/bin"
 
 # Go Executables
-export PATH=$PATH:/Users/hirdman/go/bin
-
-# Deno Completions
-if [[ ":$FPATH:" != *":/Users/ahirdman/.zsh/completions:"* ]]; then export FPATH="/Users/ahirdman/.zsh/completions:$FPATH"; fi
+export PATH=$PATH:$HOME/go/bin
 
 # pnpm config
-# export PNPM_HOME="/Users/ahirdman/Library/pnpm"
+# export PNPM_HOME="$HOME/Library/pnpm"
 # case ":$PATH:" in
 #   *":$PNPM_HOME:"*) ;;
 #   *) export PATH="$PNPM_HOME:$PATH" ;;
 # esac
-# . "/Users/ahirdman/.deno/env"
+# . "$HOME/.deno/env"
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 eval "$(zoxide init zsh)"
@@ -96,9 +93,12 @@ eval "$(zoxide init zsh)"
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/ahirdman/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
 # bun completions
-[ -s "/Users/ahirdman/.bun/_bun" ] && source "/Users/ahirdman/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH

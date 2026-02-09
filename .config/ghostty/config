@@ -1,6 +1,6 @@
 font-family = BerkeleyMono Nerd Font Propo
 font-size = 18
-theme = /Users/ahirdman/.config/ghostty/themes/main
+theme = main
 
 macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden

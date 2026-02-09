@@ -1,7 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "moonlander",
-  "model": "github-copilot/claude-sonnet-4.5",
+  "model": "github-copilot/claude-opus-4.6",
   "autoupdate": true,
   "share": "disabled",
   "provider": {
@@ -19,24 +19,6 @@
         }
       },
     },
-    "azure": {
-      "models": {
-        "gpt-5": {
-          "options": {
-            "reasoningEffort": "high",
-            "textVerbosity": "low",
-            "reasoningSummary": "auto",
-            "include": [
-              "reasoning.encrypted_content"
-            ]
-          }
-        }
-      },
-      "options": {
-        "apiKey": "{file:azure_api_key.txt}",
-        "resourceName": "{file:azure_resource_name.txt}"
-      }
-    }
   },
   "formatter": {
     "biome": {
@@ -58,17 +40,57 @@
     "build": {
       "color": "#ea6962"
     },
+    "azure-cli": {
+      "description": "Azure CLI specialist for managing Azure resources. Automatically handles read operations but always asks for consent before any modifications, deletions, or operations that could incur costs.",
+      "prompt": "{file:./prompts/azure-cli.md}",
+      "model": "github-copilot/claude-opus-4.6",
+      "color": "#0078d4",
+      "mode": "all",
+      "permission": {
+        "edit": "deny",
+        "bash": {
+          "*": "ask",
+          "az account *": "allow",
+          "az * list": "allow",
+          "az * list *": "allow",
+          "az * show": "allow",
+          "az * show *": "allow",
+          "az * get-*": "allow",
+          "az find *": "allow",
+          "az * --help": "allow",
+          "az * --help *": "allow",
+          "az * validate *": "allow",
+          "az * what-if *": "allow"
+        },
+        "webfetch": "allow",
+        "doom_loop": "ask",
+        "external_directory": "allow"
+      },
+      "tools": {
+        "bash": true,
+        "edit": false,
+        "write": false,
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "list": true,
+        "todowrite": true,
+        "todoread": true,
+        "webfetch": true,
+        "question": true
+      }
+    },
     "plan": {
       "description": "Create a detailed plan for addressing complex tasks that require multiple steps or sub-tasks.",
       "prompt": "{file:./prompts/plan.md}",
-      "model": "github-copilot/claude-sonnet-4.5",
+      "model": "github-copilot/claude-opus-4.6",
       "color": "#e78a4e",
       "permission": {
         "edit": "deny",
         "bash": {
           "git diff*": "allow",
           "git status*": "allow",
-          "git *": "deny",
+          "git *": "ask",
           "jq*": "allow",
         },
         "webfetch": "allow",
@@ -93,14 +115,14 @@
     "ask": {
       "description": "Use this agent for general questions about the codebase, project structure, or development practices.",
       "prompt": "{file:./prompts/ask.md}",
-      "model": "github-copilot/claude-sonnet-4.5",
+      "model": "github-copilot/claude-opus-4.6",
       "color": "#7daea3",
       "permission": {
         "edit": "deny",
         "bash": {
           "git diff*": "allow",
           "git status*": "allow",
-          "git *": "deny",
+          "git *": "ask",
           "jq*": "allow"
         },
         "webfetch": "allow",
@@ -120,7 +142,7 @@
     "bug-finder": {
       "description": "Identify and report bugs in the codebase, including logical errors, runtime errors, and edge cases that may not have been considered during development.",
       "prompt": "{file:./prompts/bug-finder.md}",
-      "model": "github-copilot/claude-sonnet-4.5",
+      "model": "github-copilot/claude-opus-4.6",
       "permission": {
         "edit": "deny",
         "bash": {
@@ -143,7 +165,7 @@
     "code-reviewer": {
       "description": "Use this agent to conduct thorough code reviews to ensure code quality, adherence to coding standards, and best practices",
       "prompt": "{file:./prompts/code-reviewer.md}",
-      "model": "github-copilot/claude-sonnet-4",
+      "model": "github-copilot/claude-opus-4.6",
       "permission": {
         "edit": "deny",
         "bash": {
@@ -167,7 +189,7 @@
       "description": "Use this agent when you need an expert assessment of potential performance problems in TypeScript code",
       "prompt": "{file:./prompts/ts-perf-auditor.md}",
       "mode": "subagent",
-      "model": "github-copilot/claude-sonnet-4",
+      "model": "github-copilot/claude-opus-4.6",
       "permission": {
         "edit": "deny",
         "bash": {
@@ -210,10 +232,23 @@
     }
   },
   "mcp": {
+    "figma": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
+      "enabled": true,
+      "environment": {
+        "FIGMA_API_KEY": "{file:figma_api_key.txt}"
+      }
+    },
     "tavily": {
       "type": "remote",
       "url": "{file:tavily_mcp_url.txt}",
-      "enabled": false,
+      "enabled": true,
     },
     "github": {
       "type": "remote",
@@ -222,6 +257,15 @@
       "headers": {
         "Authorization": "{file:github_pat.txt}"
       }
+    },
+    "yaak": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-remote",
+        "http://127.0.0.1:64343/mcp"
+      ]
     }
   }
 }

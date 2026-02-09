@@ -15,11 +15,16 @@ bar=(
   height=40
   margin=10
   y_offset=10
-  corner_radius=$RADIUS
-  border_color=$GREY
-  border_width=1
+  color=0x00000000
+  #corner_radius=$RADIUS
+  #border_color=$GREY
+  #border_width=1
   blur_radius=30
-  color=$BLACK
+  #color=$BLACK
+  padding_left=23
+  padding_right=23
+  notch_width=188
+  display=main
 )
 
 sketchybar --bar "${bar[@]}"
@@ -36,6 +41,7 @@ default=(
   icon.padding_right=4
   label.padding_left=4
   label.padding_right=4
+  notch_width=10
 )
 
 sketchybar --default "${default[@]}"
@@ -47,6 +53,6 @@ source "$ITEM_DIR/aerospace_binding_mode.sh"
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/gh.sh"
+#source "$ITEM_DIR/gh.sh"
 
 sketchybar --update
