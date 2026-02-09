@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+
+source "$HOME/.config/sketchybar/colors.sh"
+
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 FONT="BerkeleyMono Nerd Font Propo"
 

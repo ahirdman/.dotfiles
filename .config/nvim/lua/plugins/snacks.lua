@@ -250,13 +250,13 @@ return {
 					{ icon = "", text = " Quit[q]", key = "q" },
 				},
 				sections = {
-					{
-						section = "terminal",
-						enabled = true,
-						cmd = "chafa /Users/ahirdman/duke.jpg --format=symbols --symbols=vhalf --fit-width --align=center; sleep .1",
-						height = 17,
-						padding = 4,
-					},
+					-- {
+					-- 	section = "terminal",
+					-- 	enabled = true,
+					-- 	cmd = "chafa /Users/ahirdman/duke.jpg --format=symbols --symbols=vhalf --fit-width --align=center; sleep .1",
+					-- 	height = 17,
+					-- 	padding = 4,
+					-- },
 					{
 						align = "center",
 						padding = 1,
