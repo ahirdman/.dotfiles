@@ -87,23 +87,23 @@ return {
 				},
 			},
 			event_handlers = {
-				{
-					event = events.NEO_TREE_WINDOW_AFTER_OPEN,
-					handler = function(args)
-						if args.position == "left" or args.position == "right" then
-							vim.cmd("wincmd =")
-						end
-					end,
-				},
-				{
-					event = events.NEO_TREE_WINDOW_AFTER_CLOSE,
-          -- Description: Equalize window sizes after Neo-tree window is closed
-					handler = function(args)
-						if args.position == "left" or args.position == "right" then
-							vim.cmd("wincmd =")
-						end
-					end,
-				},
+				-- {
+				-- 	event = events.NEO_TREE_WINDOW_AFTER_OPEN,
+				-- 	handler = function(args)
+				-- 		if args.position == "left" or args.position == "right" then
+				-- 			vim.cmd("wincmd =")
+				-- 		end
+				-- 	end,
+				-- },
+				-- {
+				-- 	event = events.NEO_TREE_WINDOW_AFTER_CLOSE,
+				--       -- Description: Equalize window sizes after Neo-tree window is closed
+				-- 	handler = function(args)
+				-- 		if args.position == "left" or args.position == "right" then
+				-- 			vim.cmd("wincmd =")
+				-- 		end
+				-- 	end,
+				-- },
 
 				{ event = events.FILE_MOVED, handler = on_move },
 				{ event = events.FILE_RENAMED, handler = on_move },
