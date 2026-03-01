@@ -1,19 +1,19 @@
-#source ./zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Zsh plugins
+if [[ "$OSTYPE" == darwin* ]]; then
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ "$OSTYPE" == linux* ]]; then
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
-#source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-#source ./opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-
-# Source additional scripts and plugins
-# . $(brew --prefix)/etc/profile.d/z.sh
-
-# Until zsh-vi-mode is fixed, we need to source it manually
-
-# Fzf Has to be initialized after zsh-vi-mode
+# Fzf
 function init_fzf() {
-  source <(fzf --zsh)
+  if [[ "$OSTYPE" == darwin* ]]; then
+    source <(fzf --zsh)
+  elif [[ "$OSTYPE" == linux* ]]; then
+    source /usr/share/zsh/plugins/fzf/fzf.plugin.zsh
+  fi
 
   HISTFILE=~/.zsh_history
   HISTSIZE=10000

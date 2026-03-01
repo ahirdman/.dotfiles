@@ -5,3 +5,4 @@
 --ignore=README.md
 --ignore=fonts
 --ignore=nix
+--ignore=scripts
