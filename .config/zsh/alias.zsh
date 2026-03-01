@@ -8,18 +8,7 @@ alias ...="cd ../.."
 alias ls="eza -la --icons --git --group-directories-first"
 alias lt="eza --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
-# Homebrew aliases
-# Dump to Brewfile
-alias bbd='brew bundle dump --force'
-# Install from
-alias brewi='brew bundle --file=~/.dotfiles/Brewfile'
-# Cleanup unneeded packages
-alias brewc='brew bundle cleanup --file=~/.dotfiles/Brewfile'
-# Force cleanup unneeded packages
-alias brewcf='brew bundle cleanup --file=~/.dotfiles/Brewfile --force'
-# Check for missing packages
-alias brewcheck='brew bundle check --file=~/.dotfiles/Brewfile'
-
+# Git aliases
 alias gl='git log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(blue)  %D%n%s%n"'
 alias glt='git log --oneline --decorate --graph --all'
 alias glta='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
@@ -32,17 +21,25 @@ alias gclean="git branch | cut -c 3- | gum choose --no-limit | xargs git branch 
 alias gpick="git log --oneline | gum filter | cut -d' ' -f1 # | copy"
 alias gitroot="git rev-parse --show-toplevel"
 
+# Tmux aliases
 alias ts="tmuxPickSession"
 alias tsource="tmux source-file $HOME/.config/tmux/tmux.conf"
 
+# Universal app aliases
 alias v="nvim"
-
 alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {} '"
 
-alias oc="opencode"
+# macOS-only aliases
+if [[ "$OSTYPE" == darwin* ]]; then
+  # Homebrew
+  alias bbd='brew bundle dump --force'
+  alias brewi='brew bundle --file=~/.dotfiles/Brewfile'
+  alias brewc='brew bundle cleanup --file=~/.dotfiles/Brewfile'
+  alias brewcf='brew bundle cleanup --file=~/.dotfiles/Brewfile --force'
+  alias brewcheck='brew bundle check --file=~/.dotfiles/Brewfile'
 
-alias db="rainfrog"
-
-alias hardware="system_profiler SPHardwareDataType"
-
-alias work="tmuxinator start work"
+  alias oc="opencode"
+  alias db="rainfrog"
+  alias hardware="system_profiler SPHardwareDataType"
+  alias work="tmuxinator start work"
+fi

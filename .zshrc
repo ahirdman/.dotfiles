@@ -3,20 +3,6 @@ export BAT_THEME='1337'
 export NULLCMD=bat
 export GH_DASH_CONFIG="$HOME/.config/ghdash/config.yml"
 
-# Homebrew settings
-export HOMEBREW_CASK_OPTS="--no-quarantine"
-
-# Node.js version manager settings
-export N_PREFIX="$HOME/.n"
-export PREFIX="$N_PREFIX"
-export PATH="$N_PREFIX/bin:$PATH"
-
-# Postgres settings
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-# OpenJDK settings
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
 # Editor settings
 export EDITOR="nvim"
 export ZVM_VI_EDITOR="nvim"
@@ -27,7 +13,7 @@ export ZVM_VI_ESCAPE_BINDKEY="jj"
 export GUM_INPUT_CURSOR_FOREGROUND="#ff6d12"
 export GUM_INPUT_PROMPT_FOREGROUND="#fff2eb"
 export GUM_INPUT_PLACEHOLDER="..."
-export GUM_INPUT_PROMPT=" "
+export GUM_INPUT_PROMPT=" "
 export GUM_INPUT_WIDTH=80
 
 # Rainfrog settings
@@ -44,13 +30,13 @@ export FZF_DEFAULT_OPTS='
   --color=hl:#a9b665,hl+:#e78a4e
   --color=info:#665c54
 
-  --prompt="   "
+  --prompt="   "
   --color=prompt:#fbf1c7
 
   --marker=">"
   --color=marker:#a9b665
 
-  --pointer="" 
+  --pointer="" 
   --color=pointer:#e78a4e
 
   --separator="─"
@@ -59,23 +45,46 @@ export FZF_DEFAULT_OPTS='
   --color=scrollbar:#665c54
   '
 
-export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
+# macOS-specific settings
+if [[ "$OSTYPE" == darwin* ]]; then
+  export HOMEBREW_CASK_OPTS="--no-quarantine"
 
-# Bun settings
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="$PATH:$HOME/.maestro/bin"
+  # Node.js version manager
+  export N_PREFIX="$HOME/.n"
+  export PREFIX="$N_PREFIX"
+  export PATH="$N_PREFIX/bin:$PATH"
 
-# Go Executables
-export PATH=$PATH:$HOME/go/bin
+  # Postgres
+  export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# pnpm config
-# export PNPM_HOME="$HOME/Library/pnpm"
-# case ":$PATH:" in
-#   *":$PNPM_HOME:"*) ;;
-#   *) export PATH="$PNPM_HOME:$PATH" ;;
-# esac
-# . "$HOME/.deno/env"
+  # OpenJDK
+  export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+  # Bun
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+  export PATH="$PATH:$HOME/.maestro/bin"
+
+  # Go Executables
+  export PATH=$PATH:$HOME/go/bin
+
+  export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
+
+  # LM Studio CLI
+  export PATH="$PATH:$HOME/.lmstudio/bin"
+
+  # bun completions
+  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+  # opencode
+  export PATH=$HOME/.opencode/bin:$PATH
+fi
+
+# Linux-specific settings
+if [[ "$OSTYPE" == linux* ]]; then
+  # Standalone binaries installed to /data/bin
+  export PATH="/data/bin:$PATH"
+fi
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
 eval "$(zoxide init zsh)"
@@ -92,13 +101,14 @@ eval "$(zoxide init zsh)"
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/alexander.hirdman/.lmstudio/bin"
+# End of LM Studio CLI section
+

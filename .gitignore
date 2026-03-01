@@ -49,3 +49,7 @@ figma_api_key.txt
 
 # Submodules / Repositories
 .config/tmux/plugins/
+
+# Misc
+.config/opencode/plugin/sounds
+*.bak
