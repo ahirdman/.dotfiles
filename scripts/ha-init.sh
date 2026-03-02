@@ -23,7 +23,7 @@ if [ -f "$HOME_DIR/.zprofile" ] && [ ! -L "$HOME_DIR/.zprofile" ]; then
 fi
 
 # Re-stow dotfiles (skip mac-only configs)
-cd "$DOTFILES_DIR" && stow -t "$HOME_DIR" \
+cd "$DOTFILES_DIR" && stow -t "$HOME_DIR" --no-folding \
   --ignore='\.ssh' \
   --ignore='Brewfile' \
   --ignore='\.actrc' \

@@ -7,7 +7,7 @@ set -euo pipefail
 DATA_DIR="/data"
 BIN_DIR="$DATA_DIR/bin"
 DOTFILES_DIR="$DATA_DIR/.dotfiles"
-REPO="git@github.com:ahirdman/.dotfiles.git"
+REPO="https://github.com/ahirdman/.dotfiles.git"
 
 echo "=== HA Dev Environment Bootstrap ==="
 echo ""
@@ -144,7 +144,7 @@ echo "[7/8] Stowing dotfiles..."
 [ -f "$HOME/.zshenv" ] && mv "$HOME/.zshenv" "$HOME/.zshenv.bak" 2>/dev/null || true
 
 # Stow dotfiles, skipping mac-only configs
-cd "$DOTFILES_DIR" && stow -t "$HOME" \
+cd "$DOTFILES_DIR" && stow -t "$HOME" --no-folding \
   --ignore='\.ssh' \
   --ignore='Brewfile' \
   --ignore='\.actrc' \
