@@ -36,6 +36,7 @@ local options = {
 	sidescrolloff = 8, -- Makes sure there are always eight lines of context
 	numberwidth = 4, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
+	winborder = "rounded", -- default border for all floating windows
 }
 
 for k, v in pairs(options) do
