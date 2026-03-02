@@ -137,7 +137,6 @@ return {
 			float = {
 				source = "if_many",
 				style = "minimal",
-				border = "rounded",
 				header = "",
 				prefix = "",
 			},

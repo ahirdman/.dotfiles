@@ -39,33 +39,37 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
+    "catgoose/nvim-colorizer.lua",
     config = function()
       local colorizer = require("colorizer")
       colorizer.setup({
         filetypes = { "*", "!lazy" },
-        user_default_options = {
-          RGB = true,           -- #RGB hex codes
-          RRGGBB = true,        -- #RRGGBB hex codes
-          names = false,        -- "Name" codes like Blue or blue
-          RRGGBBAA = false,     -- #RRGGBBAA hex codes
-          AARRGGBB = false,     -- 0xAARRGGBB hex codes
-          rgb_fn = false,       -- CSS rgb() and rgba() functions
-          hsl_fn = false,       -- CSS hsl() and hsla() functions
-          css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
-          mode = "virtualtext", -- Set the display mode.
-          -- Available methods are false / true / "normal" / "lsp" / "both"
-          -- True is same as normal
-          tailwind = true,                                -- Enable tailwind colors
-          -- parsers can contain values used in |user_default_options|
-          sass = { enable = false, parsers = { "css" } }, -- Enable sass colors
-          virtualtext = "",
-          -- update color values even if buffer is not focused
-          -- example use: cmp_menu, cmp_docs
-          always_update = false,
+        options = {
+          parsers = {
+            names = { enable = false },
+            hex = {
+              enable = true,
+              rgb = true,       -- #RGB
+              rgba = true,      -- #RGBA
+              rrggbb = true,    -- #RRGGBB
+              rrggbbaa = false, -- #RRGGBBAA
+              aarrggbb = false, -- 0xAARRGGBB
+            },
+            rgb = { enable = false },
+            hsl = { enable = false },
+            css = false,
+            css_fn = false,
+            tailwind = { enable = true, lsp = true },
+            sass = { enable = false, parsers = { css = true } },
+          },
+          display = {
+            mode = "virtualtext",
+            virtualtext = {
+              char = "■",
+            },
+          },
+          always_update = true,
         },
-        -- all the sub-options of filetypes apply to buftypes
         buftypes = {},
       })
 
