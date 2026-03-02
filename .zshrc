@@ -101,14 +101,3 @@ eval "$(zoxide init zsh)"
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# opencode
-export PATH=$HOME/.opencode/bin:$PATH
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/alexander.hirdman/.lmstudio/bin"
-# End of LM Studio CLI section
-
