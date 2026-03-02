@@ -6,6 +6,3 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
-
-#  Bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"

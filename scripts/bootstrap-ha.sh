@@ -143,9 +143,22 @@ echo "[7/8] Stowing dotfiles..."
 [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.bak" 2>/dev/null || true
 [ -f "$HOME/.zshenv" ] && mv "$HOME/.zshenv" "$HOME/.zshenv.bak" 2>/dev/null || true
 
-# Stow dotfiles, ignoring .ssh (managed by gh/add-on on Pi)
-# and .config/gh (managed by gh auth on Pi)
-cd "$DOTFILES_DIR" && stow -t "$HOME" --ignore='\.ssh' --ignore='\.config/gh' .
+# Stow dotfiles, skipping mac-only configs
+cd "$DOTFILES_DIR" && stow -t "$HOME" \
+  --ignore='\.ssh' \
+  --ignore='Brewfile' \
+  --ignore='\.actrc' \
+  --ignore='\.taplo\.toml' \
+  --ignore='aerospace' \
+  --ignore='gh$' \
+  --ignore='ghdash' \
+  --ignore='ghostty' \
+  --ignore='github-copilot' \
+  --ignore='opencode' \
+  --ignore='rainfrog' \
+  --ignore='sketchybar' \
+  --ignore='tmuxinator' \
+  .
 
 # -----------------------------------------------
 # 8. Install tmux & neovim plugins
