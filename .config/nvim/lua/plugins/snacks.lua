@@ -7,6 +7,7 @@ return {
 	enabled = true,
 	config = function()
 		local snacks = require("snacks")
+		local icons = require("config.icons")
 
 		snacks.setup({
 			gh = { --- Keymaps for GitHub buffers
@@ -119,7 +120,21 @@ return {
 					end)
 				end,
 			},
-			notifier = { enabled = false },
+			notifier = {
+				enabled = true,
+				timeout = 3000,
+				width = { min = 40, max = 0.4 },
+				height = { min = 1, max = 0.6 },
+				top_down = true,
+				style = "compact",
+				icons = {
+					error = icons.diagnostics.Error .. " ",
+					warn = icons.diagnostics.Warning .. " ",
+					info = icons.diagnostics.Information .. " ",
+					debug = icons.diagnostics.Debug .. " ",
+					trace = "✎ ",
+				},
+			},
 			quickfile = { enabled = false },
 			statuscolumn = { enabled = false },
 			---@class snacks.scroll.Config
