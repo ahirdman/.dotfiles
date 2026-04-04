@@ -41,7 +41,6 @@ default=(
   icon.padding_right=4
   label.padding_left=4
   label.padding_right=4
-  notch_width=10
 )
 
 sketchybar --default "${default[@]}"

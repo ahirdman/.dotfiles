@@ -91,4 +91,170 @@ wk.add({
 	{ "<leader>cs", "", hidden = true },
 
 	{ "<leader>a", group = "AI" },
+
+	{ "<leader>r", group = "Run", icon = icons.ui.Forward },
+	{
+		"<leader>rt",
+		function()
+			local output = {}
+			vim.notify("Running typecheck...", vim.log.levels.INFO)
+
+			vim.fn.jobstart("pnpm run test:ts", {
+				cwd = vim.fn.getcwd(),
+				stdout_buffered = true,
+				stderr_buffered = true,
+				on_stdout = function(_, data)
+					for _, line in ipairs(data) do
+						if line ~= "" then
+							table.insert(output, line)
+						end
+					end
+				end,
+				on_stderr = function(_, data)
+					for _, line in ipairs(data) do
+						if line ~= "" then
+							table.insert(output, line)
+						end
+					end
+				end,
+				on_exit = function(_, code)
+					vim.schedule(function()
+						if code == 0 then
+							vim.fn.setqflist({}, "r", { title = "TypeCheck", items = {} })
+							vim.notify("Typecheck passed", vim.log.levels.INFO)
+						else
+							local efm = "%f(%l\\,%c): error TS%n: %m,%f(%l\\,%c): %trror TS%n: %m,%-G%.%#"
+							vim.fn.setqflist({}, "r", { title = "TypeCheck", lines = output, efm = efm })
+
+							local qflist = vim.fn.getqflist()
+							local valid = vim.tbl_filter(function(item)
+								return item.valid == 1
+							end, qflist)
+
+							if #valid > 0 then
+								vim.cmd("Trouble qflist open")
+								vim.notify(#valid .. " type error(s)", vim.log.levels.ERROR)
+							else
+								vim.notify("Typecheck failed (could not parse errors)", vim.log.levels.WARN)
+							end
+						end
+					end)
+				end,
+			})
+		end,
+		desc = "TypeCheck",
+	},
+	{
+		"<leader>rl",
+		function()
+			local output = {}
+			vim.notify("Running lint fix...", vim.log.levels.INFO)
+
+			vim.fn.jobstart("pnpm run lint:fix", {
+				cwd = vim.fn.getcwd(),
+				stdout_buffered = true,
+				stderr_buffered = true,
+				on_stdout = function(_, data)
+					for _, line in ipairs(data) do
+						if line ~= "" then
+							table.insert(output, line)
+						end
+					end
+				end,
+				on_stderr = function(_, data)
+					for _, line in ipairs(data) do
+						if line ~= "" then
+							table.insert(output, line)
+						end
+					end
+				end,
+				on_exit = function(_, code)
+					vim.schedule(function()
+						-- Reload buffers since lint:fix writes files
+						vim.cmd("checktime")
+
+						if code == 0 then
+							vim.fn.setqflist({}, "r", { title = "Lint Fix", items = {} })
+							vim.notify("Lint fix passed", vim.log.levels.INFO)
+						else
+							-- Try parsing biome-style diagnostics: path/file.ts:line:col
+							-- Also handle biome --reporter=github style if configured
+							local efm = table.concat({
+								"%f:%l:%c %m", -- biome default: file.ts:10:5 lint/rule
+								"%f %#(%l\\,%c): %m", -- fallback tsc-style
+								"::error file=%f\\,line=%l\\,col=%c::%m", -- github reporter
+								"%-G%.%#", -- ignore everything else
+							}, ",")
+
+							vim.fn.setqflist({}, "r", { title = "Lint Fix", lines = output, efm = efm })
+
+							local qflist = vim.fn.getqflist()
+							local valid = vim.tbl_filter(function(item)
+								return item.valid == 1
+							end, qflist)
+
+							if #valid > 0 then
+								vim.cmd("Trouble qflist open")
+								vim.notify(#valid .. " lint issue(s) remaining", vim.log.levels.WARN)
+							else
+								vim.notify("Lint fix failed (could not parse errors)", vim.log.levels.WARN)
+							end
+						end
+					end)
+				end,
+			})
+		end,
+		desc = "Lint Fix",
+	},
+	{
+		"<leader>rr",
+		function()
+			Snacks.terminal.toggle("pnpm run test", { win = { position = "bottom", height = 0.3 } })
+		end,
+		desc = "Test",
+	},
+	{
+		"<leader>rs",
+		function()
+			local cwd = vim.fn.getcwd()
+			local pkg_path = cwd .. "/package.json"
+
+			if vim.fn.filereadable(pkg_path) == 0 then
+				vim.notify("No package.json found in " .. cwd, vim.log.levels.WARN)
+				return
+			end
+
+			local content = vim.fn.readfile(pkg_path)
+			local ok, pkg = pcall(vim.fn.json_decode, table.concat(content, "\n"))
+
+			if not ok or not pkg.scripts then
+				vim.notify("No scripts found in package.json", vim.log.levels.WARN)
+				return
+			end
+
+			local scripts = {}
+			for name, cmd in pairs(pkg.scripts) do
+				table.insert(scripts, { name = name, cmd = cmd })
+			end
+
+			table.sort(scripts, function(a, b)
+				return a.name < b.name
+			end)
+
+			vim.ui.select(scripts, {
+				prompt = "Run pnpm script",
+				format_item = function(item)
+					return item.name .. "  ->  " .. item.cmd
+				end,
+			}, function(choice)
+				if choice then
+					Snacks.terminal.toggle(
+						"pnpm run " .. choice.name,
+						{ win = { position = "bottom", height = 0.3 } }
+					)
+				end
+			end)
+		end,
+		desc = "Pick Script",
+	},
 }, { mode = "n", prefix = "" })

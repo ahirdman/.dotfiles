@@ -45,6 +45,6 @@ if [ "$SENDER" = "front_app_switched" ]; then
   esac
 
   sketchybar --set $NAME icon=$ICON icon.padding_right=$ICON_PADDING_RIGHT
-  sketchybar --set $NAME.name label="$INFO"
+  sketchybar --set $NAME label="$INFO"
 
 fi

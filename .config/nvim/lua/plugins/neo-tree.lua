@@ -112,7 +112,7 @@ return {
 				["<Tab>"] = "open",
 				["<C-i>"] = "open",
 				["m"] = {
-					"add",
+					"move",
 					-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
 					-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 					config = {
