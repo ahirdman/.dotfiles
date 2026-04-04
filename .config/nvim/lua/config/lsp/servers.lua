@@ -1,13 +1,15 @@
-local nvim_lsp = require("lspconfig")
+--- Server configurations for vim.lsp.config()
+--- Each key is a server name, each value is a vim.lsp.Config table.
+--- Uses root_markers instead of the deprecated root_pattern().
 
----@type lspconfig.options
+---@type table<string, vim.lsp.Config>
 local servers = {
 	graphql = {
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
-    single_file_support = true,
-  },
+		root_markers = { "package.json" },
+		single_file_support = true,
+	},
 	cssls = {
-		root_dir = nvim_lsp.util.root_pattern("package.json"),
+		root_markers = { "package.json" },
 		single_file_support = false,
 		settings = {
 			css = {
@@ -19,7 +21,7 @@ local servers = {
 		},
 	},
 	-- eslint = {
-	-- 	root_dir = nvim_lsp.util.root_pattern(".eslintrc.js"),
+	-- 	root_markers = { ".eslintrc.js" },
 	-- 	settings = {
 	-- 		codeAction = {
 	-- 			disableRuleComment = {
@@ -64,11 +66,10 @@ local servers = {
 		},
 	},
 	biome = {
-		root_dir = nvim_lsp.util.root_pattern("biome.json"),
+		root_markers = { "biome.json" },
 	},
 	tailwindcss = {
-		--root_dir = nvim_lsp.util.root_pattern("tailwind.config.ts", "tailwind.config.js", "tailwind.config.cjs", "postcss.config.mjs"),
-		root_dir = nvim_lsp.util.root_pattern("package.json"),
+		root_markers = { "package.json" },
 		settings = {
 			tailwindCSS = {
 				classFunctions = { "cva", "cx" },
@@ -76,7 +77,7 @@ local servers = {
 		},
 	},
 	-- denols = {
-	-- 	root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+	-- 	root_markers = { "deno.json", "deno.jsonc" },
 	-- 	single_file_support = false,
 	-- 	settings = {
 	-- 		deno = {
@@ -85,7 +86,7 @@ local servers = {
 	-- 	},
 	-- },
 	ts_ls = {
-		root_dir = nvim_lsp.util.root_pattern("package.json"),
+		root_markers = { "package.json" },
 		single_file_support = false,
 		init_options = {
 			hostInfo = "neovim",

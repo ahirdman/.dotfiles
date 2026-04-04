@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/claude-opus-4.6",
+  "model": "github-copilot/gpt-5.3-codex",
   "autoupdate": true,
   "share": "disabled",
   "provider": {
@@ -42,7 +42,7 @@
     "azure-cli": {
       "description": "Azure CLI specialist for managing Azure resources. Automatically handles read operations but always asks for consent before any modifications, deletions, or operations that could incur costs.",
       "prompt": "{file:./prompts/azure-cli.md}",
-      "model": "github-copilot/claude-opus-4.6",
+      "model": "github-copilot/gpt-5.3-codex",
       "color": "#0078d4",
       "mode": "all",
       "permission": {
@@ -82,7 +82,7 @@
     "plan": {
       "description": "Create a detailed plan for addressing complex tasks that require multiple steps or sub-tasks.",
       "prompt": "{file:./prompts/plan.md}",
-      "model": "github-copilot/claude-opus-4.6",
+      "model": "github-copilot/gpt-5.3-codex",
       "color": "#e78a4e",
       "permission": {
         "edit": "deny",
@@ -111,124 +111,6 @@
         "webfetch": true
       }
     },
-    "ask": {
-      "description": "Use this agent for general questions about the codebase, project structure, or development practices.",
-      "prompt": "{file:./prompts/ask.md}",
-      "model": "github-copilot/claude-opus-4.6",
-      "color": "#7daea3",
-      "permission": {
-        "edit": "deny",
-        "bash": {
-          "git diff*": "allow",
-          "git status*": "allow",
-          "git *": "ask",
-          "jq*": "allow"
-        },
-        "webfetch": "allow",
-        "doom_loop": "ask",
-        "external_directory": "allow",
-      },
-      "mode": "all",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true
-      }
-    },
-    "bug-finder": {
-      "description": "Identify and report bugs in the codebase, including logical errors, runtime errors, and edge cases that may not have been considered during development.",
-      "prompt": "{file:./prompts/bug-finder.md}",
-      "model": "github-copilot/claude-opus-4.6",
-      "permission": {
-        "edit": "deny",
-        "bash": {
-          "git diff*": "allow",
-          "git status*": "allow",
-          "git *": "deny"
-        },
-        "webfetch": "allow"
-      },
-      "mode": "all",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true
-      }
-    },
-    "code-reviewer": {
-      "description": "Use this agent to conduct thorough code reviews to ensure code quality, adherence to coding standards, and best practices",
-      "prompt": "{file:./prompts/code-reviewer.md}",
-      "model": "github-copilot/claude-opus-4.6",
-      "permission": {
-        "edit": "deny",
-        "bash": {
-          "git diff*": "allow",
-          "git status*": "allow",
-          "git *": "deny"
-        },
-        "webfetch": "allow"
-      },
-      "mode": "subagent",
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true
-      }
-    },
-    "ts-perf-auditor": {
-      "description": "Use this agent when you need an expert assessment of potential performance problems in TypeScript code",
-      "prompt": "{file:./prompts/ts-perf-auditor.md}",
-      "mode": "subagent",
-      "model": "github-copilot/claude-opus-4.6",
-      "permission": {
-        "edit": "deny",
-        "bash": {
-          "git diff*": "allow",
-          "git status*": "allow",
-          "git *": "deny"
-        },
-        "webfetch": "allow"
-      },
-      "tools": {
-        "write": false,
-        "edit": false,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true
-      }
-    },
-    "agent-docs-writer": {
-      "description": "Use this agent when code changes have been made that affect how agents should interact with the repository, including updates to coding standards, infrastructure configuration, build processes, deployment procedures, project structure changes, or development workflows.",
-      "prompt": "{file:./prompts/agent-docs-writer.md}",
-      "model": "github-copilot/claude-opus-4.6",
-      "mode": "subagent",
-      "permission": {
-        "edit": "deny",
-        "bash": {
-          "git diff*": "allow",
-          "git status*": "allow",
-        },
-        "webfetch": "allow"
-      },
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true,
-        "read": true,
-        "grep": true,
-        "glob": true
-      }
-    }
   },
   "plugin": [
     "@franlol/opencode-md-table-formatter@0.0.3"
@@ -260,14 +142,5 @@
         "Authorization": "{file:github_pat.txt}"
       }
     },
-    "yaak": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-remote",
-        "http://127.0.0.1:64343/mcp"
-      ]
-    }
   }
 }

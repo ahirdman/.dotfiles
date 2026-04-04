@@ -1,9 +1,8 @@
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	local wk = require("which-key")
 	local icons = require("config.icons")
 	local telescope = require("telescope.builtin")
 	local conform = require("conform")
-	local autocmd = vim.api.nvim_create_autocmd
 	local lint = require("lint")
 
 	wk.add({
@@ -14,7 +13,7 @@ local on_attach = function(_, bufnr)
 		{
 			"<leader>lf",
 			function()
-				conform.format({ bufnr, async = true, lsp_fallback = true })
+				conform.format({ bufnr = bufnr, async = true, lsp_fallback = true })
 			end,
 			desc = "Format buffer",
 			buffer = bufnr,
@@ -29,7 +28,9 @@ local on_attach = function(_, bufnr)
 		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation" },
 	}, { mode = "n", prefix = "" })
 
-	autocmd({ "BufWritePost" }, {
+	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+		group = vim.api.nvim_create_augroup("user.lsp.lint", { clear = false }),
+		buffer = bufnr,
 		callback = function()
 			local file_path = vim.fn.expand("%:p")
 

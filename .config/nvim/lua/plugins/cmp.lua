@@ -32,7 +32,7 @@ return {
 			enabled = function()
 				-- disable completion in comments
 				local context = require("cmp.config.context")
-				local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+				local buftype = vim.bo[0].buftype
 
 				if buftype == "prompt" then
 					return false
@@ -56,11 +56,11 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			sources = {
+				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp", keyword_length = 0 },
 				{ name = "luasnip", keyword_length = 0 },
 				{ name = "path" },
 				{ name = "nvim_lua" },
-				{ name = "path" },
 				{ name = "calc" },
 				{ name = "emoji" },
 				{ name = "treesitter" },

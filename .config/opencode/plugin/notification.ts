@@ -45,7 +45,7 @@ function soundPath(event: SoundEvent): string {
 
 async function playSound($: any, event: SoundEvent) {
   const path = soundPath(event)
-  $`afplay ${path}`.catch(() => { })
+  $`afplay -v 0.5 ${path}`.catch(() => { })
 }
 
 async function sendNotification(
@@ -68,13 +68,13 @@ async function isMainSession(client: any, sessionID: string): Promise<boolean> {
 export const NotificationPlugin: Plugin = async ({ client, $ }) => {
   return {
     event: async ({ event }) => {
-      if (event.type === "session.idle") {
-        const sessionID = event.properties.sessionID
-        if (await isMainSession(client, sessionID)) {
-          playSound($, "session.idle")
-          sendNotification($, { message: "Session is idle" })
-        }
-      }
+      // if (event.type === "session.idle") {
+      //   const sessionID = event.properties.sessionID
+      //   if (await isMainSession(client, sessionID)) {
+      //     playSound($, "session.idle")
+      //     sendNotification($, { message: "Session is idle" })
+      //   }
+      // }
 
       // if (event.type === "session.error") {
       //   const message = event.properties.error?.name ?? "Unknown Error"

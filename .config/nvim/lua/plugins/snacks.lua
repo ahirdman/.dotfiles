@@ -310,6 +310,12 @@ return {
 					{ text = "", action = ":TodoTelescope", key = "t", padding = 0, gap = 0 },
 				},
 			},
+			terminal = {
+				win = {
+					position = "bottom",
+					height = 0.3,
+				},
+			},
 			words = { enabled = false },
 		})
 	end,
