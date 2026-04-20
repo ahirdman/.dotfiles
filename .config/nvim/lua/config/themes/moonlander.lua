@@ -51,12 +51,31 @@ function M.load()
     -- DIFF & GIT
     -- ========================================
     Added                           = { fg = c.teal },
-    DiffAdd                         = { bg = c.tealShadow, fg = c.teal },
-    DiffDelete                      = { bg = c.redShadow },
-    DiffChange                      = { bg = c.yellowShadow },
-    DiffText                        = { bg = c.tealShadow },
+    DiffAdd                         = { bg = "#1a2e1a" },
+    DiffDelete                      = { bg = c.redShadow, fg = c.overlay0 },
+    DiffChange                      = { bg = "#1a2433" },
+    DiffText                        = { bg = "#2a3f5c", style = { "bold" } },
     GitSignsAdd                     = { fg = c.green },
     GitSignsChange                  = { fg = c.peach },
+
+    -- ========================================
+    -- PLUGIN: Diffview
+    -- ========================================
+    DiffviewDiffAddAsDelete         = { bg = "#2a1616" },
+    DiffviewFiller                  = { fg = c.surface1, bg = c.mantle },
+    DiffviewDiffDelete              = { fg = c.surface1 },
+    DiffviewFilePanelTitle          = { fg = c.peach, style = { "bold" } },
+    DiffviewFilePanelCounter        = { fg = c.teal },
+    DiffviewFilePanelFileName       = { fg = c.text },
+    DiffviewFilePanelPath           = { fg = c.overlay1 },
+    DiffviewFilePanelInsertions     = { fg = c.green },
+    DiffviewFilePanelDeletions      = { fg = c.red },
+    DiffviewFilePanelConflicts      = { fg = c.yellow },
+    DiffviewStatusAdded             = { fg = c.green },
+    DiffviewStatusModified          = { fg = c.peach },
+    DiffviewStatusRenamed           = { fg = c.blue },
+    DiffviewStatusDeleted           = { fg = c.red },
+    DiffviewStatusUnmerged          = { fg = c.yellow, style = { "bold" } },
 
     -- ========================================
     -- DIAGNOSTICS

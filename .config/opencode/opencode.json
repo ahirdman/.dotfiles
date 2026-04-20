@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "github-copilot/gpt-5.3-codex",
+  "model": "github-copilot/gpt-5.4",
   "autoupdate": true,
   "share": "disabled",
   "provider": {
@@ -39,10 +39,17 @@
     "build": {
       "color": "#ea6962"
     },
+    "frontend": {
+      "description": "Always use this agent for frontend UI tasks.",
+      "prompt": "{file:./prompts/frontend.md}",
+      "model": "github-copilot/claude-opus-4.6",
+      "color": "#d3869b",
+      "mode": "all"
+    },
     "azure-cli": {
       "description": "Azure CLI specialist for managing Azure resources. Automatically handles read operations but always asks for consent before any modifications, deletions, or operations that could incur costs.",
       "prompt": "{file:./prompts/azure-cli.md}",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "github-copilot/gpt-5.4",
       "color": "#0078d4",
       "mode": "all",
       "permission": {
@@ -82,7 +89,7 @@
     "plan": {
       "description": "Create a detailed plan for addressing complex tasks that require multiple steps or sub-tasks.",
       "prompt": "{file:./prompts/plan.md}",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "github-copilot/gpt-5.4",
       "color": "#e78a4e",
       "permission": {
         "edit": "deny",
@@ -113,22 +120,9 @@
     },
   },
   "plugin": [
-    "@franlol/opencode-md-table-formatter@0.0.3"
+    "@mohak34/opencode-notifier@latest"
   ],
   "mcp": {
-    "figma": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "figma-developer-mcp",
-        "--stdio"
-      ],
-      "enabled": true,
-      "environment": {
-        "FIGMA_API_KEY": "{file:figma_api_key.txt}"
-      }
-    },
     "tavily": {
       "type": "remote",
       "url": "{file:tavily_mcp_url.txt}",

@@ -1,0 +1,124 @@
+{
+  "sound": true,
+  "notification": true,
+  "bell": true,
+  "timeout": 5,
+  "showProjectName": true,
+  "showSessionTitle": true,
+  "showIcon": true,
+  "suppressWhenFocused": false,
+  "enableOnDesktop": false,
+  "notificationSystem": "osascript",
+  "linux": {
+    "grouping": false
+  },
+  "command": {
+    "enabled": false,
+    "path": "/path/to/command",
+    "args": [
+      "--event",
+      "{event}",
+      "--message",
+      "{message}"
+    ],
+    "minDuration": 0
+  },
+  "events": {
+    "permission": {
+      "sound": true,
+      "notification": true,
+      "command": true,
+      "bell": false
+    },
+    "complete": {
+      "sound": true,
+      "notification": true,
+      "command": true,
+      "bell": false
+    },
+    "subagent_complete": {
+      "sound": false,
+      "notification": false,
+      "command": true,
+      "bell": false
+    },
+    "error": {
+      "sound": true,
+      "notification": true,
+      "command": true,
+      "bell": false
+    },
+    "question": {
+      "sound": true,
+      "notification": true,
+      "command": true,
+      "bell": false
+    },
+    "user_cancelled": {
+      "sound": false,
+      "notification": false,
+      "command": true,
+      "bell": false
+    },
+    "plan_exit": {
+      "sound": true,
+      "notification": true,
+      "command": true,
+      "bell": false
+    },
+    "session_started": {
+      "sound": true,
+      "notification": false,
+      "command": true,
+      "bell": false
+    },
+    "user_message": {
+      "sound": true,
+      "notification": false,
+      "command": true,
+      "bell": false
+    },
+    "client_connected": {
+      "sound": true,
+      "notification": false,
+      "command": true,
+      "bell": false
+    }
+  },
+  "messages": {
+    "permission": "Permission needed: {sessionTitle} ({agentName}) - {projectName}",
+    "complete": "Done: {sessionTitle} ({agentName}) - {projectName}",
+    "subagent_complete": "Subagent done: {sessionTitle} ({agentName}) - {projectName}",
+    "error": "Error: {sessionTitle} ({agentName}) - {projectName}",
+    "question": "Question: {sessionTitle} ({agentName}) - {projectName}",
+    "user_cancelled": "Cancelled: {sessionTitle} ({agentName}) - {projectName}",
+    "plan_exit": "Plan ready: {sessionTitle} ({agentName}) - {projectName}",
+    "session_started": "Started: {sessionTitle} ({agentName}) - {projectName}",
+    "user_message": "Message: {sessionTitle} ({agentName}) - {projectName}",
+    "client_connected": "OpenCode connected"
+  },
+  "sounds": {
+    "permission": "/Users/alexander.hirdman/.config/opencode/sounds/aint_got_time_to_bleed.wav",
+    "complete": "/Users/alexander.hirdman/.config/opencode/sounds/yippie_ki_yay.wav",
+    "subagent_complete": "/Users/alexander.hirdman/.config/opencode/sounds/cool.wav",
+    "error": "/Users/alexander.hirdman/.config/opencode/sounds/youre_pissing_me_off.wav",
+    "question": "/Users/alexander.hirdman/.config/opencode/sounds/kick_some_ass.wav",
+    "user_cancelled": null,
+    "plan_exit": "/Users/alexander.hirdman/.config/opencode/sounds/thats_what_im_talking_about.wav",
+    "session_started": null,
+    "user_message": null,
+    "client_connected": null
+  },
+  "volumes": {
+    "permission": 0.3,
+    "complete": 0.3,
+    "subagent_complete": 0.3,
+    "error": 0.3,
+    "question": 0.3,
+    "user_cancelled": 0.3,
+    "plan_exit": 0.3,
+    "session_started": 0.3,
+    "user_message": 0.3,
+    "client_connected": 0.3
+  }
+}

@@ -18,7 +18,49 @@ wk.add({
 	},
 
 	{ "<leader>g", group = "Git" },
-	{ "<leader>gd", "<cmd> DiffviewFileHistory <cr>", desc = "View diffs per commit" },
+	{
+		"<leader>go",
+		function()
+			local lib = require("diffview.lib")
+			local view = lib.get_current_view()
+			if view then
+				vim.cmd("DiffviewClose")
+			else
+				vim.cmd("DiffviewOpen")
+			end
+		end,
+		desc = "Toggle Diffview",
+	},
+	{ "<leader>gd", "<cmd> DiffviewFileHistory % <cr>", desc = "File History (current)" },
+	{ "<leader>gH", "<cmd> DiffviewFileHistory <cr>", desc = "File History (repo)" },
+	{
+		"<leader>gD",
+		function()
+			require("telescope.builtin").git_branches({
+				prompt_title = "Compare Against Branch",
+				attach_mappings = function(_, map)
+					map("i", "<CR>", function(prompt_bufnr)
+						local selection = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+						require("telescope.actions").close(prompt_bufnr)
+						if selection then
+							local branch = selection.value
+							vim.cmd("DiffviewOpen " .. branch)
+						end
+					end)
+					map("n", "<CR>", function(prompt_bufnr)
+						local selection = require("telescope.actions.state").get_selected_entry(prompt_bufnr)
+						require("telescope.actions").close(prompt_bufnr)
+						if selection then
+							local branch = selection.value
+							vim.cmd("DiffviewOpen " .. branch)
+						end
+					end)
+					return true
+				end,
+			})
+		end,
+		desc = "Compare Against Branch",
+	},
 	{ "<leader>gg", "<cmd> Neogit <cr>", desc = "Open Neogit" },
 	{ "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
 	{ "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },

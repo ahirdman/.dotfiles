@@ -51,5 +51,5 @@ figma_api_key.txt
 .config/tmux/plugins/
 
 # Misc
-.config/opencode/plugin/sounds
+.config/opencode/sounds
 *.bak
