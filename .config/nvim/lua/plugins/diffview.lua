@@ -6,63 +6,46 @@ return {
 
 		require("diffview").setup({
 			diff_binaries = false,
-			enhanced_diff_hl = true, -- See |diffview-config-enhanced_diff_hl|
-			git_cmd = { "git" }, -- The git executable followed by default args.
-			hg_cmd = { "hg" }, -- The hg executable followed by default args.
-			use_icons = true, -- Requires nvim-web-devicons
-			show_help_hints = true, -- Show hints for how to open the help panel
-			watch_index = true, -- Update views and index buffers when the git index changes.
-			icons = { -- Only applies when use_icons is true.
+			enhanced_diff_hl = true,
+			git_cmd = { "git" },
+			hg_cmd = { "hg" },
+			use_icons = true,
+			show_help_hints = true,
+			watch_index = true,
+			icons = {
 				folder_closed = icons.ui.Folder,
 				folder_open = icons.ui.FolderOpen,
 			},
 			signs = {
-				fold_closed = "",
-				fold_open = "",
+				fold_closed = "",
+				fold_open = "",
 				done = "✓",
 			},
 			view = {
-				-- Configure the layout and behavior of different types of views.
-				-- Available layouts:
-				--  'diff1_plain'
-				--    |'diff2_horizontal'
-				--    |'diff2_vertical'
-				--    |'diff3_horizontal'
-				--    |'diff3_vertical'
-				--    |'diff3_mixed'
-				--    |'diff4_mixed'
-				-- For more info, see |diffview-config-view.x.layout|.
 				default = {
-					-- Config for changed files, and staged files in diff views.
 					layout = "diff2_horizontal",
-					winbar_info = true, -- See |diffview-config-view.x.winbar_info|
+					winbar_info = true,
 				},
 				merge_tool = {
-					-- Config for conflicted files in diff views during a merge or rebase.
-					layout = "diff3_horizontal",
-					disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
-					winbar_info = true, -- See |diffview-config-view.x.winbar_info|
+					layout = "diff3_mixed",
+					disable_diagnostics = true,
+					winbar_info = true,
 				},
 				file_history = {
-					-- Config for changed files in file history views.
 					layout = "diff2_horizontal",
-					winbar_info = false, -- See |diffview-config-view.x.winbar_info|
+					winbar_info = true,
 				},
 			},
 			file_panel = {
-				listing_style = "tree", -- One of 'list' or 'tree'
-				tree_options = { -- Only applies when listing_style is 'tree'
-					flatten_dirs = true, -- Flatten dirs that only contain one single dir
-					folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
-				},
-				win_config = { -- See |diffview-config-win_config|
+				listing_style = "list",
+				win_config = {
 					position = "left",
-					width = 40,
+					width = 30,
 					win_opts = {},
 				},
 			},
 			file_history_panel = {
-				log_options = { -- See |diffview-config-log_options|
+				log_options = {
 					git = {
 						single_file = {
 							diff_merges = "combined",
@@ -76,25 +59,71 @@ return {
 						multi_file = {},
 					},
 				},
-				win_config = { -- See |diffview-config-win_config|
+				win_config = {
 					position = "bottom",
 					height = 16,
 					win_opts = {},
 				},
 			},
 			commit_log_panel = {
-				win_config = {}, -- See |diffview-config-win_config|
+				win_config = {},
 			},
-			default_args = { -- Default args prepended to the arg-list for the listed commands
+			default_args = {
 				DiffviewOpen = {},
 				DiffviewFileHistory = {},
 			},
-			hooks = {}, -- See |diffview-config-hooks|
+			hooks = {
+				view_opened = function(view)
+					-- Register which-key conflict group when diffview opens
+					local ok, wk = pcall(require, "which-key")
+					if ok then
+						wk.add({
+							{ "<leader>c", group = "Conflict", icon = "󰕚" },
+						})
+					end
+
+					-- Show conflict cheat sheet if this is a merge view
+					local has_conflicts = false
+					if view.files then
+						for _, file in ipairs(view.files) do
+							if file.status == "U" or file.status == "UU" then
+								has_conflicts = true
+								break
+							end
+						end
+					end
+
+					if has_conflicts then
+						vim.defer_fn(function()
+							vim.notify(
+								table.concat({
+									"Conflict Resolution",
+									"───────────────────",
+									"]x / [x      Next / prev conflict",
+									"<leader>co   Accept ours (current)",
+									"<leader>ct   Accept theirs (incoming)",
+									"<leader>cb   Accept base",
+									"<leader>ca   Accept all",
+									"dx           Delete conflict region",
+									"g<C-x>       Cycle layout",
+									"q            Close diffview",
+								}, "\n"),
+								vim.log.levels.INFO,
+								{ title = "Diffview Merge", timeout = 8000 }
+							)
+						end, 200)
+					end
+				end,
+				diff_buf_win_enter = function(_, winid)
+					-- Better visual tracking in diff buffers
+					vim.wo[winid].cursorline = true
+					vim.wo[winid].wrap = false
+				end,
+			},
 			keymaps = {
-				disable_defaults = false, -- Disable the default keymaps
+				disable_defaults = false,
 				view = {
-					-- The `view` bindings are active in the diff buffers, only when the current
-					-- tabpage is a Diffview.
+					{ "n", "q", actions.close, { desc = "Close diffview" } },
 					{
 						"n",
 						"<tab>",
@@ -212,15 +241,12 @@ return {
 					},
 				},
 				diff1 = {
-					-- Mappings in single window diff layouts
 					{ "n", "g?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
 				},
 				diff2 = {
-					-- Mappings in 2-way diff layouts
 					{ "n", "g?", actions.help({ "view", "diff2" }), { desc = "Open the help panel" } },
 				},
 				diff3 = {
-					-- Mappings in 3-way diff layouts
 					{
 						{ "n", "x" },
 						"2do",
@@ -236,7 +262,6 @@ return {
 					{ "n", "g?", actions.help({ "view", "diff3" }), { desc = "Open the help panel" } },
 				},
 				diff4 = {
-					-- Mappings in 4-way diff layouts
 					{
 						{ "n", "x" },
 						"1do",
@@ -258,6 +283,7 @@ return {
 					{ "n", "g?", actions.help({ "view", "diff4" }), { desc = "Open the help panel" } },
 				},
 				file_panel = {
+					{ "n", "q", actions.close, { desc = "Close diffview" } },
 					{
 						"n",
 						"j",
@@ -446,6 +472,7 @@ return {
 					},
 				},
 				file_history_panel = {
+					{ "n", "q", actions.close, { desc = "Close diffview" } },
 					{ "n", "g!", actions.options, { desc = "Open the option panel" } },
 					{
 						"n",
