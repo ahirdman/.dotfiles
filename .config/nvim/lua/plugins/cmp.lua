@@ -1,116 +1,59 @@
 return {
-	"hrsh7th/nvim-cmp",
+	"saghen/blink.cmp",
+	version = "1.*",
 	event = "InsertEnter",
 	dependencies = {
-		-- Snippet Engine & its associated nvim-cmp source
 		{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
-		"saadparwaiz1/cmp_luasnip",
-
-		-- Adds LSP completion capabilities
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-path",
 	},
 	config = function()
-		local cmp = require("cmp")
-		local luasnip = require("luasnip")
 		local icons = require("config.icons")
 
-		luasnip.config.setup({})
 		require("luasnip.loaders.from_vscode").lazy_load()
 
-		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
-			view = {
-				entries = "custom",
-			},
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
+		local function in_comment()
+			local cursor = vim.api.nvim_win_get_cursor(0)
+			local ok, node = pcall(vim.treesitter.get_node, { pos = { cursor[1] - 1, math.max(cursor[2] - 1, 0) } })
+			return ok and node ~= nil and node:type():find("comment", 1, true) ~= nil
+		end
+
+		require("blink.cmp").setup({
 			enabled = function()
-				-- disable completion in comments
-				local context = require("cmp.config.context")
-				local buftype = vim.bo[0].buftype
-
-				if buftype == "prompt" then
-					return false
-				end
-
-				local is_floating = vim.api.nvim_win_get_config(0).relative ~= ""
-
-				if is_floating then
-					return false
-				end
-
-				-- keep command mode completion enabled when cursor is in a comment
-				if vim.api.nvim_get_mode().mode == "c" then
-					return true
-				else
-					return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-				end
+				return vim.bo.buftype ~= "prompt" and vim.api.nvim_win_get_config(0).relative == "" and not in_comment()
 			end,
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+			snippets = { preset = "luasnip" },
+			cmdline = { enabled = false },
+			appearance = { kind_icons = icons.kind },
+			completion = {
+				list = { selection = { preselect = true, auto_insert = false } },
+				menu = { border = "rounded" },
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+					window = { border = "rounded" },
+				},
 			},
 			sources = {
-				{ name = "lazydev", group_index = 0 },
-				{ name = "nvim_lsp", keyword_length = 0 },
-				{ name = "luasnip", keyword_length = 0 },
-				{ name = "path" },
+				default = { "lazydev", "lsp", "snippets", "path" },
+				providers = {
+					lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+				},
 			},
-			formatting = {
-				format = function(entry, vim_item)
-					-- From kind_icons array
-					-- This concatenates the icons with the name of the item kind
-					vim_item.kind = string.format("%s %s", icons.kind[vim_item.kind], vim_item.kind)
-					-- Source
-					vim_item.menu = ({
-						nvim_lsp = "[LSP]",
-						nvim_lua = "[Lua]",
-						luasnip = "[LuaSnip]",
-					})[entry.source.name]
-					return vim_item
-				end,
+			keymap = {
+				preset = "none",
+				["<C-n>"] = { "select_next", "fallback" },
+				["<C-p>"] = { "select_prev", "fallback" },
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+				["<C-e>"] = { "hide", "fallback" },
+				["<C-a>"] = {
+					function(cmp)
+						return cmp.show({ providers = { "lsp" } })
+					end,
+				},
+				["<CR>"] = { "accept", "fallback" },
+				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				--["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-a>"] = cmp.mapping.complete({
-					config = {
-						sources = {
-							{ name = "nvim_lsp" },
-						},
-					},
-				}),
-				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				}),
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.expand_or_locally_jumpable() then
-						luasnip.expand_or_jump()
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-			}),
 		})
 	end,
 }

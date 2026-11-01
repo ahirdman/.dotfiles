@@ -63,9 +63,8 @@ return {
 				},
 			})
 
-			-- Shared capabilities (nvim-cmp completion support)
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+			-- Shared capabilities (blink.cmp completion support)
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			-- Apply shared config to all servers via the '*' wildcard
 			vim.lsp.config("*", {
