@@ -13,8 +13,8 @@ elif ! command -v bat >/dev/null; then
   unset MANPAGER NULLCMD
 fi
 
-# fzf only supports --tmux from 0.53.
+# Older distro builds of fzf reject the shared options.
 autoload -Uz is-at-least
 if ! is-at-least 0.53 "${$(fzf --version)%% *}"; then
-  export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS//--tmux bottom,40%/}"
+  export FZF_DEFAULT_OPTS="--height 40% --layout reverse"
 fi
