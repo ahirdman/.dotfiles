@@ -123,4 +123,69 @@ function M.run(opts)
 	end
 end
 
+local lockfiles = {
+	{ "pnpm-lock.yaml", "pnpm" },
+	{ "bun.lock", "bun" },
+	{ "bun.lockb", "bun" },
+	{ "yarn.lock", "yarn" },
+	{ "package-lock.json", "npm" },
+}
+
+--- @class RunnerProject
+--- @field root string
+--- @field manager string
+--- @field scripts table<string, string>
+
+--- Resolve the JS project for the current buffer: workspace root, package manager and scripts.
+--- @return RunnerProject
+function M.project()
+	local markers = vim.tbl_map(function(entry)
+		return entry[1]
+	end, lockfiles)
+	local root = vim.fs.root(0, markers) or vim.fs.root(0, "package.json") or vim.fn.getcwd()
+
+	local manager = "npm"
+	for _, entry in ipairs(lockfiles) do
+		if vim.uv.fs_stat(vim.fs.joinpath(root, entry[1])) then
+			manager = entry[2]
+			break
+		end
+	end
+
+	local scripts = {}
+	local pkg_path = vim.fs.joinpath(root, "package.json")
+	if vim.fn.filereadable(pkg_path) == 1 then
+		local ok, pkg = pcall(vim.json.decode, table.concat(vim.fn.readfile(pkg_path), "\n"))
+		if ok and type(pkg) == "table" and type(pkg.scripts) == "table" then
+			scripts = pkg.scripts
+		end
+	end
+
+	return { root = root, manager = manager, scripts = scripts }
+end
+
+--- Command for the first of `candidates` the project defines.
+--- @param project RunnerProject
+--- @param candidates string[]
+--- @return string?
+function M.script_cmd(project, candidates)
+	for _, name in ipairs(candidates) do
+		if project.scripts[name] then
+			return project.manager .. " run " .. name
+		end
+	end
+end
+
+--- Fill the quickfix list, resolving tool output paths against the directory it ran in.
+--- @param title string
+--- @param output string[]
+--- @param efm string
+--- @param cwd string
+function M.set_qflist(title, output, efm, cwd)
+	local previous = vim.fn.getcwd()
+	vim.fn.chdir(cwd)
+	vim.fn.setqflist({}, "r", { title = title, lines = output, efm = efm })
+	vim.fn.chdir(previous)
+end
+
 return M

@@ -10,6 +10,16 @@ local on_attach = function(client, bufnr)
 		{ "<leader>lr", vim.lsp.buf.rename, desc = "Rename symbol", buffer = bufnr },
 
 		{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Actions", buffer = bufnr },
+		{ "<leader>ls", telescope.lsp_document_symbols, desc = "Document Symbols", buffer = bufnr },
+		{ "<leader>lS", telescope.lsp_dynamic_workspace_symbols, desc = "Workspace Symbols", buffer = bufnr },
+		{
+			"<leader>li",
+			function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+			end,
+			desc = "Toggle Inlay Hints",
+			buffer = bufnr,
+		},
 		{
 			"<leader>lf",
 			function()
@@ -24,7 +34,11 @@ local on_attach = function(client, bufnr)
 
 	wk.add({
 		{ "gd", vim.lsp.buf.definition, desc = "Go To Definition", buffer = bufnr },
-		{ "gr", telescope.lsp_references, desc = "Find References", buffer = bufnr },
+		{ "gD", vim.lsp.buf.declaration, desc = "Go To Declaration", buffer = bufnr },
+		-- Extend Neovim's gr* defaults (grn rename, gra code action) rather than shadow them with gr.
+		{ "grr", telescope.lsp_references, desc = "Find References", buffer = bufnr },
+		{ "gri", telescope.lsp_implementations, desc = "Go To Implementation", buffer = bufnr },
+		{ "grt", telescope.lsp_type_definitions, desc = "Go To Type Definition", buffer = bufnr },
 		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation", buffer = bufnr },
 	}, { mode = "n", prefix = "" })
 

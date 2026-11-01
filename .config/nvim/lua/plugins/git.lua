@@ -78,6 +78,7 @@ return {
 							function()
 								gitsigns.blame_line({ full = false })
 							end,
+							buffer = bufnr,
 							desc = "Preview blame",
 						},
 						{
@@ -85,6 +86,7 @@ return {
 							function()
 								gitsigns.blame()
 							end,
+							buffer = bufnr,
 							desc = "Open blame panel",
 						},
 						{
@@ -95,14 +97,18 @@ return {
 						},
 						{
 							"<leader>gt",
-							gitsigns.toggle_deleted,
+							gitsigns.preview_hunk_inline,
 							buffer = bufnr,
-							desc = "Toggle deleted hunks",
+							desc = "Preview hunk inline",
 						},
 					})
 
-					utils.buffer_keymap(bufnr, "n", "]]", gitsigns.next_hunk, "Next git hunk")
-					utils.buffer_keymap(bufnr, "n", "[[", gitsigns.prev_hunk, "Previous git hunk")
+					utils.buffer_keymap(bufnr, "n", "]h", function()
+						gitsigns.nav_hunk("next")
+					end, "Next git hunk")
+					utils.buffer_keymap(bufnr, "n", "[h", function()
+						gitsigns.nav_hunk("prev")
+					end, "Previous git hunk")
 				end,
 			})
 		end,

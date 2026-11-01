@@ -19,8 +19,18 @@ return {
 		---@type conform.setupOpts
 		require("conform").setup({
 			log_level = 2,
+			-- LSP fallback stays manual (<leader>lf) so saving in a project without
+			-- a configured formatter never rewrites the file.
+			format_on_save = function()
+				if vim.g.disable_autoformat then
+					return
+				end
+				return { timeout_ms = 1000, lsp_format = "never" }
+			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				python = { "ruff_format" },
+				toml = { "taplo" },
         --bicep = { "bicep" },
 				json = jsFormatters,
         jsonc = jsFormatters,

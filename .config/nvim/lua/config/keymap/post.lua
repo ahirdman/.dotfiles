@@ -4,12 +4,31 @@ local telescope_builtin = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 --local copilot = require("copilot.suggestion")
 
+--- Find the first matching script in the current project, or warn when there is none.
+local function project_script(candidates, label)
+	local runner = require("config.runner")
+	local project = runner.project()
+	local cmd = runner.script_cmd(project, candidates)
+	if not cmd then
+		vim.notify("No " .. label .. " script in " .. project.root .. "/package.json", vim.log.levels.WARN)
+	end
+	return cmd, project
+end
+
 wk.add({
 	{ "<leader><leader>", telescope_builtin.buffers, desc = "Find Open Buffers" },
 	{ "<leader><tab>", "<cmd> Neotree toggle float <CR>", desc = "Float File Explorer" },
 	{ "<leader>e", "<cmd> Neotree reveal right<CR>", desc = "Right File Explorer" },
 	{ "<c-n>", "<cmd> Neotree toggle right<CR>", desc = "Toggle Explorer" },
 	{ "<leader>q", "<cmd>q<cr>", desc = "Quit" },
+	{
+		"<leader>lF",
+		function()
+			vim.g.disable_autoformat = not vim.g.disable_autoformat
+			vim.notify("Format on save " .. (vim.g.disable_autoformat and "off" or "on"))
+		end,
+		desc = "Toggle Format on Save",
+	},
 	{
 		"<leader>w",
 		"<cmd>w<cr>",
@@ -136,8 +155,14 @@ wk.add({
 	{
 		"<leader>rt",
 		function()
+			local cmd, project = project_script({ "test:ts", "typecheck", "type-check", "check-types", "tsc" }, "typecheck")
+			if not cmd then
+				return
+			end
+
 			require("config.runner").run({
-				cmd = "pnpm run test:ts",
+				cmd = cmd,
+				cwd = project.root,
 				title = "TypeCheck",
 				id = "runner_typecheck",
 				on_complete = function(output, code)
@@ -150,7 +175,7 @@ wk.add({
 						})
 					else
 						local efm = "%f(%l\\,%c): error TS%n: %m,%f(%l\\,%c): %trror TS%n: %m,%-G%.%#"
-						vim.fn.setqflist({}, "r", { title = "TypeCheck", lines = output, efm = efm })
+						require("config.runner").set_qflist("TypeCheck", output, efm, project.root)
 
 						local qflist = vim.fn.getqflist()
 						local valid = vim.tbl_filter(function(item)
@@ -180,8 +205,14 @@ wk.add({
 	{
 		"<leader>rl",
 		function()
+			local cmd, project = project_script({ "lint:fix", "lint" }, "lint")
+			if not cmd then
+				return
+			end
+
 			require("config.runner").run({
-				cmd = "pnpm run lint:fix",
+				cmd = cmd,
+				cwd = project.root,
 				title = "Lint Fix",
 				id = "runner_lintfix",
 				on_complete = function(output, code)
@@ -205,7 +236,7 @@ wk.add({
 							"%-G%.%#", -- ignore everything else
 						}, ",")
 
-						vim.fn.setqflist({}, "r", { title = "Lint Fix", lines = output, efm = efm })
+						require("config.runner").set_qflist("Lint Fix", output, efm, project.root)
 
 						local qflist = vim.fn.getqflist()
 						local valid = vim.tbl_filter(function(item)
@@ -235,31 +266,25 @@ wk.add({
 	{
 		"<leader>rr",
 		function()
-			Snacks.terminal.toggle("pnpm run test", { win = { position = "bottom", height = 0.3 } })
+			local cmd, project = project_script({ "test" }, "test")
+			if cmd then
+				Snacks.terminal.toggle(cmd, { cwd = project.root, win = { position = "bottom", height = 0.3 } })
+			end
 		end,
 		desc = "Test",
 	},
 	{
 		"<leader>rs",
 		function()
-			local cwd = vim.fn.getcwd()
-			local pkg_path = cwd .. "/package.json"
+			local project = require("config.runner").project()
 
-			if vim.fn.filereadable(pkg_path) == 0 then
-				vim.notify("No package.json found in " .. cwd, vim.log.levels.WARN)
-				return
-			end
-
-			local content = vim.fn.readfile(pkg_path)
-			local ok, pkg = pcall(vim.fn.json_decode, table.concat(content, "\n"))
-
-			if not ok or not pkg.scripts then
-				vim.notify("No scripts found in package.json", vim.log.levels.WARN)
+			if vim.tbl_isempty(project.scripts) then
+				vim.notify("No scripts found in " .. project.root .. "/package.json", vim.log.levels.WARN)
 				return
 			end
 
 			local scripts = {}
-			for name, cmd in pairs(pkg.scripts) do
+			for name, cmd in pairs(project.scripts) do
 				table.insert(scripts, { name = name, cmd = cmd })
 			end
 
@@ -268,15 +293,15 @@ wk.add({
 			end)
 
 			vim.ui.select(scripts, {
-				prompt = "Run pnpm script",
+				prompt = "Run " .. project.manager .. " script",
 				format_item = function(item)
 					return item.name .. "  ->  " .. item.cmd
 				end,
 			}, function(choice)
 				if choice then
 					Snacks.terminal.toggle(
-						"pnpm run " .. choice.name,
-						{ win = { position = "bottom", height = 0.3 } }
+						project.manager .. " run " .. choice.name,
+						{ cwd = project.root, win = { position = "bottom", height = 0.3 } }
 					)
 				end
 			end)
