@@ -48,7 +48,7 @@ return {
 					icon_hl = "DashboardGit",
 					group = "Text",
 					desc = "Worktree",
-					action = ":lua require('telescope').extensions.git_worktree.git_worktrees()",
+					action = ":lua require('config.worktree').switch()",
 					key = "w",
 				},
 				{

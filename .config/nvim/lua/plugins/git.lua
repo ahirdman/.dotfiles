@@ -113,10 +113,4 @@ return {
 			})
 		end,
 	},
-	{
-		"sindrets/diffview.nvim",
-		event = "VeryLazy",
-		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-	},
-	"tpope/vim-fugitive",
 }

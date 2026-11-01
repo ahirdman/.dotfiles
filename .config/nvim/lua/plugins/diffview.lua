@@ -1,5 +1,6 @@
 return {
-	"sindrets/diffview.nvim",
+	"dlyongemallo/diffview.nvim",
+	cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewToggleFiles", "DiffviewFocusFiles" },
 	config = function()
 		local actions = require("diffview.actions")
 		local icons = require("config.icons")

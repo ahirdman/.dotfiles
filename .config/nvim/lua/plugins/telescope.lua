@@ -4,8 +4,6 @@ return {
 	version = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"ghassan0/telescope-glyph.nvim",
-		"ThePrimeagen/git-worktree.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -94,9 +92,7 @@ return {
 			},
 		})
 
-		pcall(telescope.load_extension, "git_worktree")
 		pcall(telescope.load_extension, "fzf")
-		pcall(telescope.load_extension, "glyph")
 
 		local telescope_ok, telescope_builtin = pcall(require, "telescope.builtin")
 

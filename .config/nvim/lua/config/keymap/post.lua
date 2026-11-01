@@ -85,12 +85,12 @@ wk.add({
 	{ "<leader>gs", gitsigns.stage_hunk, desc = "Stage hunk" },
 	{
 		"<leader>gw",
-		"<cmd> :lua require('telescope').extensions.git_worktree.git_worktrees() <cr>",
+		"<cmd> :lua require('config.worktree').switch() <cr>",
 		desc = "Switch Worktree",
 	},
 	{
 		"<leader>gc",
-		"<cmd> :lua require('telescope').extensions.git_worktree.create_git_worktree() <cr>",
+		"<cmd> :lua require('config.worktree').create() <cr>",
 		desc = "Create Worktree",
 	},
 
@@ -118,7 +118,7 @@ wk.add({
 		desc = "[?] Find recently opened files",
 	},
 
-	{ "<leader>t", group = "Todo", icon = icons.ui.Check },
+	{ "<leader>t", group = "Test and Todo", icon = icons.ui.Check },
 	{ "<leader>tl", "<cmd>TodoTelescope<cr>", desc = "List Todos" },
 
 	{ "<leader>x", group = "Diagnostics" },

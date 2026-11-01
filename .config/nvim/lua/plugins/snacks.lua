@@ -320,7 +320,7 @@ return {
 					{ text = "", action = ":Telescope find_files", key = "f", padding = 0, gap = 0 },
 					{
 						text = "",
-						action = ":lua require('telescope').extensions.git_worktree.git_worktrees()",
+						action = ":lua require('config.worktree').switch()",
 						key = "w",
 						padding = 0,
 						gap = 0,
