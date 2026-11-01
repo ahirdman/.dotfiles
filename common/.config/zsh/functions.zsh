@@ -17,18 +17,19 @@ function clone() {
   echo "# Clone Repository with SSH profile: \n" | gum format
   echo ""
 
-  local MODE=$(gum choose  "Work" "Personal")
-
   local GIT_URL=$(gum input --placeholder "Repositry url")
 
   local REPO=${GIT_URL#*:}
 
-  local SSH_HOST=""
+  local SSH_HOST="github.com"
 
-  if [ "$MODE" = "Work" ]; then
-    SSH_HOST="workgit"
-  else
-    SSH_HOST="personalgit"
+  # Only the work layer has more than one GitHub account.
+  if [ -e ~/.ssh/config.role ] && grep -q workgit ~/.ssh/config.role; then
+    if [ "$(gum choose "Work" "Personal")" = "Work" ]; then
+      SSH_HOST="workgit"
+    else
+      SSH_HOST="personalgit"
+    fi
   fi
 
   gum confirm "Clone repo?" && git clone --bare $SSH_HOST:$REPO

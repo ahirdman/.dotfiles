@@ -7,7 +7,7 @@ role_file="$HOME/.config/dotfiles-role"
 role="${1:-$(cat "$role_file" 2>/dev/null || true)}"
 
 case "$role" in
-  personal-mac) layers=(common mac) ;;
+  personal-mac) layers=(common mac personal) ;;
   work-mac) layers=(common mac work) ;;
   linux) layers=(common linux) ;;
   *)
