@@ -10,6 +10,9 @@ return {
 		local icons = require("config.icons")
 
 		snacks.setup({
+			-- vim.ui.select and vim.ui.input only. Telescope is the main picker.
+			input = { enabled = true },
+			picker = { enabled = true, ui_select = true },
 			gh = { --- Keymaps for GitHub buffers
 				---@type table<string, snacks.gh.Keymap|false>?
 				keys = {
