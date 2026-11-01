@@ -25,6 +25,28 @@
 
 [core]
 	editor = "nvim"
+	pager = "if command -v delta >/dev/null 2>&1; then delta; else less; fi"
+
+[interactive]
+	diffFilter = "if command -v delta >/dev/null 2>&1; then delta --color-only; else cat; fi"
+
+[delta]
+	navigate = true
+
+[diff]
+	algorithm = histogram
+
+[merge]
+	conflictStyle = zdiff3
+
+[rerere]
+	enabled = true
+
+[rebase]
+	autoStash = true
+
+[branch]
+	sort = -committerdate
 
 [fetch]
 	prune = true
@@ -42,6 +64,10 @@
 	email = "126080861+AlexHird@users.noreply.github.com"
 	name = "Alexander Hirdman"
 [includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.config/git/personal
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.config/git/dotfiles
+[includeIf "gitdir:~/Developer/personal/"]
 	path = ~/.config/git/personal
 [credential "https://github.com"]
 	helper = 

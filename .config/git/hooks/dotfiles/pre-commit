@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Blocks secrets and private network details from being committed to the dotfiles.
+set -euo pipefail
+
+root=$(git rev-parse --show-toplevel)
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks is not installed, refusing to commit (brew install gitleaks)." >&2
+  exit 1
+fi
+
+gitleaks git --pre-commit --staged --redact --no-banner --log-level warn --config "$root/.gitleaks.toml" "$root"
+
+# Exact values that no pattern can recognise, kept out of git on each machine.
+blocked="$HOME/.config/git/blocked-values"
+if [[ -s "$blocked" ]] && git diff --cached -U0 | grep '^+' | grep -qiFf "$blocked"; then
+  echo "pre-commit: staged changes contain a value from $blocked." >&2
+  exit 1
+fi

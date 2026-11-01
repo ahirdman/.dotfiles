@@ -5,7 +5,8 @@ alias cl='clear'
 alias ..="cd .."
 alias ...="cd ../.."
 
-alias ls="eza -la --icons --git --group-directories-first"
+alias ls="eza -la --icons --group-directories-first"
+alias ll="eza -la --icons --git --group-directories-first"
 alias lt="eza --tree --level=2 --icons --all --ignore-glob="node_modules" "
 
 # Git aliases
@@ -31,13 +32,6 @@ alias fp="fzf --preview='bat --style=numbers --color=always --line-range :500 {}
 
 # macOS-only aliases
 if [[ "$OSTYPE" == darwin* ]]; then
-  # Homebrew
-  alias bbd='brew bundle dump --force'
-  alias brewi='brew bundle --file=~/.dotfiles/Brewfile'
-  alias brewc='brew bundle cleanup --file=~/.dotfiles/Brewfile'
-  alias brewcf='brew bundle cleanup --file=~/.dotfiles/Brewfile --force'
-  alias brewcheck='brew bundle check --file=~/.dotfiles/Brewfile'
-
   alias oc="opencode"
   alias db="rainfrog"
   alias hardware="system_profiler SPHardwareDataType"

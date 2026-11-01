@@ -1,9 +1,8 @@
 # Shared configurations
 
 ## Setup
-1. `brew bundle --file=Brewfile`
-2. `stow .` from this directory (options live in `.stowrc`)
-3. `opencode auth login` for providers. Credentials stay in opencode's store, never in this repo.
+1. `stow .` from this directory (options live in `.stowrc`)
+2. `opencode auth login` for providers. Credentials stay in opencode's store, never in this repo.
 
 ## Links:
 **Configure SSH & GitHub Profiles**

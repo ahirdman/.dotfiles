@@ -9,3 +9,4 @@
 --ignore=reports
 --ignore=research_notes
 --ignore=scripts
+--ignore=\.gitleaks\.toml

@@ -2,7 +2,6 @@
 # shellcheck shell=bash disable=SC2034
 HA_STOW_EXCLUDES=(
   --ignore='\.ssh'
-  --ignore='Brewfile'
   --ignore='\.actrc'
   --ignore='\.taplo\.toml'
   --ignore='aerospace'
