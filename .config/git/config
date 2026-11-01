@@ -41,6 +41,8 @@
 [user]
 	email = "126080861+AlexHird@users.noreply.github.com"
 	name = "Alexander Hirdman"
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.config/git/personal
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
