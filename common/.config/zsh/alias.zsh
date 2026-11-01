@@ -1,6 +1,6 @@
 alias trail='<<<${(F)path}'
 
-alias cat="bat"
+command -v bat >/dev/null || command -v batcat >/dev/null && alias cat="bat"
 alias cl='clear'
 alias ..="cd .."
 alias ...="cd ../.."

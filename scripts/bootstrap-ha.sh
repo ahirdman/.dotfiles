@@ -82,9 +82,7 @@ echo "[7/8] Stowing dotfiles..."
 [ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.bak" 2>/dev/null || true
 [ -f "$HOME/.zshenv" ] && mv "$HOME/.zshenv" "$HOME/.zshenv.bak" 2>/dev/null || true
 
-# Stow dotfiles, skipping mac-only configs
-cd "$DOTFILES_DIR" && source scripts/ha-stow-excludes.sh
-stow -t "$HOME" --no-folding "${HA_STOW_EXCLUDES[@]}" .
+"$DOTFILES_DIR/install.sh" linux
 
 # -----------------------------------------------
 # 8. Install tmux & neovim plugins

@@ -83,7 +83,7 @@ return {
 
 			-- Ensure the remaining configured servers are installed via Mason.
 			require("mason-lspconfig").setup({
-				ensure_installed = mason_servers,
+				ensure_installed = not vim.env.DOTFILES_LIGHT and mason_servers or {},
 				automatic_enable = false,
 			})
 

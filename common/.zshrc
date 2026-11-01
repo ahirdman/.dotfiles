@@ -42,46 +42,14 @@ export FZF_DEFAULT_OPTS='
   --color=scrollbar:#665c54
   '
 
-# macOS-specific settings
-if [[ "$OSTYPE" == darwin* ]]; then
-  # Node.js version manager
-  export N_PREFIX="$HOME/.n"
-  export PATH="$N_PREFIX/bin:$PATH"
-
-  # Postgres
-  export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
-  # OpenJDK
-  export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
-  # Bun
-  export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
-  export PATH="$PATH:$HOME/.maestro/bin"
-
-  # Go Executables
-  export PATH=$PATH:$HOME/go/bin
-
-  export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!Library/**' --glob '!.git/**' \"\$HOME\""
-
-  # LM Studio CLI
-  export PATH="$PATH:$HOME/.lmstudio/bin"
-
-  # bun completions
-  [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-  # opencode
-  export PATH=$HOME/.opencode/bin:$PATH
-fi
-
-# Linux-specific settings
-if [[ "$OSTYPE" == linux* ]]; then
-  # Standalone binaries installed to /data/bin
-  export PATH="/data/bin:$PATH"
-fi
+# Settings from the layers stowed on this machine
+for layer in ~/.config/zsh-layers/*.zsh(N); do
+  source "$layer"
+done
+unset layer
 
 export POSH_CONFIG="$HOME/.config/ohmyposh/base.toml"
-eval "$(oh-my-posh init zsh --config "$POSH_CONFIG")"
+command -v oh-my-posh >/dev/null && eval "$(oh-my-posh init zsh --config "$POSH_CONFIG")"
 
 # Restore the theme if shell tooling clears Oh My Posh's environment variable.
 # Oh My Posh calls this hook before rendering each primary prompt.
@@ -89,7 +57,7 @@ function set_poshcontext() {
   export POSH_CONFIG="$HOME/.config/ohmyposh/base.toml"
 }
 
-eval "$(zoxide init zsh)"
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # Aliases
 [[ -f ~/.config/zsh/alias.zsh ]] && source ~/.config/zsh/alias.zsh

@@ -22,9 +22,8 @@ if [ -f "$HOME_DIR/.zprofile" ] && [ ! -L "$HOME_DIR/.zprofile" ]; then
   mv "$HOME_DIR/.zprofile" "$HOME_DIR/.zprofile.ha-default"
 fi
 
-# Re-stow dotfiles (skip mac-only configs)
-cd "$DOTFILES_DIR" && source scripts/ha-stow-excludes.sh
-stow -t "$HOME_DIR" --no-folding "${HA_STOW_EXCLUDES[@]}" .
+# Re-link the dotfiles
+HOME="$HOME_DIR" "$DOTFILES_DIR/install.sh" linux
 
 # Install tmux plugins if TPM exists but plugins are missing
 TPM_DIR="$HOME_DIR/.config/tmux/plugins/tpm"
