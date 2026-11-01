@@ -14,6 +14,7 @@ elif ! command -v bat >/dev/null; then
 fi
 
 # fzf only supports --tmux from 0.53.
-if ! fzf --tmux --version >/dev/null 2>&1; then
+autoload -Uz is-at-least
+if ! is-at-least 0.53 "${$(fzf --version)%% *}"; then
   export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS//--tmux bottom,40%/}"
 fi

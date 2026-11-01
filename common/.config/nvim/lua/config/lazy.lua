@@ -21,6 +21,8 @@ require("lazy").setup({
 		{ import = "plugins" },
 	},
 	install = {},
+	-- Servers run a subset of plugins, so keep their versions out of the shared lockfile.
+	lockfile = vim.env.DOTFILES_LIGHT and vim.fn.stdpath("state") .. "/lazy-lock.json" or nil,
 	checker = { enabled = true, notify = false },
 	ui = {
 		size = { width = 0.8, height = 0.8 },
