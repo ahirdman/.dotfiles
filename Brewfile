@@ -9,6 +9,7 @@ brew "bat"
 brew "chafa"
 brew "dotnet@8", link: true
 brew "eza"
+brew "fd"
 brew "fzf"
 brew "gh"
 brew "tesseract"

@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"ghassan0/telescope-glyph.nvim",
+		"nvim-telescope/telescope-ui-select.nvim",
 		"ThePrimeagen/git-worktree.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -92,8 +93,12 @@ return {
 					},
 				},
 			},
+			extensions = {
+				["ui-select"] = { require("telescope.themes").get_dropdown({}) },
+			},
 		})
 
+		pcall(telescope.load_extension, "ui-select")
 		pcall(telescope.load_extension, "git_worktree")
 		pcall(telescope.load_extension, "fzf")
 		pcall(telescope.load_extension, "glyph")

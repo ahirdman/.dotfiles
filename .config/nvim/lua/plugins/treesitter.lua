@@ -82,6 +82,7 @@ return {
 				"bash",
 				"markdown",
 				"markdown_inline",
+				"regex",
 			})
 		else
 			vim.schedule(function()

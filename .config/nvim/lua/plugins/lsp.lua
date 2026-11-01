@@ -85,6 +85,7 @@ return {
 			-- Ensure the remaining configured servers are installed via Mason.
 			require("mason-lspconfig").setup({
 				ensure_installed = mason_servers,
+				automatic_enable = false,
 			})
 
 			-- Explicitly enable all registered server configs using the Neovim 0.11
