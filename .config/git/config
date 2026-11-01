@@ -5,7 +5,7 @@
 	ci = "commit -v"
 	co = "checkout"
 	ls = "branch -v"
-	pb = "!git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
+	pb = "!git fetch -p && git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
 	pf = "push --force-with-lease"
 	st = "status"
 	undo = "reset --soft HEAD^"
@@ -41,3 +41,9 @@
 [user]
 	email = "126080861+AlexHird@users.noreply.github.com"
 	name = "Alexander Hirdman"
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

@@ -14,14 +14,13 @@ function init_fzf() {
   elif [[ "$OSTYPE" == linux* ]]; then
     source /usr/share/zsh/plugins/fzf/fzf.plugin.zsh
   fi
-
-  HISTFILE=~/.zsh_history
-  HISTSIZE=10000
-  SAVEHIST=10000
-
-  setopt appendhistory
 }
 
 init_fzf
 
-zvm_after_init_commands+=(init_fzf)
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt appendhistory share_history hist_ignore_all_dups

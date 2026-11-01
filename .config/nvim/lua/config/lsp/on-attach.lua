@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr)
 		{
 			"<leader>lf",
 			function()
-				conform.format({ bufnr = bufnr, async = true, lsp_fallback = true })
+				conform.format({ bufnr = bufnr, async = true, lsp_format = "fallback" })
 			end,
 			desc = "Format buffer",
 			buffer = bufnr,
@@ -23,13 +23,16 @@ local on_attach = function(client, bufnr)
 	}, { mode = "n", prefix = "" })
 
 	wk.add({
-		{ "gd", vim.lsp.buf.definition, desc = "Go To Definition" },
-		{ "gr", telescope.lsp_references, desc = "Find References" },
-		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation" },
+		{ "gd", vim.lsp.buf.definition, desc = "Go To Definition", buffer = bufnr },
+		{ "gr", telescope.lsp_references, desc = "Find References", buffer = bufnr },
+		{ "K", vim.lsp.buf.hover, desc = "Hover Documentation", buffer = bufnr },
 	}, { mode = "n", prefix = "" })
 
+	-- Runs once per attached client; keep a single lint autocmd per buffer.
+	local lint_group = vim.api.nvim_create_augroup("user.lsp.lint", { clear = false })
+	vim.api.nvim_clear_autocmds({ group = lint_group, buffer = bufnr })
 	vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-		group = vim.api.nvim_create_augroup("user.lsp.lint", { clear = false }),
+		group = lint_group,
 		buffer = bufnr,
 		callback = function()
 			local file_path = vim.fn.expand("%:p")

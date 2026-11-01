@@ -8,7 +8,7 @@ function g() {
 }
 
 function switchBranch() {
-  BRANCH=$(git branch -v | gum choose |  awk '{print $1}')
+  local BRANCH=$(git branch -v | gum choose |  awk '{print $1}')
 
   git switch $BRANCH
 }
@@ -17,21 +17,21 @@ function clone() {
   echo "# Clone Repository with SSH profile: \n" | gum format
   echo ""
 
-  MODE=$(gum choose  "Work" "Personal")
+  local MODE=$(gum choose  "Work" "Personal")
 
-  GIT_URL=$(gum input --placeholder "Repositry url")
+  local GIT_URL=$(gum input --placeholder "Repositry url")
 
-  REPO=${GIT_URL#*:}
+  local REPO=${GIT_URL#*:}
 
-  PREFIX=""
+  local SSH_HOST=""
 
   if [ "$MODE" = "Work" ]; then
-    PREFIX="workgit"
+    SSH_HOST="workgit"
   else
-    PREFIX="personalgit"
+    SSH_HOST="personalgit"
   fi
 
-  gum confirm "Clone repo?" && git clone --bare $PREFIX:$REPO
+  gum confirm "Clone repo?" && git clone --bare $SSH_HOST:$REPO
 }
 
 function batdiff() {
@@ -44,6 +44,6 @@ function help() {
 }
 
 function tmuxPickSession() {
-  SESSION=$(tmux list-sessions -F \#S | gum filter --placeholder "Pick session...");
+  local SESSION=$(tmux list-sessions -F \#S | gum filter --placeholder "Pick session...");
   tmux switch-client -t $SESSION || tmux attach -t $SESSION
 }

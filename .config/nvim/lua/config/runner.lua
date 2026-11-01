@@ -56,13 +56,18 @@ function M.run(opts)
 		})
 	end
 
+	-- Job chunks can end mid-line; hold the unfinished tail per stream.
+	local partial = { stdout = "", stderr = "" }
+
 	--- Process data chunks from stdout/stderr
-	local function on_data(_, data)
+	local function on_data(_, data, stream)
 		if not data then
 			return
 		end
 
 		local dirty = false
+		data[1] = partial[stream] .. data[1]
+		partial[stream] = table.remove(data)
 		for _, line in ipairs(data) do
 			if line ~= "" then
 				table.insert(output, line)
@@ -86,7 +91,7 @@ function M.run(opts)
 		end)
 	)
 
-	vim.fn.jobstart(opts.cmd, {
+	local job = vim.fn.jobstart(opts.cmd, {
 		cwd = cwd,
 		on_stdout = on_data,
 		on_stderr = on_data,
@@ -95,11 +100,27 @@ function M.run(opts)
 			timer:stop()
 			timer:close()
 
+			for _, stream in ipairs({ "stdout", "stderr" }) do
+				if partial[stream] ~= "" then
+					table.insert(output, partial[stream])
+				end
+			end
+
 			vim.schedule(function()
 				opts.on_complete(output, code)
 			end)
 		end,
 	})
+
+	if job <= 0 then
+		timer:stop()
+		timer:close()
+		vim.notify("Could not start: " .. opts.cmd, vim.log.levels.ERROR, {
+			id = opts.id,
+			title = opts.title,
+			timeout = 5000,
+		})
+	end
 end
 
 return M

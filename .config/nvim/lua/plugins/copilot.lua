@@ -34,6 +34,13 @@ return {
 					dismiss = "<C-]>",
 				},
 			},
+			-- .env files get filetype "sh"; never send them to Copilot.
+			should_attach = function(buf, name)
+				if vim.fs.basename(name):match("^%.env") then
+					return false
+				end
+				return require("copilot.config.should_attach").default(buf, name)
+			end,
 			filetypes = {
 				yaml = false,
 				markdown = false,

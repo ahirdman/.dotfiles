@@ -1,8 +1,11 @@
 --verbose=2
+--no-folding
 --target=~/
 --ignore=.stowrc
 --ignore=DS_Store
 --ignore=README.md
 --ignore=fonts
 --ignore=nix
+--ignore=reports
+--ignore=research_notes
 --ignore=scripts

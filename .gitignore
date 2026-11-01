@@ -42,10 +42,21 @@ Brewfile.lock.json
 # Secrets
 env.zsh
 azure_api_key.txt
+azure_foundry_api_key.txt
 azure_resource_name.txt
 github_pat.txt
 tavily_mcp_url.txt
 figma_api_key.txt
+.config/gh/hosts.yml
+.config/github-copilot/
+.config/opencode/service.json
+
+# App runtime state
+.config/opencode/opencode-notifier-state.json
+
+# Private notes
+reports/
+research_notes/
 
 # Submodules / Repositories
 .config/tmux/plugins/

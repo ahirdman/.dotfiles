@@ -2,7 +2,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
+			"mason-org/mason.nvim",
 			"neovim/nvim-lspconfig",
 			{ "b0o/schemastore.nvim" },
 			"folke/neoconf.nvim",
@@ -11,6 +11,21 @@ return {
 			local icons = require("config.icons")
 			local servers = require("config.lsp.servers")
 			local on_attach = require("config.lsp.on-attach")
+
+			-- Native TypeScript watches the whole monorepo. Runtime state and caches
+			-- must not invalidate its projects on every background write.
+			-- Neovim 0.12 uses this exclusion for macOS event watchers too.
+			local watchfiles = require("vim.lsp._watchfiles")
+			for _, pattern in ipairs({
+				"**/.git/**",
+				"**/.alchemy/**",
+				"**/.wrangler/**",
+				"**/.turbo/**",
+				"**/.container-stage-*/**",
+				"**/*.tsbuildinfo",
+			}) do
+				watchfiles._poll_exclude_pattern = watchfiles._poll_exclude_pattern + vim.glob.to_lpeg(pattern)
+			end
 
 			-- neoconf must be set up BEFORE any LSP config
 			require("neoconf").setup({
@@ -62,12 +77,20 @@ return {
 				vim.lsp.config(name, config)
 			end
 
-			-- mason-lspconfig v2: ensures servers are installed and
-			-- automatically calls vim.lsp.enable() for installed servers
+			-- Oxlint and native TypeScript are provided by the project, not Mason.
+			local mason_servers = vim.tbl_filter(function(name)
+				return name ~= "oxlint" and name ~= "tsc"
+			end, vim.tbl_keys(servers))
+
+			-- Ensure the remaining configured servers are installed via Mason.
 			require("mason-lspconfig").setup({
-				ensure_installed = vim.tbl_keys(servers),
-				automatic_enable = true,
+				ensure_installed = mason_servers,
 			})
+
+			-- Explicitly enable all registered server configs using the Neovim 0.11
+			-- built-in LSP activation flow instead of relying on mason-lspconfig
+			-- plugin-specific auto-enable behavior.
+			vim.lsp.enable(vim.tbl_keys(servers))
 
 			-- LspAttach autocmd replaces per-server on_attach callbacks
 			vim.api.nvim_create_autocmd("LspAttach", {

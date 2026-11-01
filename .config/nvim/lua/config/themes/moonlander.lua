@@ -92,8 +92,11 @@ function M.load()
     DiagnosticInfo                  = { fg = c.teal, bg = c.tealShadow },
     DiagnosticUnderlineInfo         = { sp = c.teal, style = { "underline" } },
 
-    DiagnosticDeprecated            = { fg = c.subtext1, style = { "strikethrough" } },
+    DiagnosticDeprecated            = { fg = c.yellow, style = { "strikethrough" } },
     DiagnosticUnnecessary           = { fg = c.overlay0 },
+
+    -- LSP semantic-token modifier used when a server marks a symbol deprecated.
+    ["@lsp.mod.deprecated"]         = { fg = c.yellow, style = { "strikethrough" } },
 
     -- ========================================
     -- PLUGIN: Telescope

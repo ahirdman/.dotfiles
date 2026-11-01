@@ -81,7 +81,7 @@ wk.add({
 	{ "<leader>sg", telescope_builtin.live_grep, desc = "[S]earch by [G]rep" },
 	{ "<leader>sh", telescope_builtin.help_tags, desc = "[S]earch [H]elp" },
 	{ "<leader>sr", telescope_builtin.resume, desc = "[S]earch [R]esume" },
-	{ "<leader>sn", "<cmd> :Telescope notify <cr>", desc = "Search Notify History" },
+	{ "<leader>sn", function() Snacks.notifier.show_history() end, desc = "Search Notify History" },
 	{
 		"<leader>ss",
 		telescope_builtin.builtin,
@@ -129,8 +129,6 @@ wk.add({
 		"<cmd>Trouble qflist toggle<cr>",
 		desc = "Quickfix List (Trouble)",
 	},
-
-	{ "<leader>cs", "", hidden = true },
 
 	{ "<leader>a", group = "AI" },
 

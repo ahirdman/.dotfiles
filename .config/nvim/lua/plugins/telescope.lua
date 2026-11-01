@@ -45,7 +45,7 @@ return {
 				prompt_prefix = " " .. icons.ui.Telescope .. "  ",
 				selection_caret = icons.ui.BoldArrowRight .. " ",
 				--file_ignore_patterns = { "node_modules", "package-lock.json", ".git/", "*.ttf" },
-        file_ignore_patterns = { "%.git/", "node_modules", "package%-lock%.json", "%.ttf" },
+				file_ignore_patterns = { "%.git/", "node_modules", "package%-lock%.json", "%.ttf", "@repos/" },
 				initial_mode = "insert",
 				select_strategy = "reset",
 				sorting_strategy = "ascending",
@@ -111,8 +111,6 @@ return {
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
-
-			print(vim.bo.filetype)
 		end
 
 		utils.keymap("n", "<leader>/", function()

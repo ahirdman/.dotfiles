@@ -1,0 +1,301 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "experimental": {
+    "policies": [
+      {
+        "action": "provider.use",
+        "resource": "github-copilot",
+        "effect": "deny"
+      }
+    ]
+  },
+  "update": "auto",
+  "websearch": {
+    "provider": "tavily"
+  },
+  "compaction": {
+    "auto": true,
+    "keep": {
+      "tokens": 15000
+    },
+    "buffer": 10000
+  },
+  "formatter": {
+    "biome": {
+      "extensions": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".json",
+        ".md",
+        ".mdx",
+        ".css",
+        ".scss",
+        ".html"
+      ]
+    }
+  },
+  "providers": {
+    "azure-foundry-openai": {
+      "package": "@opencode/ai/providers/openai",
+      "name": "Azure Foundry OpenAI",
+      "settings": {
+        "baseURL": "{env:AZURE_FOUNDRY_BASE_URL}",
+        "timeout": 900000,
+        "chunkTimeout": 120000,
+        "setCacheKey": true
+      },
+      "models": {
+        "gpt-6-astra": {
+          "name": "Astra",
+          "limit": {
+            "context": 200000,
+            "output": 12000
+          }
+        },
+        "gpt-6.1-sol": {
+          "name": "Sol 6.1",
+          "limit": {
+            "context": 170000,
+            "output": 8192
+          }
+        },
+        "gpt-6-luna": {
+          "name": "Luna"
+        },
+        "gpt-5": {
+          "modelID": "gpt-5",
+          "name": "GPT-5",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5.2": {
+          "modelID": "gpt-5.2",
+          "name": "GPT-5.2",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5.6-luna": {
+          "modelID": "gpt-5.6-luna",
+          "name": "Luna",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5.6-terra": {
+          "modelID": "gpt-5.6-terra",
+          "name": "Terra",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5.6-sol": {
+          "modelID": "gpt-5.6-sol",
+          "name": "Sol",
+          "limit": {
+            "context": 170000,
+            "output": 8192
+          }
+        },
+        "gpt-5.4": {
+          "modelID": "gpt-5.4",
+          "name": "GPT-5.4",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5.4-mini": {
+          "modelID": "gpt-5.4-mini",
+          "name": "GPT-5.4 Mini",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5-mini": {
+          "modelID": "gpt-5-mini",
+          "name": "GPT-5 Mini",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        },
+        "gpt-5-nano": {
+          "modelID": "gpt-5-nano",
+          "name": "GPT-5 Nano",
+          "limit": {
+            "context": 150000,
+            "output": 8192
+          }
+        }
+      }
+    }
+  },
+  "agents": {
+    "build": {
+      "color": "#ea6962",
+      "model": "azure-foundry-openai/gpt-6.1-sol"
+    },
+    "azure-cli": {
+      "description": "Azure CLI specialist for managing Azure resources. Automatically handles read operations but always asks for consent before any modifications, deletions, or operations that could incur costs.",
+      "system": "{file:./prompts/azure-cli.md}",
+      "model": "azure-foundry-openai/gpt-5.6-terra",
+      "color": "#0078d4",
+      "mode": "all",
+      "permissions": [
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "az account show *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az account list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * list",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * show",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * show *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * get-*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az find *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * --help",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * --help *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * validate *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "az * what-if *",
+          "effect": "allow"
+        },
+        // These match the read-only globs above but return secrets.
+        { "action": "shell", "resource": "az account get-access-token*", "effect": "ask" },
+        { "action": "shell", "resource": "az keyvault secret *", "effect": "ask" },
+        { "action": "shell", "resource": "az keyvault key *", "effect": "ask" },
+        { "action": "shell", "resource": "az * keys *", "effect": "ask" },
+        { "action": "shell", "resource": "az * list-keys*", "effect": "ask" },
+        { "action": "shell", "resource": "az * *connection-string*", "effect": "ask" },
+        { "action": "shell", "resource": "az * appsettings *", "effect": "ask" },
+        { "action": "shell", "resource": "az * credential *", "effect": "ask" },
+        { "action": "shell", "resource": "az * get-credentials*", "effect": "ask" },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "webfetch",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "allow"
+        }
+      ]
+    },
+    "plan": {
+      "description": "Create a detailed plan for addressing complex tasks that require multiple steps or sub-tasks.",
+      "system": "{file:./prompts/plan.md}",
+      "model": "azure-foundry-openai/gpt-6.1-sol",
+      "color": "#e78a4e",
+      "permissions": [
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git diff*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git status*",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "jq*",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "webfetch",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "external_directory",
+          "resource": "*",
+          "effect": "allow"
+        }
+      ],
+      "mode": "all"
+    }
+  },
+  "mcp": {
+    "paper": {
+      "type": "local",
+      "command": [
+        "/Users/alexander.hirdman/.paper/bin/paper",
+        "mcp"
+      ],
+      "enabled": true
+    }
+  },
+}

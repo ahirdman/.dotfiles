@@ -8,8 +8,8 @@ utils.keymap({ "n" }, "<Esc>", ":noh <CR>")
 -- switch between windows
 utils.keymap({ "n" }, "<C-h>", "<C-w>h") -- Move left
 utils.keymap({ "n" }, "<C-l>", "<C-w>l") -- Move Right
-utils.keymap({ "n" }, "<C-l>", "<C-w>j") -- Move Down
-utils.keymap({ "n" }, "<C-l>", "<C-w>k") -- Move Up
+utils.keymap({ "n" }, "<C-j>", "<C-w>j") -- Move Down
+utils.keymap({ "n" }, "<C-k>", "<C-w>k") -- Move Up
 
 utils.keymap({ "n" }, "L", "<cmd>:lua vim.diagnostic.open_float() <CR>")
 
@@ -24,7 +24,6 @@ utils.keymap({ "v" }, "K", ":m '<-2<CR>gv=gv")
 utils.keymap({ "i" }, "<C-h>", "<Left>")
 utils.keymap({ "i" }, "<C-l>", "<Right>")
 utils.keymap({ "i" }, "<C-j>", "<Down>")
-utils.keymap({ "i" }, "<C-k>", "<Up>")
 utils.keymap({ "i" }, "<C-k>", "<Up>")
 
 utils.keymap({ "i" }, "jj", "<Esc>")

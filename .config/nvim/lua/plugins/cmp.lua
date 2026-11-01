@@ -16,6 +16,7 @@ return {
 		local icons = require("config.icons")
 
 		luasnip.config.setup({})
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
 			snippet = {
@@ -60,12 +61,6 @@ return {
 				{ name = "nvim_lsp", keyword_length = 0 },
 				{ name = "luasnip", keyword_length = 0 },
 				{ name = "path" },
-				{ name = "nvim_lua" },
-				{ name = "calc" },
-				{ name = "emoji" },
-				{ name = "treesitter" },
-				{ name = "tmux" },
-				{ name = "tsnip" },
 			},
 			formatting = {
 				format = function(entry, vim_item)
@@ -77,8 +72,6 @@ return {
 						nvim_lsp = "[LSP]",
 						nvim_lua = "[Lua]",
 						luasnip = "[LuaSnip]",
-						latex_symbols = "[LaTeX]",
-						tsnip = "[tsnip]",
 					})[entry.source.name]
 					return vim_item
 				end,

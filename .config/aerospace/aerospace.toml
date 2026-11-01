@@ -20,6 +20,10 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
+on-window-detected = [
+  { if.app-id = 'com.apple.iphonesimulator', run = ['layout tiling', 'exec-and-forget $HOME/.config/aerospace/tile-simulator.sh'] },
+]
+
 [exec.env-vars]
   ACTIVE_MODE = "main"
 

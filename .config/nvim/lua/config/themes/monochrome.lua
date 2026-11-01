@@ -94,8 +94,11 @@ function M.load()
 		DiagnosticUnderlineHint = { sp = c.input, style = { "undercurl" } },
 		DiagnosticSignHint = { fg = c.input },
 
-		DiagnosticDeprecated = { fg = c.input, style = { "strikethrough" } },
+		DiagnosticDeprecated = { fg = c.warning, style = { "strikethrough" } },
 		DiagnosticUnnecessary = { fg = c.input },
+
+		-- LSP semantic-token modifier used when a server marks a symbol deprecated.
+		["@lsp.mod.deprecated"] = { fg = c.warning, style = { "strikethrough" } },
 
 		-- ========================================
 		-- PLUGIN: Telescope

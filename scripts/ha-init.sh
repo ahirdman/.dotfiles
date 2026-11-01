@@ -23,26 +23,13 @@ if [ -f "$HOME_DIR/.zprofile" ] && [ ! -L "$HOME_DIR/.zprofile" ]; then
 fi
 
 # Re-stow dotfiles (skip mac-only configs)
-cd "$DOTFILES_DIR" && stow -t "$HOME_DIR" --no-folding \
-  --ignore='\.ssh' \
-  --ignore='Brewfile' \
-  --ignore='\.actrc' \
-  --ignore='\.taplo\.toml' \
-  --ignore='aerospace' \
-  --ignore='gh$' \
-  --ignore='ghdash' \
-  --ignore='ghostty' \
-  --ignore='github-copilot' \
-  --ignore='opencode' \
-  --ignore='rainfrog' \
-  --ignore='sketchybar' \
-  --ignore='tmuxinator' \
-  .
+cd "$DOTFILES_DIR" && source scripts/ha-stow-excludes.sh
+stow -t "$HOME_DIR" --no-folding "${HA_STOW_EXCLUDES[@]}" .
 
 # Install tmux plugins if TPM exists but plugins are missing
-TPM_DIR="$DOTFILES_DIR/.config/tmux/plugins/tpm"
+TPM_DIR="$HOME_DIR/.config/tmux/plugins/tpm"
 if [ -x "$TPM_DIR/bin/install_plugins" ]; then
-  PLUGIN_COUNT=$(ls -d "$DOTFILES_DIR/.config/tmux/plugins"/*/ 2>/dev/null | wc -l)
+  PLUGIN_COUNT=$(ls -d "$HOME_DIR/.config/tmux/plugins"/*/ 2>/dev/null | wc -l)
   if [ "$PLUGIN_COUNT" -le 1 ]; then
     echo "[ha-init] Installing tmux plugins..."
     "$TPM_DIR/bin/install_plugins" || true

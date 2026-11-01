@@ -5,9 +5,6 @@ export GH_DASH_CONFIG="$HOME/.config/ghdash/config.yml"
 
 # Editor settings
 export EDITOR="nvim"
-export ZVM_VI_EDITOR="nvim"
-export ZVM_CURSOR_STYLE_ENABLED=false
-export ZVM_VI_ESCAPE_BINDKEY="jj"
 
 # Gum settings
 export GUM_INPUT_CURSOR_FOREGROUND="#ff6d12"
@@ -47,11 +44,8 @@ export FZF_DEFAULT_OPTS='
 
 # macOS-specific settings
 if [[ "$OSTYPE" == darwin* ]]; then
-  export HOMEBREW_CASK_OPTS="--no-quarantine"
-
   # Node.js version manager
   export N_PREFIX="$HOME/.n"
-  export PREFIX="$N_PREFIX"
   export PATH="$N_PREFIX/bin:$PATH"
 
   # Postgres
@@ -68,7 +62,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   # Go Executables
   export PATH=$PATH:$HOME/go/bin
 
-  export FZF_DEFAULT_COMMAND='find ~ -type f \( -path "~/Library/*" \) -prune -o -print'
+  export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!Library/**' --glob '!.git/**' \"\$HOME\""
 
   # LM Studio CLI
   export PATH="$PATH:$HOME/.lmstudio/bin"
@@ -86,7 +80,15 @@ if [[ "$OSTYPE" == linux* ]]; then
   export PATH="/data/bin:$PATH"
 fi
 
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/base.toml)"
+export POSH_CONFIG="$HOME/.config/ohmyposh/base.toml"
+eval "$(oh-my-posh init zsh --config "$POSH_CONFIG")"
+
+# Restore the theme if shell tooling clears Oh My Posh's environment variable.
+# Oh My Posh calls this hook before rendering each primary prompt.
+function set_poshcontext() {
+  export POSH_CONFIG="$HOME/.config/ohmyposh/base.toml"
+}
+
 eval "$(zoxide init zsh)"
 
 # Aliases
@@ -101,3 +103,4 @@ eval "$(zoxide init zsh)"
 # Plugins
 [[ -f ~/.config/zsh/plugins.zsh ]] && source ~/.config/zsh/plugins.zsh
 
+export PATH="$HOME/.local/bin:$PATH"

@@ -21,12 +21,7 @@ return {
     "stevearc/dressing.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
     event = "VeryLazy",
-    opts = {
-      border = "rounded",
-    },
-    config = function()
-      require("dressing").setup()
-    end,
+    opts = {},
   },
 
   {
@@ -86,10 +81,8 @@ return {
   {
     "NickvanDyke/opencode.nvim",
     dependencies = {
-      -- Recommended for `ask()` and `select()`.
-      -- Required for `snacks` provider.
-      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-      { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+      -- Recommended for `ask()` and `select()`. Configured in plugins/snacks.lua.
+      "folke/snacks.nvim",
     },
     config = function()
       ---@type opencode.Opts
