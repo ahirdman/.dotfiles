@@ -1,2 +1,3 @@
 [user]
 	email = "88927248+ahirdman@users.noreply.github.com"
+	signingKey = "~/.ssh/git_personal"

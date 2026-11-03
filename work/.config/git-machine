@@ -1,2 +1,7 @@
 [user]
 	email = "126080861+AlexHird@users.noreply.github.com"
+	signingKey = "~/.ssh/git_work"
+
+# Personal repos push with the personal key, without changing their remotes.
+[url "personalgit:ahirdman/"]
+	insteadOf = git@github.com:ahirdman/

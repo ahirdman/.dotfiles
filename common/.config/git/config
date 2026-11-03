@@ -63,6 +63,16 @@
 [user]
 	email = "88927248+ahirdman@users.noreply.github.com"
 	name = "Alexander Hirdman"
+	# Device key from scripts/setup-git-keys.sh. Layers below can swap it.
+	signingKey = "~/.ssh/git_personal"
+
+# Sign with SSH keys on disk, so signing never waits for Touch ID.
+[gpg]
+	format = ssh
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
 # Machine layers can replace the default identity.
 [include]
 	path = ~/.config/git-machine

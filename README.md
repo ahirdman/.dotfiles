@@ -15,13 +15,17 @@ pre-commit hook blocks them.
 1. `./install.sh personal-mac`, `./install.sh work-mac` or `./install.sh linux`
 2. On Mac, `opencode auth login` for providers. Credentials stay in opencode's store.
 3. On a new Linux server, run `scripts/bootstrap-linux.sh` instead.
+4. Run `scripts/setup-git-keys.sh` for this machine's git keys. Commits are signed, so git fails until it has run.
 
 Run `./install.sh` again after adding files. It remembers the role.
 
 ## Machine-specific values
 Keep these out of git, in `~/.config/zsh/env.zsh`, `~/.ssh/config.local` and `~/.config/git/blocked-values`.
 
-## Links:
-**Configure SSH & GitHub Profiles**
-- Adding "ssh-add --apple-use-keychain ~/.ssh/id_<id>" correctly set the accounts 
-- https://engineeringfordatascience.com/posts/how_to_manage_multiple_git_accounts_on_the_same_machine/
+## Git keys
+Each machine has its own key per GitHub account: `~/.ssh/git_personal` and, on
+the work Mac, `~/.ssh/git_work`. They stay on disk outside 1Password, so git can
+sign and push over SSH sessions and agents without Touch ID. Macs use them for
+pushing too, and Linux pushes over HTTPS with `gh`. Other SSH hosts still go
+through 1Password. If a machine is lost, revoke its keys at
+https://github.com/settings/keys.
