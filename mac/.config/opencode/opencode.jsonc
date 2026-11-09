@@ -296,6 +296,18 @@
         "mcp"
       ],
       "enabled": true
+    },
+    "servers": {
+      "browse": {
+        "type": "local",
+        "command": [
+          "{env:HOME}/.local/bin/browse",
+          "mcp"
+        ],
+        "environment": {
+          "OPENCODE_BROWSER_RUNTIME": "auto-update"
+        }
+      }
     }
   },
 }
